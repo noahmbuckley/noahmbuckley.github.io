@@ -20,8 +20,6 @@ website:
         href: teaching.qmd
       - text: "CV"
         href: cv.qmd
-      - text: "Links"
-        href: links.qmd
     footer: |
       <div class="sidebar-links">
       <a href="mailto:noah.buckley@tcd.ie">Email</a>
