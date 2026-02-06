@@ -1,0 +1,90 @@
+---
+title: "Claude Code for Political Scientists"
+pagetitle: "Claude Code for Political Scientists"
+robots: "noindex, nofollow"
+---
+
+I've become an evangelist for [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview). This page is for colleagues who are curious, skeptical, or both. It's informal and opinionated---my experience, not a sales pitch.
+
+**The short version:** Claude Code has helped me do literally months of RA work in a few weeks. I'm not exaggerating. It has fundamentally changed how I do empirical research, and I think it will change the field quickly, in good and bad and unexpected ways.
+
+---
+
+## What is it?
+
+Claude Code is a command-line tool that lets you work with an AI agent inside your actual project files. You open a terminal in your project folder, type what you want to do in plain English, and it reads your files, writes code, runs it, inspects the output, and iterates---all while you watch (or go make coffee).
+
+It's not a chatbot you paste code snippets into. It has access to your full project directory, remembers context across a session, and can execute multi-step tasks autonomously. Think of it less like "AI autocomplete" and more like a tireless RA who can read code, write code, and learn your project's structure.
+
+---
+
+## What makes it useful for us?
+
+Most online discussion of AI coding tools is aimed at software engineers. Political scientists have different needs: messy data, idiosyncratic file formats, statistical analysis, and projects that accumulate years of legacy code. Claude Code is surprisingly good at all of this.
+
+Here's what I've used it for, roughly ordered by how impressed I've been:
+
+**Data harmonization and cleaning.** I work with decades of Russian survey data across dozens of waves in different formats, with inconsistent variable names, changing coding schemes, and Cyrillic column headers that sometimes *look* like Latin characters but aren't. Claude Code handles this kind of tedious, detail-oriented work remarkably well. It can read SPSS files, figure out variable mappings, and write clean processing scripts---the kind of work that would take an RA weeks.
+
+**Building analysis pipelines from scratch.** I pointed it at precinct-level election data for all 12 Russian federal elections (2000--2024) and had it implement over a dozen fraud detection methods---digit tests, turnout anomalies, parametric models---producing a validated region-election panel dataset. The whole pipeline, from raw data to publication-ready figures, was built collaboratively in a fraction of the time it would have taken me alone.
+
+**Scraping and data collection.** It has enabled me to collect data I didn't think was possible without a very technical RA---web scraping, API calls, processing government budget documents in inconsistent Excel formats across years.
+
+**Rebooting stalled papers.** I have a custom command (`/reboot-paper`) that I point at a project folder---which might contain years of accumulated code, old drafts, coauthor emails, reviewer comments---and it reads everything, builds a clean replication pipeline, identifies what data is available across my other projects, and produces a prioritized to-do list. For a paper that's been sitting dormant, this is transformative. In a few hours you go from "I can't face reopening this" to "here's a clean, running pipeline and a clear path forward."
+
+**Simulation and methods work.** A colleague asked me about a methodological question. I described the simulation design, went off to do other things, and came back to a complete set of Monte Carlo simulations with figures. Three hours, minimal hands-on time.
+
+**Formatting and output.** Regression tables, figures, codebooks, data exports---the unglamorous stuff that eats time. It does this well and fast.
+
+---
+
+## What it's not good at
+
+Honesty requires acknowledging where it falls short.
+
+**Interpretation and theory.** As [Tom Pepinsky puts it](https://tompepinsky.com/2026/01/23/agentic-ai-and-social-science-research-practice/): "Use agentic AI for tasks that involve following rules. Do not use agentic AI for tasks that generate answers, arguments, or interpretations." This is exactly right. Claude Code can run your regressions and format your tables, but you need to interpret the results yourself. When invited to interpret, it tends to produce plausible-sounding but unreliable analysis.
+
+**Literature reviews and citations.** It hallucinates references. Don't trust it for this. (Claude's separate "deep research" mode is better here, but still needs verification.)
+
+**Judgment calls.** It won't tell you that your research design is flawed or that your identification strategy has a hole. It will cheerfully implement whatever you ask for. You remain the researcher.
+
+**Simple experimental work.** If your research is primarily survey experiments with clean pre-registered designs, the gains are smaller. The tool shines most when there's a lot of messy data work.
+
+---
+
+## The slop concern
+
+[Seva Gunitsky raises a serious worry](https://hegemon.substack.com/p/the-age-of-academic-slop-is-upon): if competent empirical work becomes cheap and easy, we'll be buried in technically adequate but uninteresting papers. He's right to worry about this, and I think about it a lot.
+
+My view: the tool amplifies whatever you bring to it. If you have good questions and careful instincts, it removes barriers to pursuing them. If you have bad questions, it helps you produce bad papers faster. The bottleneck shifts from "can I execute this analysis?" to "is this analysis worth doing?"---which is where it should have been all along.
+
+The researchers who will benefit most are the ones who already know what good research looks like. The tool doesn't substitute for taste, judgment, or domain expertise. It substitutes for time.
+
+---
+
+## How to actually get started
+
+**1. Install it.** You need an [Anthropic API key](https://console.anthropic.com/) or a [Claude Max subscription](https://claude.ai/) ($100/month, which I think is the better deal for heavy use). Installation is one command: `npm install -g @anthropic-ai/claude-code`. Then open a terminal in any project folder and type `claude`.
+
+**2. Start small.** Don't try to build a whole pipeline on day one. Ask it to clean a dataset you've been putting off, or to make a figure, or to reformat a table. Get a feel for the interaction.
+
+**3. Write a `CLAUDE.md` file.** This is a markdown file in your project directory that Claude Code reads at the start of every session. Put your coding preferences, project structure, data locations, and instructions here. This is how you get it to write code the way *you* want, not the way a generic software engineer would. I have strong preferences about R style (base R, explicit loops, linear scripts) and it follows them reliably once they're documented.
+
+**4. Verify everything.** Don't trust, verify. Check the output. Run the code. Look at the data. This is exactly the same discipline you'd apply to RA work---maybe more so, because it's faster and therefore more tempting to skip verification. [Scott Cunningham's "Referee 2 protocol"](https://causalinf.substack.com/p/claude-code-part-12-how-i-use-claude)---opening a second Claude instance to adversarially audit the first---is a clever formalization of this instinct.
+
+**5. Learn the workflow, not the syntax.** You don't need to learn programming or prompt engineering. You need to learn how to describe what you want clearly, how to break big tasks into manageable steps, and how to check output. These are skills you already have.
+
+---
+
+## Further reading
+
+- [Scott Cunningham's Claude Code series](https://causalinf.substack.com/p/claude-code-part-12-how-i-use-claude) --- the best resource I've found for social scientists specifically. Cunningham (economist, Harvard visiting) has written extensively about his workflow for empirical research, including a "Referee 2" adversarial auditing protocol.
+- [Tom Pepinsky, "Agentic AI and Social Science Research Practice"](https://tompepinsky.com/2026/01/23/agentic-ai-and-social-science-research-practice/) --- thoughtful take on what agentic AI is good and bad at for our work.
+- [Seva Gunitsky, "The Age of Academic Slop Is Upon Us"](https://hegemon.substack.com/p/the-age-of-academic-slop-is-upon) --- the best articulation of the risks. Required reading alongside any enthusiasm.
+- [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code/overview) --- the official docs. More oriented toward software development, but the basics apply.
+
+---
+
+If you want a live demo, I'm happy to show you. It's the kind of thing you need to see to believe---and that converts skeptics instantly.
+
+*Last updated: February 2026*
