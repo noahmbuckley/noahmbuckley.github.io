@@ -1,0 +1,59 @@
+---
+title: "Teaching"
+---
+
+## Trinity College Dublin
+
+::: {.course}
+### Russian Politics under Putin
+::: {.level}
+Postgraduate (Masters) seminar
+:::
+:::
+
+::: {.course}
+### Varieties of Authoritarianism
+::: {.level}
+Postgraduate (Masters) seminar
+:::
+:::
+
+::: {.course}
+### Comparative Politics B: The Comparative Politics of the Developing World
+::: {.level}
+Undergraduate lecture
+:::
+:::
+
+::: {.course}
+### Russian Politics after Communism
+::: {.level}
+Undergraduate seminar
+:::
+:::
+
+::: {.course}
+### Public Opinion
+::: {.level}
+Undergraduate seminar
+:::
+:::
+
+---
+
+## Previous Teaching
+
+**Higher School of Economics, Moscow**
+
+- Comparative Political Economy (graduate seminar), 2011–2013, 2017–2018
+
+**Columbia University** *(Teaching Assistant)*
+
+- Advanced Topics in Quantitative Research: Limited and Qualitative Dependent Variables
+- Quantitative Political Research
+- Multivariate Political Analysis
+- Post-Soviet States and Markets
+- Honors Senior Thesis Seminar
+- Statistics and Data Analysis
+- Introduction to Comparative Politics
+- Introduction to International Politics

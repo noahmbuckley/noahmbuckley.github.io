@@ -1,0 +1,105 @@
+---
+title: "Research"
+---
+
+## Publications
+
+**The Demand for Elections under Autocracy: Regime Approval and the Elimination of Local Elections in Russia**
+*(with Quintin Beazer and Ora John Reuter)*
+*American Journal of Political Science*, 2024
+
+<details>
+<summary>Abstract</summary>
+Why do some authoritarian regimes hold elections while others do not? We argue that regime approval shapes the decision to cancel elections.
+</details>
+
+---
+
+**Endogenous Popularity: How Perceptions of Regime Support Affect the Popularity of Authoritarian Regimes**
+*(with Kyle Marquardt, Ora John Reuter, and Ekaterina Tertytchnaya)*
+*American Political Science Review*, 2024, 118(2):1046-1052
+[DOI](https://doi.org/10.1017/S0003055423000618)
+
+<details>
+<summary>Abstract</summary>
+Do perceptions of a regime's popularity affect actual support for it? Using survey experiments in Russia, we show that information about the regime's popularity causally increases support for it.
+</details>
+
+---
+
+**Staying Out of Trouble: Criminal Cases Against Russian Mayors**
+*(with Ora John Reuter, Michael Rochlitz, and Anton Aisin)*
+*Comparative Political Studies*, 2022, 55(9):1539-1568
+
+<details>
+<summary>Abstract</summary>
+Why are some local officials prosecuted while others are not? We examine criminal cases against Russian mayors.
+</details>
+
+---
+
+**Who Reports Crime? Citizen Engagement with the Police in Russia and Georgia**
+*(with Timothy Frye, Scott Gehlbach, and Lauren McCarthy)*
+*Europe-Asia Studies*, 2021, 73(1):8-35
+
+---
+
+**Performance Incentives under Autocracy: Evidence from Russia's Regions**
+*(with Ora John Reuter)*
+*Comparative Politics*, 2019, 51(2):239-266
+
+<details>
+<summary>Abstract</summary>
+We find that performance-based appointments are more frequent in less competitive regions. In more competitive regions, the political imperatives of maintaining a political machine may lead regime leaders to abandon cadre policies that promote economic development.
+</details>
+
+---
+
+**Staring at the West through Kremlin-tinted Glasses: Russian Mass and Elite Divergence in Attitudes toward the United States, European Union, and Ukraine before and after Crimea**
+*(with Joshua A. Tucker)*
+*Post-Soviet Affairs*, 2019, 35(5-6):365-375
+
+---
+
+**Local Elections in Authoritarian Regimes: An Elite-Based Theory with Evidence from Russian Mayoral Elections**
+*(with Ora John Reuter, Guzel Garifullina, and Alexandra Shubenkova)*
+*Comparative Political Studies*, 2016, 49(5)
+
+<details>
+<summary>Abstract</summary>
+We argue that autocrats use subnational elections to co-opt and assuage powerful subnational elites. When subnational elites control significant political resources, leaders may need to co-opt them in order to govern cost-effectively.
+</details>
+
+---
+
+**Cooperating with the State: Evidence from Survey Experiments on Policing**
+*(with Timothy Frye, Scott Gehlbach, and Lauren McCarthy)*
+*Journal of Experimental Political Science*, 2016, 3(2):124-139
+
+---
+
+**The Political Economy of Russian Gubernatorial Elections and Appointments**
+*(with Timothy Frye, Guzel Garifullina, and Ora John Reuter)*
+*Europe-Asia Studies*, 2014, 66(8)
+
+---
+
+**Elections, Appointments, and Human Capital: The Case of Russian Mayors**
+*(with Guzel Garifullina, Ora John Reuter, and Alexandra Shubenkova)*
+*Demokratizatsiya*, 2014, 22(1)
+
+---
+
+## Working Papers
+
+**A Watched Pot Boiling: Street Protest and Public Opinion in Authoritarian Russia**
+Presented at ASEEES 2021
+
+---
+
+**Rotten Eggs or Bad Apples: Corruption Arrests and Public Opinion in Authoritarian Russia**
+
+---
+
+**Economic Blame Attribution in Times of Boom and Bust: The Case of Authoritarian Russia**
+Presented at EPSA 2018

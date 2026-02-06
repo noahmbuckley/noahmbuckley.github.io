@@ -1,0 +1,235 @@
+/*-- scss:defaults --*/
+
+// Typography
+$font-family-sans-serif: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$font-family-monospace: 'IBM Plex Mono', monospace;
+$font-size-root: 14px;
+$line-height-base: 1.55;
+$headings-font-weight: 600;
+
+// Colors - subtle blue accent, not brutalist
+$body-color: #2d2d2d;
+$link-color: #1a5f7a;
+$body-bg: #ffffff;
+
+// Spacing
+$spacer: 1rem;
+$paragraph-margin-bottom: 0.8rem;
+
+/*-- scss:rules --*/
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&display=swap');
+
+// Tighten up the body
+body {
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+
+// Headers - clean and tight
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+  color: #1a1a1a;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.3rem;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+// Links - understated
+a {
+  color: $link-color;
+  text-decoration: none;
+  border-bottom: 1px solid #ccd;
+  
+  &:hover {
+    border-bottom-color: $link-color;
+  }
+}
+
+// Sidebar styling
+.sidebar {
+  font-size: 13px;
+  border-right: 1px solid #eee;
+}
+
+.sidebar-title {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+
+.sidebar-item a {
+  border-bottom: none !important;
+  color: #555;
+  
+  &:hover {
+    color: #1a1a1a;
+  }
+}
+
+.sidebar-item.active a {
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+// Main content area
+.content {
+  max-width: 680px;
+}
+
+// Publication styling
+.pub {
+  margin-bottom: 1.2rem;
+  
+  .pub-title {
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+  
+  .pub-authors {
+    color: #666;
+    font-style: italic;
+  }
+  
+  .pub-venue {
+    color: #444;
+  }
+  
+  .pub-links {
+    margin-top: 0.3rem;
+    
+    a {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-right: 0.8rem;
+      border-bottom: none;
+      color: $link-color;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Lists - tighter
+ul, ol {
+  padding-left: 1.2rem;
+  
+  li {
+    margin-bottom: 0.3rem;
+  }
+}
+
+// Navbar - hide it since we have sidebar
+.navbar {
+  display: none;
+}
+
+// Footer - minimal
+.page-footer {
+  display: none;
+}
+
+// Profile section on home page
+.info {
+  margin-bottom: 1.5rem;
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 0.3rem;
+  }
+
+  .title {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .affiliation {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+
+    a {
+      border-bottom: none;
+
+      &:hover {
+        border-bottom: 1px solid $link-color;
+      }
+    }
+  }
+
+  .contact-links {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+
+    a {
+      margin-right: 1rem;
+    }
+  }
+}
+
+// Profile with photo (add back when photo available)
+.profile {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+
+  img {
+    width: 130px;
+    height: 130px;
+    border-radius: 3px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile {
+    flex-direction: column;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+// Abstract toggle (for future use)
+details {
+  margin-top: 0.3rem;
+  
+  summary {
+    font-size: 12px;
+    color: #888;
+    cursor: pointer;
+    
+    &:hover {
+      color: #555;
+    }
+  }
+  
+  p {
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid #eee;
+    font-size: 13px;
+    color: #555;
+  }
+}

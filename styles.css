@@ -1,0 +1,73 @@
+/* Additional layout overrides */
+
+/* Make sidebar fixed and styled */
+#quarto-sidebar {
+  padding-top: 1.5rem;
+}
+
+/* Ensure content doesn't get too wide */
+#quarto-content {
+  max-width: 720px;
+}
+
+/* Profile photo placeholder if missing */
+.profile img[src=""] {
+  background: #f0f0f0;
+}
+
+/* Subtle hr styling */
+hr {
+  border: none;
+  border-top: 1px solid #e8e8e8;
+  margin: 1.5rem 0;
+}
+
+/* Teaching course cards */
+.course {
+  background: #fafafa;
+  border-left: 3px solid #1a5f7a;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.course h3 {
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+  font-size: 0.95rem;
+}
+
+.course .level {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Links page sections */
+.link-group {
+  margin-bottom: 1.5rem;
+}
+
+.link-group h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
+.link-group ul {
+  margin: 0;
+}
+
+/* Compact publication list */
+.pubs {
+  list-style: none;
+  padding: 0;
+}
+
+.pubs li {
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.pubs li:last-child {
+  border-bottom: none;
+}

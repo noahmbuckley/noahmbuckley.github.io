@@ -1,0 +1,56 @@
+---
+title: "Links"
+---
+
+Curated resources for students, colleagues, and myself.
+
+## Russia & Post-Soviet
+
+::: {.link-group}
+### Data
+- [Levada Center](https://www.levada.ru/en/) — independent Russian polling
+- [Russian Election Data](http://www.russiavotes.org/)
+- [GADM Russia](https://gadm.org/maps/RUS.html) — administrative boundaries
+:::
+
+::: {.link-group}
+### News & Analysis
+- [PONARS Eurasia](https://www.ponarseurasia.org/) — policy memos
+- [Meduza](https://meduza.io/en) — independent news
+- [Riddle Russia](https://ridl.io/en/)
+- [The Moscow Times](https://www.themoscowtimes.com/)
+:::
+
+---
+
+## Research Tools
+
+::: {.link-group}
+### Writing
+- [Overleaf](https://www.overleaf.com/)
+- [Connected Papers](https://www.connectedpapers.com/)
+- [SSRN](https://www.ssrn.com/)
+:::
+
+::: {.link-group}
+### Data & Methods
+- [R Graph Gallery](https://r-graph-gallery.com/)
+- [CRAN Task Views](https://cran.r-project.org/web/views/)
+- [Andrew Gelman's blog](https://statmodeling.stat.columbia.edu/)
+:::
+
+---
+
+## For Students
+
+::: {.link-group}
+### Job Market
+- [APSA eJobs](https://www.apsanet.org/jobs)
+- [PoliSci Rumors](http://www.poliscirumors.com/)
+:::
+
+::: {.link-group}
+### Writing Advice
+- [Writing Tips for PhD Students](https://www.johnhcochrane.com/writing-tips) — Cochrane
+- [The Political Methodologist](https://thepoliticalmethodologist.com/)
+:::

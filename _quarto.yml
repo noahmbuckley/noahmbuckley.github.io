@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - CNAME
+
+website:
+  title: "Noah Buckley"
+  
+  sidebar:
+    style: "floating"
+    search: false
+    contents:
+      - text: "Home"
+        href: index.qmd
+      - text: "Research"
+        href: research.qmd
+      - text: "Teaching"
+        href: teaching.qmd
+      - text: "CV"
+        href: files/nbuckley_CV.pdf
+      - text: "Links"
+        href: links.qmd
+      - text: "Contact"
+        href: contact.qmd
+  
+  page-footer:
+    left: ""
+    right: ""
+
+format:
+  html:
+    theme: 
+      - cosmo
+      - custom.scss
+    css: styles.css
+    toc: false
+    page-layout: article

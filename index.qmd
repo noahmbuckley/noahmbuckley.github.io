@@ -1,0 +1,37 @@
+---
+title: ""
+---
+
+::: {.info}
+
+# Noah Buckley
+
+::: {.title}
+Assistant Professor of Political Science
+:::
+
+::: {.affiliation}
+[Department of Political Science](https://www.tcd.ie/Political_Science/), [Trinity College Dublin](https://www.tcd.ie)
+:::
+
+::: {.contact-links}
+[Email](mailto:noah.buckley@tcd.ie) ·
+[Google Scholar](https://scholar.google.com/citations?user=TZ07K8wAAAAJ) ·
+[SSRN](http://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1678779)
+:::
+
+:::
+
+---
+
+I am an assistant professor (with tenure) in the Department of Political Science at Trinity College Dublin. I received my Ph.D. from Columbia University in 2016 and was previously a postdoctoral associate at NYU Abu Dhabi.
+
+My research focuses on authoritarian politics in Putin-era Russia: how autocratic regimes sustain themselves, how the mass public understands their authoritarian environment, and why corruption persists. I use quantitative methods and original micro-level data, including the largest individual-level database of Russian public opinion survey responses.
+
+My work has appeared in the *American Political Science Review*, *American Journal of Political Science*, *Comparative Political Studies*, *Comparative Politics*, *Journal of Experimental Political Science*, *Europe-Asia Studies*, and *Post-Soviet Affairs*.
+
+*(Looking for Noah M. Buckley-Farlee? That's me.)*
+
+## Research interests
+
+Comparative politics · authoritarian politics · Russian and post-communist politics · public opinion · corruption · political methodology · bureaucracy · policing
