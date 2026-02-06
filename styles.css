@@ -5,11 +5,8 @@
   padding-top: 1.5rem;
 }
 
-/* Ensure content doesn't get too wide, with room for sidebar */
-#quarto-content {
-  max-width: 720px;
-  padding-left: 1.5rem;
-}
+/* Content width is controlled by .content in custom.scss;
+   don't constrain #quarto-content or it squeezes the sidebar */
 
 /* Profile photo placeholder if missing */
 .profile img[src=""] {
