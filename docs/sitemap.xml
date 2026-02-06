@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://noahbuckley.github.io/links.html</loc>
-    <lastmod>2026-02-06T07:41:52.014Z</lastmod>
+    <loc>https://noahbuckley.github.io/cv.html</loc>
+    <lastmod>2026-02-06T20:58:51.838Z</lastmod>
+  </url>
+  <url>
+    <loc>https://noahbuckley.github.io/template.html</loc>
+    <lastmod>2026-02-06T20:58:52.750Z</lastmod>
   </url>
   <url>
     <loc>https://noahbuckley.github.io/README_updates.html</loc>
@@ -22,10 +26,14 @@
   </url>
   <url>
     <loc>https://noahbuckley.github.io/index.html</loc>
-    <lastmod>2026-02-06T20:06:40.497Z</lastmod>
+    <lastmod>2026-02-06T20:58:11.231Z</lastmod>
   </url>
   <url>
     <loc>https://noahbuckley.github.io/claude-code.html</loc>
     <lastmod>2026-02-06T20:40:18.360Z</lastmod>
+  </url>
+  <url>
+    <loc>https://noahbuckley.github.io/links.html</loc>
+    <lastmod>2026-02-06T07:41:52.014Z</lastmod>
   </url>
 </urlset>

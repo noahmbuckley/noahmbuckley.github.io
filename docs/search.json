@@ -1,43 +1,154 @@
 [
   {
-    "objectID": "links.html",
-    "href": "links.html",
-    "title": "Links",
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "CV",
     "section": "",
-    "text": "Curated resources for students, colleagues, and myself.",
+    "text": "Download PDF",
     "crumbs": [
-      "Links"
+      "CV"
     ]
   },
   {
-    "objectID": "links.html#russia-post-soviet",
-    "href": "links.html#russia-post-soviet",
-    "title": "Links",
-    "section": "Russia & Post-Soviet",
-    "text": "Russia & Post-Soviet\n\nData\n\nLevada Center — independent Russian polling\nRussian Election Data\nGADM Russia — administrative boundaries\n\n\n\nNews & Analysis\n\nPONARS Eurasia — policy memos\nMeduza — independent news\nRiddle Russia\nThe Moscow Times",
+    "objectID": "cv.html#research-interests",
+    "href": "cv.html#research-interests",
+    "title": "CV",
+    "section": "Research Interests",
+    "text": "Research Interests\nComparative politics; authoritarian politics; Russian and post-communist politics; public opinion; corruption; political methodology and experimental methods; political economy; bureaucracy; policing.",
     "crumbs": [
-      "Links"
+      "CV"
     ]
   },
   {
-    "objectID": "links.html#research-tools",
-    "href": "links.html#research-tools",
-    "title": "Links",
-    "section": "Research Tools",
-    "text": "Research Tools\n\nWriting\n\nOverleaf\nConnected Papers\nSSRN\n\n\n\nData & Methods\n\nR Graph Gallery\nCRAN Task Views\nAndrew Gelman’s blog",
+    "objectID": "cv.html#academic-experience",
+    "href": "cv.html#academic-experience",
+    "title": "CV",
+    "section": "Academic Experience",
+    "text": "Academic Experience\nAssistant Professor (with tenure since 2023), Department of Political Science Trinity College Dublin, University of Dublin, Ireland 2019–present\nVisiting Researcher, NYU Jordan Center New York University, New York September–December 2022\nPostdoctoral Associate (three-year research position, third year declined) NYU Abu Dhabi, United Arab Emirates 2017–2019 Faculty mentors: Rebecca Morton (NYU) and Joshua Tucker (NYU)\nResearch Fellow | Postdoctoral Researcher International Center for the Study of Institutions and Development Higher School of Economics, Moscow, Russia 2011–2022 | January–August 2017",
     "crumbs": [
-      "Links"
+      "CV"
     ]
   },
   {
-    "objectID": "links.html#for-students",
-    "href": "links.html#for-students",
-    "title": "Links",
-    "section": "For Students",
-    "text": "For Students\n\nJob Market\n\nAPSA eJobs\nPoliSci Rumors\n\n\n\nWriting Advice\n\nWriting Tips for PhD Students — Cochrane\nThe Political Methodologist",
+    "objectID": "cv.html#education",
+    "href": "cv.html#education",
+    "title": "CV",
+    "section": "Education",
+    "text": "Education\nColumbia University in the City of New York Ph.D. in Political Science, 2017\nUniversity of Wisconsin-Madison B.A. received 2006, Comprehensive Honors, Honors in Political Science; Phi Beta Kappa Majors: Political Science, Russian Language and Culture",
     "crumbs": [
-      "Links"
+      "CV"
     ]
+  },
+  {
+    "objectID": "cv.html#peer-reviewed-publications",
+    "href": "cv.html#peer-reviewed-publications",
+    "title": "CV",
+    "section": "Peer-Reviewed Publications",
+    "text": "Peer-Reviewed Publications\n“The Demand for Elections under Autocracy: Regime Approval and the Elimination of Local Elections in Russia” (with Quintin Beazer and Ora John Reuter). American Journal of Political Science. Conditionally accepted, 2024.\n“Endogenous Popularity: How Perceptions of Regime Support Affect the Popularity of Authoritarian Regimes” (with Kyle Marquardt, Ora John Reuter, and Ekaterina Tertytchnaya). American Political Science Review. 2024;118(2):1046-1052.\n“Staying Out of Trouble: Criminal Cases Against Russian Mayors” (with Ora John Reuter, Michael Rochlitz, and Anton Aisin). Comparative Political Studies 55(9), 1539-1568. 2022.\n“Who Reports Crime? Citizen Engagement with the Police in Russia and Georgia” (with Timothy Frye, Scott Gehlbach, and Lauren McCarthy). Europe-Asia Studies 73(1):8-35. 2021.\n“Performance Incentives under Autocracy: Evidence from Russia’s Regions” (with Ora John Reuter). Comparative Politics 51(2):239-266. 2019.\n“Staring at the West through Kremlin-tinted glasses: Russian mass and elite divergence in attitudes toward the United States, European Union, and Ukraine before and after Crimea” (with Joshua A. Tucker). Post-Soviet Affairs 35(5-6):365-375. 2019.\n“Local Elections in Authoritarian Regimes: An Elite-Based Theory with Evidence from Russian Mayoral Elections” (with Ora John Reuter, Guzel Garifullina, and Alexandra Shubenkova). Comparative Political Studies 49:5. 2016.\n“Cooperating with the State: Evidence from Survey Experiments on Policing” (with Timothy Frye, Scott Gehlbach, and Lauren McCarthy). Journal of Experimental Political Science 3(2):124-139. 2016.\n“The Political Economy of Russian Gubernatorial Elections and Appointments” (with Timothy Frye, Guzel Garifullina, and Ora John Reuter). Europe-Asia Studies 66:8. 2014.\n“Elections, Appointments, and Human Capital: The Case of Russian Mayors” (with Guzel Garifullina, Ora John Reuter, and Alexandra Shubenkova). Demokratizatsiya 22:1. 2014.",
+    "crumbs": [
+      "CV"
+    ]
+  },
+  {
+    "objectID": "cv.html#working-papers",
+    "href": "cv.html#working-papers",
+    "title": "CV",
+    "section": "Working Papers",
+    "text": "Working Papers\n“A Watched Pot Boiling: Street Protest and Public Opinion in Authoritarian Russia,” presented at ASEEES 2021.\n“Rotten Eggs or Bad Apples: Corruption Arrests and Public Opinion in Authoritarian Russia.”\n“Economic Blame Attribution in Times of Boom and Bust: The Case of Authoritarian Russia,” presented at EPSA 2018.",
+    "crumbs": [
+      "CV"
+    ]
+  },
+  {
+    "objectID": "cv.html#grants-fellowships",
+    "href": "cv.html#grants-fellowships",
+    "title": "CV",
+    "section": "Grants & Fellowships",
+    "text": "Grants & Fellowships\nArts and Social Sciences Benefaction Fund, Trinity College Dublin, 2020, 2025\nDissertation Development Grant, Department of Political Science, Columbia University, 2014\nWilliam T.R. Fox Fellowship in Political Science, Graduate School of Arts and Sciences, Columbia University, 2013–2014\nSummer Grant for field research, Columbia Center for the Study of Development Strategies, April 2010 (with David Szakonyi)\nPepsiCo Fellowship for Travel/Research in the Former Soviet Union, Harriman Institute, April 2010",
+    "crumbs": [
+      "CV"
+    ]
+  },
+  {
+    "objectID": "cv.html#additional-research-experience",
+    "href": "cv.html#additional-research-experience",
+    "title": "CV",
+    "section": "Additional Research Experience",
+    "text": "Additional Research Experience\nContributing Author Russia Political Economy Project in the Eurasia Program Foreign Policy Research Institute 2017–2018\nConsultant and Research Assistant Project: Assessing Transition and Rent-Seeking in Poland, Russia, and China Supervisor: Joel Hellman, The World Bank 2015\nResearch Assistant Project: “The Social Impact of the Millennium Village Project in Rwanda” The Earth Institute, Columbia University; Columbia Center for the Study of Development Strategies 2011\nResearch Assistant Project: “Incentives for Implementation of Regulatory Reform – A Comparative Survey of Federal and Regional Government Officials in Russia” Supervisors: Ekaterina Zhuravskaya, Mikhail Pryadilnikov Center for Economic and Financial Research (CEFIR), Moscow, Russia; The World Bank 2008",
+    "crumbs": [
+      "CV"
+    ]
+  },
+  {
+    "objectID": "cv.html#teaching-experience",
+    "href": "cv.html#teaching-experience",
+    "title": "CV",
+    "section": "Teaching Experience",
+    "text": "Teaching Experience\nInstructor, Trinity College Dublin\n\nComparative Politics B: The Comparative Politics of the Developing World (undergraduate lecture)\nRussian Politics under Putin (postgraduate/Masters seminar)\nVarieties of Authoritarianism (postgraduate/Masters seminar)\nRussian Politics after Communism (undergraduate seminar)\nPublic Opinion (undergraduate seminar)\n\nCo-Instructor, Higher School of Economics\n\nComparative Political Economy (graduate-level seminar), 2011–2013, 2017–2018",
+    "crumbs": [
+      "CV"
+    ]
+  },
+  {
+    "objectID": "cv.html#other-publications",
+    "href": "cv.html#other-publications",
+    "title": "CV",
+    "section": "Other Publications",
+    "text": "Other Publications\n“How popular is Putin, really?” blog post on The Monkey Cage, with Kyle L. Marquardt, Ora John Reuter and Katerina Tertytchnaya. April 13, 2022.\n“Putin’s approval has stayed strong over the years – war in Ukraine could change that,” article on The Conversation, republished on several news sites. March 2, 2022.\n“Here’s what you can expect from Putin’s next 6 years,” blog post on The Monkey Cage, with David Szakonyi. March 22, 2018.\n“The End of the Vertical? Corruption and Stagnation in Putin’s Fourth Term,” blog post on Eurasianet and FPRI Geopoliticus. March 9 and 13, 2018.\n“Corruption and Power in Post-Communist Russia,” policy memo for FPRI Russia Political Economy Project. April 2018.",
+    "crumbs": [
+      "CV"
+    ]
+  },
+  {
+    "objectID": "cv.html#professional-service",
+    "href": "cv.html#professional-service",
+    "title": "CV",
+    "section": "Professional Service",
+    "text": "Professional Service\nJournal Reviewer: APSR, AJPS, JOP, BJPS, Comparative Politics, Problems of Post-Communism, Governance, Democratization, Europe-Asia Studies, Electoral Studies, Political Behavior, Comparative Political Studies, World Politics, Journal of Quantitative Description: Digital Media, Political Research Quarterly, Post-Soviet Affairs, Russian Politics.\nDepartmental Service\n\nAssociate Director and Director of the MSc Program in International Politics, Trinity College Dublin, 2021–2024\n\nMemberships: APSA, ASEEES, EPSA, BASEES",
+    "crumbs": [
+      "CV"
+    ]
+  },
+  {
+    "objectID": "cv.html#selected-presentations",
+    "href": "cv.html#selected-presentations",
+    "title": "CV",
+    "section": "Selected Presentations",
+    "text": "Selected Presentations\n\nInvited talk at Dublin City U Politics Seminar, February 2025\nInvited talk at Oxford Internet Institute workshop, January 2024\nInvited talk at U Limerick PPA seminar, October 2023\nInvited talk at U Zurich politics seminar, 2022\nInvited talk at U Bremen, December 2021\nInvited talk, “Issues in Russian and Post-Communist Political Economy and Politics” seminar, Oxford University, 2021\nAPSA (2012–2018, 2021)\nASEEES (2011–2018, 2020–2021)\nEPSA (2012–2014, 2016–2019)\nInvited workshop: “Political Rents and Political Elites in Russia and Beyond,” Oxford University, 2017\nBASEES (2017–2018)",
+    "crumbs": [
+      "CV"
+    ]
+  },
+  {
+    "objectID": "cv.html#skills",
+    "href": "cv.html#skills",
+    "title": "CV",
+    "section": "Skills",
+    "text": "Skills\nLanguage: English (native); Russian (proficient)",
+    "crumbs": [
+      "CV"
+    ]
+  },
+  {
+    "objectID": "template.html",
+    "href": "template.html",
+    "title": "Page Title",
+    "section": "",
+    "text": "Brief introductory text for the page."
+  },
+  {
+    "objectID": "template.html#section-one",
+    "href": "template.html#section-one",
+    "title": "Page Title",
+    "section": "Section One",
+    "text": "Section One\nContent goes here."
+  },
+  {
+    "objectID": "template.html#section-two",
+    "href": "template.html#section-two",
+    "title": "Page Title",
+    "section": "Section Two",
+    "text": "Section Two\nContent goes here."
   },
   {
     "objectID": "README_updates.html",
@@ -107,10 +218,7 @@
     "href": "contact.html",
     "title": "Contact",
     "section": "",
-    "text": "Email: noah.buckley@tcd.ie\nOffice:\nDepartment of Political Science\n3 College Green\nTrinity College Dublin\nDublin 2, Ireland\nPhone: +353 1 896 1029\n\nGoogle Scholar · SSRN",
-    "crumbs": [
-      "Contact"
-    ]
+    "text": "Email: noah.buckley@tcd.ie\nOffice:\nDepartment of Political Science\n3 College Green\nTrinity College Dublin\nDublin 2, Ireland\nPhone: +353 1 896 1029\n\nGoogle Scholar · SSRN"
   },
   {
     "objectID": "teaching.html",
@@ -175,19 +283,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Noah Buckley - Political Scientist",
+    "title": "Noah Buckley",
     "section": "",
-    "text": "Assistant Professor of Political Science\n\n\nDepartment of Political Science, Trinity College Dublin\n\n\nEmail · Google Scholar · SSRN\nI am an assistant professor (with tenure) in the Department of Political Science at Trinity College Dublin. I received my Ph.D. from Columbia University in 2016 and was previously a postdoctoral associate at NYU Abu Dhabi.\nMy research focuses on authoritarian politics in Putin-era Russia: how autocratic regimes sustain themselves, how the mass public understands their authoritarian environment, and why corruption persists. I use quantitative methods and original micro-level data, including the largest individual-level database of Russian public opinion survey responses.\nMy work has appeared in the American Political Science Review, American Journal of Political Science, Comparative Political Studies, Comparative Politics, Journal of Experimental Political Science, Europe-Asia Studies, and Post-Soviet Affairs.\n(Looking for Noah M. Buckley-Farlee? That’s me.)",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#research-interests",
-    "href": "index.html#research-interests",
-    "title": "Noah Buckley - Political Scientist",
-    "section": "Research interests",
-    "text": "Research interests\nComparative politics · authoritarian politics · Russian and post-communist politics · public opinion · corruption · political methodology · bureaucracy · policing",
+    "text": "Noah Buckley\n\nAssistant Professor of Political Science\n\n\nDepartment of Political Science, Trinity College Dublin\n\n\nI am an assistant professor (with tenure) in the Department of Political Science at Trinity College Dublin. I received my Ph.D. from Columbia University in 2016 and was previously a postdoctoral associate at NYU Abu Dhabi.\nMy research focuses on authoritarian politics in Putin-era Russia: how autocratic regimes sustain themselves, how the mass public understands their authoritarian environment, and why corruption persists. I use quantitative methods and original micro-level data, including the largest individual-level database of Russian public opinion survey responses.\nMy work has appeared in the American Political Science Review, American Journal of Political Science, Comparative Political Studies, Comparative Politics, Journal of Experimental Political Science, Europe-Asia Studies, and Post-Soviet Affairs.\n(Looking for Noah M. Buckley-Farlee? That’s me.)",
     "crumbs": [
       "Home"
     ]
@@ -240,5 +338,45 @@
     "title": "Claude Code for Political Scientists",
     "section": "Further reading",
     "text": "Further reading\n\nScott Cunningham on Claude Code for empirical research — best resource I’ve found for social scientists. His whole series is worth reading.\nTom Pepinsky, “Agentic AI and Social Science Research Practice” — clear-eyed on what it’s good and bad at.\nSeva Gunitsky, “The Age of Academic Slop Is Upon Us” — the risks. Read this alongside any enthusiasm.\nClaude Code docs — official documentation, more geared toward developers but the basics transfer.\n\n\nHappy to give a live demo anytime. Seeing is believing.\nLast updated: February 2026"
+  },
+  {
+    "objectID": "links.html",
+    "href": "links.html",
+    "title": "Links",
+    "section": "",
+    "text": "Curated resources for students, colleagues, and myself.",
+    "crumbs": [
+      "Links"
+    ]
+  },
+  {
+    "objectID": "links.html#russia-post-soviet",
+    "href": "links.html#russia-post-soviet",
+    "title": "Links",
+    "section": "Russia & Post-Soviet",
+    "text": "Russia & Post-Soviet\n\nData\n\nLevada Center — independent Russian polling\nRussian Election Data\nGADM Russia — administrative boundaries\n\n\n\nNews & Analysis\n\nPONARS Eurasia — policy memos\nMeduza — independent news\nRiddle Russia\nThe Moscow Times",
+    "crumbs": [
+      "Links"
+    ]
+  },
+  {
+    "objectID": "links.html#research-tools",
+    "href": "links.html#research-tools",
+    "title": "Links",
+    "section": "Research Tools",
+    "text": "Research Tools\n\nWriting\n\nOverleaf\nConnected Papers\nSSRN\n\n\n\nData & Methods\n\nR Graph Gallery\nCRAN Task Views\nAndrew Gelman’s blog",
+    "crumbs": [
+      "Links"
+    ]
+  },
+  {
+    "objectID": "links.html#for-students",
+    "href": "links.html#for-students",
+    "title": "Links",
+    "section": "For Students",
+    "text": "For Students\n\nJob Market\n\nAPSA eJobs\nPoliSci Rumors\n\n\n\nWriting Advice\n\nWriting Tips for PhD Students — Cochrane\nThe Political Methodologist",
+    "crumbs": [
+      "Links"
+    ]
   }
 ]

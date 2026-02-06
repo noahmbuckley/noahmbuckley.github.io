@@ -1,0 +1,13 @@
+---
+title: "Page Title"
+---
+
+Brief introductory text for the page.
+
+## Section One
+
+Content goes here.
+
+## Section Two
+
+Content goes here.

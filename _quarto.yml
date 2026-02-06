@@ -19,18 +19,20 @@ website:
       - text: "Teaching"
         href: teaching.qmd
       - text: "CV"
-        href: files/nbuckley_CV.pdf
+        href: cv.qmd
       - text: "Links"
         href: links.qmd
-      - text: "Contact"
-        href: contact.qmd
+    footer: |
+      <div class="sidebar-links">
+      <a href="mailto:noah.buckley@tcd.ie">Email</a>
+      <a href="https://scholar.google.com/citations?user=TZ07K8wAAAAJ">Google Scholar</a>
+      <a href="http://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1678779">SSRN</a>
+      </div>
 
   page-footer:
     left: ""
     right: ""
 
-  # SEO: Generate sitemap
-  google-analytics: "G-XXXXXXXXXX"  # Replace with your GA4 ID if you have one
   open-graph: true
   twitter-card: true
 
@@ -42,13 +44,5 @@ format:
     css: styles.css
     toc: false
     page-layout: article
-    # SEO optimization
     description-meta: "Noah Buckley - Assistant Professor of Political Science at Trinity College Dublin. Research on Russian politics, authoritarian regimes, public opinion, and corruption."
     author-meta: "Noah Buckley"
-    keywords:
-      - political science
-      - Russian politics
-      - authoritarian politics
-      - public opinion
-      - comparative politics
-      - Trinity College Dublin

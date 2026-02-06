@@ -9,7 +9,7 @@
 <meta name="author" content="Noah Buckley">
 <meta name="description" content="Noah Buckley - Assistant Professor of Political Science at Trinity College Dublin. Research on Russian politics, authoritarian regimes, public opinion, and corruption.">
 
-<title>readme_updates – Noah Buckley</title>
+<title>Page Title – Noah Buckley</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -108,9 +73,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Noah Buckley">
+<meta property="og:title" content="Page Title – Noah Buckley">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="Noah Buckley">
-<meta name="twitter:title" content="Noah Buckley">
+<meta name="twitter:title" content="Page Title – Noah Buckley">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -183,105 +150,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Page Title</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="website-updates-feb-2026" class="level1">
-<h1>Website Updates (Feb 2026)</h1>
-<section id="changes-made" class="level2">
-<h2 class="anchored" data-anchor-id="changes-made">Changes Made</h2>
-<section id="layout-improvements" class="level3">
-<h3 class="anchored" data-anchor-id="layout-improvements">1. Layout Improvements</h3>
-<ul>
-<li><strong>Wider sidebar</strong>: Increased from ~200px to 260px for better prominence</li>
-<li><strong>Better centering</strong>: Added 80px left margin to content area for improved balance</li>
-<li><strong>Responsive</strong>: Layout adjusts appropriately on mobile devices</li>
-</ul>
-</section>
-<section id="seo-optimization" class="level3">
-<h3 class="anchored" data-anchor-id="seo-optimization">2. SEO Optimization</h3>
-<ul>
-<li>Added comprehensive meta descriptions to all pages</li>
-<li>Configured Open Graph and Twitter Card tags for social sharing</li>
-<li>Added structured keywords for search engines</li>
-<li>Enabled sitemap generation</li>
-<li>Added site-url configuration for proper indexing</li>
-<li>Set up Google Analytics placeholder (update with your GA4 ID)</li>
-</ul>
-</section>
-<section id="cv-system" class="level3">
-<h3 class="anchored" data-anchor-id="cv-system">3. CV System</h3>
-<ul>
-<li>Created markdown-based CV in <code>../cv/</code> directory</li>
-<li>Supports multiple output formats:
-<ul>
-<li>HTML (for web viewing)</li>
-<li>PDF (for download, matches current CV style)</li>
-<li>LaTeX (can export if needed)</li>
-</ul></li>
-<li>Build script (<code>cv/build_cv.sh</code>) generates all formats</li>
-<li>Easy to maintain - edit one markdown file, get all formats</li>
-</ul>
-</section>
-</section>
-<section id="building-the-website" class="level2">
-<h2 class="anchored" data-anchor-id="building-the-website">Building the Website</h2>
-<p>From the <code>website/</code> directory:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This will regenerate all HTML files in the <code>docs/</code> folder.</p>
-</section>
-<section id="building-the-cv" class="level2">
-<h2 class="anchored" data-anchor-id="building-the-cv">Building the CV</h2>
-<p>From the <code>cv/</code> directory:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./build_cv.sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This creates HTML and PDF versions of the CV.</p>
-</section>
-<section id="publishing" class="level2">
-<h2 class="anchored" data-anchor-id="publishing">Publishing</h2>
-<p>The site is configured for GitHub Pages. After making changes:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> website/</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> docs/</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Update website"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="creating-unlisted-pages" class="level2">
-<h2 class="anchored" data-anchor-id="creating-unlisted-pages">Creating Unlisted Pages</h2>
-<p>To create a page that’s not in the sidebar menu:</p>
-<ol type="1">
-<li>Create a <code>.qmd</code> file in the website directory (e.g., <code>hidden-page.qmd</code>)</li>
-<li>Don’t add it to <code>_quarto.yml</code> sidebar contents</li>
-<li>The page will be accessible at <code>/hidden-page.html</code> but won’t appear in navigation</li>
-</ol>
-<p>To make it truly hidden from search engines, add to the page YAML:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Hidden Page"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">robots</span><span class="kw">:</span><span class="at"> noindex, nofollow</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="google-analytics" class="level2">
-<h2 class="anchored" data-anchor-id="google-analytics">Google Analytics</h2>
-<p>To enable analytics: 1. Get your Google Analytics 4 (GA4) measurement ID 2. In <code>_quarto.yml</code>, replace <code>"G-XXXXXXXXXX"</code> with your actual ID</p>
-</section>
-<section id="sitemap" class="level2">
-<h2 class="anchored" data-anchor-id="sitemap">Sitemap</h2>
-<p>A sitemap is automatically generated at <code>docs/sitemap.xml</code> when you render the site. Submit this to: - Google Search Console - Bing Webmaster Tools</p>
-</section>
-<section id="next-steps" class="level2">
-<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
-<ol type="1">
-<li>Build and preview the updated site</li>
-<li>If satisfied, commit and push changes</li>
-<li>Set up Google Analytics (optional)</li>
-<li>Submit sitemap to search engines</li>
-<li>Consider adding a <code>robots.txt</code> file if needed</li>
-</ol>
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<p>Brief introductory text for the page.</p>
+<section id="section-one" class="level2">
+<h2 class="anchored" data-anchor-id="section-one">Section One</h2>
+<p>Content goes here.</p>
 </section>
+<section id="section-two" class="level2">
+<h2 class="anchored" data-anchor-id="section-two">Section Two</h2>
+<p>Content goes here.</p>
+
+
 </section>
 
 </main> <!-- /main -->

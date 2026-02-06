@@ -1,17 +1,6 @@
 ---
-title: "Noah Buckley - Political Scientist"
-description: "Noah Buckley is an Assistant Professor of Political Science at Trinity College Dublin, specializing in Russian politics, authoritarian regimes, public opinion, and corruption."
-keywords:
-  - Noah Buckley
-  - political science
-  - Russian politics
-  - authoritarian politics
-  - public opinion
-  - corruption
-  - comparative politics
-  - Trinity College Dublin
-author: "Noah Buckley"
 pagetitle: "Noah Buckley"
+description: "Noah Buckley is an Assistant Professor of Political Science at Trinity College Dublin, specializing in Russian politics, authoritarian regimes, public opinion, and corruption."
 ---
 
 ::: {.info}
@@ -26,15 +15,7 @@ Assistant Professor of Political Science
 [Department of Political Science](https://www.tcd.ie/Political_Science/), [Trinity College Dublin](https://www.tcd.ie)
 :::
 
-::: {.contact-links}
-[Email](mailto:noah.buckley@tcd.ie) ·
-[Google Scholar](https://scholar.google.com/citations?user=TZ07K8wAAAAJ) ·
-[SSRN](http://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1678779)
 :::
-
-:::
-
----
 
 I am an assistant professor (with tenure) in the Department of Political Science at Trinity College Dublin. I received my Ph.D. from Columbia University in 2016 and was previously a postdoctoral associate at NYU Abu Dhabi.
 
@@ -43,7 +24,3 @@ My research focuses on authoritarian politics in Putin-era Russia: how autocrati
 My work has appeared in the *American Political Science Review*, *American Journal of Political Science*, *Comparative Political Studies*, *Comparative Politics*, *Journal of Experimental Political Science*, *Europe-Asia Studies*, and *Post-Soviet Affairs*.
 
 *(Looking for Noah M. Buckley-Farlee? That's me.)*
-
-## Research interests
-
-Comparative politics · authoritarian politics · Russian and post-communist politics · public opinion · corruption · political methodology · bureaucracy · policing

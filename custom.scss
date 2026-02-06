@@ -220,6 +220,32 @@ ul, ol {
   }
 }
 
+// Sidebar footer links
+.sidebar-links {
+  padding: 1rem 0.8rem;
+  border-top: 1px solid #eee;
+  margin-top: 1rem;
+  font-size: 12px;
+  line-height: 2;
+
+  a {
+    display: block;
+    border-bottom: none !important;
+    color: #666;
+
+    &:hover {
+      color: #1a1a1a;
+    }
+  }
+}
+
+// CV page
+.cv-pdf-link {
+  font-size: 13px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
 // Abstract toggle (for future use)
 details {
   margin-top: 0.3rem;
