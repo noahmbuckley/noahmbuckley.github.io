@@ -5,9 +5,10 @@
   padding-top: 1.5rem;
 }
 
-/* Ensure content doesn't get too wide */
+/* Ensure content doesn't get too wide, with room for sidebar */
 #quarto-content {
   max-width: 720px;
+  padding-left: 1.5rem;
 }
 
 /* Profile photo placeholder if missing */

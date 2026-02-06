@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -189,62 +224,61 @@ gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true});
 </header>
 
 
-<p>I’ve become an evangelist for <a href="https://docs.anthropic.com/en/docs/claude-code/overview">Claude Code</a>. This page is for colleagues who are curious, skeptical, or both. It’s informal and opinionated—my experience, not a sales pitch.</p>
-<p><strong>The short version:</strong> Claude Code has helped me do literally months of RA work in a few weeks. I’m not exaggerating. It has fundamentally changed how I do empirical research, and I think it will change the field quickly, in good and bad and unexpected ways.</p>
+<p>I’ve been telling everyone I know about <a href="https://docs.anthropic.com/en/docs/claude-code/overview">Claude Code</a> and figured I should write something down instead of cornering people at conferences. If you’re curious, skeptical, or just wondering what I won’t shut up about, this is for you.</p>
+<p>The short version: it has helped me do literally months of RA work in a few weeks. I think it will change the field quickly, in good and bad and unexpected ways. I gave a demo to a skeptical friend the other day and converted him instantly.</p>
 <hr>
-<section id="what-is-it" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-it">What is it?</h2>
-<p>Claude Code is a command-line tool that lets you work with an AI agent inside your actual project files. You open a terminal in your project folder, type what you want to do in plain English, and it reads your files, writes code, runs it, inspects the output, and iterates—all while you watch (or go make coffee).</p>
-<p>It’s not a chatbot you paste code snippets into. It has access to your full project directory, remembers context across a session, and can execute multi-step tasks autonomously. Think of it less like “AI autocomplete” and more like a tireless RA who can read code, write code, and learn your project’s structure.</p>
-<hr>
-</section>
-<section id="what-makes-it-useful-for-us" class="level2">
-<h2 class="anchored" data-anchor-id="what-makes-it-useful-for-us">What makes it useful for us?</h2>
-<p>Most online discussion of AI coding tools is aimed at software engineers. Political scientists have different needs: messy data, idiosyncratic file formats, statistical analysis, and projects that accumulate years of legacy code. Claude Code is surprisingly good at all of this.</p>
-<p>Here’s what I’ve used it for, roughly ordered by how impressed I’ve been:</p>
-<p><strong>Data harmonization and cleaning.</strong> I work with decades of Russian survey data across dozens of waves in different formats, with inconsistent variable names, changing coding schemes, and Cyrillic column headers that sometimes <em>look</em> like Latin characters but aren’t. Claude Code handles this kind of tedious, detail-oriented work remarkably well. It can read SPSS files, figure out variable mappings, and write clean processing scripts—the kind of work that would take an RA weeks.</p>
-<p><strong>Building analysis pipelines from scratch.</strong> I pointed it at precinct-level election data for all 12 Russian federal elections (2000–2024) and had it implement over a dozen fraud detection methods—digit tests, turnout anomalies, parametric models—producing a validated region-election panel dataset. The whole pipeline, from raw data to publication-ready figures, was built collaboratively in a fraction of the time it would have taken me alone.</p>
-<p><strong>Scraping and data collection.</strong> It has enabled me to collect data I didn’t think was possible without a very technical RA—web scraping, API calls, processing government budget documents in inconsistent Excel formats across years.</p>
-<p><strong>Rebooting stalled papers.</strong> I have a custom command (<code>/reboot-paper</code>) that I point at a project folder—which might contain years of accumulated code, old drafts, coauthor emails, reviewer comments—and it reads everything, builds a clean replication pipeline, identifies what data is available across my other projects, and produces a prioritized to-do list. For a paper that’s been sitting dormant, this is transformative. In a few hours you go from “I can’t face reopening this” to “here’s a clean, running pipeline and a clear path forward.”</p>
-<p><strong>Simulation and methods work.</strong> A colleague asked me about a methodological question. I described the simulation design, went off to do other things, and came back to a complete set of Monte Carlo simulations with figures. Three hours, minimal hands-on time.</p>
-<p><strong>Formatting and output.</strong> Regression tables, figures, codebooks, data exports—the unglamorous stuff that eats time. It does this well and fast.</p>
+<section id="so-what-is-it" class="level2">
+<h2 class="anchored" data-anchor-id="so-what-is-it">So what is it?</h2>
+<p>You open a terminal in your project folder, describe what you want in plain English, and an AI agent reads your files, writes code, runs it, looks at the output, fixes its mistakes, and iterates. You watch—or go make coffee and come back to finished work.</p>
+<p>It’s not a chatbot you paste code into. It lives inside your project. It can see your directory structure, read your data files, and remember context across a conversation. Less “AI autocomplete,” more “RA who reads fast, codes fast, and never sleeps.”</p>
 <hr>
 </section>
-<section id="what-its-not-good-at" class="level2">
-<h2 class="anchored" data-anchor-id="what-its-not-good-at">What it’s not good at</h2>
-<p>Honesty requires acknowledging where it falls short.</p>
-<p><strong>Interpretation and theory.</strong> As <a href="https://tompepinsky.com/2026/01/23/agentic-ai-and-social-science-research-practice/">Tom Pepinsky puts it</a>: “Use agentic AI for tasks that involve following rules. Do not use agentic AI for tasks that generate answers, arguments, or interpretations.” This is exactly right. Claude Code can run your regressions and format your tables, but you need to interpret the results yourself. When invited to interpret, it tends to produce plausible-sounding but unreliable analysis.</p>
-<p><strong>Literature reviews and citations.</strong> It hallucinates references. Don’t trust it for this. (Claude’s separate “deep research” mode is better here, but still needs verification.)</p>
-<p><strong>Judgment calls.</strong> It won’t tell you that your research design is flawed or that your identification strategy has a hole. It will cheerfully implement whatever you ask for. You remain the researcher.</p>
-<p><strong>Simple experimental work.</strong> If your research is primarily survey experiments with clean pre-registered designs, the gains are smaller. The tool shines most when there’s a lot of messy data work.</p>
+<section id="what-ive-actually-used-it-for" class="level2">
+<h2 class="anchored" data-anchor-id="what-ive-actually-used-it-for">What I’ve actually used it for</h2>
+<p>Most discussion of AI coding tools is aimed at software engineers. We have different problems—messy data, weird file formats, legacy code from 2014 that nobody wants to touch. Turns out it’s good at exactly this kind of thing.</p>
+<p>Roughly in order of how much it’s changed my life:</p>
+<p><strong>Cleaning and harmonizing data.</strong> I work with decades of Russian survey data across dozens of waves—different formats, inconsistent variable names, coding schemes that change over time, column headers in Cyrillic that sometimes <em>look</em> like Latin characters but aren’t. This is exactly the tedious, detail-oriented work that used to eat weeks. Claude Code does it well and fast.</p>
+<p><strong>Building whole analysis pipelines.</strong> I had precinct-level election data for 12 Russian elections and wanted to implement a bunch of fraud detection methods. I described what I needed, and over a few sessions it built the entire pipeline—data loading, a dozen statistical tests, validation against published estimates, export to a panel dataset, publication figures. The kind of project I’d budget a full semester for.</p>
+<p><strong>Scraping and data collection.</strong> It has enabled me to collect data that I didn’t think was possible without a very technical RA—web scraping, processing government budget documents in inconsistent Excel formats across years, API work.</p>
+<p><strong>Rebooting stalled papers.</strong> This one’s my favorite. I wrote a <a href="https://docs.anthropic.com/en/docs/claude-code/slash-commands">custom command</a> that I point at a project folder—maybe it has years of accumulated code, old drafts, emails from coauthors, reviewer comments sitting in a <code>stuff/</code> folder. Claude reads everything, builds a clean replication pipeline, inventories what data I have across my other projects, and writes up a prioritized to-do list. You go from “I can’t face reopening this” to a clean, running pipeline in a few hours. For someone with multiple papers in various stages of dormancy (i.e., everyone), this is genuinely transformative.</p>
+<p><strong>Simulations and methods.</strong> A colleague asked about a methodological question. I described the simulation, went to do other things, came back to complete Monte Carlo results with figures. Maybe three hours elapsed, very little of it mine.</p>
+<p><strong>The unglamorous stuff.</strong> Regression tables, figures, codebooks, Stata exports. It does all of this quickly and saves you the time you’d spend on Stack Overflow remembering <code>modelsummary</code> options.</p>
 <hr>
 </section>
-<section id="the-slop-concern" class="level2">
-<h2 class="anchored" data-anchor-id="the-slop-concern">The slop concern</h2>
-<p><a href="https://hegemon.substack.com/p/the-age-of-academic-slop-is-upon">Seva Gunitsky raises a serious worry</a>: if competent empirical work becomes cheap and easy, we’ll be buried in technically adequate but uninteresting papers. He’s right to worry about this, and I think about it a lot.</p>
-<p>My view: the tool amplifies whatever you bring to it. If you have good questions and careful instincts, it removes barriers to pursuing them. If you have bad questions, it helps you produce bad papers faster. The bottleneck shifts from “can I execute this analysis?” to “is this analysis worth doing?”—which is where it should have been all along.</p>
-<p>The researchers who will benefit most are the ones who already know what good research looks like. The tool doesn’t substitute for taste, judgment, or domain expertise. It substitutes for time.</p>
+<section id="where-it-falls-short" class="level2">
+<h2 class="anchored" data-anchor-id="where-it-falls-short">Where it falls short</h2>
+<p><strong>Interpretation.</strong> <a href="https://tompepinsky.com/2026/01/23/agentic-ai-and-social-science-research-practice/">Tom Pepinsky</a> nails it: “Use agentic AI for tasks that involve following rules. Do not use agentic AI for tasks that generate answers, arguments, or interpretations.” It can run your regressions; you still have to know what they mean.</p>
+<p><strong>Citations.</strong> It makes them up. Don’t ask it for literature reviews.</p>
+<p><strong>Knowing when your design is wrong.</strong> It will cheerfully implement whatever you ask for, including bad ideas. You’re still the researcher.</p>
+<p><strong>If your work is mostly clean experiments.</strong> The gains are biggest when there’s a lot of messy data wrangling. If you run pre-registered survey experiments with tidy datasets, you’ll still find it useful, but less life-changing.</p>
 <hr>
 </section>
-<section id="how-to-actually-get-started" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-actually-get-started">How to actually get started</h2>
-<p><strong>1. Install it.</strong> You need an <a href="https://console.anthropic.com/">Anthropic API key</a> or a <a href="https://claude.ai/">Claude Max subscription</a> ($100/month, which I think is the better deal for heavy use). Installation is one command: <code>npm install -g @anthropic-ai/claude-code</code>. Then open a terminal in any project folder and type <code>claude</code>.</p>
-<p><strong>2. Start small.</strong> Don’t try to build a whole pipeline on day one. Ask it to clean a dataset you’ve been putting off, or to make a figure, or to reformat a table. Get a feel for the interaction.</p>
-<p><strong>3. Write a <code>CLAUDE.md</code> file.</strong> This is a markdown file in your project directory that Claude Code reads at the start of every session. Put your coding preferences, project structure, data locations, and instructions here. This is how you get it to write code the way <em>you</em> want, not the way a generic software engineer would. I have strong preferences about R style (base R, explicit loops, linear scripts) and it follows them reliably once they’re documented.</p>
-<p><strong>4. Verify everything.</strong> Don’t trust, verify. Check the output. Run the code. Look at the data. This is exactly the same discipline you’d apply to RA work—maybe more so, because it’s faster and therefore more tempting to skip verification. <a href="https://causalinf.substack.com/p/claude-code-part-12-how-i-use-claude">Scott Cunningham’s “Referee 2 protocol”</a>—opening a second Claude instance to adversarially audit the first—is a clever formalization of this instinct.</p>
-<p><strong>5. Learn the workflow, not the syntax.</strong> You don’t need to learn programming or prompt engineering. You need to learn how to describe what you want clearly, how to break big tasks into manageable steps, and how to check output. These are skills you already have.</p>
+<section id="the-academic-slop-worry" class="level2">
+<h2 class="anchored" data-anchor-id="the-academic-slop-worry">The “academic slop” worry</h2>
+<p><a href="https://hegemon.substack.com/p/the-age-of-academic-slop-is-upon">Seva Gunitsky raises a real concern</a>: if competent empirical work becomes cheap, we’ll drown in technically adequate but pointless papers. I think about this a lot, and he’s right to worry.</p>
+<p>My take: the tool amplifies what you bring to it. Good questions and careful instincts? It removes the barriers to pursuing them. Bad questions? You produce bad papers faster. The bottleneck moves from execution to judgment—which, honestly, is where it always should have been.</p>
+<hr>
+</section>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
+<p><strong>Install it.</strong> You need a <a href="https://claude.ai/">Claude Max subscription</a> ($100/month, easiest option) or an <a href="https://console.anthropic.com/">Anthropic API key</a>. Then:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> @anthropic-ai/claude-code</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Open a terminal in any project folder and type <code>claude</code>.</p>
+<p><strong>Start small.</strong> Clean a dataset you’ve been avoiding. Make a figure. Reformat a regression table. Don’t try to build an entire pipeline on day one.</p>
+<p><strong>Write a CLAUDE.md file.</strong> This is the single most important trick. It’s a plain text file in your project that Claude reads at the start of every session. Put your coding preferences, project structure, data locations, and rules in there. I have strong feelings about R style (base R, explicit loops, no pipes) and it follows them reliably once they’re written down. Think of it as onboarding an RA.</p>
+<p><strong>Verify everything.</strong> Same discipline you’d apply to RA work. Check output, run the code yourself, look at the data. It’s tempting to skip this because the tool is fast. Don’t. <a href="https://causalinf.substack.com/p/claude-code-part-12-how-i-use-claude">Scott Cunningham’s “Referee 2 protocol”</a>—opening a second Claude instance to adversarially audit the first—is a clever approach.</p>
 <hr>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
 <ul>
-<li><a href="https://causalinf.substack.com/p/claude-code-part-12-how-i-use-claude">Scott Cunningham’s Claude Code series</a> — the best resource I’ve found for social scientists specifically. Cunningham (economist, Harvard visiting) has written extensively about his workflow for empirical research, including a “Referee 2” adversarial auditing protocol.</li>
-<li><a href="https://tompepinsky.com/2026/01/23/agentic-ai-and-social-science-research-practice/">Tom Pepinsky, “Agentic AI and Social Science Research Practice”</a> — thoughtful take on what agentic AI is good and bad at for our work.</li>
-<li><a href="https://hegemon.substack.com/p/the-age-of-academic-slop-is-upon">Seva Gunitsky, “The Age of Academic Slop Is Upon Us”</a> — the best articulation of the risks. Required reading alongside any enthusiasm.</li>
-<li><a href="https://docs.anthropic.com/en/docs/claude-code/overview">Claude Code documentation</a> — the official docs. More oriented toward software development, but the basics apply.</li>
+<li><a href="https://causalinf.substack.com/p/claude-code-part-12-how-i-use-claude">Scott Cunningham on Claude Code for empirical research</a> — best resource I’ve found for social scientists. His whole series is worth reading.</li>
+<li><a href="https://tompepinsky.com/2026/01/23/agentic-ai-and-social-science-research-practice/">Tom Pepinsky, “Agentic AI and Social Science Research Practice”</a> — clear-eyed on what it’s good and bad at.</li>
+<li><a href="https://hegemon.substack.com/p/the-age-of-academic-slop-is-upon">Seva Gunitsky, “The Age of Academic Slop Is Upon Us”</a> — the risks. Read this alongside any enthusiasm.</li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/overview">Claude Code docs</a> — official documentation, more geared toward developers but the basics transfer.</li>
 </ul>
 <hr>
-<p>If you want a live demo, I’m happy to show you. It’s the kind of thing you need to see to believe—and that converts skeptics instantly.</p>
+<p>Happy to give a live demo anytime. Seeing is believing.</p>
 <p><em>Last updated: February 2026</em></p>
 
 
