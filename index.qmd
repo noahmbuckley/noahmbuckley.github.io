@@ -1,5 +1,17 @@
 ---
-title: ""
+title: "Noah Buckley - Political Scientist"
+description: "Noah Buckley is an Assistant Professor of Political Science at Trinity College Dublin, specializing in Russian politics, authoritarian regimes, public opinion, and corruption."
+keywords:
+  - Noah Buckley
+  - political science
+  - Russian politics
+  - authoritarian politics
+  - public opinion
+  - corruption
+  - comparative politics
+  - Trinity College Dublin
+author: "Noah Buckley"
+pagetitle: "Noah Buckley"
 ---
 
 ::: {.info}

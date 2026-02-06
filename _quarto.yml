@@ -6,7 +6,8 @@ project:
 
 website:
   title: "Noah Buckley"
-  
+  site-url: "https://noahbuckley.github.io"
+
   sidebar:
     style: "floating"
     search: false
@@ -23,16 +24,31 @@ website:
         href: links.qmd
       - text: "Contact"
         href: contact.qmd
-  
+
   page-footer:
     left: ""
     right: ""
 
+  # SEO: Generate sitemap
+  google-analytics: "G-XXXXXXXXXX"  # Replace with your GA4 ID if you have one
+  open-graph: true
+  twitter-card: true
+
 format:
   html:
-    theme: 
+    theme:
       - cosmo
       - custom.scss
     css: styles.css
     toc: false
     page-layout: article
+    # SEO optimization
+    description-meta: "Noah Buckley - Assistant Professor of Political Science at Trinity College Dublin. Research on Russian politics, authoritarian regimes, public opinion, and corruption."
+    author-meta: "Noah Buckley"
+    keywords:
+      - political science
+      - Russian politics
+      - authoritarian politics
+      - public opinion
+      - comparative politics
+      - Trinity College Dublin

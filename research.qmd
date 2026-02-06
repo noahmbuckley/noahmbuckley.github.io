@@ -1,5 +1,6 @@
 ---
 title: "Research"
+description: "Publications and research by Noah Buckley on Russian politics, authoritarian regimes, elections, public opinion, and corruption."
 ---
 
 ## Publications

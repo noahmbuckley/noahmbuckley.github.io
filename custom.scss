@@ -60,14 +60,15 @@ a {
   }
 }
 
-// Sidebar styling
+// Sidebar styling - wider and more prominent
 .sidebar {
   font-size: 13px;
   border-right: 1px solid #eee;
+  width: 260px !important;  // Increased from default ~200px
 }
 
 .sidebar-title {
-  font-size: 1.1rem !important;
+  font-size: 1.15rem !important;
   font-weight: 600 !important;
 }
 
@@ -85,9 +86,17 @@ a {
   font-weight: 500;
 }
 
-// Main content area
+// Main content area - centered with left margin
 .content {
   max-width: 680px;
+  margin-left: 80px;  // Add left spacing for better centering
+}
+
+// Adjust for smaller screens
+@media (max-width: 991px) {
+  .content {
+    margin-left: 0;  // Remove left margin on mobile
+  }
 }
 
 // Publication styling
