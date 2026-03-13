@@ -1,0 +1,36 @@
+---
+title: "Alternate Russias: A Counterfactual Explorer"
+robots: "noindex, nofollow"
+listing: false
+---
+
+What would Russia look like today if history had gone differently? This interactive tool uses cross-national empirical modeling to explore counterfactual scenarios --- what if Medvedev had continued reforms? What if Russia hadn't annexed Crimea? What if there had been no war?
+
+The tool combines panel data from 190+ countries with Russian household survey data to translate macro-level differences (GDP, democracy, corruption) into concrete lived experiences for five representative Russians.
+
+::: {.callout-note}
+## Early Access
+This project is in active development. Please do not share the link publicly.
+:::
+
+<a href="https://noah-buckley.shinyapps.io/alternate-russias/" class="btn btn-primary btn-lg" target="_blank">Launch the Interactive App</a>
+
+### Scenarios
+
+| Scenario | Branch Point | Key Question |
+|----------|-------------|--------------|
+| Medvedev Reforms | 2012 | What if Russia had continued light liberalization instead of tightening? |
+| No Crimea | 2014 | What if Russia hadn't annexed Crimea and faced no sanctions? |
+| No War | 2022 | What if Russia hadn't invaded Ukraine? |
+| Gradual Democratization | 2008 | What if Russia had followed a Poland/South Korea path? |
+| Oil Curse Deepens | 2008 | What if Russia had followed a Venezuela/Nigeria path? |
+
+### Resources
+
+- Working paper (PDF): *Coming soon*
+- Russian-language version: *Coming soon*
+
+### Contact
+
+Noah Buckley, Assistant Professor of Political Science, Trinity College Dublin.
+[noah.buckley@tcd.ie](mailto:noah.buckley@tcd.ie)

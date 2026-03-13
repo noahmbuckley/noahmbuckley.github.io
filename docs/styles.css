@@ -2,7 +2,12 @@
 
 /* Make sidebar fixed and styled */
 #quarto-sidebar {
-  padding-top: 1.5rem;
+  padding-top: 2.5rem;
+}
+
+/* Push main content down */
+#quarto-content {
+  margin-top: 1.5rem;
 }
 
 /* Content width is controlled by .content in custom.scss;
@@ -16,13 +21,13 @@
 /* Subtle hr styling */
 hr {
   border: none;
-  border-top: 1px solid #e8e8e8;
+  border-top: 1px solid #ddd5ca;
   margin: 1.5rem 0;
 }
 
 /* Teaching course cards */
 .course {
-  background: #fafafa;
+  background: #fdf9f4;
   border-left: 3px solid #1a5f7a;
   padding: 0.8rem 1rem;
   margin-bottom: 1rem;

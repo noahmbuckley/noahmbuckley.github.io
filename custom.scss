@@ -1,16 +1,16 @@
 /*-- scss:defaults --*/
 
 // Typography
-$font-family-sans-serif: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 $font-family-monospace: 'IBM Plex Mono', monospace;
-$font-size-root: 14px;
-$line-height-base: 1.55;
+$font-size-root: 15px;
+$line-height-base: 1.6;
 $headings-font-weight: 600;
 
-// Colors - subtle blue accent, not brutalist
+// Colors - warm tones
 $body-color: #2d2d2d;
 $link-color: #1a5f7a;
-$body-bg: #ffffff;
+$body-bg: #faf8f5;
 
 // Spacing
 $spacer: 1rem;
@@ -18,32 +18,32 @@ $paragraph-margin-bottom: 0.8rem;
 
 /*-- scss:rules --*/
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono&display=swap');
 
 // Tighten up the body
 body {
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: -0.01em;
 }
 
 // Headers - clean and tight
 h1 {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   margin-bottom: 0.8rem;
   letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-top: 2rem;
   margin-bottom: 0.6rem;
   color: #1a1a1a;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #ddd5ca;
   padding-bottom: 0.3rem;
 }
 
 h3 {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   margin-top: 1.2rem;
   margin-bottom: 0.4rem;
@@ -63,13 +63,25 @@ a {
 // Sidebar styling - wider and more prominent
 .sidebar {
   font-size: 13px;
-  border-right: 1px solid #eee;
+  border-right: 1px solid #e4ddd4;
   width: 260px !important;  // Increased from default ~200px
+  background: $body-bg;
 }
 
 .sidebar-title {
-  font-size: 1.15rem !important;
-  font-weight: 600 !important;
+  font-size: 1.05rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em;
+}
+
+// Name in sidebar: not a link
+.sidebar-title a,
+a.sidebar-title {
+  color: #1a1a1a !important;
+  border-bottom: none !important;
+  text-decoration: none !important;
+  pointer-events: none;
+  cursor: default;
 }
 
 .sidebar-item a {
@@ -161,16 +173,20 @@ ul, ol {
   h1 {
     margin-top: 0;
     margin-bottom: 0.3rem;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.9rem;
   }
 
   .title {
     color: #555;
-    font-size: 0.95rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-style: italic;
   }
 
   .affiliation {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     color: #666;
     line-height: 1.5;
 

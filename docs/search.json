@@ -24,7 +24,7 @@
     "href": "cv.html#academic-experience",
     "title": "CV",
     "section": "Academic Experience",
-    "text": "Academic Experience\nAssistant Professor (with tenure since 2023), Department of Political Science Trinity College Dublin, University of Dublin, Ireland 2019–present\nVisiting Researcher, NYU Jordan Center New York University, New York September–December 2022\nPostdoctoral Associate (three-year research position, third year declined) NYU Abu Dhabi, United Arab Emirates 2017–2019 Faculty mentors: Rebecca Morton (NYU) and Joshua Tucker (NYU)\nResearch Fellow | Postdoctoral Researcher International Center for the Study of Institutions and Development Higher School of Economics, Moscow, Russia 2011–2022 | January–August 2017",
+    "text": "Academic Experience\nAssistant Professor (with tenure since 2023), Department of Political Science Trinity College Dublin, University of Dublin, Ireland 2019–present\nVisiting Scholar, Center for Applied Social and Economic Research (CASER) NYU Shanghai, China January–May 2026\nVisiting Scholar, NYU Jordan Center New York University, New York September–December 2022\nPostdoctoral Associate NYU Abu Dhabi, United Arab Emirates 2017–2019 Faculty mentors: Rebecca Morton (NYU) and Joshua Tucker (NYU)\nResearch Fellow | Postdoctoral Researcher International Center for the Study of Institutions and Development Higher School of Economics, Moscow, Russia 2011–2022 | January–August 2017",
     "crumbs": [
       "CV"
     ]
@@ -34,7 +34,7 @@
     "href": "cv.html#education",
     "title": "CV",
     "section": "Education",
-    "text": "Education\nColumbia University in the City of New York Ph.D. in Political Science, 2017\nUniversity of Wisconsin-Madison B.A. received 2006, Comprehensive Honors, Honors in Political Science; Phi Beta Kappa Majors: Political Science, Russian Language and Culture",
+    "text": "Education\nColumbia University in the City of New York Ph.D. in Political Science, 2017\nUniversity of Wisconsin-Madison B.A. received 2006; Political Science, Russian Language and Culture",
     "crumbs": [
       "CV"
     ]
@@ -214,41 +214,11 @@
     "text": "Build and preview the updated site\nIf satisfied, commit and push changes\nSet up Google Analytics (optional)\nSubmit sitemap to search engines\nConsider adding a robots.txt file if needed"
   },
   {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
+    "objectID": "alternate-russias.html",
+    "href": "alternate-russias.html",
+    "title": "Alternate Russias: A Counterfactual Explorer",
     "section": "",
-    "text": "Email: noah.buckley@tcd.ie\nOffice:\nDepartment of Political Science\n3 College Green\nTrinity College Dublin\nDublin 2, Ireland\nPhone: +353 1 896 1029\n\nGoogle Scholar · SSRN"
-  },
-  {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
-    "section": "",
-    "text": "Postgraduate (Masters) seminar\n\n\n\n\n\nPostgraduate (Masters) seminar\n\n\n\n\n\nUndergraduate lecture\n\n\n\n\n\nUndergraduate seminar\n\n\n\n\n\nUndergraduate seminar",
-    "crumbs": [
-      "Teaching"
-    ]
-  },
-  {
-    "objectID": "teaching.html#trinity-college-dublin",
-    "href": "teaching.html#trinity-college-dublin",
-    "title": "Teaching",
-    "section": "",
-    "text": "Postgraduate (Masters) seminar\n\n\n\n\n\nPostgraduate (Masters) seminar\n\n\n\n\n\nUndergraduate lecture\n\n\n\n\n\nUndergraduate seminar\n\n\n\n\n\nUndergraduate seminar",
-    "crumbs": [
-      "Teaching"
-    ]
-  },
-  {
-    "objectID": "teaching.html#previous-teaching",
-    "href": "teaching.html#previous-teaching",
-    "title": "Teaching",
-    "section": "Previous Teaching",
-    "text": "Previous Teaching\nHigher School of Economics, Moscow\n\nComparative Political Economy (graduate seminar), 2011–2013, 2017–2018\n\nColumbia University (Teaching Assistant)\n\nAdvanced Topics in Quantitative Research: Limited and Qualitative Dependent Variables\nQuantitative Political Research\nMultivariate Political Analysis\nPost-Soviet States and Markets\nHonors Senior Thesis Seminar\nStatistics and Data Analysis\nIntroduction to Comparative Politics\nIntroduction to International Politics",
-    "crumbs": [
-      "Teaching"
-    ]
+    "text": "What would Russia look like today if history had gone differently? This interactive tool uses cross-national empirical modeling to explore counterfactual scenarios — what if Medvedev had continued reforms? What if Russia hadn’t annexed Crimea? What if there had been no war?\nThe tool combines panel data from 190+ countries with Russian household survey data to translate macro-level differences (GDP, democracy, corruption) into concrete lived experiences for five representative Russians.\n\n\n\n\n\n\nNoteEarly Access\n\n\n\nThis project is in active development. Please do not share the link publicly.\n\n\nLaunch the Interactive App\n\nScenarios\n\n\n\n\n\n\n\n\nScenario\nBranch Point\nKey Question\n\n\n\n\nMedvedev Reforms\n2012\nWhat if Russia had continued light liberalization instead of tightening?\n\n\nNo Crimea\n2014\nWhat if Russia hadn’t annexed Crimea and faced no sanctions?\n\n\nNo War\n2022\nWhat if Russia hadn’t invaded Ukraine?\n\n\nGradual Democratization\n2008\nWhat if Russia had followed a Poland/South Korea path?\n\n\nOil Curse Deepens\n2008\nWhat if Russia had followed a Venezuela/Nigeria path?\n\n\n\n\n\nResources\n\nWorking paper (PDF): Coming soon\nRussian-language version: Coming soon\n\n\n\nContact\nNoah Buckley, Assistant Professor of Political Science, Trinity College Dublin. noah.buckley@tcd.ie"
   },
   {
     "objectID": "research.html",
@@ -281,11 +251,48 @@
     ]
   },
   {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "Postgraduate (Masters) seminar\n\n\n\n\n\nPostgraduate (Masters) seminar\n\n\n\n\n\nUndergraduate lecture\n\n\n\n\n\nUndergraduate seminar\n\n\n\n\n\nUndergraduate seminar",
+    "crumbs": [
+      "Teaching"
+    ]
+  },
+  {
+    "objectID": "teaching.html#trinity-college-dublin",
+    "href": "teaching.html#trinity-college-dublin",
+    "title": "Teaching",
+    "section": "",
+    "text": "Postgraduate (Masters) seminar\n\n\n\n\n\nPostgraduate (Masters) seminar\n\n\n\n\n\nUndergraduate lecture\n\n\n\n\n\nUndergraduate seminar\n\n\n\n\n\nUndergraduate seminar",
+    "crumbs": [
+      "Teaching"
+    ]
+  },
+  {
+    "objectID": "teaching.html#previous-teaching",
+    "href": "teaching.html#previous-teaching",
+    "title": "Teaching",
+    "section": "Previous Teaching",
+    "text": "Previous Teaching\nHigher School of Economics, Moscow\n\nComparative Political Economy (graduate seminar), 2011–2013, 2017–2018\n\nColumbia University (Teaching Assistant)\n\nAdvanced Topics in Quantitative Research: Limited and Qualitative Dependent Variables\nQuantitative Political Research\nMultivariate Political Analysis\nPost-Soviet States and Markets\nHonors Senior Thesis Seminar\nStatistics and Data Analysis\nIntroduction to Comparative Politics\nIntroduction to International Politics",
+    "crumbs": [
+      "Teaching"
+    ]
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact",
+    "section": "",
+    "text": "Email: noah.buckley@tcd.ie\nOffice:\nDepartment of Political Science\n3 College Green\nTrinity College Dublin\nDublin 2, Ireland\nPhone: +353 1 896 1029\n\nGoogle Scholar · SSRN"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Noah Buckley",
     "section": "",
-    "text": "Noah Buckley\n\nAssistant Professor of Political Science\n\n\nDepartment of Political Science, Trinity College Dublin\n\n\nI am an assistant professor (with tenure) in the Department of Political Science at Trinity College Dublin. I received my Ph.D. from Columbia University in 2016 and was previously a postdoctoral associate at NYU Abu Dhabi.\nMy research focuses on authoritarian politics in Putin-era Russia: how autocratic regimes sustain themselves, how the mass public understands their authoritarian environment, and why corruption persists. I use quantitative methods and original micro-level data, including the largest individual-level database of Russian public opinion survey responses.\nMy work has appeared in the American Political Science Review, American Journal of Political Science, Comparative Political Studies, Comparative Politics, Journal of Experimental Political Science, Europe-Asia Studies, and Post-Soviet Affairs.\n(Looking for Noah M. Buckley-Farlee? That’s me.)",
+    "text": "Noah Buckley\n\nAssistant Professor of Political Science\n\n\nDepartment of Political Science, Trinity College Dublin\n\n\nI am an assistant professor (with tenure) in the Department of Political Science at Trinity College Dublin. I received my Ph.D. from Columbia University in 2017 and was previously a postdoctoral associate at NYU Abu Dhabi.\nMy research focuses on authoritarian politics and Putin-era Russian politics. How do autocratic regimes sustain themselves, how the mass public understands their authoritarian environment, and why corruption persists. I use quantitative methods and micro-level data in my research.\nMy work has appeared in the American Political Science Review, American Journal of Political Science, Comparative Political Studies, Comparative Politics, Journal of Experimental Political Science, Europe-Asia Studies, and Post-Soviet Affairs.\n(Looking for Noah M. Buckley-Farlee? That’s me.)",
     "crumbs": [
       "Home"
     ]
