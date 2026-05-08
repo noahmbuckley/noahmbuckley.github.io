@@ -1,0 +1,57 @@
+{
+  "task_id": "disaster-spot-check",
+  "name": "Disaster — 300-event verification",
+  "version": "2026-04-22",
+  "id_field": "eventid",
+  "instructions": "For each event, decide whether the classifier was right. The classifier output (primary_type, disaster_type, deaths, govt_resp) is highlighted in yellow — those are the LLM's call. Pink-tinted rows (in_master = FALSE) are FN candidates: events the classifier *excluded* but the keyword filter flagged as possibly real disasters; for those, YES means 'should be in the master, classifier missed it.'",
+  "display": [
+    {"field": "strata", "label": "Strata", "format": "tag"},
+    {"field": "date", "label": "Date"},
+    {"field": "region", "label": "Region"},
+    {"field": "regionid", "label": "regionid", "format": "compact"},
+    {"field": "eventdesc", "label": "Event description (RU)", "format": "longtext"},
+    {"field": "primary_type", "label": "primary_type", "format": "compact", "highlight": "llm"},
+    {"field": "disaster_type", "label": "disaster_type", "format": "compact", "highlight": "llm"},
+    {"field": "deaths", "label": "deaths", "format": "compact", "highlight": "llm"},
+    {"field": "deaths_note", "label": "deaths_note", "format": "compact"},
+    {"field": "govt_resp", "label": "govt_resp", "format": "compact", "highlight": "llm"},
+    {"field": "in_master", "label": "in_master", "format": "compact"},
+    {"field": "eventid", "label": "eventid", "format": "compact"}
+  ],
+  "row_class_field": "in_master",
+  "row_class_map": {"false": "fn-candidate", "FALSE": "fn-candidate"},
+  "validation": [
+    {
+      "field": "verdict",
+      "label": "Verdict",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {"value": "YES",        "label": "YES — real disaster",  "key": "1", "tone": "good"},
+        {"value": "NO",         "label": "NO — not a disaster",  "key": "2", "tone": "bad"},
+        {"value": "BORDERLINE", "label": "BORDERLINE",           "key": "3", "tone": "warn"},
+        {"value": "SKIP",       "label": "SKIP — can't tell",    "key": "4", "tone": "neutral"}
+      ]
+    },
+    {
+      "field": "correct_type",
+      "label": "Correct disaster_type (override)",
+      "type": "text",
+      "placeholder": "e.g. fire, flood, transport_accident — leave blank if classifier was right",
+      "show_if": {"verdict": ["NO", "BORDERLINE", "YES"]}
+    },
+    {
+      "field": "correct_deaths",
+      "label": "Correct deaths (override)",
+      "type": "integer",
+      "placeholder": "leave blank if classifier was right",
+      "show_if": {"verdict": ["YES", "BORDERLINE"]}
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "type": "textarea",
+      "placeholder": "Free text — explain borderline calls, surprises, anything"
+    }
+  ]
+}

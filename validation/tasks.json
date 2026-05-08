@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-08",
+  "tasks": [
+    {
+      "id": "disaster-spot-check",
+      "name": "Disaster — 300-event verification",
+      "project": "disaster",
+      "description": "Stratified sample of 300 events. Verify whether classifier was right (false-positive hunters) or whether real disasters were missed (false-negative candidates). Source: disasters_master.Rdata × FPP rejected events. Built 2026-04-22.",
+      "schema_url": "data/disaster-spot-check/schema.json",
+      "items_url": "data/disaster-spot-check/items.json"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ project:
     - google7674fac84ca96997.html
     - robots.txt
     - private/**
+    - validation/**
 
 website:
   title: "Noah Buckley"
