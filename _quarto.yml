@@ -4,6 +4,8 @@ project:
   resources:
     - CNAME
     - google7674fac84ca96997.html
+    - robots.txt
+    - private/**
 
 website:
   title: "Noah Buckley"
