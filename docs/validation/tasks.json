@@ -9,6 +9,14 @@
       "description": "Stratified sample of 300 events. Verify whether classifier was right (false-positive hunters) or whether real disasters were missed (false-negative candidates). Source: disasters_master.Rdata × FPP rejected events. Built 2026-04-22.",
       "schema_url": "data/disaster-spot-check/schema.json",
       "items_url": "data/disaster-spot-check/items.json"
+    },
+    {
+      "id": "sentiment-prompt-comparison",
+      "name": "rusSocial sentiment — 5-model 200-post comparison",
+      "project": "rusSocial",
+      "description": "200 posts with all 5 model labels (tiny / seara_base / Haiku-A voice / Haiku-B event-valence / Haiku-C audience). Strata: all_agree, tiny_vs_haiku_disagree, haiku_internal_disagree. Built 2026-05-08.",
+      "schema_url": "data/sentiment-prompt-comparison/schema.json",
+      "items_url": "data/sentiment-prompt-comparison/items.json"
     }
   ]
 }
