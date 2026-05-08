@@ -4,11 +4,43 @@
   "tasks": [
     {
       "id": "disaster-spot-check",
-      "name": "Disaster — 300-event verification",
+      "name": "Disaster — original 300-event verification (legacy)",
       "project": "disaster",
-      "description": "Stratified sample of 300 events. Verify whether classifier was right (false-positive hunters) or whether real disasters were missed (false-negative candidates). Source: disasters_master.Rdata × FPP rejected events. Built 2026-04-22.",
+      "description": "Stratified sample of 300 events. April-22 disasters_master state — partly obsolete since the May-6 reclassify dropped 66 of 200 FP candidates. Use the disaster-sample-A/B/C/D tasks for fresh validation; this one is here only because Noah has 13 answers in it.",
       "schema_url": "data/disaster-spot-check/schema.json",
       "items_url": "data/disaster-spot-check/items.json"
+    },
+    {
+      "id": "disaster-sample-A",
+      "name": "Disaster — Sample A (200 events)",
+      "project": "disaster",
+      "description": "Chunk A of 4. Non-overlapping with original 300 and with B/C/D. Strata: 60 other_disaster, 20 binary_only, 35 likely_animal_deaths, 5 mass_shooting, 5 primary_type≠disaster_accident, 10 high_severity, 55 clean random control, 10 FN candidates. Built 2026-05-08 from May-6 master.",
+      "schema_url": "data/disaster-spot-check/schema.json",
+      "items_url": "data/disaster-sample-A/items.json"
+    },
+    {
+      "id": "disaster-sample-B",
+      "name": "Disaster — Sample B (200 events)",
+      "project": "disaster",
+      "description": "Chunk B of 4. Non-overlapping with original 300 and with A/C/D. Same strata mix as Sample A. Built 2026-05-08 from May-6 master.",
+      "schema_url": "data/disaster-spot-check/schema.json",
+      "items_url": "data/disaster-sample-B/items.json"
+    },
+    {
+      "id": "disaster-sample-C",
+      "name": "Disaster — Sample C (200 events)",
+      "project": "disaster",
+      "description": "Chunk C of 4. Non-overlapping with original 300 and with A/B/D. Same strata mix as Sample A. Built 2026-05-08 from May-6 master.",
+      "schema_url": "data/disaster-spot-check/schema.json",
+      "items_url": "data/disaster-sample-C/items.json"
+    },
+    {
+      "id": "disaster-sample-D",
+      "name": "Disaster — Sample D (200 events)",
+      "project": "disaster",
+      "description": "Chunk D of 4. Non-overlapping with original 300 and with A/B/C. Same strata mix as Sample A. Built 2026-05-08 from May-6 master.",
+      "schema_url": "data/disaster-spot-check/schema.json",
+      "items_url": "data/disaster-sample-D/items.json"
     },
     {
       "id": "sentiment-prompt-comparison",
