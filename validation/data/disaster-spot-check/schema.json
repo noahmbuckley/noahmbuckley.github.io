@@ -34,11 +34,38 @@
       ]
     },
     {
+      "field": "cause",
+      "label": "Cause (orthogonal to severity / responsibility)",
+      "type": "enum",
+      "options": [
+        {"value": "natural",            "label": "Natural",                "key": "q", "tone": "neutral"},
+        {"value": "manmade_accident",   "label": "Man-made — accident",    "key": "w", "tone": "neutral"},
+        {"value": "manmade_political",  "label": "Man-made — political",   "key": "e", "tone": "neutral"},
+        {"value": "mixed",              "label": "Mixed / unclear",        "key": "r", "tone": "neutral"}
+      ],
+      "show_if": {"verdict": ["YES", "BORDERLINE"]}
+    },
+    {
+      "field": "rejection_reason",
+      "label": "Why not a disaster?",
+      "type": "enum",
+      "options": [
+        {"value": "crime",          "label": "Crime / political violence (assassination, attack, terrorism)", "key": "q", "tone": "neutral"},
+        {"value": "riot",           "label": "Riot / uprising / protest",                                     "key": "w", "tone": "neutral"},
+        {"value": "administrative", "label": "Administrative / financial (non-payment, dispute, threat)",     "key": "e", "tone": "neutral"},
+        {"value": "animal_only",    "label": "Animal-only deaths",                                            "key": "r", "tone": "neutral"},
+        {"value": "misclassified",  "label": "Different event type (not even close)",                         "key": "t", "tone": "neutral"},
+        {"value": "no_info",        "label": "Can't tell / not enough info",                                  "key": "y", "tone": "neutral"},
+        {"value": "other",          "label": "Other (use notes)",                                             "key": "u", "tone": "neutral"}
+      ],
+      "show_if": {"verdict": ["NO"]}
+    },
+    {
       "field": "correct_type",
       "label": "Correct disaster_type (override)",
       "type": "text",
       "placeholder": "e.g. fire, flood, transport_accident — leave blank if classifier was right",
-      "show_if": {"verdict": ["NO", "BORDERLINE", "YES"]}
+      "show_if": {"verdict": ["YES", "BORDERLINE"]}
     },
     {
       "field": "correct_deaths",

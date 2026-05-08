@@ -483,6 +483,100 @@ async function exportAnswers() {
   }
 }
 
+/* ============================================================ */
+/* Import — overlay answers from another device's export        */
+/* ============================================================ */
+// Strategy: per-eventid, last-write-wins by timestamp.
+//   - Local has answer A (ts=t_a), import has answer B (ts=t_b)
+//     → keep newer one. Ties: imported wins (assume sender is authoritative).
+//   - Local has answer, import doesn't → keep local.
+//   - Local doesn't, import does → take imported.
+async function importAnswersPickFile() {
+  const taskId = state.currentTaskId;
+  if (!taskId) {
+    setMenuMsg('Open a task first, then import.');
+    toast('Open a task first');
+    return;
+  }
+  $('import-file').value = '';
+  $('import-file').click();
+}
+
+async function importAnswersFromFile(file) {
+  const taskId = state.currentTaskId;
+  if (!taskId || !file) return;
+  closeMenu();
+  try {
+    const text = await file.text();
+    const j = JSON.parse(text);
+    if (!j || !j.task_id) throw new Error('Not a validation export (missing task_id).');
+    if (j.task_id !== taskId) {
+      const ok = confirm(
+        `This export is for task "${j.task_id}", but you're in "${taskId}".\n\n` +
+        `Continue anyway? (Will only import items whose eventid is in the current task.)`
+      );
+      if (!ok) { toast('Import cancelled.'); return; }
+    }
+    const items = Array.isArray(j.items) ? j.items : [];
+    if (!items.length) { toast('No items in export.'); return; }
+
+    // Build set of valid eventids in current task
+    const idField = state.currentTask.schema.id_field;
+    const validIds = new Set(state.currentTask.items.map(it => String(it[idField])));
+
+    let kept_newer_local = 0, overwrote_local = 0, net_new = 0, skipped_no_answer = 0, skipped_unknown_id = 0;
+
+    for (const it of items) {
+      const eventId = String(it[idField]);
+      if (!validIds.has(eventId)) { skipped_unknown_id++; continue; }
+      if (!it.answer || Object.keys(it.answer).length === 0) { skipped_no_answer++; continue; }
+
+      const importedTs = it.answered_at || j.exported_at || new Date(0).toISOString();
+      const existing = await idbGet(STORE_ANSWERS, [taskId, eventId]);
+      if (existing) {
+        const localTs = existing.ts || new Date(0).toISOString();
+        if (importedTs > localTs) {
+          await idbPut(STORE_ANSWERS, {
+            task_id: taskId, item_id: eventId,
+            answer: it.answer, ts: importedTs
+          });
+          overwrote_local++;
+        } else {
+          kept_newer_local++;
+        }
+      } else {
+        await idbPut(STORE_ANSWERS, {
+          task_id: taskId, item_id: eventId,
+          answer: it.answer, ts: importedTs
+        });
+        net_new++;
+      }
+    }
+
+    // Refresh in-memory cache for current task
+    state.answersCache = {};
+    const all = await idbGetAll(STORE_ANSWERS,
+      IDBKeyRange.bound([taskId, ''], [taskId, '￿'])
+    );
+    for (const a of all) state.answersCache[a.item_id] = a.answer;
+    renderItem();
+
+    const summary = [
+      `Import complete:`,
+      `  ${net_new} new`,
+      `  ${overwrote_local} overwrote local (import was newer)`,
+      `  ${kept_newer_local} kept local (it was newer)`,
+      `  ${skipped_no_answer} skipped (no answer in export)`,
+      `  ${skipped_unknown_id} skipped (eventid not in this task)`
+    ].join('\n');
+    setMenuMsg(summary);
+    toast(`Imported: ${net_new} new, ${overwrote_local} updated`);
+  } catch (e) {
+    console.error('import failed:', e);
+    toast('Import failed: ' + (e && e.message ? e.message : 'unknown'));
+  }
+}
+
 async function downloadOrShare(blob, fname) {
   // On iOS PWAs <a download> is unreliable, so prefer the share sheet.
   if (IS_IOS) {
@@ -627,6 +721,11 @@ function bindGlobalUI() {
 
   $('btn-refresh-tasks').addEventListener('click', () => syncAllNow());
   $('btn-export').addEventListener('click',     exportAnswers);
+  $('btn-import').addEventListener('click',     importAnswersPickFile);
+  $('import-file').addEventListener('change',   e => {
+    const f = e.target.files && e.target.files[0];
+    if (f) importAnswersFromFile(f);
+  });
   $('btn-stats').addEventListener('click',      showTaskStats);
   $('btn-go-picker').addEventListener('click',  () => { closeMenu(); $('btn-home').click(); });
   $('btn-sync-now').addEventListener('click',   syncAllNow);
