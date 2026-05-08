@@ -182,7 +182,9 @@ async function loadTaskData(taskId, { allowNetwork = true } = {}) {
 /* ============================================================ */
 /* Picker view                                                  */
 /* ============================================================ */
+let _pickerGen = 0;  // generation counter — older async renders bail if a newer one starts
 async function renderPicker() {
+  const myGen = ++_pickerGen;
   show('view-picker'); hide('view-item');
   $('task-name').textContent = 'Validation';
   $('progress-text').textContent = '';
@@ -194,6 +196,7 @@ async function renderPicker() {
   }
   for (const t of state.tasks) {
     const stats = await taskStats(t.id);
+    if (myGen !== _pickerGen) return;  // a newer renderPicker has started; abandon this run
     const card = document.createElement('div');
     card.className = 'task-card';
     card.innerHTML = `
@@ -430,61 +433,79 @@ async function saveAndNext() {
 /* ============================================================ */
 /* Export                                                       */
 /* ============================================================ */
+// Use Web Share API only on iOS (where <a download> is unreliable inside
+// standalone PWAs). Everywhere else — Mac, Android, desktop browsers — use
+// the universal <a download> path, which is reliable. iPadOS 13+ reports
+// itself as MacIntel + maxTouchPoints>1, so check for that too.
+const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+               (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
 async function exportAnswers() {
   const taskId = state.currentTaskId;
-  if (!taskId) return;
-  await persistCurrentAnswer();
-  const t = state.currentTask;
-  const answers = await idbGetAll(STORE_ANSWERS,
-    IDBKeyRange.bound([taskId, ''], [taskId, '￿'])
-  );
-  const idField = t.schema.id_field;
-  // Join items + answers; emit one row per item even if unanswered, so reviewers see the universe.
-  const items = t.items.map(it => {
-    const id = String(it[idField]);
-    const a  = answers.find(x => x.item_id === id);
-    return {
-      [idField]: it[idField],
-      answer:   a ? a.answer : null,
-      answered_at: a ? a.ts : null
+  if (!taskId) {
+    setMenuMsg('Open a task first, then export.');
+    toast('Open a task first');
+    return;
+  }
+  closeMenu();   // close the sheet so the user sees feedback
+  try {
+    await persistCurrentAnswer();
+    const t = state.currentTask;
+    const answers = await idbGetAll(STORE_ANSWERS,
+      IDBKeyRange.bound([taskId, ''], [taskId, '￿'])
+    );
+    const idField = t.schema.id_field;
+    // Join items + answers; emit one row per item even if unanswered, so reviewers see the universe.
+    const items = t.items.map(it => {
+      const id = String(it[idField]);
+      const a  = answers.find(x => x.item_id === id);
+      return {
+        [idField]: it[idField],
+        answer:   a ? a.answer : null,
+        answered_at: a ? a.ts : null
+      };
+    });
+    const payload = {
+      task_id: taskId,
+      schema_version: t.schema.version || null,
+      exported_at: new Date().toISOString(),
+      user_agent: navigator.userAgent,
+      n_items: t.items.length,
+      n_answered: answers.length,
+      items
     };
-  });
-  const payload = {
-    task_id: taskId,
-    schema_version: t.schema.version || null,
-    exported_at: new Date().toISOString(),
-    user_agent: navigator.userAgent,
-    n_items: t.items.length,
-    n_answered: answers.length,
-    items
-  };
-  const fname = `validation_${taskId}_${todayISO()}.json`;
-  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-  await downloadOrShare(blob, fname);
+    const fname = `validation_${taskId}_${todayISO()}.json`;
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    await downloadOrShare(blob, fname);
+  } catch (e) {
+    console.error('export failed:', e);
+    toast('Export failed: ' + (e && e.message ? e.message : 'unknown error'));
+  }
 }
 
 async function downloadOrShare(blob, fname) {
-  // iOS / installed PWA: prefer Web Share API (share sheet → Files / Dropbox)
-  try {
-    if (navigator.canShare && navigator.canShare({ files: [new File([blob], fname, { type: blob.type })] })) {
+  // On iOS PWAs <a download> is unreliable, so prefer the share sheet.
+  if (IS_IOS) {
+    try {
       const file = new File([blob], fname, { type: blob.type });
-      await navigator.share({
-        files: [file],
-        title: fname,
-        text: 'Validation export'
-      });
-      toast('Shared. Save to Dropbox / Files.');
-      return;
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: fname, text: 'Validation export' });
+        toast('Shared. Save to Files / Dropbox.');
+        return;
+      }
+    } catch (e) {
+      // user cancelled or share threw — fall through to <a download>
     }
-  } catch (e) {
-    // user cancelled or share not allowed — fall through to download
   }
-  // Mac / desktop fallback
+  // Universal: trigger a download. Reliable on Mac/Chrome (PWA or tab), Android, etc.
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url; a.download = fname;
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  // Some browsers require the anchor to be in the DOM; some PWA contexts strip it.
+  // To handle Chrome-PWA on macOS reliably, use a forced "click" event.
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { try { a.remove(); URL.revokeObjectURL(url); } catch(e){} }, 1500);
   toast('Downloaded ' + fname);
 }
 
@@ -604,7 +625,7 @@ function bindGlobalUI() {
   });
   $('btn-save-next').addEventListener('click', saveAndNext);
 
-  $('btn-refresh-tasks').addEventListener('click', async () => { await syncAllNow(); renderPicker(); });
+  $('btn-refresh-tasks').addEventListener('click', () => syncAllNow());
   $('btn-export').addEventListener('click',     exportAnswers);
   $('btn-stats').addEventListener('click',      showTaskStats);
   $('btn-go-picker').addEventListener('click',  () => { closeMenu(); $('btn-home').click(); });
