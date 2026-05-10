@@ -43,6 +43,38 @@
       "items_url": "data/disaster-sample-D/items.json"
     },
     {
+      "id": "arrests-sample-A",
+      "name": "Arrests — Sample A (200 events)",
+      "project": "arrests",
+      "description": "Chunk A of 4 from arrests_master (40K events, FPP+Telegram+Shkulev+Sledcom). Non-overlapping with B/C/D. Strata: 35 region-mismatch, 25 is_federal, 25 telegram, 25 shkulev, 15 sledcom, 15 multi-defendant, 15 rare crime_type, 15 empty official_name+is_corruption, 10 low confidence, 10 short text, 10 fpp control. Built 2026-05-08.",
+      "schema_url": "data/arrests-sample-A/schema.json",
+      "items_url": "data/arrests-sample-A/items.json"
+    },
+    {
+      "id": "arrests-sample-B",
+      "name": "Arrests — Sample B (200 events)",
+      "project": "arrests",
+      "description": "Chunk B of 4. Same strata mix as Sample A. Non-overlapping with A/C/D. Built 2026-05-08.",
+      "schema_url": "data/arrests-sample-A/schema.json",
+      "items_url": "data/arrests-sample-B/items.json"
+    },
+    {
+      "id": "arrests-sample-C",
+      "name": "Arrests — Sample C (200 events)",
+      "project": "arrests",
+      "description": "Chunk C of 4. Same strata mix as Sample A. Non-overlapping with A/B/D. Built 2026-05-08.",
+      "schema_url": "data/arrests-sample-A/schema.json",
+      "items_url": "data/arrests-sample-C/items.json"
+    },
+    {
+      "id": "arrests-sample-D",
+      "name": "Arrests — Sample D (200 events)",
+      "project": "arrests",
+      "description": "Chunk D of 4. Same strata mix as Sample A. Non-overlapping with A/B/C. Built 2026-05-08.",
+      "schema_url": "data/arrests-sample-A/schema.json",
+      "items_url": "data/arrests-sample-D/items.json"
+    },
+    {
       "id": "sentiment-prompt-comparison",
       "name": "rusSocial sentiment — 5-model 200-post comparison",
       "project": "rusSocial",
