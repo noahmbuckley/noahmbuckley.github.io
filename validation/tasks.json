@@ -75,6 +75,22 @@
       "items_url": "data/arrests-sample-D/items.json"
     },
     {
+      "id": "rusSocial-responsibility-focused",
+      "name": "rusSocial responsibility — focused 20-post verify",
+      "project": "rusSocial",
+      "description": "20 posts with Haiku's blame-attribution predictions shown for verification. ~15 min target. Strata: direct+attr=True, related+attr=True, tangential+attr=True, direct+attr=False, comment_inherited, unrelated_random. Outputs go to rusSocial/data/processed/responsibility/validation/. Unblocks the full responsibility classifier per 2026-05-07 audit.",
+      "schema_url": "data/rusSocial-responsibility-focused/schema.json",
+      "items_url": "data/rusSocial-responsibility-focused/items.json"
+    },
+    {
+      "id": "rusSocial-responsibility-blind",
+      "name": "rusSocial responsibility — blind 81-post label",
+      "project": "rusSocial",
+      "description": "81 posts, Haiku predictions hidden — blind labeling for unbiased κ scoring against the gold standard. Same 6-field codebook as the focused task. ~2 hours at 1-2 min/post.",
+      "schema_url": "data/rusSocial-responsibility-blind/schema.json",
+      "items_url": "data/rusSocial-responsibility-blind/items.json"
+    },
+    {
       "id": "sentiment-prompt-comparison",
       "name": "rusSocial sentiment — 5-model 200-post comparison",
       "project": "rusSocial",

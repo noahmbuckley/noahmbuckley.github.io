@@ -1,0 +1,87 @@
+{
+  "task_id": "rusSocial-responsibility-blind",
+  "name": "rusSocial responsibility — blind 81-post label",
+  "version": "2026-05-08",
+  "id_field": "post_id",
+  "instructions": "Hand-label 81 social-media posts about disasters with NO Haiku predictions shown (blind labeling, for unbiased κ scoring). For each post: is it about THE event? Does it blame someone? If yes, who and how strongly? See codebook below. Pace ~1-2 min/post; this is the gold-standard set for the full responsibility classifier.",
+  "display": [
+    {"field": "post_date", "label": "Post date"},
+    {"field": "event_date", "label": "Event date"},
+    {"field": "day_relative", "label": "day_relative", "format": "compact"},
+    {"field": "regionid", "label": "regionid", "format": "compact"},
+    {"field": "disaster_type", "label": "disaster_type", "format": "compact"},
+    {"field": "deaths_human", "label": "deaths", "format": "compact"},
+    {"field": "govt_resp_objective", "label": "govt_resp (objective)", "format": "compact"},
+    {"field": "eventdesc", "label": "Event (RU)", "format": "longtext"},
+    {"field": "source", "label": "Source", "format": "compact"},
+    {"field": "channel", "label": "Channel"},
+    {"field": "text", "label": "Post text (RU)", "format": "longtext"},
+    {"field": "post_id", "label": "post_id", "format": "compact"}
+  ],
+  "validation": [
+    {
+      "field": "event_topic_match",
+      "label": "event_topic_match — is the post about THE event?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {"value": "direct",      "label": "direct",      "key": "1", "tone": "good"},
+        {"value": "related",     "label": "related",     "key": "2", "tone": "neutral"},
+        {"value": "tangential",  "label": "tangential",  "key": "3", "tone": "warn"},
+        {"value": "unrelated",   "label": "unrelated",   "key": "4", "tone": "bad"}
+      ]
+    },
+    {
+      "field": "attributes_responsibility",
+      "label": "attributes_responsibility — does the post explicitly blame someone?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {"value": "true",  "label": "YES", "key": "q", "tone": "good"},
+        {"value": "false", "label": "NO",  "key": "w", "tone": "bad"}
+      ]
+    },
+    {
+      "field": "responsible_party",
+      "label": "responsible_party",
+      "type": "enum",
+      "options": [
+        {"value": "federal",           "label": "federal (Kremlin / Putin)"},
+        {"value": "regional",          "label": "regional (governor)"},
+        {"value": "local",             "label": "local (mayor / municipal)"},
+        {"value": "specific_official", "label": "specific named official"},
+        {"value": "company",           "label": "company / corporation"},
+        {"value": "infrastructure",    "label": "infrastructure / system"},
+        {"value": "no_party",          "label": "no party named"}
+      ],
+      "show_if": {"attributes_responsibility": ["true"]}
+    },
+    {
+      "field": "attribution_intensity",
+      "label": "attribution_intensity",
+      "type": "enum",
+      "options": [
+        {"value": "0.1", "label": "0.1 very mild"},
+        {"value": "0.3", "label": "0.3 mild"},
+        {"value": "0.5", "label": "0.5 clear"},
+        {"value": "0.7", "label": "0.7 strong"},
+        {"value": "0.9", "label": "0.9 elimination"}
+      ],
+      "show_if": {"attributes_responsibility": ["true"]}
+    },
+    {
+      "field": "expresses_futility",
+      "label": "expresses_futility — blame BUT no consequences expected?",
+      "type": "enum",
+      "options": [
+        {"value": "true",  "label": "YES — fatalistic", "key": "a", "tone": "warn"},
+        {"value": "false", "label": "NO",               "key": "s", "tone": "neutral"}
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "type": "textarea"
+    }
+  ]
+}
