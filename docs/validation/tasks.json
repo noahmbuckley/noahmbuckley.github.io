@@ -75,6 +75,14 @@
       "items_url": "data/arrests-sample-D/items.json"
     },
     {
+      "id": "protests-pilot-activatica",
+      "name": "Protests — Activatica pilot (243 items)",
+      "project": "protests",
+      "description": "243 Activatica posts classified by Haiku v2.2 (173 protest=TRUE, 70 FALSE). Verify the protest/not-protest call + protest_type + regime_crit. This is the audit-blocking validation before the full ~12K Activatica re-classify ships. Stable input — won't be invalidated by the in-flight master reboot.",
+      "schema_url": "data/protests-pilot-activatica/schema.json",
+      "items_url": "data/protests-pilot-activatica/items.json"
+    },
+    {
       "id": "rusSocial-responsibility-focused",
       "name": "rusSocial responsibility — focused 20-post verify",
       "project": "rusSocial",
