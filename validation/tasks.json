@@ -113,6 +113,14 @@
       "description": "Active-learning chunk built 2026-05-12 from disasters_master_v3 + Layer 2 LLM filter + severity_recal + dates_consolidated. Strata: 40 disasters_strict random, 30 standard\\strict random, 20 validated_only random, 30 severity_recal=HIGH, 20 severity_recal=MEDIUM+deaths_lower>=1, 20 Layer2=NO+corroboration>=3 (FN hunt), 20 Layer2=BORDERLINE stratified by type, 20 day-precision dates (5 ea Wikidata/EM-DAT/Telegram-strict-high/medium). Excludes 213 already-labeled eventids.",
       "schema_url": "data/disaster-spot-check/schema.json",
       "items_url": "data/disaster-sample-E/items.json"
+    },
+    {
+      "id": "disaster-date-coding",
+      "name": "Disaster — Day-precision date hand-coding (50 pre-2018 high-severity)",
+      "project": "disaster",
+      "description": "Hand-code day-precision dates for high-severity pre-2018 events that lack day precision from other sources. Tier 1: deaths>=10 (~10 events). Tier 2: deaths 5-9 (~34 events). Tier 3 padding: severity_recal=HIGH (~6 events). Use Russian Wikipedia, lenta.ru, kommersant.ru, ria.ru, etc. Built 2026-05-12. See preregistration/preanalysis_plan_addendum_2026-05-12b.md for context.",
+      "schema_url": "data/disaster-date-coding/schema.json",
+      "items_url": "data/disaster-date-coding/items.json"
     }
   ]
 }

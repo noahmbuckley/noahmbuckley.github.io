@@ -1,0 +1,9 @@
+# Provenance for items.json
+output     : ~/Dropbox/Projects/me/website/validation/data/disaster-date-coding/items.json
+script     : code/99f_build_date_coding_chunk.R
+git_sha    : 9b5e27191fde53c2f749c6b1f8c96235ef27a996
+timestamp  : 2026-05-12 23:43:55.941493
+R_version  : R version 4.5.3 (2026-03-11)
+platform   : aarch64-apple-darwin20
+packages_loaded:
+  jsonlite 2.0.0
