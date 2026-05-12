@@ -105,6 +105,14 @@
       "description": "200 posts with all 5 model labels (tiny / seara_base / Haiku-A voice / Haiku-B event-valence / Haiku-C audience). Strata: all_agree, tiny_vs_haiku_disagree, haiku_internal_disagree. Built 2026-05-08.",
       "schema_url": "data/sentiment-prompt-comparison/schema.json",
       "items_url": "data/sentiment-prompt-comparison/items.json"
+    },
+    {
+      "id": "disaster-sample-E",
+      "name": "Disaster — Sample E (200 events, active learning)",
+      "project": "disaster",
+      "description": "Active-learning chunk built 2026-05-12 from disasters_master_v3 + Layer 2 LLM filter + severity_recal + dates_consolidated. Strata: 40 disasters_strict random, 30 standard\\strict random, 20 validated_only random, 30 severity_recal=HIGH, 20 severity_recal=MEDIUM+deaths_lower>=1, 20 Layer2=NO+corroboration>=3 (FN hunt), 20 Layer2=BORDERLINE stratified by type, 20 day-precision dates (5 ea Wikidata/EM-DAT/Telegram-strict-high/medium). Excludes 213 already-labeled eventids.",
+      "schema_url": "data/disaster-spot-check/schema.json",
+      "items_url": "data/disaster-sample-E/items.json"
     }
   ]
 }
