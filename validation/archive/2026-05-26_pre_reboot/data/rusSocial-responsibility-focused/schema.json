@@ -1,0 +1,91 @@
+{
+  "task_id": "rusSocial-responsibility-focused",
+  "name": "rusSocial responsibility — focused 20-post verify",
+  "version": "2026-05-08",
+  "id_field": "post_id",
+  "instructions": "Verify Haiku's blame-attribution calls on 20 social-media posts about disasters. The Haiku predictions are highlighted yellow. For each post: is the post about THE event (event_topic_match)? Does it explicitly blame someone (attributes_responsibility)? If yes, who and how strongly? See codebook fields below. ~15 min target. Goal: produce agreement metrics so the full responsibility classifier can ship.",
+  "display": [
+    {"field": "focused_bin", "label": "Bin", "format": "tag"},
+    {"field": "post_date", "label": "Post date"},
+    {"field": "day_relative", "label": "day_relative (event)", "format": "compact"},
+    {"field": "regionid", "label": "regionid", "format": "compact"},
+    {"field": "eventdesc", "label": "Event (RU)", "format": "longtext"},
+    {"field": "channel", "label": "Channel"},
+    {"field": "post_type", "label": "post_type", "format": "compact"},
+    {"field": "text", "label": "Post text (RU)", "format": "longtext"},
+    {"field": "haiku_match",     "label": "Haiku: event_topic_match",     "format": "compact", "highlight": "llm"},
+    {"field": "haiku_attr",      "label": "Haiku: attributes_responsibility", "format": "compact", "highlight": "llm"},
+    {"field": "haiku_party",     "label": "Haiku: responsible_party",     "format": "compact", "highlight": "llm"},
+    {"field": "haiku_intensity", "label": "Haiku: attribution_intensity", "format": "compact", "highlight": "llm"},
+    {"field": "haiku_emotion",   "label": "Haiku: primary_emotion",       "format": "compact", "highlight": "llm"},
+    {"field": "haiku_futility",  "label": "Haiku: expresses_futility",    "format": "compact", "highlight": "llm"},
+    {"field": "post_id",         "label": "post_id", "format": "compact"}
+  ],
+  "validation": [
+    {
+      "field": "event_topic_match",
+      "label": "event_topic_match — is the post about THE event?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {"value": "direct",      "label": "direct (unambiguously about it)", "key": "1", "tone": "good"},
+        {"value": "related",     "label": "related (same domain, not THE event)", "key": "2", "tone": "neutral"},
+        {"value": "tangential",  "label": "tangential (loosely connected)", "key": "3", "tone": "warn"},
+        {"value": "unrelated",   "label": "unrelated", "key": "4", "tone": "bad"}
+      ]
+    },
+    {
+      "field": "attributes_responsibility",
+      "label": "attributes_responsibility — does the post explicitly blame someone?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {"value": "true",  "label": "YES — explicit blame", "key": "q", "tone": "good"},
+        {"value": "false", "label": "NO — no explicit blame", "key": "w", "tone": "bad"}
+      ]
+    },
+    {
+      "field": "responsible_party",
+      "label": "responsible_party — primary party blamed",
+      "type": "enum",
+      "options": [
+        {"value": "federal",           "label": "federal (Kremlin / Putin)", "tone": "neutral"},
+        {"value": "regional",          "label": "regional (governor / regional govt)", "tone": "neutral"},
+        {"value": "local",             "label": "local (mayor / municipal)", "tone": "neutral"},
+        {"value": "specific_official", "label": "specific named official", "tone": "neutral"},
+        {"value": "company",           "label": "company / corporation", "tone": "neutral"},
+        {"value": "infrastructure",    "label": "infrastructure / system failure", "tone": "neutral"},
+        {"value": "no_party",          "label": "no party named", "tone": "neutral"}
+      ],
+      "show_if": {"attributes_responsibility": ["true"]}
+    },
+    {
+      "field": "attribution_intensity",
+      "label": "attribution_intensity — strength of blame language",
+      "type": "enum",
+      "options": [
+        {"value": "0.1", "label": "0.1 very mild",                "tone": "neutral"},
+        {"value": "0.3", "label": "0.3 mild",                      "tone": "neutral"},
+        {"value": "0.5", "label": "0.5 clear",                     "tone": "neutral"},
+        {"value": "0.7", "label": "0.7 strong",                    "tone": "neutral"},
+        {"value": "0.9", "label": "0.9 elimination (\"кровавый режим\")", "tone": "neutral"}
+      ],
+      "show_if": {"attributes_responsibility": ["true"]}
+    },
+    {
+      "field": "expresses_futility",
+      "label": "expresses_futility — acknowledges blame BUT no consequences expected? (\"никого не накажут\")",
+      "type": "enum",
+      "options": [
+        {"value": "true",  "label": "YES — fatalistic", "key": "a", "tone": "warn"},
+        {"value": "false", "label": "NO",               "key": "s", "tone": "neutral"}
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes (and any disagreement with Haiku)",
+      "type": "textarea",
+      "placeholder": "Use this to flag disagreement, codebook critique, surprises"
+    }
+  ]
+}

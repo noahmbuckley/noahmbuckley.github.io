@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-08",
+  "tasks": [
+    {
+      "id": "disaster-spot-check",
+      "name": "Disaster — original 300-event verification (legacy)",
+      "project": "disaster",
+      "description": "Stratified sample of 300 events. April-22 disasters_master state — partly obsolete since the May-6 reclassify dropped 66 of 200 FP candidates. Use the disaster-sample-A/B/C/D tasks for fresh validation; this one is here only because Noah has 13 answers in it.",
+      "schema_url": "data/disaster-spot-check/schema.json",
+      "items_url": "data/disaster-spot-check/items.json"
+    },
+    {
+      "id": "disaster-sample-A",
+      "name": "Disaster — Sample A (200 events)",
+      "project": "disaster",
+      "description": "Chunk A of 4. Non-overlapping with original 300 and with B/C/D. Strata: 60 other_disaster, 20 binary_only, 35 likely_animal_deaths, 5 mass_shooting, 5 primary_type≠disaster_accident, 10 high_severity, 55 clean random control, 10 FN candidates. Built 2026-05-08 from May-6 master.",
+      "schema_url": "data/disaster-spot-check/schema.json",
+      "items_url": "data/disaster-sample-A/items.json"
+    },
+    {
+      "id": "disaster-sample-B",
+      "name": "Disaster — Sample B (200 events)",
+      "project": "disaster",
+      "description": "Chunk B of 4. Non-overlapping with original 300 and with A/C/D. Same strata mix as Sample A. Built 2026-05-08 from May-6 master.",
+      "schema_url": "data/disaster-spot-check/schema.json",
+      "items_url": "data/disaster-sample-B/items.json"
+    },
+    {
+      "id": "disaster-sample-C",
+      "name": "Disaster — Sample C (200 events)",
+      "project": "disaster",
+      "description": "Chunk C of 4. Non-overlapping with original 300 and with A/B/D. Same strata mix as Sample A. Built 2026-05-08 from May-6 master.",
+      "schema_url": "data/disaster-spot-check/schema.json",
+      "items_url": "data/disaster-sample-C/items.json"
+    },
+    {
+      "id": "disaster-sample-D",
+      "name": "Disaster — Sample D (200 events)",
+      "project": "disaster",
+      "description": "Chunk D of 4. Non-overlapping with original 300 and with A/B/C. Same strata mix as Sample A. Built 2026-05-08 from May-6 master.",
+      "schema_url": "data/disaster-spot-check/schema.json",
+      "items_url": "data/disaster-sample-D/items.json"
+    },
+    {
+      "id": "arrests-sample-A",
+      "name": "Arrests — Sample A (200 events)",
+      "project": "arrests",
+      "description": "Chunk A of 4 from arrests_master (40K events, FPP+Telegram+Shkulev+Sledcom). Non-overlapping with B/C/D. Strata: 35 region-mismatch, 25 is_federal, 25 telegram, 25 shkulev, 15 sledcom, 15 multi-defendant, 15 rare crime_type, 15 empty official_name+is_corruption, 10 low confidence, 10 short text, 10 fpp control. Built 2026-05-08.",
+      "schema_url": "data/arrests-sample-A/schema.json",
+      "items_url": "data/arrests-sample-A/items.json"
+    },
+    {
+      "id": "arrests-sample-B",
+      "name": "Arrests — Sample B (200 events)",
+      "project": "arrests",
+      "description": "Chunk B of 4. Same strata mix as Sample A. Non-overlapping with A/C/D. Built 2026-05-08.",
+      "schema_url": "data/arrests-sample-A/schema.json",
+      "items_url": "data/arrests-sample-B/items.json"
+    },
+    {
+      "id": "arrests-sample-C",
+      "name": "Arrests — Sample C (200 events)",
+      "project": "arrests",
+      "description": "Chunk C of 4. Same strata mix as Sample A. Non-overlapping with A/B/D. Built 2026-05-08.",
+      "schema_url": "data/arrests-sample-A/schema.json",
+      "items_url": "data/arrests-sample-C/items.json"
+    },
+    {
+      "id": "arrests-sample-D",
+      "name": "Arrests — Sample D (200 events)",
+      "project": "arrests",
+      "description": "Chunk D of 4. Same strata mix as Sample A. Non-overlapping with A/B/C. Built 2026-05-08.",
+      "schema_url": "data/arrests-sample-A/schema.json",
+      "items_url": "data/arrests-sample-D/items.json"
+    },
+    {
+      "id": "protests-pilot-activatica",
+      "name": "Protests — Activatica pilot (243 items)",
+      "project": "protests",
+      "description": "243 Activatica posts classified by Haiku v2.2 (173 protest=TRUE, 70 FALSE). Verify the protest/not-protest call + protest_type + regime_crit. This is the audit-blocking validation before the full ~12K Activatica re-classify ships. Stable input — won't be invalidated by the in-flight master reboot.",
+      "schema_url": "data/protests-pilot-activatica/schema.json",
+      "items_url": "data/protests-pilot-activatica/items.json"
+    },
+    {
+      "id": "rusSocial-responsibility-focused",
+      "name": "rusSocial responsibility — focused 20-post verify",
+      "project": "rusSocial",
+      "description": "20 posts with Haiku's blame-attribution predictions shown for verification. ~15 min target. Strata: direct+attr=True, related+attr=True, tangential+attr=True, direct+attr=False, comment_inherited, unrelated_random. Outputs go to rusSocial/data/processed/responsibility/validation/. Unblocks the full responsibility classifier per 2026-05-07 audit.",
+      "schema_url": "data/rusSocial-responsibility-focused/schema.json",
+      "items_url": "data/rusSocial-responsibility-focused/items.json"
+    },
+    {
+      "id": "rusSocial-responsibility-blind",
+      "name": "rusSocial responsibility — blind 81-post label",
+      "project": "rusSocial",
+      "description": "81 posts, Haiku predictions hidden — blind labeling for unbiased κ scoring against the gold standard. Same 6-field codebook as the focused task. ~2 hours at 1-2 min/post.",
+      "schema_url": "data/rusSocial-responsibility-blind/schema.json",
+      "items_url": "data/rusSocial-responsibility-blind/items.json"
+    },
+    {
+      "id": "sentiment-prompt-comparison",
+      "name": "rusSocial sentiment — 5-model 200-post comparison",
+      "project": "rusSocial",
+      "description": "200 posts with all 5 model labels (tiny / seara_base / Haiku-A voice / Haiku-B event-valence / Haiku-C audience). Strata: all_agree, tiny_vs_haiku_disagree, haiku_internal_disagree. Built 2026-05-08.",
+      "schema_url": "data/sentiment-prompt-comparison/schema.json",
+      "items_url": "data/sentiment-prompt-comparison/items.json"
+    },
+    {
+      "id": "disaster-sample-E",
+      "name": "Disaster — Sample E (200 events, active learning)",
+      "project": "disaster",
+      "description": "Active-learning chunk built 2026-05-12 from disasters_master_v3 + Layer 2 LLM filter + severity_recal + dates_consolidated. Strata: 40 disasters_strict random, 30 standard\\strict random, 20 validated_only random, 30 severity_recal=HIGH, 20 severity_recal=MEDIUM+deaths_lower>=1, 20 Layer2=NO+corroboration>=3 (FN hunt), 20 Layer2=BORDERLINE stratified by type, 20 day-precision dates (5 ea Wikidata/EM-DAT/Telegram-strict-high/medium). Excludes 213 already-labeled eventids.",
+      "schema_url": "data/disaster-spot-check/schema.json",
+      "items_url": "data/disaster-sample-E/items.json"
+    },
+    {
+      "id": "disaster-date-coding",
+      "name": "Disaster — Day-precision date hand-coding (50 pre-2018 high-severity)",
+      "project": "disaster",
+      "description": "Hand-code day-precision dates for high-severity pre-2018 events that lack day precision from other sources. Tier 1: deaths>=10 (~10 events). Tier 2: deaths 5-9 (~34 events). Tier 3 padding: severity_recal=HIGH (~6 events). Use Russian Wikipedia, lenta.ru, kommersant.ru, ria.ru, etc. Built 2026-05-12. See preregistration/preanalysis_plan_addendum_2026-05-12b.md for context.",
+      "schema_url": "data/disaster-date-coding/schema.json",
+      "items_url": "data/disaster-date-coding/items.json"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "task_id": "scope-filter-drops-A",
+  "name": "scope-filter drops — audit (60 items)",
+  "version": "2026-05-27",
+  "id_field": "item_id",
+  "instructions": "60 items the new scope_filter (eventsData/dedup/) dropped from the Activatica corpus on 2026-05-27. Verify each drop is correct — we want to catch any silent data loss. Stratified across top-5 dropped countries + the small region:* / quality:* buckets. Run quarterly or after any scope_filter change.",
+  "display": [
+    {
+      "field": "drop_reason",
+      "label": "Drop reason",
+      "format": "tag"
+    },
+    {
+      "field": "strata",
+      "label": "Stratum",
+      "format": "tag"
+    },
+    {
+      "field": "region_country",
+      "label": "region.country",
+      "format": "compact"
+    },
+    {
+      "field": "region_name",
+      "label": "region.name",
+      "format": "compact"
+    },
+    {
+      "field": "title",
+      "label": "Title",
+      "format": "longtext"
+    },
+    {
+      "field": "text_excerpt",
+      "label": "Text excerpt",
+      "format": "longtext"
+    },
+    {
+      "field": "start",
+      "label": "Event date"
+    },
+    {
+      "field": "url",
+      "label": "URL",
+      "format": "link"
+    }
+  ],
+  "validation": [
+    {
+      "field": "verdict",
+      "label": "Was this drop correct?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "drop_correct",
+          "label": "Drop is CORRECT (truly out-of-scope)",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "should_keep",
+          "label": "Drop is WRONG (Russia-relevant; keep)",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unclear",
+          "label": "Unclear / borderline",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    }
+  ]
+}

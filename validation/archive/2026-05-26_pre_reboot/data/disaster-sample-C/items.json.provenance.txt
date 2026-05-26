@@ -1,0 +1,10 @@
+# Provenance for items.json
+output     : ~/Dropbox/Projects/me/website/validation/data/disaster-sample-C/items.json
+script     : /Users/noahbuckley/Dropbox/Projects/disaster/code/99d_build_validation_chunks.R
+git_sha    : d4214f975d176707eb115832e3042f91207fc724
+timestamp  : 2026-05-08 18:26:10.804975
+R_version  : R version 4.5.3 (2026-03-11)
+platform   : aarch64-apple-darwin20
+packages_loaded:
+  jsonlite 2.0.0
+  readxl 1.4.5
