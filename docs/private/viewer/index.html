@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow, noarchive">
+<title>Database viewer · Noah Buckley</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Database viewer</h1>
+  <p class="sub">Glance at random items from the source corpora. Spot-check tool — verifies what's in, not what's missing.</p>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button data-db="telegram" class="active">Telegram</button>
+  <button data-db="vk">VK</button>
+  <button data-db="rusmedia">rusMedia</button>
+</nav>
+
+<section class="filters">
+  <label class="f">Source
+    <select id="source-filter"><option value="">— any —</option></select>
+  </label>
+  <label class="f">Keyword
+    <input type="search" id="keyword-filter" placeholder="case-insensitive, RU or EN">
+  </label>
+  <label class="f">From
+    <input type="date" id="date-from">
+  </label>
+  <label class="f">To
+    <input type="date" id="date-to">
+  </label>
+  <button id="clear-filters" class="ghost">clear</button>
+</section>
+
+<section class="controls">
+  <button id="btn-random" class="primary">🎲 random</button>
+  <button id="btn-prev" class="ghost">← prev</button>
+  <button id="btn-next" class="ghost">next →</button>
+  <span id="counter">— / —</span>
+  <span class="hint">space = random · ←/→ = prev/next</span>
+</section>
+
+<main id="card">
+  <p class="placeholder">Loading…</p>
+</main>
+
+<footer>
+  <span id="meta"></span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
