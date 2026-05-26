@@ -134,14 +134,47 @@ def build_vk():
 
 
 ##### rusMedia #####
-# Primary source: national/corpus/ hive-partitioned parquet (20 outlets,
-# clean schema [url, pub_date, title, full_text, word_count, source, year_month]).
-# Additional CSVs (rbc_fulltext, izvestia_fulltext) covered as fallback.
+# rusMedia has three kinds of fulltext stores. All share the schema
+# (url, pub_date, title, full_text, word_count[, regionid, section, …]),
+# so one normalizer handles them all:
+#
+#   1) `national/corpus/` hive-partitioned parquet (20 outlets: kommersant,
+#      lenta, ria, rt, vedomosti, gazeta, interfax, mkru_national, rg, ria, …)
+#   2) Single-CSV outlets that aren't in national/corpus (regnum, fedpress,
+#      izvestia, ng_wayback, rg_wayback, vedomosti_wayback, smotrim, rbc_national)
+#   3) Regional outlet groups — directories where each CSV is a per-region slice
+#      of one outlet (aif/kp/mkru/rbc regional papers). All slices roll up
+#      under a single source label like `aif_regional`.
+#   4) `filtered_fulltext/` — each CSV is its own regional portal (e.g.
+#      116.ru = Kazan, e1.ru = Yekaterinburg, fontanka.ru = SPb). Treat each
+#      as its own source so the dropdown reflects portal diversity.
+
 RM_NATIONAL = RM_PROC / "national" / "corpus"
-RM_EXTRA_CSVS = [
-    (RM_PROC / "rbc_national" / "rbc_fulltext.csv",   "rbc_national"),
-    (RM_PROC / "izvestia"     / "izvestia_fulltext.csv", "izvestia"),
+
+RM_SINGLE_CSVS = [
+    # (path, source_label) — one CSV per outlet
+    (RM_PROC / "rbc_national" / "rbc_fulltext.csv",          "rbc_national"),
+    (RM_PROC / "izvestia"     / "izvestia_fulltext.csv",     "izvestia"),
+    (RM_PROC / "regnum"           / "regnum_fulltext_clean.csv", "regnum"),
+    (RM_PROC / "fedpress"         / "fedpress_fulltext.csv",     "fedpress"),
+    (RM_PROC / "ng_wayback"       / "ng_fulltext.csv",           "ng_wayback"),
+    (RM_PROC / "rg_wayback"       / "rg_fulltext.csv",           "rg_wayback"),
+    (RM_PROC / "vedomosti_wayback"/ "vedomosti_fulltext.csv",    "vedomosti_wayback"),
+    (RM_PROC / "smotrim"          / "smotrim_fulltext.csv",      "smotrim"),
+    (RM_PROC / "commoncrawl"      / "cc_mkru_fulltext.csv",      "commoncrawl_mkru"),
 ]
+
+RM_REGIONAL_GROUPS = [
+    # (glob relative to RM_PROC, source_label) — sweep all CSVs, label uniformly
+    ("aif_fulltext/aif_*.csv",      "aif_regional"),
+    ("kp_fulltext/kp_*.csv",        "kp_regional"),
+    ("mkru_fulltext/mkru_*.csv",    "mkru_regional"),
+    ("rbc_fulltext/rbc_*.csv",      "rbc_regional"),
+]
+
+# Per-portal regional sites (filtered_fulltext/) — each CSV is a different
+# regional outlet. Source label derived from filename.
+RM_FILTERED_PORTALS_GLOB = "filtered_fulltext/*.csv"
 
 
 def normalize_rusmedia_row(row, source_name):
@@ -167,6 +200,22 @@ def normalize_rusmedia_row(row, source_name):
     }
 
 
+def _reservoir_sample_csv(csv_path, target_n, csvmod):
+    """Stream a CSV and return a uniform reservoir-sample of target_n dicts.
+    Memory: O(target_n) regardless of file size. Safe for multi-GB CSVs."""
+    reservoir = []
+    with open(csv_path, "r", encoding="utf-8", errors="replace") as f:
+        rdr = csvmod.DictReader(f)
+        for i, row in enumerate(rdr):
+            if i < target_n:
+                reservoir.append(row)
+            else:
+                j = random.randint(0, i)
+                if j < target_n:
+                    reservoir[j] = row
+    return reservoir
+
+
 def build_rusmedia():
     import pyarrow.parquet as pq
     import csv as csvmod
@@ -176,7 +225,7 @@ def build_rusmedia():
     # --- 1) national/corpus hive-partitioned parquets ---
     if RM_NATIONAL.exists():
         sources = sorted(p for p in RM_NATIONAL.glob("source=*") if p.is_dir())
-        print(f"rusmedia: {len(sources)} sources in national/corpus")
+        print(f"rusmedia/national: {len(sources)} sources")
         per_source = max(50, N_PER_DB // max(1, len(sources)))    # ~100 per source
         for sdir in sources:
             sname = sdir.name.replace("source=", "")
@@ -199,29 +248,61 @@ def build_rusmedia():
                 except Exception as e:
                     print(f"  WARN {p.name}: {e}", file=sys.stderr)
 
-    # --- 2) extra CSVs (rbc + izvestia fulltext, not in national/) ---
-    # RAM-safe: reservoir-sample K rows in one streaming pass — never load
-    # the whole CSV into memory. Memory bounded at O(K) row-dicts regardless
-    # of file size (the rbc fulltext CSV is 600 MB, izvestia 452 MB).
-    TARGET = 120
-    for csv_path, sname in RM_EXTRA_CSVS:
-        if not csv_path.exists(): continue
+    # --- 2) single-CSV outlets (regnum, fedpress, ng_wayback, …) ---
+    # RAM-safe streaming reservoir sample. Source labels are pre-set per CSV.
+    SINGLE_TARGET = 100
+    print(f"rusmedia/single: {len(RM_SINGLE_CSVS)} outlets")
+    for csv_path, sname in RM_SINGLE_CSVS:
+        if not csv_path.exists():
+            print(f"  MISS {sname}: {csv_path}", file=sys.stderr); continue
         try:
-            reservoir = []
-            with open(csv_path, "r", encoding="utf-8", errors="replace") as f:
-                rdr = csvmod.DictReader(f)
-                for i, row in enumerate(rdr):
-                    if i < TARGET:
-                        reservoir.append(row)
-                    else:
-                        j = random.randint(0, i)
-                        if j < TARGET:
-                            reservoir[j] = row
-            for r in reservoir:
+            rows = _reservoir_sample_csv(csv_path, SINGLE_TARGET, csvmod)
+            kept = 0
+            for r in rows:
+                item = normalize_rusmedia_row(r, sname)
+                if item: out.append(item); kept += 1
+            print(f"  {sname}: {kept}/{len(rows)} items")
+        except Exception as e:
+            print(f"  WARN {csv_path.name}: {e}", file=sys.stderr)
+
+    # --- 3) regional outlet groups (aif/kp/mkru/rbc per-region CSVs) ---
+    # Sweep all per-region CSVs in a group, reservoir-sample a small N per file,
+    # roll up under one source label per group. Gives breadth-of-region within
+    # one outlet while keeping dropdown clean.
+    print(f"rusmedia/regional-groups: {len(RM_REGIONAL_GROUPS)} groups")
+    for glob_rel, sname in RM_REGIONAL_GROUPS:
+        files = sorted(RM_PROC.glob(glob_rel))
+        if not files:
+            print(f"  MISS {sname}: glob {glob_rel}", file=sys.stderr); continue
+        # ~120 items per group spread across files
+        per_file = max(2, 120 // len(files))
+        kept = 0
+        for fp in files:
+            try:
+                rows = _reservoir_sample_csv(fp, per_file, csvmod)
+                for r in rows:
+                    item = normalize_rusmedia_row(r, sname)
+                    if item: out.append(item); kept += 1
+            except Exception as e:
+                print(f"  WARN {fp.name}: {e}", file=sys.stderr)
+        print(f"  {sname}: {kept} items across {len(files)} regional CSVs (~{per_file}/file)")
+
+    # --- 4) filtered_fulltext/ — each CSV is its own regional portal ---
+    # Source label = filename stem with `_fulltext` stripped (e.g. "116_ru",
+    # "fontanka_ru", "e1_ru"). Surfaces ~30 distinct regional outlets in the
+    # dropdown.
+    filtered_files = sorted(RM_PROC.glob(RM_FILTERED_PORTALS_GLOB))
+    print(f"rusmedia/filtered_fulltext: {len(filtered_files)} portals")
+    PORTAL_TARGET = 50
+    for fp in filtered_files:
+        sname = "ff_" + fp.stem.replace("_fulltext", "")
+        try:
+            rows = _reservoir_sample_csv(fp, PORTAL_TARGET, csvmod)
+            for r in rows:
                 item = normalize_rusmedia_row(r, sname)
                 if item: out.append(item)
         except Exception as e:
-            print(f"  WARN {csv_path.name}: {e}", file=sys.stderr)
+            print(f"  WARN {fp.name}: {e}", file=sys.stderr)
 
     random.shuffle(out)
     print(f"  -> {len(out)} candidates; trimming to {min(N_PER_DB, len(out))}")
