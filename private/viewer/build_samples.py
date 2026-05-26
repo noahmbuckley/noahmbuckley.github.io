@@ -134,80 +134,97 @@ def build_vk():
 
 
 ##### rusMedia #####
-# rusMedia is heterogeneous CSVs. We accept any file with a text-bearing column
-# from this list (in priority order). Files without text-bearing columns are skipped.
-TEXT_FIELDS  = ("full_text", "text", "description")
-TITLE_FIELDS = ("title",)
-URL_FIELDS   = ("url",)
-DATE_FIELDS  = ("date", "pub_date", "pubDate", "published_time", "lastmod")
-REGION_FIELDS = ("regionid",)
-SOURCE_FIELDS = ("portal", "source", "city", "region", "category")
+# Primary source: national/corpus/ hive-partitioned parquet (20 outlets,
+# clean schema [url, pub_date, title, full_text, word_count, source, year_month]).
+# Additional CSVs (rbc_fulltext, izvestia_fulltext) covered as fallback.
+RM_NATIONAL = RM_PROC / "national" / "corpus"
+RM_EXTRA_CSVS = [
+    (RM_PROC / "rbc_national" / "rbc_fulltext.csv",   "rbc_national"),
+    (RM_PROC / "izvestia"     / "izvestia_fulltext.csv", "izvestia"),
+]
 
 
-def first_present(row, keys):
-    for k in keys:
-        v = row.get(k)
-        if v not in (None, "", float("nan")): return v
-    return None
-
-
-def normalize_rusmedia(row, csv_path):
-    txt = first_present(row, TEXT_FIELDS)
+def normalize_rusmedia_row(row, source_name):
+    """row is a dict from either a parquet (national/corpus) or a fulltext CSV.
+       Both layouts share url + title + full_text + pub_date + word_count fields."""
+    txt = row.get("full_text") or row.get("text")
     if not txt: return None
-    url = first_present(row, URL_FIELDS)
-    src = first_present(row, SOURCE_FIELDS) or csv_path.stem.split("_")[0]
+    url = row.get("url")
     return {
-        "id": f"rm_{csv_path.stem}_{row.get('url_id') or row.get('article_id') or hash(str(url) or txt[:60])}",
+        "id": f"rm_{source_name}_{row.get('url_id') or hash(str(url) or txt[:60]) & 0xffffffff}",
         "db": "rusmedia",
-        "date": first_present(row, DATE_FIELDS),
-        "source": str(src),
-        "title": first_present(row, TITLE_FIELDS),
+        "date": str(row.get("pub_date")) if row.get("pub_date") else None,
+        "source": str(source_name),
+        "title": row.get("title"),
         "text": truncate(txt),
         "url": url if url else None,
-        "regionid": first_present(row, REGION_FIELDS),
+        "regionid": None,
         "metadata": {
-            "csv_file": csv_path.name,
-            "category": row.get("category"),
-            "view_count": row.get("view_count"),
-            "author": row.get("author"),
             "word_count": row.get("word_count"),
+            "section": row.get("section"),
+            "year_month": row.get("year_month"),
         },
     }
 
 
 def build_rusmedia():
+    import pyarrow.parquet as pq
     import csv as csvmod
     csvmod.field_size_limit(sys.maxsize)
-    paths = sorted(RM_PROC.glob("*.csv"))
-    text_bearing = []
-    for p in paths:
-        try:
-            with open(p, "r", encoding="utf-8", errors="replace") as f:
-                hdr = f.readline().rstrip("\n").split(",")
-                if any(c in hdr for c in TEXT_FIELDS):
-                    text_bearing.append(p)
-        except Exception:
-            pass
-    print(f"rusmedia: {len(paths)} CSVs total, {len(text_bearing)} with text bodies")
-    if not text_bearing: return []
-    # weight selection by file row count so big files contribute more
-    per_file = max(20, N_PER_DB // max(1, len(text_bearing)))
     out = []
-    for p in text_bearing:
-        if len(out) >= N_PER_DB * 2: break
+
+    # --- 1) national/corpus hive-partitioned parquets ---
+    if RM_NATIONAL.exists():
+        sources = sorted(p for p in RM_NATIONAL.glob("source=*") if p.is_dir())
+        print(f"rusmedia: {len(sources)} sources in national/corpus")
+        per_source = max(50, N_PER_DB // max(1, len(sources)))    # ~100 per source
+        for sdir in sources:
+            sname = sdir.name.replace("source=", "")
+            parquets = list(sdir.rglob("*.parquet"))
+            if not parquets: continue
+            # pick 2-3 random parquets per source so we sweep across year_months
+            picks = random.sample(parquets, min(3, len(parquets)))
+            taken = 0
+            for p in picks:
+                if taken >= per_source: break
+                try:
+                    tbl = pq.read_table(p)
+                    if tbl.num_rows == 0: continue
+                    idx = random.sample(range(tbl.num_rows),
+                                        min(per_source - taken, tbl.num_rows))
+                    rows = tbl.take(idx).to_pylist()
+                    for r in rows:
+                        item = normalize_rusmedia_row(r, sname)
+                        if item: out.append(item); taken += 1
+                except Exception as e:
+                    print(f"  WARN {p.name}: {e}", file=sys.stderr)
+
+    # --- 2) extra CSVs (rbc + izvestia fulltext, not in national/) ---
+    # RAM-safe: reservoir-sample K rows in one streaming pass — never load
+    # the whole CSV into memory. Memory bounded at O(K) row-dicts regardless
+    # of file size (the rbc fulltext CSV is 600 MB, izvestia 452 MB).
+    TARGET = 120
+    for csv_path, sname in RM_EXTRA_CSVS:
+        if not csv_path.exists(): continue
         try:
-            with open(p, "r", encoding="utf-8", errors="replace") as f:
+            reservoir = []
+            with open(csv_path, "r", encoding="utf-8", errors="replace") as f:
                 rdr = csvmod.DictReader(f)
-                rows = list(rdr)
-            if not rows: continue
-            pick = random.sample(rows, min(per_file, len(rows)))
-            for r in pick:
-                item = normalize_rusmedia(r, p)
+                for i, row in enumerate(rdr):
+                    if i < TARGET:
+                        reservoir.append(row)
+                    else:
+                        j = random.randint(0, i)
+                        if j < TARGET:
+                            reservoir[j] = row
+            for r in reservoir:
+                item = normalize_rusmedia_row(r, sname)
                 if item: out.append(item)
         except Exception as e:
-            print(f"  WARN {p.name}: {e}", file=sys.stderr)
+            print(f"  WARN {csv_path.name}: {e}", file=sys.stderr)
+
     random.shuffle(out)
-    print(f"  -> {len(out[:N_PER_DB])} items (from {len(out)} candidates)")
+    print(f"  -> {len(out)} candidates; trimming to {min(N_PER_DB, len(out))}")
     return out[:N_PER_DB]
 
 
