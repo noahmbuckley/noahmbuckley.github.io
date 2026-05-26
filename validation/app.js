@@ -168,7 +168,12 @@ async function loadTaskData(taskId, { allowNetwork = true } = {}) {
   if (allowNetwork && isOnline()) {
     try {
       const schema = await fetchJSON(meta.schema_url);
-      const items  = await fetchJSON(meta.items_url);
+      const itemsRaw = await fetchJSON(meta.items_url);
+      // Newer chunk builders wrap items in {task_id, schema_version, built_at, n_items, items: [...]};
+      // older chunks are a plain array. Accept both shapes.
+      const items = Array.isArray(itemsRaw)
+        ? itemsRaw
+        : (itemsRaw && Array.isArray(itemsRaw.items) ? itemsRaw.items : []);
       cached = { task_id: taskId, schema, items, fetched_at: Date.now() };
       await idbPut(STORE_TASKS, cached);
     } catch (e) {
@@ -176,6 +181,10 @@ async function loadTaskData(taskId, { allowNetwork = true } = {}) {
     }
   }
   if (!cached) throw new Error(`Task ${taskId} not in cache. Connect online to fetch.`);
+  // Re-unwrap on cache hit too, in case an older cache entry holds the wrapped object.
+  if (cached.items && !Array.isArray(cached.items) && Array.isArray(cached.items.items)) {
+    cached.items = cached.items.items;
+  }
   return cached;
 }
 
