@@ -1,0 +1,306 @@
+{
+  "task_id": "protests-fresh-B",
+  "name": "Protests — FPP type labeling (100 items)",
+  "version": "2026-05-26",
+  "id_field": "item_id",
+  "instructions": "100 FPP-source protest events, stratified by llm_protest_type. Goal: TYPE gold for the FPP population (currently 0 gold). Confirm protest YES/NO and the type label. Many will be straightforward; the unsure ones are the most valuable.",
+  "display": [
+    {
+      "field": "date",
+      "label": "Date"
+    },
+    {
+      "field": "region_name",
+      "label": "Region",
+      "format": "compact"
+    },
+    {
+      "field": "regionid",
+      "label": "regionid",
+      "format": "compact"
+    },
+    {
+      "field": "city",
+      "label": "City",
+      "format": "compact"
+    },
+    {
+      "field": "title",
+      "label": "Title (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "text",
+      "label": "Post text (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "tags",
+      "label": "Tags",
+      "format": "compact"
+    },
+    {
+      "field": "haiku_protest",
+      "label": "Haiku: protest?",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "haiku_type",
+      "label": "Haiku: protest_type",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "haiku_type_rus",
+      "label": "Haiku: type (RU)",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "haiku_scope",
+      "label": "Haiku: scope",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "haiku_regime_crit",
+      "label": "Haiku: regime_crit",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "haiku_topic_primary",
+      "label": "Haiku: topic_primary",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "haiku_size",
+      "label": "Haiku: size",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "haiku_repression",
+      "label": "Haiku: repression",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "haiku_certainty",
+      "label": "Haiku: certainty",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "id",
+      "label": "id",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "verdict",
+      "label": "Is this a real protest event?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "YES",
+          "label": "YES — real protest",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "NO",
+          "label": "NO — not a protest",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "BORDERLINE",
+          "label": "BORDERLINE",
+          "key": "3",
+          "tone": "warn"
+        },
+        {
+          "value": "SKIP",
+          "label": "SKIP — can't tell",
+          "key": "4",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "protest_type_correct",
+      "label": "Is Haiku's protest_type correct?",
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "key": "q",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "key": "w",
+          "tone": "bad"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "key": "e",
+          "tone": "neutral"
+        }
+      ],
+      "show_if": {
+        "verdict": [
+          "YES",
+          "BORDERLINE"
+        ]
+      }
+    },
+    {
+      "field": "correct_type",
+      "label": "Correct protest_type (if wrong)",
+      "type": "enum",
+      "options": [
+        {
+          "value": "demonstration",
+          "label": "demonstration"
+        },
+        {
+          "value": "march",
+          "label": "march"
+        },
+        {
+          "value": "picket",
+          "label": "picket"
+        },
+        {
+          "value": "solitary_picket",
+          "label": "solitary_picket"
+        },
+        {
+          "value": "rally",
+          "label": "rally"
+        },
+        {
+          "value": "strike",
+          "label": "strike"
+        },
+        {
+          "value": "blockade",
+          "label": "blockade"
+        },
+        {
+          "value": "vigil",
+          "label": "vigil"
+        },
+        {
+          "value": "hungerstrike",
+          "label": "hungerstrike"
+        },
+        {
+          "value": "other",
+          "label": "other"
+        }
+      ],
+      "show_if": {
+        "protest_type_correct": [
+          "no"
+        ]
+      }
+    },
+    {
+      "field": "rejection_reason",
+      "label": "If not a protest, what is it?",
+      "type": "enum",
+      "options": [
+        {
+          "value": "partisan_action",
+          "label": "Partisan action / sabotage",
+          "key": "q",
+          "tone": "neutral"
+        },
+        {
+          "value": "court_news",
+          "label": "Court / sentencing news",
+          "key": "w",
+          "tone": "neutral"
+        },
+        {
+          "value": "police_action",
+          "label": "Police / arrest action",
+          "key": "e",
+          "tone": "neutral"
+        },
+        {
+          "value": "civil_society_news",
+          "label": "NGO / civil society news (not protest)",
+          "key": "r",
+          "tone": "neutral"
+        },
+        {
+          "value": "rumor",
+          "label": "Rumor / unconfirmed",
+          "key": "t",
+          "tone": "neutral"
+        },
+        {
+          "value": "unrelated",
+          "label": "Unrelated to protest topic",
+          "key": "y",
+          "tone": "neutral"
+        },
+        {
+          "value": "other",
+          "label": "Other (use notes)",
+          "key": "u",
+          "tone": "neutral"
+        }
+      ],
+      "show_if": {
+        "verdict": [
+          "NO"
+        ]
+      }
+    },
+    {
+      "field": "regime_crit_correct",
+      "label": "Is regime_crit correct?",
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "tone": "bad"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "tone": "neutral"
+        }
+      ],
+      "show_if": {
+        "verdict": [
+          "YES",
+          "BORDERLINE"
+        ]
+      }
+    },
+    {
+      "field": "notes",
+      "label": "Notes (incl. multi-city flag, sarcasm, edge cases)",
+      "type": "textarea"
+    }
+  ]
+}
