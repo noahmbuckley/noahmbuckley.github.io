@@ -10,114 +10,57 @@
     font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
     background: #faf8f5;
     color: #2d2d2d;
-    max-width: 760px;
+    max-width: 540px;
     margin: 3rem auto;
     padding: 0 1.5rem;
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 1.7;
   }
   h1 {
     font-family: "Libre Baskerville", Georgia, serif;
     font-size: 1.7rem;
-    margin-bottom: 0.3rem;
+    margin-bottom: 1.5rem;
   }
   h2 {
-    font-size: 1.15rem;
-    margin-top: 2rem;
-    border-bottom: 1px solid #ddd5ca;
-    padding-bottom: 0.3rem;
-    color: #1a1a1a;
+    font-size: 0.95rem;
+    margin-top: 1.8rem;
+    margin-bottom: 0.4rem;
+    color: #888;
+    font-weight: normal;
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
   }
-  h3 {
-    font-size: 1rem;
-    margin-top: 1.2rem;
-    margin-bottom: 0.3rem;
-  }
+  ul { list-style: none; padding-left: 0; margin: 0; }
+  li { margin: 0.25rem 0; }
   a {
     color: #1a5f7a;
     text-decoration: none;
     border-bottom: 1px solid #ccd;
   }
   a:hover { border-bottom-color: #1a5f7a; }
-  .meta {
-    color: #888;
-    font-size: 13px;
-    font-style: italic;
-    margin-bottom: 2rem;
-  }
-  .item {
-    margin-bottom: 1rem;
-    padding-left: 0.8rem;
-    border-left: 2px solid #eee;
-  }
-  .item .desc {
-    color: #555;
-    font-size: 13px;
-    display: block;
-    margin-top: 0.15rem;
-  }
-  code {
-    background: #f4eee5;
-    padding: 1px 5px;
-    border-radius: 3px;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 13px;
-  }
 </style>
 </head>
 <body>
 
 <h1>Resources</h1>
-<p class="meta">Private bookmarks. Not linked from the main site, not indexed by search engines, not advertised. Anyone with the URL can fetch &mdash; don't put genuinely sensitive material here.</p>
 
-<h2>Interactive apps</h2>
+<h2>apps</h2>
+<ul>
+  <li><a href="apps/sdb/">FRG</a></li>
+  <li><a href="apps/tracker/">Tracker</a></li>
+  <li><a href="https://noah-buckley.shinyapps.io/alternate-russias/">Alternate Russias</a></li>
+  <li><a href="viewer/">Viewer</a></li>
+</ul>
 
-<div class="item">
-  <a href="apps/sdb/">FRG Interactive (SDB project)</a>
-  <span class="desc">Russia social desirability bias / Fake Russia Generator. Shinylive (browser-only).</span>
-</div>
+<h2>reports</h2>
+<ul>
+  <li><a href="sdb_report/">SDB</a></li>
+</ul>
 
-<div class="item">
-  <a href="apps/tracker/">Russian Public Opinion Tracker</a>
-  <span class="desc">Latent regime acceptance, discontent, and SVO support indices, weekly. Shinylive.</span>
-</div>
-
-<div class="item">
-  <a href="https://noah-buckley.shinyapps.io/alternate-russias/">Alternate Russias</a>
-  <span class="desc">Counterfactual scenario explorer. Hosted on shinyapps.io (cold-start ~30s).</span>
-</div>
-
-<h2>Reports</h2>
-
-<div class="item">
-  <a href="sdb_report/">Can We Trust Russian Public Opinion Surveys?</a>
-  <span class="desc">SDB project report — survey trust, social desirability bias, DK rates, war-era opinion. Self-contained HTML with ~60 figures (May 2026 figures).</span>
-</div>
-
-<h2>Talks</h2>
-
-<div class="item">
-  <a href="talks/">Talks index</a>
-  <span class="desc">Slide decks (HTML + PDF backup) for research presentations.</span>
-</div>
-
-<h2>About this page</h2>
-
-<p>Lives in <code>website/private/</code> in the site repo. Quarto copies it via the <code>resources:</code> declaration in <code>_quarto.yml</code> &mdash; not rendered, not in <code>sitemap.xml</code>, not in the sidebar.</p>
-
-<h3>Hosting options for Shiny apps (notes for future)</h3>
-
-<p><strong>Three paths used here:</strong></p>
-
-<ol>
-  <li><strong>Shinylive (static, browser-only via WebAssembly).</strong> Best for low-traffic personal use. Bundle is ~30 MB of webR runtime + your app code &amp; data. No cold start, no server, no idle limit. Hosted on GitHub Pages alongside the rest of the site. Build: <code>shinylive::export("path/to/app", "private/apps/&lt;slug&gt;")</code>. Limitations: not every CRAN package compiles to WASM &mdash; test in a browser before committing. Used here for SDB and tracker.</li>
-
-  <li><strong>shinyapps.io (server-hosted).</strong> Free tier: 5 apps, 25 active hours/month. Zero rewriting, but cold-start ~30s on idle apps. Used here for Alternate Russias (already deployed, dcf in <code>alternateRussias/app/rsconnect/</code>).</li>
-
-  <li><strong>Self-hosted Shiny Server.</strong> Not used. Full control, ongoing infra cost &amp; maintenance.</li>
-</ol>
-
-<p><strong>Decision rule:</strong> default to Shinylive. Switch to shinyapps.io only if the app uses a CRAN package that doesn't compile to WASM, talks to a database, or has data files large enough that bundling them in the browser bundle is prohibitive.</p>
+<h2>talks</h2>
+<ul>
+  <li><a href="talks/">Talks</a></li>
+</ul>
 
 </body>
 </html>
