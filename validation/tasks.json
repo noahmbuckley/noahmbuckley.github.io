@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-27",
+  "generated_at": "2026-05-26",
   "tasks": [
     {
       "id": "arrests-fresh-A",
@@ -41,38 +41,6 @@
       "description": "100 confirmed-disaster events stratified across disaster_type. Asks for hand-corrected TYPE + SEVERITY (both have 0 gold today). Excludes events already verdicted in all_handcoded.csv. Built 2026-05-26.",
       "schema_url": "data/disaster-types/schema.json",
       "items_url": "data/disaster-types/items.json"
-    },
-    {
-      "id": "scope-filter-drops-A",
-      "name": "scope-filter drops — audit (60)",
-      "project": "dedup",
-      "description": "60 items the new scope_filter dropped from the Activatica corpus (2026-05-27). Verify each drop is correct — silent-data-loss audit.",
-      "schema_url": "data/scope-filter-drops-A/schema.json",
-      "items_url": "data/scope-filter-drops-A/items.json"
-    },
-    {
-      "id": "protests-fresh-C",
-      "name": "Protests — Shkulev media (100)",
-      "project": "protests",
-      "description": "100 protest candidates from Shkulev portal titles, stratified by year/region/detention/borderline. Built 2026-05-27.",
-      "schema_url": "data/protests-fresh-C/schema.json",
-      "items_url": "data/protests-fresh-C/items.json"
-    },
-    {
-      "id": "protests-fresh-D",
-      "name": "Protests — Telegram (100)",
-      "project": "protests",
-      "description": "100 protest candidates from Telegram posts, stratified by channel_type/views/detention/year. Built 2026-05-27.",
-      "schema_url": "data/protests-fresh-D/schema.json",
-      "items_url": "data/protests-fresh-D/items.json"
-    },
-    {
-      "id": "protests-fresh-E",
-      "name": "Protests — REGNUM (100)",
-      "project": "protests",
-      "description": "100 protest candidates from REGNUM (heavy pre-2012). Built 2026-05-27.",
-      "schema_url": "data/protests-fresh-E/schema.json",
-      "items_url": "data/protests-fresh-E/items.json"
     }
   ]
 }
