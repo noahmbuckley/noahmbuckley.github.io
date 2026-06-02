@@ -110,9 +110,23 @@ async function init() {
 
 function registerSW() {
   if (!('serviceWorker' in navigator)) return;
-  navigator.serviceWorker.register('sw.js').catch(err => {
-    console.warn('SW register failed:', err);
-  });
+  // updateViaCache:'none' => the browser fetches sw.js bypassing the HTTP cache when
+  // checking for updates. Without this, a long Cache-Control on sw.js (Cloudflare
+  // serves max-age=14400 = 4h) means iOS Safari keeps seeing the OLD worker and never
+  // updates — the recurring "iPad won't refresh" problem.
+  navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' })
+    .then(reg => {
+      reg.update().catch(() => {});                 // force an update check on every launch
+      // When a newly-installed worker takes control, reload once so the fresh
+      // task list/app shell render. IndexedDB answers persist across reload.
+      let reloaded = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (reloaded) return;
+        reloaded = true;
+        window.location.reload();
+      });
+    })
+    .catch(err => { console.warn('SW register failed:', err); });
 }
 
 /* ============================================================ */
