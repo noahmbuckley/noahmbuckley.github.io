@@ -1,0 +1,337 @@
+{
+  "task_id": "arrests-random-B",
+  "name": "Arrests — random eval B (100)",
+  "version": "2026-06-02",
+  "id_field": "item_id",
+  "instructions": "REPRESENTATIVE random draw from the media corpus (Telegram/Shkulev/Sledcom) — NOT stratified, so this gives the honest precision + region-accuracy numbers and the model's test set. Yellow = LLM's call. Leave a field BLANK if the LLM's value is correct (blank = correct). REGION RULE: event region = the official's region of office (jurisdiction) — NOT the court's city (a Moscow court like Басманный/Замоскворецкий trying a regional official does NOT make it a Moscow event), NOT the publishing channel's region, NOT the physical arrest city. This round also asks you to spot-check crime_type and official_level.",
+  "display": [
+    {
+      "field": "strata",
+      "label": "Strata",
+      "format": "tag"
+    },
+    {
+      "field": "source",
+      "label": "Source",
+      "format": "compact"
+    },
+    {
+      "field": "date",
+      "label": "Date"
+    },
+    {
+      "field": "region_event",
+      "label": "regionid_event (LLM)",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "region_publisher",
+      "label": "regionid_publisher",
+      "format": "compact"
+    },
+    {
+      "field": "text",
+      "label": "Text (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "official_name",
+      "label": "official_name",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "official_position",
+      "label": "position",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "official_level",
+      "label": "level",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "crime_type",
+      "label": "crime_type",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "arrest_stage",
+      "label": "arrest_stage",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "is_corruption",
+      "label": "is_corruption",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "is_federal",
+      "label": "is_federal",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "regionid_confidence",
+      "label": "regionid_confidence",
+      "format": "compact"
+    },
+    {
+      "field": "item_id",
+      "label": "item_id",
+      "format": "compact"
+    }
+  ],
+  "row_class_field": "region_mismatch_flag",
+  "row_class_map": {
+    "true": "fn-candidate",
+    "TRUE": "fn-candidate"
+  },
+  "validation": [
+    {
+      "field": "verdict",
+      "label": "Real arrest event of an official?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "YES",
+          "label": "YES — real arrest",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "NO",
+          "label": "NO — not an arrest",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "BORDERLINE",
+          "label": "BORDERLINE",
+          "key": "3",
+          "tone": "warn"
+        },
+        {
+          "value": "SKIP",
+          "label": "SKIP — can't tell",
+          "key": "4",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "region_event_correct",
+      "label": "Is the event-region correct?",
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "key": "q",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "key": "w",
+          "tone": "bad"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "key": "e",
+          "tone": "neutral"
+        }
+      ],
+      "show_if": {
+        "verdict": [
+          "YES",
+          "BORDERLINE"
+        ]
+      }
+    },
+    {
+      "field": "correct_regionid",
+      "label": "Correct regionid (if event-region wrong)",
+      "type": "integer",
+      "placeholder": "e.g. 18 for Moscow",
+      "show_if": {
+        "region_event_correct": [
+          "no"
+        ]
+      }
+    },
+    {
+      "field": "crime_type_correct",
+      "label": "Is crime_type correct?",
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "tone": "bad"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "tone": "neutral"
+        }
+      ],
+      "show_if": {
+        "verdict": [
+          "YES",
+          "BORDERLINE"
+        ]
+      }
+    },
+    {
+      "field": "correct_crime_type",
+      "label": "Correct crime_type (if wrong)",
+      "type": "text",
+      "placeholder": "e.g. bribery, embezzlement, abuse_of_office, fraud, negligence…",
+      "show_if": {
+        "crime_type_correct": [
+          "no"
+        ]
+      }
+    },
+    {
+      "field": "level_correct",
+      "label": "Is official_level correct?",
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "tone": "bad"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "tone": "neutral"
+        }
+      ],
+      "show_if": {
+        "verdict": [
+          "YES",
+          "BORDERLINE"
+        ]
+      }
+    },
+    {
+      "field": "correct_level",
+      "label": "Correct level (if wrong)",
+      "type": "text",
+      "placeholder": "e.g. mayor, governor, regional_minister, police_mvd, head_of_enterprise…",
+      "show_if": {
+        "level_correct": [
+          "no"
+        ]
+      }
+    },
+    {
+      "field": "multi_defendant",
+      "label": "Number of distinct defendants in this text",
+      "type": "enum",
+      "options": [
+        {
+          "value": "1",
+          "label": "1",
+          "tone": "neutral"
+        },
+        {
+          "value": "2",
+          "label": "2",
+          "tone": "neutral"
+        },
+        {
+          "value": "3plus",
+          "label": "3+",
+          "tone": "neutral"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "tone": "neutral"
+        }
+      ],
+      "show_if": {
+        "verdict": [
+          "YES",
+          "BORDERLINE"
+        ]
+      }
+    },
+    {
+      "field": "rejection_reason",
+      "label": "Why not an arrest event?",
+      "type": "enum",
+      "options": [
+        {
+          "value": "not_an_arrest",
+          "label": "Not an arrest (no detention/charges/etc.)",
+          "key": "q",
+          "tone": "neutral"
+        },
+        {
+          "value": "not_an_official",
+          "label": "Person is not an official",
+          "key": "w",
+          "tone": "neutral"
+        },
+        {
+          "value": "rumor_threat",
+          "label": "Rumor / threat / unconfirmed",
+          "key": "e",
+          "tone": "neutral"
+        },
+        {
+          "value": "duplicate_or_followup",
+          "label": "Duplicate / follow-up to earlier event",
+          "key": "r",
+          "tone": "neutral"
+        },
+        {
+          "value": "no_info",
+          "label": "Can't tell from text",
+          "key": "t",
+          "tone": "neutral"
+        },
+        {
+          "value": "other",
+          "label": "Other (use notes)",
+          "key": "y",
+          "tone": "neutral"
+        }
+      ],
+      "show_if": {
+        "verdict": [
+          "NO"
+        ]
+      }
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "type": "textarea",
+      "placeholder": "Free text — surprises, edge cases, anything"
+    }
+  ]
+}

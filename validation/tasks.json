@@ -41,6 +41,30 @@
       "description": "100 confirmed-disaster events stratified across disaster_type. Asks for hand-corrected TYPE + SEVERITY (both have 0 gold today). Excludes events already verdicted in all_handcoded.csv. Built 2026-05-26.",
       "schema_url": "data/disaster-types/schema.json",
       "items_url": "data/disaster-types/items.json"
+    },
+    {
+      "id": "arrests-random-A",
+      "name": "Arrests — random eval A (100)",
+      "project": "arrests",
+      "description": "REPRESENTATIVE simple-random draw from the media corpus (Telegram/Shkulev/Sledcom), disjoint from all prior samples. Gives unbiased precision + region accuracy + the model's test set. Also spot-checks crime_type & official_level. Built 2026-06-02.",
+      "schema_url": "data/arrests-random-A/schema.json",
+      "items_url": "data/arrests-random-A/items.json"
+    },
+    {
+      "id": "arrests-random-B",
+      "name": "Arrests — random eval B (100)",
+      "project": "arrests",
+      "description": "Second representative random media chunk, disjoint from A and all prior samples. Built 2026-06-02.",
+      "schema_url": "data/arrests-random-B/schema.json",
+      "items_url": "data/arrests-random-B/items.json"
+    },
+    {
+      "id": "protests-random-A",
+      "name": "Protests — random eval (100)",
+      "project": "protests",
+      "description": "Representative random draw from the Activatica Haiku corpus, disjoint from answered protest sets. Pins protest-occurrence precision + surfaces rejection genres. Form-type not asked. Built 2026-06-02.",
+      "schema_url": "data/protests-random-A/schema.json",
+      "items_url": "data/protests-random-A/items.json"
     }
   ]
 }
