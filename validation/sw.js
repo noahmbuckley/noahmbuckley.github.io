@@ -5,7 +5,7 @@
      - activate: precache all task data listed in tasks.json (best effort)
      - fetch:    cache-first for our scope; network falls back to cache
    ============================================================= */
-const VERSION = 'v7-2026-05-27';
+const VERSION = 'v8-2026-06-02';
 const SHELL_CACHE = 'shell-' + VERSION;
 const DATA_CACHE  = 'data-'  + VERSION;
 
@@ -66,6 +66,22 @@ self.addEventListener('fetch', (event) => {
   if (!url.pathname.startsWith(new URL('./', self.location).pathname)) return;
 
   event.respondWith((async () => {
+    // tasks.json is network-FIRST (with cache fallback) so a freshly-added task
+    // list shows up when online WITHOUT needing a service-worker version bump.
+    // Everything else stays cache-first (stale-while-revalidate) for offline use.
+    if (url.pathname.endsWith('tasks.json')) {
+      try {
+        const resp = await fetch(req, { cache: 'no-store' });
+        if (resp && resp.ok) {
+          const cache = await caches.open(SHELL_CACHE);
+          try { await cache.put(req, resp.clone()); } catch (e) {}
+          return resp;
+        }
+      } catch (e) { /* offline — fall through to cache */ }
+      return (await caches.match(req, { ignoreSearch: true }))
+             || new Response('Offline and not cached.', { status: 503 });
+    }
+
     // 1) try caches
     const cached = await caches.match(req, { ignoreSearch: true });
     // 2) network in parallel — update cache if successful
