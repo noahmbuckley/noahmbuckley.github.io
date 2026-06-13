@@ -65,6 +65,14 @@
       "description": "Representative random draw from the Activatica Haiku corpus, disjoint from answered protest sets. Pins protest-occurrence precision + surfaces rejection genres. Form-type not asked. Built 2026-06-02.",
       "schema_url": "data/protests-random-A/schema.json",
       "items_url": "data/protests-random-A/items.json"
+    },
+    {
+      "id": "protests-topic-A",
+      "name": "Protests — topic check (100)",
+      "project": "protests",
+      "description": "Topic/grievance accuracy check on 100 confirmed protests (the field the protest analysis uses). Built 2026-06-13.",
+      "schema_url": "data/protests-topic-A/schema.json",
+      "items_url": "data/protests-topic-A/items.json"
     }
   ]
 }

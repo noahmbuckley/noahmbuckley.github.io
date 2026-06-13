@@ -1,0 +1,62 @@
+{
+  "task_id": "protests-topic-A",
+  "name": "Protests — topic check (100)",
+  "version": "2026-06-13",
+  "id_field": "item_id",
+  "instructions": "All 100 are real protests (already confirmed) — this round checks ONLY the GRIEVANCE/TOPIC, the field the protest analysis actually uses for by-type heterogeneity. Yellow = Haiku's topic. Leave blank if it's right (blank = correct). If wrong, pick the better topic. Note: antiwar protests should be 'war_antiwar' (Haiku tends to file them under putin_medvedev). If an item isn't actually a protest, set topic_correct = can't tell and say so in notes.",
+  "display": [
+    { "field": "strata", "label": "Strata", "format": "tag" },
+    { "field": "date", "label": "Date" },
+    { "field": "region_name", "label": "Region", "format": "compact" },
+    { "field": "city", "label": "City", "format": "compact" },
+    { "field": "title", "label": "Title (RU)", "format": "longtext" },
+    { "field": "text", "label": "Post text (RU)", "format": "longtext" },
+    { "field": "tags", "label": "Tags", "format": "compact" },
+    { "field": "haiku_topic_primary", "label": "Haiku: TOPIC", "format": "compact", "highlight": "llm" },
+    { "field": "haiku_type", "label": "Haiku: type", "format": "compact" },
+    { "field": "haiku_scope", "label": "Haiku: scope", "format": "compact" },
+    { "field": "haiku_regime_crit", "label": "Haiku: regime_crit", "format": "compact" },
+    { "field": "id", "label": "id", "format": "compact" }
+  ],
+  "validation": [
+    {
+      "field": "topic_correct",
+      "label": "Is the topic/grievance correct?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        { "value": "yes", "label": "Yes", "key": "1", "tone": "good" },
+        { "value": "no", "label": "No", "key": "2", "tone": "bad" },
+        { "value": "cant_tell", "label": "Can't tell / not a protest", "key": "3", "tone": "neutral" }
+      ]
+    },
+    {
+      "field": "correct_topic",
+      "label": "Correct topic (if wrong)",
+      "type": "enum",
+      "options": [
+        { "value": "ecology", "label": "ecology", "tone": "neutral" },
+        { "value": "civilrights", "label": "civilrights", "tone": "neutral" },
+        { "value": "war_antiwar", "label": "war_antiwar", "tone": "neutral" },
+        { "value": "putin_medvedev", "label": "putin_medvedev", "tone": "neutral" },
+        { "value": "elections_democracy", "label": "elections_democracy", "tone": "neutral" },
+        { "value": "corruption", "label": "corruption", "tone": "neutral" },
+        { "value": "construction", "label": "construction", "tone": "neutral" },
+        { "value": "housing", "label": "housing", "tone": "neutral" },
+        { "value": "prices_economy", "label": "prices_economy", "tone": "neutral" },
+        { "value": "pensions", "label": "pensions", "tone": "neutral" },
+        { "value": "workers_pay", "label": "workers_pay", "tone": "neutral" },
+        { "value": "education", "label": "education", "tone": "neutral" },
+        { "value": "heritage", "label": "heritage", "tone": "neutral" },
+        { "value": "other", "label": "other", "tone": "neutral" }
+      ],
+      "show_if": { "topic_correct": ["no"] }
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "type": "textarea",
+      "placeholder": "Free text — surprises, edge cases, anything"
+    }
+  ]
+}
