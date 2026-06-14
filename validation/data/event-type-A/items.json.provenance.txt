@@ -1,8 +1,8 @@
 # Provenance for items.json
 output     : /Users/noahbuckley/Dropbox/Projects/me/website/validation/data/event-type-A/items.json
 script     : code/91_build_validation_batches.R
-git_sha    : 334c316a48f5b5f423c47d958a130045212d5f25
-timestamp  : 2026-06-14 09:54:07.646656
+git_sha    : 3bfdb8051d4b2195c83910d88d70124fed5c2012
+timestamp  : 2026-06-14 10:26:13.983819
 R_version  : R version 4.5.3 (2026-03-11)
 platform   : aarch64-apple-darwin20
 packages_loaded:
