@@ -1,0 +1,9 @@
+# Provenance for items.json
+output     : /Users/noahbuckley/Dropbox/Projects/me/website/validation/data/disaster-A/items.json
+script     : code/91_build_validation_batches.R
+git_sha    : 4eb415b1bc4e7d22347852171ef815f4452ea48b
+timestamp  : 2026-06-14 14:10:28.321709
+R_version  : R version 4.5.3 (2026-03-11)
+platform   : aarch64-apple-darwin20
+packages_loaded:
+  jsonlite 2.0.0
