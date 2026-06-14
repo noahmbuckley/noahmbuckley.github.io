@@ -73,6 +73,22 @@
       "description": "Topic/grievance accuracy check on 100 confirmed protests (the field the protest analysis uses). Built 2026-06-13.",
       "schema_url": "data/protests-topic-A/schema.json",
       "items_url": "data/protests-topic-A/items.json"
+    },
+    {
+      "id": "event-type-A",
+      "name": "Event type — router check A (50)",
+      "project": "rusClassifier",
+      "description": "PRIORITY. event_type is the top-level router (arrest/protest/disaster/economic/...) with ZERO hand-gold today. 50 HARD CALLS only — the blurry govpol/social/economic/other cluster, every item with a competing 2nd type. Easy routes deliberately excluded. Built 2026-06-14.",
+      "schema_url": "data/event-type-A/schema.json",
+      "items_url": "data/event-type-A/items.json"
+    },
+    {
+      "id": "protests-topic-v3-A",
+      "name": "Protests — topic check v3 (50)",
+      "project": "rusClassifier",
+      "description": "PRIORITY. Validates the NEW v3 topic re-label (the war-fix run) — topic-A used the OLD v2 labels. 50 HARD CALLS only: low/med-certainty + competing 2nd topic + the new ecology↔construction rule. EXCLUDES topic-A ids and ALL war_antiwar (already fixed + validated). Built 2026-06-14.",
+      "schema_url": "data/protests-topic-v3-A/schema.json",
+      "items_url": "data/protests-topic-v3-A/items.json"
     }
   ]
 }

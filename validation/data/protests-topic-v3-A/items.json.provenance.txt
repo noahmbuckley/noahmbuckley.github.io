@@ -1,0 +1,9 @@
+# Provenance for items.json
+output     : /Users/noahbuckley/Dropbox/Projects/me/website/validation/data/protests-topic-v3-A/items.json
+script     : code/91_build_validation_batches.R
+git_sha    : 334c316a48f5b5f423c47d958a130045212d5f25
+timestamp  : 2026-06-14 09:54:07.664203
+R_version  : R version 4.5.3 (2026-03-11)
+platform   : aarch64-apple-darwin20
+packages_loaded:
+  jsonlite 2.0.0

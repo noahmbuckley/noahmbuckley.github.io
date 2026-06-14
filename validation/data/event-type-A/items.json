@@ -1,0 +1,508 @@
+{
+  "task_id": "event-type-A",
+  "schema_version": "2026-06-14",
+  "built_at": "2026-06-14",
+  "n_items": 50,
+  "items": [
+    {
+      "item_id": "evt-4895",
+      "id": "4895",
+      "date": "2013-12",
+      "region": "Рязанска",
+      "text": "Закрытие в Рязани родильного дома №1",
+      "haiku_primary_type": "social",
+      "haiku_secondary_type": "disaster_accident",
+      "strata": "social"
+    },
+    {
+      "item_id": "evt-62480",
+      "id": "62480",
+      "date": "2017-02",
+      "region": "Самарска",
+      "text": "7-е место в рейтинге социально-экономической напряженности в трудовой сфере Центра экономических и политических реформ",
+      "haiku_primary_type": "social",
+      "haiku_secondary_type": "labor",
+      "strata": "social"
+    },
+    {
+      "item_id": "evt-29291",
+      "id": "29291",
+      "date": "2015-04",
+      "region": "Калининг",
+      "text": "Скандалы с отказами в регистрации кандидатов в ходе кампании по досрочным выборам совета депутатов Балтийского муниципального района",
+      "haiku_primary_type": "election",
+      "haiku_secondary_type": "arrest_legal",
+      "strata": "election"
+    },
+    {
+      "item_id": "evt-80595",
+      "id": "80595",
+      "date": "2019-10",
+      "region": "Ненецкий",
+      "text": "Сообщения СМИ о принадлежности предприятия, охранявшего детский сад, семье экс-главы горсовета Нарьян-Мара, замсекретаря местной “Единой России” Ольги Петуниной",
+      "haiku_primary_type": "other",
+      "haiku_secondary_type": "arrest_legal",
+      "strata": "other"
+    },
+    {
+      "item_id": "evt-83872",
+      "id": "83872",
+      "date": "2020-08",
+      "region": "Краснода",
+      "text": "10-е место по суммарным выбросам загрязняющих веществ в атмосферу по данным Finexpertiza",
+      "haiku_primary_type": "economic",
+      "haiku_secondary_type": "social",
+      "strata": "economic"
+    },
+    {
+      "item_id": "evt-97670",
+      "id": "97670",
+      "date": "2021-11",
+      "region": "Ингушети",
+      "text": "Конфликт вокруг проведения чеченскими строителями в районе административной границы между Чечней и Ингушетией земляных работ, изменяющих русло реки Фортанга",
+      "haiku_primary_type": "other",
+      "haiku_secondary_type": "military",
+      "strata": "other"
+    },
+    {
+      "item_id": "evt-74995",
+      "id": "74995",
+      "date": "2019-04",
+      "region": "Тамбовск",
+      "text": "3-е место по убыли населения в исследовании РИА Рейтинг",
+      "haiku_primary_type": "economic",
+      "haiku_secondary_type": "social",
+      "strata": "economic"
+    },
+    {
+      "item_id": "evt-6240",
+      "id": "6240",
+      "date": "2013-07",
+      "region": "Тверская",
+      "text": "Рассмотрение в арбитражном суде претензий администрации Твери к компании АСВ-Строй за срыв сроков ремонта Восточного моста",
+      "haiku_primary_type": "other",
+      "haiku_secondary_type": "economic",
+      "strata": "other"
+    },
+    {
+      "item_id": "evt-32556",
+      "id": "32556",
+      "date": "2015-06",
+      "region": "Кемеровс",
+      "text": "Обращение врио губернатора Амана Тулеева в Роснедра с просьбой аннулировать лицензию компании «Чек-Су.ВК» на разработку Усинского месторождения марганца из-за экологической опасности",
+      "haiku_primary_type": "governor_political",
+      "haiku_secondary_type": "environmental",
+      "strata": "governor_political"
+    },
+    {
+      "item_id": "evt-45853",
+      "id": "45853",
+      "date": "2016-05",
+      "region": "Самарска",
+      "text": "Открытие губернатором Николаем Меркушкиным первого ледового дворца в Сызрани, построенного при финансировании «Роснефти»",
+      "haiku_primary_type": "governor_political",
+      "haiku_secondary_type": "social",
+      "strata": "governor_political"
+    },
+    {
+      "item_id": "evt-18727",
+      "id": "18727",
+      "date": "2014-07",
+      "region": "Оренбург",
+      "text": "Конфликт с потасовкой между мэром Абдулино Владимиром Горбуновым и главой районной администрации Александром Шерстобитовым",
+      "haiku_primary_type": "other",
+      "haiku_secondary_type": "governor_political",
+      "strata": "other"
+    },
+    {
+      "item_id": "evt-20102",
+      "id": "20102",
+      "date": "2014-06",
+      "region": "Саха",
+      "text": "Заявление врио главы региона Егора Борисова о возможной отсрочке на 5-10 лет строительства железной дороги Якутск-Мома-Магадан",
+      "haiku_primary_type": "economic",
+      "haiku_secondary_type": "governor_political",
+      "strata": "economic"
+    },
+    {
+      "item_id": "evt-51202",
+      "id": "51202",
+      "date": "2016-01",
+      "region": "Коми",
+      "text": "Внесение в Госдуму законопроекта, согласно которому могут быть изменены границы крупнейшего национального парка России «Югыд ва», часть территории которого планируется использовать для разработки месторождения золота",
+      "haiku_primary_type": "other",
+      "haiku_secondary_type": "military",
+      "strata": "other"
+    },
+    {
+      "item_id": "evt-51500",
+      "id": "51500",
+      "date": "2016-01",
+      "region": "Псковска",
+      "text": "Обращение учителей Псковской области к губернатору с жалобой на задержки зарплаты",
+      "haiku_primary_type": "social",
+      "haiku_secondary_type": "protest",
+      "strata": "social"
+    },
+    {
+      "item_id": "evt-14248",
+      "id": "14248",
+      "date": "2013-01",
+      "region": "Свердловская область",
+      "text": "Передача в свердловское правительство 200 тысяч подписей в поддержку мэра Первоуральска Ю.Переверзева (в городе проживает около 136 тыс. человек)",
+      "haiku_primary_type": "other",
+      "haiku_secondary_type": "governor_political",
+      "strata": "other"
+    },
+    {
+      "item_id": "evt-36857",
+      "id": "36857",
+      "date": "2015-10",
+      "region": "Астрахан",
+      "text": "Ликвидация Федеральной пассажирской компанией, несмотря на обращения губернатора и депутатов, пассажирского вагонного депо Астрахань, в результате которой под увольнение попадают до тысячи сотрудников",
+      "haiku_primary_type": "social",
+      "haiku_secondary_type": "economic",
+      "strata": "social"
+    },
+    {
+      "item_id": "evt-59534",
+      "id": "59534",
+      "date": "2017-11",
+      "region": "Саратовс",
+      "text": "Постановление главы Саратова Михаила Исаева, дающее право перевозчикам самим устанавливать цены на проезд",
+      "haiku_primary_type": "governor_political",
+      "haiku_secondary_type": "economic",
+      "strata": "governor_political"
+    },
+    {
+      "item_id": "evt-98696",
+      "id": "98696",
+      "date": "2021-10",
+      "region": "Орловска",
+      "text": "Иск энергетиков о признании банкротом трамвайно-троллейбусного МУПа Орла",
+      "haiku_primary_type": "economic",
+      "haiku_secondary_type": "arrest_legal",
+      "strata": "economic"
+    },
+    {
+      "item_id": "evt-13219",
+      "id": "13219",
+      "date": "2013-02",
+      "region": "Республика Алтай",
+      "text": "Обнародование археологического исследования участка маршрута трассы магистрального газопровода «Алтай». Выявлены 27 новых памятников археологии, 23 из которых находятся непосредственно в зоне предполагаемого строительства",
+      "haiku_primary_type": "other",
+      "haiku_secondary_type": "environmental",
+      "strata": "other"
+    },
+    {
+      "item_id": "evt-83760",
+      "id": "83760",
+      "date": "2020-08",
+      "region": "Иркутска",
+      "text": "6-е место по суммарным выбросам загрязняющих веществ в атмосферу по данным Finexpertiza",
+      "haiku_primary_type": "economic",
+      "haiku_secondary_type": "disaster_accident",
+      "strata": "economic"
+    },
+    {
+      "item_id": "evt-85978",
+      "id": "85978",
+      "date": "2020-12",
+      "region": "Чечня",
+      "text": "Перестрелка с участием силовиков в Курчалоевском районе, во время которой убиты 2 неизвестных",
+      "haiku_primary_type": "military",
+      "haiku_secondary_type": "disaster_accident",
+      "strata": "military"
+    },
+    {
+      "item_id": "evt-59012",
+      "id": "59012",
+      "date": "2017-11",
+      "region": "Ингушети",
+      "text": "Заявление председателя совета директоров «Газпрома» Виктора Зубкова на встрече с Юнус-Беком Евкуровым о возможном прекращении развития газификации Ингушетии в связи с ростом долгов за газ",
+      "haiku_primary_type": "governor_political",
+      "haiku_secondary_type": "economic",
+      "strata": "governor_political"
+    },
+    {
+      "item_id": "evt-100340",
+      "id": "100340",
+      "date": "2021-02",
+      "region": "Московск",
+      "text": "Объявление «Росатомом» тендера на проектирование по строительству под Сергиевом Посадом комплекса по переработке радиоактивных отходов",
+      "haiku_primary_type": "other",
+      "haiku_secondary_type": "military",
+      "strata": "other"
+    },
+    {
+      "item_id": "evt-87027",
+      "id": "87027",
+      "date": "2020-06",
+      "region": "Удмуртия",
+      "text": "Вторичный - отказ госсовета Удмуртии инициативной группе в проведении - референдума по вопросу перепрофилирования объекта уничтожения - химических отходов в Камбарке в комплекс переработки отходов I и - II класса опасности",
+      "haiku_primary_type": "governor_political",
+      "haiku_secondary_type": "protest",
+      "strata": "governor_political"
+    },
+    {
+      "item_id": "evt-13724",
+      "id": "13724",
+      "date": "2013-01",
+      "region": "Волгоградская область",
+      "text": "Сложное положение в Волгоградском кардиологическом центре из-за недофинансирования из областного бюджета",
+      "haiku_primary_type": "social",
+      "haiku_secondary_type": "economic",
+      "strata": "social"
+    },
+    {
+      "item_id": "evt-37331",
+      "id": "37331",
+      "date": "2015-10",
+      "region": "Нижегоро",
+      "text": "Расторжение гордумой Нижнего Новгорода контракта с главой администрации Олегом Кондрашовым",
+      "haiku_primary_type": "governor_political",
+      "haiku_secondary_type": "arrest_legal",
+      "strata": "governor_political"
+    },
+    {
+      "item_id": "evt-16268",
+      "id": "16268",
+      "date": "2014-04",
+      "region": "Самарска",
+      "text": "Сокращение сотрудников дочерними предприятиями «АвтоВАЗа» в связи со снижением объема заказов",
+      "haiku_primary_type": "economic",
+      "haiku_secondary_type": "social",
+      "strata": "economic"
+    },
+    {
+      "item_id": "evt-22619",
+      "id": "22619",
+      "date": "2014-03",
+      "region": "Челябинс",
+      "text": "83-е место в экологическом рейтинге «Зеленого патруля» по итогам зимы 2013-2014 - ",
+      "haiku_primary_type": "social",
+      "haiku_secondary_type": "environmental",
+      "strata": "social"
+    },
+    {
+      "item_id": "evt-35281",
+      "id": "35281",
+      "date": "2015-03",
+      "region": "Самарска",
+      "text": "Сокращение на «АвтоВАЗе» менеджерского состава на 1000 человек",
+      "haiku_primary_type": "economic",
+      "haiku_secondary_type": "social",
+      "strata": "economic"
+    },
+    {
+      "item_id": "evt-101504",
+      "id": "101504",
+      "date": "2021-01",
+      "region": "Ярославс",
+      "text": "Отставка директора департамента информатизации и связи Александра Догадина",
+      "haiku_primary_type": "governor_political",
+      "haiku_secondary_type": "arrest_legal",
+      "strata": "governor_political"
+    },
+    {
+      "item_id": "evt-34636",
+      "id": "34636",
+      "date": "2015-03",
+      "region": "Ингушети",
+      "text": "Конфликт в селе Али-Юрт вокруг строительства физкультурно-оздоровительного комплекса на землях частного предприятия, владельцы которого объясняют «рейдерский захват собственности» своей оппозиционной детельностью",
+      "haiku_primary_type": "social",
+      "haiku_secondary_type": "arrest_legal",
+      "strata": "social"
+    },
+    {
+      "item_id": "evt-91742",
+      "id": "91742",
+      "date": "2020-01",
+      "region": "Ненецкий",
+      "text": "Оскорбление членом общественной палаты НАО Татьяной Антипиной уроженцев Кавказа в переписке в социальных сетях",
+      "haiku_primary_type": "other",
+      "haiku_secondary_type": "arrest_legal",
+      "strata": "other"
+    },
+    {
+      "item_id": "evt-73371",
+      "id": "73371",
+      "date": "2018-01",
+      "region": "Томская",
+      "text": "Неподписание обладминистрацией, объединением работодателей и профсоюзами впервые за 10 лет регионального соглашения о минимальной зарплате в связи с постановлением Конституционного суда РФ, что северные надбавки и районные коэффициенты не входят в МРОТ",
+      "haiku_primary_type": "social",
+      "haiku_secondary_type": "economic",
+      "strata": "social"
+    },
+    {
+      "item_id": "evt-75922",
+      "id": "75922",
+      "date": "2019-12",
+      "region": "Тыва",
+      "text": "Скандал вокруг закрытия ветеринарной лаборатории в торговом доме “Гаруда” в Кызыле, из-за чего предприниматели перед Новым годом лишились возможности реализовать мясную продукцию",
+      "haiku_primary_type": "social",
+      "haiku_secondary_type": "governor_political",
+      "strata": "social"
+    },
+    {
+      "item_id": "evt-4105",
+      "id": "4105",
+      "date": "2013-12",
+      "region": "Бурятия",
+      "text": "Дефицит топлива в поселке Селенгинск из-за остановки работы Селенгинского целлюлозно-картонного комбината",
+      "haiku_primary_type": "economic",
+      "haiku_secondary_type": "disaster_accident",
+      "strata": "economic"
+    },
+    {
+      "item_id": "evt-97402",
+      "id": "97402",
+      "date": "2021-03",
+      "region": "Тыва",
+      "text": "Приостановка правительством РФ концессионного соглашения на строительство железной дороги Элегест – Кызыл - Курагино на срок до 5 лет без дополнительных платежей и штрафных санкций (ранее ТЭПК Руслана Байсарова законсервировала выработки Элегестского угольного месторождения, ожидая сдвига сроков строительства дороги)",
+      "haiku_primary_type": "governor_political",
+      "haiku_secondary_type": "economic",
+      "strata": "governor_political"
+    },
+    {
+      "item_id": "evt-24437",
+      "id": "24437",
+      "date": "2014-10",
+      "region": "Саратовс",
+      "text": "Обвинение главы Саратова Олега Грищенко «Волжской ТГК» в срыве отопительного сезона",
+      "haiku_primary_type": "governor_political",
+      "haiku_secondary_type": "disaster_accident",
+      "strata": "governor_political"
+    },
+    {
+      "item_id": "evt-96953",
+      "id": "96953",
+      "date": "2021-03",
+      "region": "Карачаев",
+      "text": "82-е место в рейтинге качества школьного образования Рособрнадзора",
+      "haiku_primary_type": "economic",
+      "haiku_secondary_type": "social",
+      "strata": "economic"
+    },
+    {
+      "item_id": "evt-64532",
+      "id": "64532",
+      "date": "2018-04",
+      "region": "Иркутска",
+      "text": "Прогнозы массовых сокращений работников Братского и Иркутского алюминиевых заводов после включения Олега Дерипаски и «Русала» в санкционный список минфина США",
+      "haiku_primary_type": "economic",
+      "haiku_secondary_type": "military",
+      "strata": "economic"
+    },
+    {
+      "item_id": "evt-102796",
+      "id": "102796",
+      "date": "2022-04",
+      "region": "Хакасия",
+      "text": "Скандал вокруг регистрации на досрочных выборах главы Ширинского района Сергея Зайцева, снятого ранее с этой должности по решению суда",
+      "haiku_primary_type": "governor_political",
+      "haiku_secondary_type": "arrest_legal",
+      "strata": "governor_political"
+    },
+    {
+      "item_id": "evt-35681",
+      "id": "35681",
+      "date": "2015-03",
+      "region": "Ямало-Не",
+      "text": "Отказ администрации Ноябрьска от капитального ремонта дорог из-за отсутствия необходимых средств в бюджете",
+      "haiku_primary_type": "economic",
+      "haiku_secondary_type": "social",
+      "strata": "economic"
+    },
+    {
+      "item_id": "evt-70958",
+      "id": "70958",
+      "date": "2018-10",
+      "region": "Тюменска",
+      "text": "Увольнение гендиректора «Тюменьэнерго» Сергея Савчука",
+      "haiku_primary_type": "governor_political",
+      "haiku_secondary_type": "arrest_legal",
+      "strata": "governor_political"
+    },
+    {
+      "item_id": "evt-15826",
+      "id": "15826",
+      "date": "2014-04",
+      "region": "Коми",
+      "text": "Намерение «Газпром межрегионгаз Ухта» ограничить поставки газа орнанизациям коммунального комплекса Ухты, Печоры и Сыктывдинского района в связи с задолженностью в размере 160 млн рублей",
+      "haiku_primary_type": "economic",
+      "haiku_secondary_type": "social",
+      "strata": "economic"
+    },
+    {
+      "item_id": "evt-106274",
+      "id": "106274",
+      "date": "2022-02",
+      "region": "Ставропо",
+      "text": "Направление в вынужденные отпуска без содержания работников птицефабрики «Агро-плюс» в Изобильненском округе из-за вспышки птичьего гриппа",
+      "haiku_primary_type": "social",
+      "haiku_secondary_type": "disaster_accident",
+      "strata": "social"
+    },
+    {
+      "item_id": "evt-98447",
+      "id": "98447",
+      "date": "2021-10",
+      "region": "Калмыкия",
+      "text": "Отставка министра образования и науки Эрдни Баринова",
+      "haiku_primary_type": "governor_political",
+      "haiku_secondary_type": "arrest_legal",
+      "strata": "governor_political"
+    },
+    {
+      "item_id": "evt-86636",
+      "id": "86636",
+      "date": "2020-07",
+      "region": "Северная",
+      "text": "Иск в суд брата главы республики Таймураза Битарова на независимого журналиста Мадину Сагееву за ее публикации о бизнес-интересах семьи Битаровых",
+      "haiku_primary_type": "other",
+      "haiku_secondary_type": "governor_political",
+      "strata": "other"
+    },
+    {
+      "item_id": "evt-51184",
+      "id": "51184",
+      "date": "2016-01",
+      "region": "Кемеровс",
+      "text": "Жалобы сокращенных сотрудников обанкротившегося Новокузнецкого цементного завода на невыплату долгов по зарплате",
+      "haiku_primary_type": "social",
+      "haiku_secondary_type": "economic",
+      "strata": "social"
+    },
+    {
+      "item_id": "evt-44088",
+      "id": "44088",
+      "date": "2016-07",
+      "region": "Самарска",
+      "text": "Выставление группой хакеров «Анонимный интернационал» на аукцион компромата на губернатора Николая Меркушкина и руководство самарской «Единой России»",
+      "haiku_primary_type": "other",
+      "haiku_secondary_type": "arrest_legal",
+      "strata": "other"
+    },
+    {
+      "item_id": "evt-68138",
+      "id": "68138",
+      "date": "2018-05",
+      "region": "Ненецкий",
+      "text": "Сообщения СМИ о том, что руководитель «Единой России» в НАО Денис Гусев нокаутировал директора окружной газеты «Нарьяна Вындер» Олега Вокуева, по слухам, после его распоряжения не печатать материалы ЕР",
+      "haiku_primary_type": "other",
+      "haiku_secondary_type": "arrest_legal",
+      "strata": "other"
+    },
+    {
+      "item_id": "evt-21977",
+      "id": "21977",
+      "date": "2014-03",
+      "region": "Карелия",
+      "text": "Приостановление Фондом содействия реформированию ЖКХ финансовой поддержки региона на переселение из аварийного жилищного фонда",
+      "haiku_primary_type": "social",
+      "haiku_secondary_type": "economic",
+      "strata": "social"
+    }
+  ]
+}
