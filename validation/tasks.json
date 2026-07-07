@@ -161,6 +161,14 @@
       "description": "Does Haiku's quoted evidence actually support the extracted event DATE? 60 uncertain-first cases (low/med confidence or evidence≠event). Validates 09_extract_details.py date precision — the date-anchoring problem the DiD leakage note flags. Built 2026-07-06.",
       "schema_url": "data/disaster-date-A/schema.json",
       "items_url": "data/disaster-date-A/items.json"
+    },
+    {
+      "id": "campaign-relevance-A",
+      "name": "Campaign relevance gate — is this a campaign message? (250)",
+      "project": "campaign2026",
+      "description": "Direct binary gold for the is-campaign GATE — the gold that lets the free local classifier replace the ~$300-1,500 Haiku social-relevance run. Balanced ~125/125, oversamples low/med-confidence boundary cases. Judge from the text; Haiku's call shown only for reference. Built 2026-07-06.",
+      "schema_url": "data/campaign-relevance-A/schema.json",
+      "items_url": "data/campaign-relevance-A/items.json"
     }
   ]
 }

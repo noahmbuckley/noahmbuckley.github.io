@@ -1,0 +1,89 @@
+{
+  "task_id": "campaign-relevance-A",
+  "name": "Campaign relevance gate — is this a campaign message? (250)",
+  "version": "2026-07-06",
+  "id_field": "post_id",
+  "instructions": "The GATE that decides which posts count as campaign/political messaging. Judge DIRECTLY from the text (Haiku's guess is shown only for reference — don't defer to it). YES = the post is political/campaign content: policy, candidate/party promotion, grievances, voter mobilisation, attacks on opponents, ideology. NO = admin/service notice, bare repost with no stance, ad, holiday greeting, weather, non-political filler. Sample is balanced ~50/50 and oversamples low/medium-confidence boundary cases — the ones that teach the gate the most. This gold trains the free local classifier that replaces the paid Haiku relevance run.",
+  "display": [
+    {
+      "field": "bucket",
+      "label": "Bucket",
+      "format": "tag"
+    },
+    {
+      "field": "date",
+      "label": "Date",
+      "format": "compact"
+    },
+    {
+      "field": "party_slug",
+      "label": "Party",
+      "format": "compact"
+    },
+    {
+      "field": "regionid",
+      "label": "regionid",
+      "format": "compact"
+    },
+    {
+      "field": "text",
+      "label": "Post (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "pred_relevant",
+      "label": "Haiku: campaign?",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "pred_primary",
+      "label": "Haiku: topic (context)",
+      "format": "compact"
+    },
+    {
+      "field": "confidence",
+      "label": "Haiku conf",
+      "format": "compact"
+    },
+    {
+      "field": "post_id",
+      "label": "post_id",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "relevant",
+      "label": "Campaign / political message?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes — campaign/political",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No — filler/admin/ad",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "key": "3",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "type": "textarea",
+      "placeholder": "Borderline reposts, mixed, sarcasm…"
+    }
+  ]
+}
