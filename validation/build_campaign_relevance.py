@@ -42,7 +42,7 @@ SRC_ROOT  = os.path.join(PROJ, "me/website/validation/data")
 DOCS_ROOT = os.path.join(PROJ, "me/website/docs/validation/data")
 TASK_ID   = "campaign-relevance-A"
 
-N_POS, N_NEG = 125, 125
+N_POS, N_NEG = 50, 50   # one ~100 chunk; deploy a 2nd chunk when this one's done
 
 def emit(task_id, schema, items):
     for root in (SRC_ROOT, DOCS_ROOT):
@@ -69,8 +69,8 @@ def main():
     neg_sel = pd.concat([neg_unc, neg_hi])
     # positives: all low + oversample medium + a slice of high
     pos_low = pos[pos["conf"] == "low"]
-    pos_med = take(pos[pos["conf"] == "medium"], 80)
-    pos_hi  = take(pos[pos["conf"] == "high"], N_POS - len(pos_low) - len(pos_med))
+    pos_med = take(pos[pos["conf"] == "medium"], max(0, int(N_POS * 0.6)))   # oversample the uncertain
+    pos_hi  = take(pos[pos["conf"] == "high"], max(0, N_POS - len(pos_low) - len(pos_med)))
     pos_sel = pd.concat([pos_low, pos_med, pos_hi])
 
     sel = pd.concat([pos_sel.assign(_cls="relevant"), neg_sel.assign(_cls="not")])

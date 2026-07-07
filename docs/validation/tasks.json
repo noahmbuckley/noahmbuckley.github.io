@@ -1,108 +1,28 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-26",
+  "generated_at": "2026-07-06",
   "tasks": [
     {
-      "id": "arrests-fresh-A",
-      "name": "Arrests — region/multi-defendant (100)",
-      "project": "arrests",
-      "description": "Fresh 100. 50 carry-forward from sample-A's hardest strata (region-mismatch, multi-defendant, low-conf, media-source). 50 new media-corpus picks (Shkulev/Telegram regional officials). Built 2026-05-26.",
-      "schema_url": "data/arrests-fresh-A/schema.json",
-      "items_url": "data/arrests-fresh-A/items.json"
+      "id": "campaign-relevance-A",
+      "name": "Campaign relevance GATE — is this a campaign/political message? (~100)",
+      "project": "campaign2026",
+      "description": "PRIORITY 1. Direct binary gold for the is-campaign gate — unlocks a free local classifier to replace the ~$300-1,500 Haiku relevance run. Balanced 50/50, boundary-oversampled. Judge from the text.",
+      "schema_url": "data/campaign-relevance-A/schema.json",
+      "items_url": "data/campaign-relevance-A/items.json"
     },
     {
-      "id": "arrests-fresh-B",
-      "name": "Arrests — federal/sledcom/edges (100)",
-      "project": "arrests",
-      "description": "Fresh 100. 50 carry-forward from sample-A (federal, sledcom, rare crime, empty-name+corruption). 50 new: federal-in-region, sledcom, rare crime_types, multi-defendant heuristics. Built 2026-05-26.",
-      "schema_url": "data/arrests-fresh-B/schema.json",
-      "items_url": "data/arrests-fresh-B/items.json"
-    },
-    {
-      "id": "protests-fresh-A",
-      "name": "Protests — Activatica re-pick (100)",
-      "project": "protests",
-      "description": "100 from the unanswered Activatica pilot, stratified 70 YES (across haiku_type) + 30 NO. Unblocks the protest_type gold + the activatica audit-blocker. Built 2026-05-26.",
-      "schema_url": "data/protests-fresh-A/schema.json",
-      "items_url": "data/protests-fresh-A/items.json"
-    },
-    {
-      "id": "protests-fresh-B",
-      "name": "Protests — FPP type labeling (100)",
-      "project": "protests",
-      "description": "100 FPP-text protests stratified across llm_protest_type. Goal: TYPE gold for the FPP population (currently 0 gold). Built 2026-05-26.",
-      "schema_url": "data/protests-fresh-B/schema.json",
-      "items_url": "data/protests-fresh-B/items.json"
-    },
-    {
-      "id": "disaster-types",
-      "name": "Disaster — type + severity gold (100)",
-      "project": "disaster",
-      "description": "100 confirmed-disaster events stratified across disaster_type. Asks for hand-corrected TYPE + SEVERITY (both have 0 gold today). Excludes events already verdicted in all_handcoded.csv. Built 2026-05-26.",
-      "schema_url": "data/disaster-types/schema.json",
-      "items_url": "data/disaster-types/items.json"
-    },
-    {
-      "id": "arrests-random-A",
-      "name": "Arrests — random eval A (100)",
-      "project": "arrests",
-      "description": "REPRESENTATIVE simple-random draw from the media corpus (Telegram/Shkulev/Sledcom), disjoint from all prior samples. Gives unbiased precision + region accuracy + the model's test set. Also spot-checks crime_type & official_level. Built 2026-06-02.",
-      "schema_url": "data/arrests-random-A/schema.json",
-      "items_url": "data/arrests-random-A/items.json"
-    },
-    {
-      "id": "arrests-random-B",
-      "name": "Arrests — random eval B (100)",
-      "project": "arrests",
-      "description": "Second representative random media chunk, disjoint from A and all prior samples. Built 2026-06-02.",
-      "schema_url": "data/arrests-random-B/schema.json",
-      "items_url": "data/arrests-random-B/items.json"
-    },
-    {
-      "id": "protests-random-A",
-      "name": "Protests — random eval (100)",
-      "project": "protests",
-      "description": "Representative random draw from the Activatica Haiku corpus, disjoint from answered protest sets. Pins protest-occurrence precision + surfaces rejection genres. Form-type not asked. Built 2026-06-02.",
-      "schema_url": "data/protests-random-A/schema.json",
-      "items_url": "data/protests-random-A/items.json"
-    },
-    {
-      "id": "protests-topic-A",
-      "name": "Protests — topic check (100)",
-      "project": "protests",
-      "description": "Topic/grievance accuracy check on 100 confirmed protests (the field the protest analysis uses). Built 2026-06-13.",
-      "schema_url": "data/protests-topic-A/schema.json",
-      "items_url": "data/protests-topic-A/items.json"
-    },
-    {
-      "id": "event-type-A",
-      "name": "Event type — router check A (50)",
-      "project": "rusClassifier",
-      "description": "PRIORITY. event_type is the top-level router (arrest/protest/disaster/economic/...) with ZERO hand-gold today. 50 HARD CALLS only — the blurry govpol/social/economic/other cluster, every item with a competing 2nd type. Easy routes deliberately excluded. Built 2026-06-14.",
-      "schema_url": "data/event-type-A/schema.json",
-      "items_url": "data/event-type-A/items.json"
-    },
-    {
-      "id": "protests-topic-v3-A",
-      "name": "Protests — topic check v3 (50)",
-      "project": "rusClassifier",
-      "description": "PRIORITY. Validates the NEW v3 topic re-label (the war-fix run) — topic-A used the OLD v2 labels. 50 HARD CALLS only: low/med-certainty + competing 2nd topic + the new ecology↔construction rule. EXCLUDES topic-A ids and ALL war_antiwar (already fixed + validated). Built 2026-06-14.",
-      "schema_url": "data/protests-topic-v3-A/schema.json",
-      "items_url": "data/protests-topic-v3-A/items.json"
-    },
-    {
-      "id": "disaster-A",
-      "name": "Disaster — type + deaths + severity (50)",
-      "project": "rusClassifier",
-      "description": "Validates the 3 disaster fields with 0 gold. TYPE (clean 20-vocab) + DEATHS (confirm/correct the number — fast, objective) + SEVERITY (quick eyeball audit of the LLM's call — blank = fine; don't-know OK). All 20 types covered; oversamples deaths>0 + consequential severity. Built 2026-06-14.",
-      "schema_url": "data/disaster-A/schema.json",
-      "items_url": "data/disaster-A/items.json"
+      "id": "sentiment-prompt-comparison",
+      "name": "Sentiment — 3-class, 5-model check (~100)",
+      "project": "rusSocial",
+      "description": "PRIORITY 2. Anchors RuBERT-tiny2 accuracy + its neutral-over-prediction bias (the standing publication blocker). ~75 model-disagreement rows + ~25 all-agree anchor.",
+      "schema_url": "data/sentiment-prompt-comparison/schema.json",
+      "items_url": "data/sentiment-prompt-comparison/items.json"
     },
     {
       "id": "channel-actor-A",
-      "name": "Channel actor-type (campaign) — confirm/correct (110)",
+      "name": "Channel actor-type — confirm/correct (110)",
       "project": "rusClassifier",
-      "description": "PRIORITY (campaign2026, Sept-2026 Duma window). Verify the rule-typed SILVER channel labels for the channel_actor_type task. The username_stem rule mislabels many regional NEWS channels as party_regional/er — correcting them yields both clean gold AND the news/not_political negatives the task needs. 12 gold anchors mixed in. Built 2026-06-26.",
+      "description": "PRIORITY 3. rusclf v3 gold. The username rule mislabels regional NEWS channels as party/ER — your corrections are the ONLY clean news/not_political negatives. Code the negatives deliberately.",
       "schema_url": "data/channel-actor-A/schema.json",
       "items_url": "data/channel-actor-A/items.json"
     },
@@ -110,65 +30,17 @@
       "id": "courts-extract-A",
       "name": "Court decision extraction — confirm/correct (120)",
       "project": "rusClassifier",
-      "description": "NEW VEIN. First gold for court-decision extraction (verdict/sentence/fine/convicted-articles) over the 122K sudact corpus. Tier-stratified (political T1/T3 + control T5). Feeds a rusClassifier v3 court slice → then the full corpus runs $0 local. Built 2026-06-26.",
+      "description": "PRIORITY 4. First-ever gold for court-decision extraction (verdict/sentence/fine/articles). Feeds a rusclf v3 court slice → then the full 122K corpus runs $0 local.",
       "schema_url": "data/courts-extract-A/schema.json",
       "items_url": "data/courts-extract-A/items.json"
     },
     {
-      "id": "sentiment-prompt-comparison",
-      "name": "rusSocial sentiment — 5-model check (200)",
-      "project": "rusSocial",
-      "description": "Hand-label 3-class sentiment (EVENT-VALENCE convention). Anchors RuBERT-tiny2 accuracy + its neutral-over-prediction bias — the standing publication blocker (0 human labels today). 120/200 are model-disagreement rows (pink, high-info); 80 all-agree rows are the anchor for a reweighted unbiased estimate. Template built 2026-05-08, wired to the app 2026-07-06.",
-      "schema_url": "data/sentiment-prompt-comparison/schema.json",
-      "items_url": "data/sentiment-prompt-comparison/items.json"
-    },
-    {
       "id": "rusSocial-responsibility-blind",
-      "name": "rusSocial — blame attribution, BLIND (81)",
+      "name": "Blame attribution — BLIND (81)",
       "project": "rusSocial",
-      "description": "Does a disaster post attribute responsibility, to whom, how strongly, + futility? NO Haiku shown (blind → unbiased κ). Unblocks disaster's per-event blame-attribution consumption (0 human labels today). Built 2026-05-10, wired 2026-07-06.",
+      "description": "PRIORITY 5. Does a disaster post attribute responsibility, to whom, how strongly + futility? No Haiku shown (unbiased κ). Unblocks the disaster paper's per-event blame consumption.",
       "schema_url": "data/rusSocial-responsibility-blind/schema.json",
       "items_url": "data/rusSocial-responsibility-blind/items.json"
-    },
-    {
-      "id": "rusSocial-responsibility-focused",
-      "name": "rusSocial — blame attribution, verify Haiku (20)",
-      "project": "rusSocial",
-      "description": "20-item confirm/correct supplement to the blind set — Haiku's blame calls shown (yellow) for fast verification. Built 2026-05-10, wired 2026-07-06.",
-      "schema_url": "data/rusSocial-responsibility-focused/schema.json",
-      "items_url": "data/rusSocial-responsibility-focused/items.json"
-    },
-    {
-      "id": "topics-A",
-      "name": "Campaign message topics — confirm/correct (150)",
-      "project": "campaign2026",
-      "description": "Confirm/correct Haiku's IS-CAMPAIGN + PRIMARY-TOPIC calls on 150 party/candidate posts (16-topic taxonomy). Sorted hard-first (medium/low-confidence + multi-topic). Feeds the campaign topic classifier + a rusClassifier v3 slice. Built 2026-07-06.",
-      "schema_url": "data/topics-A/schema.json",
-      "items_url": "data/topics-A/items.json"
-    },
-    {
-      "id": "dedup-A",
-      "name": "Elite person-merge — same or different? (150)",
-      "project": "elitesData",
-      "description": "Is the incoming elite record the SAME human as the matched registry-spine person? 150 hardest calls (smallest score-gap to runner-up) from the 555-row stratified sample. same=merge / different=split / unsure. Pins the person-registry merge precision. Built 2026-07-06.",
-      "schema_url": "data/dedup-A/schema.json",
-      "items_url": "data/dedup-A/items.json"
-    },
-    {
-      "id": "disaster-date-A",
-      "name": "Disaster date — does the evidence support it? (60)",
-      "project": "disaster",
-      "description": "Does Haiku's quoted evidence actually support the extracted event DATE? 60 uncertain-first cases (low/med confidence or evidence≠event). Validates 09_extract_details.py date precision — the date-anchoring problem the DiD leakage note flags. Built 2026-07-06.",
-      "schema_url": "data/disaster-date-A/schema.json",
-      "items_url": "data/disaster-date-A/items.json"
-    },
-    {
-      "id": "campaign-relevance-A",
-      "name": "Campaign relevance gate — is this a campaign message? (250)",
-      "project": "campaign2026",
-      "description": "Direct binary gold for the is-campaign GATE — the gold that lets the free local classifier replace the ~$300-1,500 Haiku social-relevance run. Balanced ~125/125, oversamples low/med-confidence boundary cases. Judge from the text; Haiku's call shown only for reference. Built 2026-07-06.",
-      "schema_url": "data/campaign-relevance-A/schema.json",
-      "items_url": "data/campaign-relevance-A/items.json"
     }
   ]
 }

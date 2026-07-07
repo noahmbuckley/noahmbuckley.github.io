@@ -1,6 +1,6 @@
 {
   "task_id": "campaign-relevance-A",
-  "name": "Campaign relevance gate — is this a campaign message? (250)",
+  "name": "Campaign relevance gate — is this a campaign message? (100)",
   "version": "2026-07-06",
   "id_field": "post_id",
   "instructions": "The GATE that decides which posts count as campaign/political messaging. Judge DIRECTLY from the text (Haiku's guess is shown only for reference — don't defer to it). YES = the post is political/campaign content: policy, candidate/party promotion, grievances, voter mobilisation, attacks on opponents, ideology. NO = admin/service notice, bare repost with no stance, ad, holiday greeting, weather, non-political filler. Sample is balanced ~50/50 and oversamples low/medium-confidence boundary cases — the ones that teach the gate the most. This gold trains the free local classifier that replaces the paid Haiku relevance run.",
