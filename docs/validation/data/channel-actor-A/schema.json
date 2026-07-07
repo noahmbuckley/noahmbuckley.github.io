@@ -1,0 +1,235 @@
+{
+  "task_id": "channel-actor-A",
+  "name": "Channel actor-type (campaign) — confirm/correct (110)",
+  "version": "2026-06-26",
+  "id_field": "item_id",
+  "instructions": "Each item is a Telegram channel (title + description) that a RULE auto-typed as a party channel. Many are wrong — esp. regional NEWS channels mislabeled as 'party_regional/er'. (1) ACTOR TYPE: is the rule's type (yellow) right? Blank=yes; else pick the correct one — use 'news' for media outlets, 'not_political' for unrelated channels, 'official' for govt (non-party) bodies. (2) PARTY: is the party (yellow) right? Blank=yes; else pick the correct party or 'none' (for news/not_political). 'Can't tell' is fine if the description is too thin.",
+  "display": [
+    {
+      "field": "strata",
+      "label": "rule type",
+      "format": "tag"
+    },
+    {
+      "field": "username",
+      "label": "Channel",
+      "format": "compact"
+    },
+    {
+      "field": "title",
+      "label": "Title",
+      "format": "compact"
+    },
+    {
+      "field": "description",
+      "label": "Description (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "rule_actor_type",
+      "label": "RULE: actor_type",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "rule_party",
+      "label": "RULE: party",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "basis",
+      "label": "rule basis",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "actor_type_correct",
+      "label": "actor_type correct?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "key": "3",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "correct_actor_type",
+      "label": "Correct actor_type (if wrong)",
+      "type": "enum",
+      "options": [
+        {
+          "value": "party_federal",
+          "label": "party_federal",
+          "tone": "neutral"
+        },
+        {
+          "value": "party_regional",
+          "label": "party_regional",
+          "tone": "neutral"
+        },
+        {
+          "value": "party_leader",
+          "label": "party_leader",
+          "tone": "neutral"
+        },
+        {
+          "value": "party_youth",
+          "label": "party_youth",
+          "tone": "neutral"
+        },
+        {
+          "value": "party_deputy",
+          "label": "party_deputy",
+          "tone": "neutral"
+        },
+        {
+          "value": "candidate",
+          "label": "candidate",
+          "tone": "neutral"
+        },
+        {
+          "value": "news",
+          "label": "news",
+          "tone": "neutral"
+        },
+        {
+          "value": "official",
+          "label": "official",
+          "tone": "neutral"
+        },
+        {
+          "value": "not_political",
+          "label": "not_political",
+          "tone": "neutral"
+        }
+      ],
+      "show_if": {
+        "actor_type_correct": [
+          "no"
+        ]
+      }
+    },
+    {
+      "field": "party_correct",
+      "label": "party correct?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "key": "4",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "key": "5",
+          "tone": "bad"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "key": "6",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "correct_party",
+      "label": "Correct party (if wrong)",
+      "type": "enum",
+      "options": [
+        {
+          "value": "er",
+          "label": "er",
+          "tone": "neutral"
+        },
+        {
+          "value": "kprf",
+          "label": "kprf",
+          "tone": "neutral"
+        },
+        {
+          "value": "ldpr",
+          "label": "ldpr",
+          "tone": "neutral"
+        },
+        {
+          "value": "srzp",
+          "label": "srzp",
+          "tone": "neutral"
+        },
+        {
+          "value": "np",
+          "label": "np",
+          "tone": "neutral"
+        },
+        {
+          "value": "yabloko",
+          "label": "yabloko",
+          "tone": "neutral"
+        },
+        {
+          "value": "rodina",
+          "label": "rodina",
+          "tone": "neutral"
+        },
+        {
+          "value": "comros",
+          "label": "comros",
+          "tone": "neutral"
+        },
+        {
+          "value": "pensioners",
+          "label": "pensioners",
+          "tone": "neutral"
+        },
+        {
+          "value": "greens",
+          "label": "greens",
+          "tone": "neutral"
+        },
+        {
+          "value": "other",
+          "label": "other",
+          "tone": "neutral"
+        },
+        {
+          "value": "none",
+          "label": "none",
+          "tone": "neutral"
+        }
+      ],
+      "show_if": {
+        "party_correct": [
+          "no"
+        ]
+      }
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "type": "textarea",
+      "placeholder": "Free text"
+    }
+  ]
+}

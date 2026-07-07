@@ -1,0 +1,217 @@
+{
+  "task_id": "courts-extract-A",
+  "name": "Court decision extraction — confirm/correct (120)",
+  "version": "2026-06-26",
+  "id_field": "item_id",
+  "instructions": "Each item is a Russian court decision; the LLM extracted verdict + sentence from the ruling section. Open the sudact link if you need the full text. Per item: (1) VERDICT correct? blank=yes, else pick. (2) SENTENCE (months of real imprisonment + suspended flag) correct? blank=yes, else correct the number. (3) FINE (rub) correct? (4) CONVICTED ARTICLES roughly right? These are the fields the judicial-repression analysis will use. 'Can't tell' is fine for messy multi-defendant cases.",
+  "display": [
+    {
+      "field": "strata",
+      "label": "tier",
+      "format": "tag"
+    },
+    {
+      "field": "article",
+      "label": "queried art.",
+      "format": "compact"
+    },
+    {
+      "field": "date",
+      "label": "Date",
+      "format": "compact"
+    },
+    {
+      "field": "title",
+      "label": "Title (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "src_url",
+      "label": "full text",
+      "format": "compact"
+    },
+    {
+      "field": "llm_verdict",
+      "label": "LLM: verdict",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "llm_sentence_months",
+      "label": "LLM: months",
+      "format": "compact"
+    },
+    {
+      "field": "llm_suspended",
+      "label": "LLM: suspended",
+      "format": "compact"
+    },
+    {
+      "field": "llm_fine_rub",
+      "label": "LLM: fine",
+      "format": "compact"
+    },
+    {
+      "field": "llm_articles",
+      "label": "LLM: convicted",
+      "format": "compact"
+    },
+    {
+      "field": "llm_confidence",
+      "label": "LLM: conf",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "verdict_correct",
+      "label": "verdict correct?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "key": "3",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "correct_verdict",
+      "label": "Correct verdict (if wrong)",
+      "type": "enum",
+      "options": [
+        {
+          "value": "guilty",
+          "label": "guilty",
+          "tone": "neutral"
+        },
+        {
+          "value": "acquitted",
+          "label": "acquitted",
+          "tone": "neutral"
+        },
+        {
+          "value": "partial",
+          "label": "partial",
+          "tone": "neutral"
+        },
+        {
+          "value": "dismissed",
+          "label": "dismissed",
+          "tone": "neutral"
+        },
+        {
+          "value": "other",
+          "label": "other",
+          "tone": "neutral"
+        }
+      ],
+      "show_if": {
+        "verdict_correct": [
+          "no"
+        ]
+      }
+    },
+    {
+      "field": "sentence_correct",
+      "label": "sentence (months+suspended) correct?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "key": "4",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "key": "5",
+          "tone": "bad"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "key": "6",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "correct_sentence_months",
+      "label": "Correct real-imprisonment months (if wrong)",
+      "type": "text",
+      "placeholder": "number (0 if none)",
+      "show_if": {
+        "sentence_correct": [
+          "no"
+        ]
+      }
+    },
+    {
+      "field": "fine_correct",
+      "label": "fine correct? (blank=fine)",
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "tone": "bad"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "articles_ok",
+      "label": "convicted articles ~right? (blank=fine)",
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "tone": "bad"
+        },
+        {
+          "value": "cant_tell",
+          "label": "Can't tell",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "type": "textarea",
+      "placeholder": "Free text"
+    }
+  ]
+}

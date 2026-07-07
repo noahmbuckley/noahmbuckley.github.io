@@ -97,6 +97,70 @@
       "description": "Validates the 3 disaster fields with 0 gold. TYPE (clean 20-vocab) + DEATHS (confirm/correct the number — fast, objective) + SEVERITY (quick eyeball audit of the LLM's call — blank = fine; don't-know OK). All 20 types covered; oversamples deaths>0 + consequential severity. Built 2026-06-14.",
       "schema_url": "data/disaster-A/schema.json",
       "items_url": "data/disaster-A/items.json"
+    },
+    {
+      "id": "channel-actor-A",
+      "name": "Channel actor-type (campaign) — confirm/correct (110)",
+      "project": "rusClassifier",
+      "description": "PRIORITY (campaign2026, Sept-2026 Duma window). Verify the rule-typed SILVER channel labels for the channel_actor_type task. The username_stem rule mislabels many regional NEWS channels as party_regional/er — correcting them yields both clean gold AND the news/not_political negatives the task needs. 12 gold anchors mixed in. Built 2026-06-26.",
+      "schema_url": "data/channel-actor-A/schema.json",
+      "items_url": "data/channel-actor-A/items.json"
+    },
+    {
+      "id": "courts-extract-A",
+      "name": "Court decision extraction — confirm/correct (120)",
+      "project": "rusClassifier",
+      "description": "NEW VEIN. First gold for court-decision extraction (verdict/sentence/fine/convicted-articles) over the 122K sudact corpus. Tier-stratified (political T1/T3 + control T5). Feeds a rusClassifier v3 court slice → then the full corpus runs $0 local. Built 2026-06-26.",
+      "schema_url": "data/courts-extract-A/schema.json",
+      "items_url": "data/courts-extract-A/items.json"
+    },
+    {
+      "id": "sentiment-prompt-comparison",
+      "name": "rusSocial sentiment — 5-model check (200)",
+      "project": "rusSocial",
+      "description": "Hand-label 3-class sentiment (EVENT-VALENCE convention). Anchors RuBERT-tiny2 accuracy + its neutral-over-prediction bias — the standing publication blocker (0 human labels today). 120/200 are model-disagreement rows (pink, high-info); 80 all-agree rows are the anchor for a reweighted unbiased estimate. Template built 2026-05-08, wired to the app 2026-07-06.",
+      "schema_url": "data/sentiment-prompt-comparison/schema.json",
+      "items_url": "data/sentiment-prompt-comparison/items.json"
+    },
+    {
+      "id": "rusSocial-responsibility-blind",
+      "name": "rusSocial — blame attribution, BLIND (81)",
+      "project": "rusSocial",
+      "description": "Does a disaster post attribute responsibility, to whom, how strongly, + futility? NO Haiku shown (blind → unbiased κ). Unblocks disaster's per-event blame-attribution consumption (0 human labels today). Built 2026-05-10, wired 2026-07-06.",
+      "schema_url": "data/rusSocial-responsibility-blind/schema.json",
+      "items_url": "data/rusSocial-responsibility-blind/items.json"
+    },
+    {
+      "id": "rusSocial-responsibility-focused",
+      "name": "rusSocial — blame attribution, verify Haiku (20)",
+      "project": "rusSocial",
+      "description": "20-item confirm/correct supplement to the blind set — Haiku's blame calls shown (yellow) for fast verification. Built 2026-05-10, wired 2026-07-06.",
+      "schema_url": "data/rusSocial-responsibility-focused/schema.json",
+      "items_url": "data/rusSocial-responsibility-focused/items.json"
+    },
+    {
+      "id": "topics-A",
+      "name": "Campaign message topics — confirm/correct (150)",
+      "project": "campaign2026",
+      "description": "Confirm/correct Haiku's IS-CAMPAIGN + PRIMARY-TOPIC calls on 150 party/candidate posts (16-topic taxonomy). Sorted hard-first (medium/low-confidence + multi-topic). Feeds the campaign topic classifier + a rusClassifier v3 slice. Built 2026-07-06.",
+      "schema_url": "data/topics-A/schema.json",
+      "items_url": "data/topics-A/items.json"
+    },
+    {
+      "id": "dedup-A",
+      "name": "Elite person-merge — same or different? (150)",
+      "project": "elitesData",
+      "description": "Is the incoming elite record the SAME human as the matched registry-spine person? 150 hardest calls (smallest score-gap to runner-up) from the 555-row stratified sample. same=merge / different=split / unsure. Pins the person-registry merge precision. Built 2026-07-06.",
+      "schema_url": "data/dedup-A/schema.json",
+      "items_url": "data/dedup-A/items.json"
+    },
+    {
+      "id": "disaster-date-A",
+      "name": "Disaster date — does the evidence support it? (60)",
+      "project": "disaster",
+      "description": "Does Haiku's quoted evidence actually support the extracted event DATE? 60 uncertain-first cases (low/med confidence or evidence≠event). Validates 09_extract_details.py date precision — the date-anchoring problem the DiD leakage note flags. Built 2026-07-06.",
+      "schema_url": "data/disaster-date-A/schema.json",
+      "items_url": "data/disaster-date-A/items.json"
     }
   ]
 }
