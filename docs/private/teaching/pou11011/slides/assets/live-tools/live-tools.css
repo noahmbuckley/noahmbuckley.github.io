@@ -1,0 +1,25 @@
+/* live-tools.css — annotations dropped on slides during presentation */
+
+.live-annotation {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.live-annotation:focus {
+  outline: 2px dashed rgba(231, 76, 60, 0.7) !important;
+}
+
+.live-annotation--text:empty::before {
+  content: "type…";
+  opacity: 0.4;
+}
+
+/* Hide all live-tools artifacts when disabled (panic-toggle) */
+body.live-tools-disabled .live-annotation {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Make sure annotations sit above slide content but below reveal UI */
+.reveal .slides section .live-annotation {
+  z-index: 100;
+}
