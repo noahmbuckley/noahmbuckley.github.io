@@ -41,6 +41,22 @@
       "description": "PRIORITY 5. Does a disaster post attribute responsibility, to whom, how strongly + futility? No Haiku shown (unbiased κ). Unblocks the disaster paper's per-event blame consumption.",
       "schema_url": "data/rusSocial-responsibility-blind/schema.json",
       "items_url": "data/rusSocial-responsibility-blind/items.json"
+    },
+    {
+      "id": "disaster-D31-stated-date",
+      "name": "Disaster D-31 — stated-date validation (~60)",
+      "project": "disaster",
+      "description": "Validate the LLM-extracted stated_event_date on file for llm_stated_date-sourced events (all currently day_high confidence, zero external check). Stratified by the extraction's own confidence (low/medium/high) and spread across 2012-2022. Feeds the per-source accuracy check in audit_2026-05-13.md:220 -- drop sources below ~70% accuracy. Built 2026-09-05.",
+      "schema_url": "data/disaster-D31-stated-date/schema.json",
+      "items_url": "data/disaster-D31-stated-date/items.json"
+    },
+    {
+      "id": "arrests-llm-only-precision",
+      "name": "Arrests LLM-only precision (100)",
+      "project": "eventsData",
+      "description": "First-ever precision check on the LLM-only arrests (2026-05-07 audit item 3): 8,652 FPP-LLM-only arrests plus the entirely-unhand-coded Telegram/Shkulev/Sledcom sources. 25 per source, spread across crime_type. Feeds an honest precision % with a Wilson CI (loader: eventsData/code/99d_load_llm_only_precision_results.R, to be run after export). Built 2026-09-05.",
+      "schema_url": "data/arrests-llm-only-precision/schema.json",
+      "items_url": "data/arrests-llm-only-precision/items.json"
     }
   ]
 }

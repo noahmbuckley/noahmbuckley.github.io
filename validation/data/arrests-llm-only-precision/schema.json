@@ -1,0 +1,154 @@
+{
+  "task_id": "arrests-llm-only-precision",
+  "name": "Arrests LLM-only precision (100)",
+  "version": "2026-09-05",
+  "id_field": "item_id",
+  "instructions": "Each item is an arrest/corruption event that ONLY the LLM classifier found -- no human ever hand-coded it (either it's from Telegram/Shkulev/Sledcom, which were never hand-coded, or it's an FPP event the LLM flagged as an arrest that the original hand-coded FPP excel missed). Read the source text. (1) Is this really a corruption/legal-case arrest OF AN OFFICIAL (not e.g. a random crime, a rumor, or an official merely mentioned in passing)? (2) Is the LLM's crime_type roughly right? (3) Is the region right? 'Unsure' is fine for genuinely ambiguous short texts.",
+  "display": [
+    {
+      "field": "stratum",
+      "label": "source",
+      "format": "tag"
+    },
+    {
+      "field": "year",
+      "label": "year",
+      "format": "compact"
+    },
+    {
+      "field": "month",
+      "label": "month",
+      "format": "compact"
+    },
+    {
+      "field": "regionid",
+      "label": "regionid (as coded)",
+      "format": "compact"
+    },
+    {
+      "field": "is_federal",
+      "label": "federal event?",
+      "format": "compact"
+    },
+    {
+      "field": "text",
+      "label": "Source text (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "llm_official_name",
+      "label": "LLM: official name",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "llm_official_position",
+      "label": "LLM: position",
+      "format": "compact"
+    },
+    {
+      "field": "llm_official_level",
+      "label": "LLM: level",
+      "format": "compact"
+    },
+    {
+      "field": "llm_crime_type",
+      "label": "LLM: crime_type",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "llm_arrest_stage",
+      "label": "LLM: stage",
+      "format": "compact"
+    },
+    {
+      "field": "llm_is_corruption",
+      "label": "LLM: is_corruption",
+      "format": "compact"
+    },
+    {
+      "field": "llm_in_office",
+      "label": "LLM: in_office",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "is_real_corruption_arrest_of_official",
+      "label": "Real corruption/legal arrest OF AN OFFICIAL?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "Unsure",
+          "key": "3",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "type_correct",
+      "label": "crime_type roughly correct?",
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "Unsure",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "region_correct",
+      "label": "region roughly correct?",
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "Unsure",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "type": "textarea",
+      "placeholder": "Free text"
+    }
+  ]
+}

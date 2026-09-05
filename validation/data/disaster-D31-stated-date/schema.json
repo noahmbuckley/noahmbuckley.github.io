@@ -1,0 +1,105 @@
+{
+  "task_id": "disaster-D31-stated-date",
+  "name": "Disaster D-31 — stated-date validation (~60)",
+  "version": "2026-09-05",
+  "id_field": "item_id",
+  "instructions": "For each event: read the FPP text and the extracted stated date + its quoted evidence. Check the evidence snippets, then use the Wikipedia/Google search links to find the real date if you can. Record the TRUE date if findable (YYYY-MM-DD or partial), whether the extracted stated_date MATCHES the true event date, and a note. 'Unsure' is fine if you can't find independent confirmation -- don't guess.",
+  "display": [
+    {
+      "field": "stratum",
+      "label": "tier",
+      "format": "tag"
+    },
+    {
+      "field": "extract_confidence",
+      "label": "LLM conf.",
+      "format": "compact"
+    },
+    {
+      "field": "year",
+      "label": "year",
+      "format": "compact"
+    },
+    {
+      "field": "region",
+      "label": "region",
+      "format": "compact"
+    },
+    {
+      "field": "disaster_type",
+      "label": "type",
+      "format": "compact"
+    },
+    {
+      "field": "fpp_text",
+      "label": "FPP description (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "stated_date",
+      "label": "LLM stated date",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "date_evidence_quote",
+      "label": "LLM date-evidence quote",
+      "format": "longtext"
+    },
+    {
+      "field": "evidence_snippets",
+      "label": "Independent evidence snippets",
+      "format": "longtext"
+    },
+    {
+      "field": "wiki_search_url",
+      "label": "ru.wikipedia search",
+      "format": "link"
+    },
+    {
+      "field": "google_search_url",
+      "label": "Google search",
+      "format": "link"
+    }
+  ],
+  "validation": [
+    {
+      "field": "true_date",
+      "label": "True date (if findable)",
+      "type": "text",
+      "placeholder": "YYYY-MM-DD or partial; blank if unknown"
+    },
+    {
+      "field": "matches_event",
+      "label": "Stated date matches true event date?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "Unsure / can't verify",
+          "key": "3",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "type": "textarea",
+      "placeholder": "Free text"
+    }
+  ]
+}

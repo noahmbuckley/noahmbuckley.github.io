@@ -1,0 +1,10 @@
+# Provenance for items.json
+output     : ~/Dropbox/Projects/me/website/validation/data/arrests-llm-only-precision/items.json
+script     : eventsData/code/99d_build_llm_only_precision_chunk.R
+git_sha    : bc9fb6e91d823c4dd84427a559733fc30a24e0e6
+timestamp  : 2026-09-05 15:06:42.834121
+R_version  : R version 4.6.0 (2026-04-24)
+platform   : aarch64-apple-darwin23
+packages_loaded:
+  readxl 1.5.0
+  jsonlite 2.0.0

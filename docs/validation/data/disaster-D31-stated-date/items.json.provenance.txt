@@ -1,0 +1,9 @@
+# Provenance for items.json
+output     : ~/Dropbox/Projects/me/website/validation/data/disaster-D31-stated-date/items.json
+script     : disaster/code/validation/99d_build_date_validation_chunk.R
+git_sha    : bc9fb6e91d823c4dd84427a559733fc30a24e0e6
+timestamp  : 2026-09-05 15:05:33.065216
+R_version  : R version 4.6.0 (2026-04-24)
+platform   : aarch64-apple-darwin23
+packages_loaded:
+  jsonlite 2.0.0
