@@ -1,0 +1,22 @@
+/* Annotation div: notes to Noah, not to students.
+   Set `display: none` on .cc before publishing if you want them hidden. */
+.cc {
+  border-left: 4px solid #2c6fa8;
+  background: #eaf2f9;
+  padding: 0.6em 0.9em;
+  margin: 1em 0;
+  font-size: 0.9em;
+  color: #1b3b57;
+  border-radius: 3px;
+}
+.cc::before {
+  content: "Note to Noah";
+  display: block;
+  font-weight: 700;
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.3em;
+}
+.callout { margin-top: 0.7em; margin-bottom: 0.7em; }
+main { max-width: 900px; }

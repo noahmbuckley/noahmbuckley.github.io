@@ -50,3 +50,20 @@ once more than a couple of pages need real access control.
 | `viewer/` | viewer | `build_apps.sh` |
 | `sdb_report/` | SDB report | sdb project |
 | `talks/` | slide decks | Quarto revealjs |
+| `teaching/research-guide/` | "Doing political science research" advice page (capstone + MSc) | `~/Dropbox/teaching/research-supervision/guide/` — `quarto render`, then copy `output-guide/` here |
+
+
+## Teaching decks (2026-09-03)
+
+`docs/private/teaching/<code>/slides/` — Noah's complete lecturing decks, pushed by `~/Dropbox/teaching/templates/slides/publish-site.sh <course> --encrypt "passphrase"`. The passphrase is recorded in `~/Dropbox/teaching/README.md` (NOT here: this repo is public). Public course pages sit at `docs/teaching/<code>/`. Linked from resources.html.
+
+## Research guide (2026-09-07)
+
+`docs/private/teaching/research-guide/` — the cross-course "how to do research" advice page for
+capstone and MSc students. **Unlisted while it is still a draft**: it carries four visible
+"Note to Noah" boxes (`.cc`) and a couple of `[TBD]`s that only Noah can fill. Rebuild with
+`cd ~/Dropbox/teaching/research-supervision/guide && quarto render`, then
+`rsync -a --delete --exclude sitemap.xml --exclude robots.txt ../output-guide/ ~/Dropbox/Projects/me/website/docs/private/teaching/research-guide/`.
+When it is ready for students it moves to the public `docs/teaching/research-guide/`
+(the URL the capstone syllabus, index and emails already cite) — and the `.cc` boxes must be
+hidden first (`display: none` on `.cc` in the guide's `styles.css`).
