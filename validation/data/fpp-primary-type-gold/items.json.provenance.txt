@@ -1,8 +1,8 @@
 # Provenance for items.json
 output     : ~/Dropbox/Projects/me/website/validation/data/fpp-primary-type-gold/items.json
-script     : code/99e_build_primary_type_gold_chunk.R
-git_sha    : 3925cd983fd968fc3b85cbafa00666455d0defe4
-timestamp  : 2026-09-09 12:35:31.993883
+script     : code/99f_build_primary_type_gold60_chunk.R
+git_sha    : ffc26ea45367a5992dc3be7a000eda2bbbef4f17
+timestamp  : 2026-09-09 14:55:10.253179
 R_version  : R version 4.6.0 (2026-04-24)
 platform   : aarch64-apple-darwin23
 packages_loaded:

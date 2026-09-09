@@ -1,13 +1,9 @@
 {
   "task_id": "fpp-primary-type-gold",
-  "name": "FPP primary_type gold (170, v2)",
-  "version": "2026-09-09-v2",
+  "name": "FPP primary_type gold (67, v3)",
+  "version": "2026-09-09-v3",
   "id_field": "item_id",
-  "instructions": "TYPOLOGY question (random-control sample -- general typing check). Read the Russian event text and choose the ONE category that best fits, under these v2 definitions (see code/prompts/fpp_system_prompt_v2.md for the full spec). No model's answer is shown -- this is a BLIND gold label. IMPORTANT (2026-09-09 decision): a forced resignation or removal with NO stated crime/investigation/court action is governor_political, NOT arrest_legal -- arrest_legal requires the text to state a specific legal/investigative predicate DIRECTED AT the person (a named crime, an opened case, a court action, formal charges, or a finding by a legal/oversight body). Categories: (1) arrest_legal -- a stated legal/investigative predicate against a person, incl. a resignation/removal EXPLICITLY TIED to one. (2) protest -- rallies, pickets, strikes, petitions, collective letters, boycotts; also a protest being denied/dispersed. (3) disaster_accident -- fires, explosions, floods, industrial/transport accidents, disease outbreaks, mass poisonings, any deaths/injuries/ЧП. (4) governor_political -- an official's political/personnel status, statement, or reputation with NO stated legal predicate: plain resignations/dismissals/removals, term expirations, policy-reason firings, reputational scandals, an official as complainant/victim (not accused), general political conflict/maneuvering. (5) election -- campaigns, candidate registration/disqualification, vote results, election-law disputes, election-commission actions. (6) economic -- budget/investment/enterprise/tax/regional-economic news, no legal action, no disaster. (7) social -- healthcare/education/pension/social-services policy or delivery, not itself a protest or disaster. (8) military -- deployments, operations, mobilization, defense-industry news (not accidental incidents -- those are disaster_accident). (9) other -- genuinely fits none of the above 8. If truly torn between two categories with real textual support for both, use the 'Ambiguous' option and say why in Notes -- do not guess.",
-  "instructions_by_variant": {
-    "binary": "BINARY question (this text was flagged by the classifier as being on the arrest_legal / governor_political boundary). Read ONLY the Russian text below and answer ONE factual question -- do not apply any category scheme and do not think about what label the event should get. Question: does the text ITSELF state that a specific crime, criminal case, investigation, court action, or formal charge has been brought against a named person? 'Yes' requires the text to name or clearly describe such a thing -- a crime, an opened criminal/administrative case, a court decision or sentence, formal charges, or a finding by a prosecutor/oversight body -- directed AT a person. 'No' means the text describes only a resignation, dismissal, removal, term expiration, policy dispute, public statement, or similar political/personnel event, with nothing of that kind stated. 'Unclear' means the TEXT ITSELF is genuinely ambiguous on this specific factual question (not that you are torn between two category labels -- there is no category question here). Use Notes for anything worth flagging.",
-    "typology": "TYPOLOGY question (random-control sample -- general typing check). Read the Russian event text and choose the ONE category that best fits, under these v2 definitions (see code/prompts/fpp_system_prompt_v2.md for the full spec). No model's answer is shown -- this is a BLIND gold label. IMPORTANT (2026-09-09 decision): a forced resignation or removal with NO stated crime/investigation/court action is governor_political, NOT arrest_legal -- arrest_legal requires the text to state a specific legal/investigative predicate DIRECTED AT the person (a named crime, an opened case, a court action, formal charges, or a finding by a legal/oversight body). Categories: (1) arrest_legal -- a stated legal/investigative predicate against a person, incl. a resignation/removal EXPLICITLY TIED to one. (2) protest -- rallies, pickets, strikes, petitions, collective letters, boycotts; also a protest being denied/dispersed. (3) disaster_accident -- fires, explosions, floods, industrial/transport accidents, disease outbreaks, mass poisonings, any deaths/injuries/ЧП. (4) governor_political -- an official's political/personnel status, statement, or reputation with NO stated legal predicate: plain resignations/dismissals/removals, term expirations, policy-reason firings, reputational scandals, an official as complainant/victim (not accused), general political conflict/maneuvering. (5) election -- campaigns, candidate registration/disqualification, vote results, election-law disputes, election-commission actions. (6) economic -- budget/investment/enterprise/tax/regional-economic news, no legal action, no disaster. (7) social -- healthcare/education/pension/social-services policy or delivery, not itself a protest or disaster. (8) military -- deployments, operations, mobilization, defense-industry news (not accidental incidents -- those are disaster_accident). (9) other -- genuinely fits none of the above 8. If truly torn between two categories with real textual support for both, use the 'Ambiguous' option and say why in Notes -- do not guess."
-  },
+  "instructions": "BOUNDARY item (part of a 60-item set built 2026-09-09 to check the arrest_legal / governor_political boundary specifically -- see START_HERE_2026-09-09.md for the full design). Read ONLY the Russian text below and answer ONE factual question -- do not apply any category scheme and do not think about what label the event should get. Question: does the text ITSELF state that a specific crime, criminal case, investigation, court action, or formal charge has been brought against a named person? 'Yes' requires the text to name or clearly describe such a thing -- a crime, an opened criminal/administrative case, a court decision or sentence, formal charges, or a finding by a prosecutor/oversight body -- directed AT a person. 'No' means the text describes only a resignation, dismissal, removal, term expiration, policy dispute, public statement, or similar political/personnel event, with nothing of that kind stated. 'Unclear' means the TEXT ITSELF is genuinely ambiguous on this specific factual question (not that you are torn between two category labels -- there is no category question here). Use Notes for anything worth flagging.",
   "display": [
     {
       "field": "eventdesc",
@@ -37,172 +33,36 @@
   ],
   "validation": [
     {
-      "field": "primary_type_gold",
-      "label": "primary_type (your gold label)",
+      "field": "legal_predicate_stated_gold",
+      "label": "Does the text state a legal predicate against this person?",
       "type": "enum",
       "required": true,
       "options": [
         {
-          "value": "arrest_legal",
-          "label": "arrest_legal",
-          "key": "1"
+          "value": "yes",
+          "label": "Yes -- a crime/case/investigation/court action/charge is stated",
+          "key": "1",
+          "tone": "neutral"
         },
         {
-          "value": "protest",
-          "label": "protest",
-          "key": "2"
+          "value": "no",
+          "label": "No -- nothing like that is stated",
+          "key": "2",
+          "tone": "neutral"
         },
         {
-          "value": "disaster_accident",
-          "label": "disaster_accident",
-          "key": "3"
-        },
-        {
-          "value": "governor_political",
-          "label": "governor_political",
-          "key": "4"
-        },
-        {
-          "value": "election",
-          "label": "election",
-          "key": "5"
-        },
-        {
-          "value": "economic",
-          "label": "economic",
-          "key": "6"
-        },
-        {
-          "value": "social",
-          "label": "social",
-          "key": "7"
-        },
-        {
-          "value": "military",
-          "label": "military",
-          "key": "8"
-        },
-        {
-          "value": "other",
-          "label": "other",
-          "key": "9"
-        },
-        {
-          "value": "ambiguous",
-          "label": "Ambiguous / can't decide",
-          "key": "0",
+          "value": "unclear",
+          "label": "Unclear from the text itself",
+          "key": "3",
           "tone": "warn"
         }
       ]
     },
     {
       "field": "notes",
-      "label": "Notes (esp. required if Ambiguous)",
+      "label": "Notes (optional)",
       "type": "textarea",
       "placeholder": "Free text"
     }
-  ],
-  "validation_by_variant": {
-    "binary": [
-      {
-        "field": "legal_predicate_stated_gold",
-        "label": "Does the text state a legal predicate against this person?",
-        "type": "enum",
-        "required": true,
-        "options": [
-          {
-            "value": "yes",
-            "label": "Yes -- a crime/case/investigation/court action/charge is stated",
-            "key": "1",
-            "tone": "neutral"
-          },
-          {
-            "value": "no",
-            "label": "No -- nothing like that is stated",
-            "key": "2",
-            "tone": "neutral"
-          },
-          {
-            "value": "unclear",
-            "label": "Unclear from the text itself",
-            "key": "3",
-            "tone": "warn"
-          }
-        ]
-      },
-      {
-        "field": "notes",
-        "label": "Notes (optional)",
-        "type": "textarea",
-        "placeholder": "Free text"
-      }
-    ],
-    "typology": [
-      {
-        "field": "primary_type_gold",
-        "label": "primary_type (your gold label)",
-        "type": "enum",
-        "required": true,
-        "options": [
-          {
-            "value": "arrest_legal",
-            "label": "arrest_legal",
-            "key": "1"
-          },
-          {
-            "value": "protest",
-            "label": "protest",
-            "key": "2"
-          },
-          {
-            "value": "disaster_accident",
-            "label": "disaster_accident",
-            "key": "3"
-          },
-          {
-            "value": "governor_political",
-            "label": "governor_political",
-            "key": "4"
-          },
-          {
-            "value": "election",
-            "label": "election",
-            "key": "5"
-          },
-          {
-            "value": "economic",
-            "label": "economic",
-            "key": "6"
-          },
-          {
-            "value": "social",
-            "label": "social",
-            "key": "7"
-          },
-          {
-            "value": "military",
-            "label": "military",
-            "key": "8"
-          },
-          {
-            "value": "other",
-            "label": "other",
-            "key": "9"
-          },
-          {
-            "value": "ambiguous",
-            "label": "Ambiguous / can't decide",
-            "key": "0",
-            "tone": "warn"
-          }
-        ]
-      },
-      {
-        "field": "notes",
-        "label": "Notes (esp. required if Ambiguous)",
-        "type": "textarea",
-        "placeholder": "Free text"
-      }
-    ]
-  }
+  ]
 }
