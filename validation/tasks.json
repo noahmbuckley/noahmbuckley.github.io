@@ -57,6 +57,14 @@
       "description": "First-ever precision check on the LLM-only arrests (2026-05-07 audit item 3): 8,652 FPP-LLM-only arrests plus the entirely-unhand-coded Telegram/Shkulev/Sledcom sources. 25 per source, spread across crime_type. Feeds an honest precision % with a Wilson CI (loader: eventsData/code/99d_load_llm_only_precision_results.R, to be run after export). Built 2026-09-05.",
       "schema_url": "data/arrests-llm-only-precision/schema.json",
       "items_url": "data/arrests-llm-only-precision/items.json"
+    },
+    {
+      "id": "fpp-primary-type-gold",
+      "name": "FPP primary_type gold (150)",
+      "project": "eventsData",
+      "description": "First-ever human gold labels for FPP primary_type -- every comparison to date (Haiku-v1 vs nano, v1 vs v2, self-agreement) measures agreement between models/prompts, never accuracy. Blind (no model shown), 150 events, stratified the same way as the n=600 v2 validation sample (65 contested arrest/removal, 50 governor_political, 35 random control). Scores all 4 model arms (Haiku-v1, Haiku-v2, nano-low-v1, nano-low-v2) once exported -- loader: eventsData/code/99e_load_primary_type_gold_results.R. Built 2026-09-09.",
+      "schema_url": "data/fpp-primary-type-gold/schema.json",
+      "items_url": "data/fpp-primary-type-gold/items.json"
     }
   ]
 }
