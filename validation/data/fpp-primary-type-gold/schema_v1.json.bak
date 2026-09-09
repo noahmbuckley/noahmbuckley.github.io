@@ -1,0 +1,101 @@
+{
+  "task_id": "fpp-primary-type-gold",
+  "name": "FPP primary_type gold (150)",
+  "version": "2026-09-09",
+  "id_field": "item_id",
+  "instructions": "Read the Russian event text and choose the ONE category that best fits, under these v2 definitions (see code/prompts/fpp_system_prompt_v2.md for the full spec). No model's answer is shown -- this is a BLIND gold label. IMPORTANT (2026-09-09 decision): a forced resignation or removal with NO stated crime/investigation/court action is governor_political, NOT arrest_legal -- arrest_legal requires the text to state a specific legal/investigative predicate DIRECTED AT the person (a named crime, an opened case, a court action, formal charges, or a finding by a legal/oversight body). Categories: (1) arrest_legal -- a stated legal/investigative predicate against a person, incl. a resignation/removal EXPLICITLY TIED to one. (2) protest -- rallies, pickets, strikes, petitions, collective letters, boycotts; also a protest being denied/dispersed. (3) disaster_accident -- fires, explosions, floods, industrial/transport accidents, disease outbreaks, mass poisonings, any deaths/injuries/ЧП. (4) governor_political -- an official's political/personnel status, statement, or reputation with NO stated legal predicate: plain resignations/dismissals/removals, term expirations, policy-reason firings, reputational scandals, an official as complainant/victim (not accused), general political conflict/maneuvering. (5) election -- campaigns, candidate registration/disqualification, vote results, election-law disputes, election-commission actions. (6) economic -- budget/investment/enterprise/tax/regional-economic news, no legal action, no disaster. (7) social -- healthcare/education/pension/social-services policy or delivery, not itself a protest or disaster. (8) military -- deployments, operations, mobilization, defense-industry news (not accidental incidents -- those are disaster_accident). (9) other -- genuinely fits none of the above 8. If truly torn between two categories with real textual support for both, use the 'Ambiguous' option and say why in Notes -- do not guess.",
+  "display": [
+    {
+      "field": "eventdesc",
+      "label": "Event text (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "year",
+      "label": "year",
+      "format": "compact"
+    },
+    {
+      "field": "month",
+      "label": "month",
+      "format": "compact"
+    },
+    {
+      "field": "region",
+      "label": "region",
+      "format": "compact"
+    },
+    {
+      "field": "regionid",
+      "label": "regionid",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "primary_type_gold",
+      "label": "primary_type (your gold label)",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "arrest_legal",
+          "label": "arrest_legal",
+          "key": "1"
+        },
+        {
+          "value": "protest",
+          "label": "protest",
+          "key": "2"
+        },
+        {
+          "value": "disaster_accident",
+          "label": "disaster_accident",
+          "key": "3"
+        },
+        {
+          "value": "governor_political",
+          "label": "governor_political",
+          "key": "4"
+        },
+        {
+          "value": "election",
+          "label": "election",
+          "key": "5"
+        },
+        {
+          "value": "economic",
+          "label": "economic",
+          "key": "6"
+        },
+        {
+          "value": "social",
+          "label": "social",
+          "key": "7"
+        },
+        {
+          "value": "military",
+          "label": "military",
+          "key": "8"
+        },
+        {
+          "value": "other",
+          "label": "other",
+          "key": "9"
+        },
+        {
+          "value": "ambiguous",
+          "label": "Ambiguous / can't decide",
+          "key": "0",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes (esp. required if Ambiguous)",
+      "type": "textarea",
+      "placeholder": "Free text"
+    }
+  ]
+}

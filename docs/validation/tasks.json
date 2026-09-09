@@ -57,6 +57,14 @@
       "description": "First-ever precision check on the LLM-only arrests (2026-05-07 audit item 3): 8,652 FPP-LLM-only arrests plus the entirely-unhand-coded Telegram/Shkulev/Sledcom sources. 25 per source, spread across crime_type. Feeds an honest precision % with a Wilson CI (loader: eventsData/code/99d_load_llm_only_precision_results.R, to be run after export). Built 2026-09-05.",
       "schema_url": "data/arrests-llm-only-precision/schema.json",
       "items_url": "data/arrests-llm-only-precision/items.json"
+    },
+    {
+      "id": "fpp-primary-type-gold",
+      "name": "FPP primary_type gold (170, v2)",
+      "project": "eventsData",
+      "description": "v2 (2026-09-09 rebuild). First-ever human gold labels for FPP primary_type. 150 base events (same as v1, seed 44: 65 contested arrest/removal, 50 governor_political, 35 random control) + 20 silent repeats (seed 45, non-adjacent) for test-retest reliability -- 170 total. Strata A/B now ask a factual BINARY question (does the text state a legal predicate against this person?) instead of the full 9-way menu, since that IS the arrest_legal/governor_political boundary the 2026-09-09 audit found broken; stratum C keeps the full 9-way + Ambiguous typology question. The binary question deliberately omits the 2026-09-09 decision rule so it can be evaluated, not applied. Loader (eventsData/code/99e_load_primary_type_gold_results.R) reports per-stratum accuracy, a population-reweighted overall accuracy (weights = true base rates in the production cache), and Noah's own test-retest agreement from the repeats. v1 (150 items, single 10-way menu) preserved as items_v1.json.bak/schema_v1.json.bak.",
+      "schema_url": "data/fpp-primary-type-gold/schema.json",
+      "items_url": "data/fpp-primary-type-gold/items.json"
     }
   ]
 }

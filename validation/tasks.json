@@ -60,9 +60,9 @@
     },
     {
       "id": "fpp-primary-type-gold",
-      "name": "FPP primary_type gold (150)",
+      "name": "FPP primary_type gold (170, v2)",
       "project": "eventsData",
-      "description": "First-ever human gold labels for FPP primary_type -- every comparison to date (Haiku-v1 vs nano, v1 vs v2, self-agreement) measures agreement between models/prompts, never accuracy. Blind (no model shown), 150 events, stratified the same way as the n=600 v2 validation sample (65 contested arrest/removal, 50 governor_political, 35 random control). Scores all 4 model arms (Haiku-v1, Haiku-v2, nano-low-v1, nano-low-v2) once exported -- loader: eventsData/code/99e_load_primary_type_gold_results.R. Built 2026-09-09.",
+      "description": "v2 (2026-09-09 rebuild). First-ever human gold labels for FPP primary_type. 150 base events (same as v1, seed 44: 65 contested arrest/removal, 50 governor_political, 35 random control) + 20 silent repeats (seed 45, non-adjacent) for test-retest reliability -- 170 total. Strata A/B now ask a factual BINARY question (does the text state a legal predicate against this person?) instead of the full 9-way menu, since that IS the arrest_legal/governor_political boundary the 2026-09-09 audit found broken; stratum C keeps the full 9-way + Ambiguous typology question. The binary question deliberately omits the 2026-09-09 decision rule so it can be evaluated, not applied. Loader (eventsData/code/99e_load_primary_type_gold_results.R) reports per-stratum accuracy, a population-reweighted overall accuracy (weights = true base rates in the production cache), and Noah's own test-retest agreement from the repeats. v1 (150 items, single 10-way menu) preserved as items_v1.json.bak/schema_v1.json.bak.",
       "schema_url": "data/fpp-primary-type-gold/schema.json",
       "items_url": "data/fpp-primary-type-gold/items.json"
     }

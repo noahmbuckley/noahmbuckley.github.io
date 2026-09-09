@@ -277,9 +277,22 @@ async function openTask(taskId, { fromSync = false } = {}) {
 }
 
 function renderInstructions() {
+  // Per-item instructions support: if schema.instructions_by_variant is present
+  // and the current item carries a matching `variant` field, use that text
+  // instead of the task-level default. Falls back to schema.instructions
+  // unchanged for every task that doesn't set instructions_by_variant/variant
+  // (i.e. every task except fpp-primary-type-gold as of 2026-09-09).
+  const sch = state.currentTask.schema;
   const el = $('task-instructions');
-  el.textContent = state.currentTask.schema.instructions || '';
-  el.style.display = state.currentTask.schema.instructions ? 'block' : 'none';
+  let text = sch.instructions || '';
+  if (sch.instructions_by_variant && state.currentTask.items && state.currentTask.items.length) {
+    const item = currentItem();
+    if (item && item.variant && sch.instructions_by_variant[item.variant] != null) {
+      text = sch.instructions_by_variant[item.variant];
+    }
+  }
+  el.textContent = text;
+  el.style.display = text ? 'block' : 'none';
 }
 
 function currentItem() {
@@ -295,6 +308,8 @@ function renderItem() {
   const item = currentItem();
   const total = state.currentTask.items.length;
   $('progress-text').textContent = `${state.currentIndex + 1} / ${total}`;
+
+  renderInstructions();   // re-derive per-item (see instructions_by_variant note above)
 
   // ===== Display card =====
   const dc = $('display-card');
@@ -327,12 +342,22 @@ function renderItem() {
 
 function renderForm() {
   const sch = state.currentTask.schema;
+  const item = currentItem();
   const itemId = currentItemId();
   const cur = state.answersCache[itemId] || {};
   const f = $('validation-form');
   f.innerHTML = '';
 
-  for (const v of sch.validation) {
+  // Per-item validation fields: if schema.validation_by_variant is present and
+  // the item carries a matching `variant`, use that field set instead of the
+  // task-level default `sch.validation`. Falls back to sch.validation
+  // unchanged for every task that doesn't set validation_by_variant/variant.
+  let fields = sch.validation;
+  if (sch.validation_by_variant && item && item.variant && sch.validation_by_variant[item.variant]) {
+    fields = sch.validation_by_variant[item.variant];
+  }
+
+  for (const v of fields) {
     const grp = document.createElement('div');
     grp.className = 'form-group';
     grp.dataset.field = v.field;
@@ -775,9 +800,17 @@ function bindGlobalUI() {
       if (ta) { e.preventDefault(); ta.focus(); }
     }
     else if (['1','2','3','4','5','6','7','8','9'].includes(e.key)) {
-      // verdict (or first enum) shortcut — find enum group with matching key
+      // verdict (or first enum) shortcut — find enum group with matching key.
+      // Must resolve the SAME per-item field set as renderForm() (variant-aware),
+      // or shortcuts silently no-op for any field that only exists in a
+      // validation_by_variant set (e.g. the binary yes/no/unclear question).
       const sch = state.currentTask.schema;
-      for (const v of sch.validation) {
+      const item = currentItem();
+      let fields = sch.validation;
+      if (sch.validation_by_variant && item && item.variant && sch.validation_by_variant[item.variant]) {
+        fields = sch.validation_by_variant[item.variant];
+      }
+      for (const v of fields) {
         if (v.type !== 'enum') continue;
         const opt = v.options.find(o => o.key === e.key);
         if (opt) {
