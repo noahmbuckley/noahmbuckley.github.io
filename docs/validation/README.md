@@ -2,7 +2,7 @@
 
 A small offline-capable web app for hand-coding validation tasks across Noah's
 research projects. Lives in the Quarto website so it deploys to
-**`https://noahbuckley.github.io/validation/`** alongside the rest of the site.
+**`https://noahbuckley.me/validation/`** alongside the rest of the site.
 
 ## What it does
 
@@ -64,7 +64,7 @@ validation/
 
 ## Usage — Mac (browser tab)
 
-1. Open `https://noahbuckley.github.io/validation/` (or for local testing, see below).
+1. Open `https://noahbuckley.me/validation/` (or for local testing, see below).
 2. Tap a task. Items load. Fill in verdicts and notes.
 3. Keys: `1`/`2`/`3`/`4` set verdict; `←`/`→` navigate; `Enter` saves & next; `N` jumps focus to notes.
 4. When done (or whenever), open the menu (⋮) → **Export answers** → file downloads to `~/Downloads/`.
@@ -87,7 +87,7 @@ Application → Storage → IndexedDB → `validation` (verify answers persistin
 
 **One-time install:**
 
-1. On Wi-Fi, open `https://noahbuckley.github.io/validation/` in Safari.
+1. On Wi-Fi, open `https://noahbuckley.me/validation/` in Safari.
 2. Tap a task once and let the items load (this caches everything).
 3. Tap the menu (⋮) → **Request persistent storage** → confirm if prompted.
 4. Tap the share icon in Safari's bottom toolbar → **Add to Home Screen**.
