@@ -1,0 +1,172 @@
+{
+  "task_id": "events-gold-mixed",
+  "name": "Events gold: FPP + sledcom + personnel (72)",
+  "version": "2026-09-10-v1",
+  "id_field": "item_id",
+  "instructions": "FPP item (one of 3 interleaved tasks in this chunk -- see START_HERE_2026-09-10.md). Read ONLY the Russian text below and answer ONE factual question -- do not apply any category scheme. Question: does the text ITSELF state that a specific crime, criminal case, investigation, court action, or formal charge has been brought against a named person? 'Yes' requires the text to name or clearly describe such a thing -- a crime, an opened criminal/administrative case, a court decision or sentence, formal charges, or a finding by a prosecutor/oversight body -- directed AT a person. 'No' means the text describes only a resignation, dismissal, removal, term expiration, policy dispute, public statement, or similar political/personnel event, with nothing of that kind stated. 'Unclear' means the TEXT ITSELF is genuinely ambiguous on this specific factual question.",
+  "instructions_by_variant": {
+    "fpp": "FPP item (one of 3 interleaved tasks in this chunk -- see START_HERE_2026-09-10.md). Read ONLY the Russian text below and answer ONE factual question -- do not apply any category scheme. Question: does the text ITSELF state that a specific crime, criminal case, investigation, court action, or formal charge has been brought against a named person? 'Yes' requires the text to name or clearly describe such a thing -- a crime, an opened criminal/administrative case, a court decision or sentence, formal charges, or a finding by a prosecutor/oversight body -- directed AT a person. 'No' means the text describes only a resignation, dismissal, removal, term expiration, policy dispute, public statement, or similar political/personnel event, with nothing of that kind stated. 'Unclear' means the TEXT ITSELF is genuinely ambiguous on this specific factual question.",
+    "sledcom": "SLEDCOM item (one of 3 interleaved tasks in this chunk -- see START_HERE_2026-09-10.md). Below is a Sledcom (SK) press-release title plus its lead paragraph (the release is much longer; you're shown the part that states who is charged). Question: is a GOVERNMENT OFFICIAL the DEFENDANT or SUBJECT of the legal action described (criminal case, investigation, charges, sentencing), acting in their OFFICIAL capacity? 'No' if the defendant is a private citizen, a doctor/teacher/company employee acting in a non-official professional role, or if the official named is only a VICTIM (attacked, threatened, killed) rather than the one facing legal action. 'Unclear' if the excerpt genuinely doesn't say enough to tell.",
+    "personnel": "PERSONNEL item (one of 3 interleaved tasks in this chunk -- see START_HERE_2026-09-10.md). Below is a short Telegram excerpt. Question: does this post report a CHANGE in who holds an official position -- an appointment, dismissal, resignation, term end, or death in office? 'No' if the post is about something else entirely (a policy comment, an arrest unrelated to a position change, a routine visit/event, gossip/commentary with no actual change of office). 'Unclear' if the excerpt genuinely doesn't say enough to tell."
+  },
+  "display": [
+    {
+      "field": "main_text",
+      "label": "Text (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "period",
+      "label": "Date",
+      "format": "compact"
+    },
+    {
+      "field": "region",
+      "label": "Region",
+      "format": "compact"
+    },
+    {
+      "field": "regionid",
+      "label": "regionid",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "legal_predicate_stated_gold",
+      "label": "Does the text state a legal predicate against this person?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes -- a crime/case/investigation/court action/charge is stated",
+          "key": "1",
+          "tone": "neutral"
+        },
+        {
+          "value": "no",
+          "label": "No -- nothing like that is stated",
+          "key": "2",
+          "tone": "neutral"
+        },
+        {
+          "value": "unclear",
+          "label": "Unclear from the text",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes (optional)",
+      "type": "textarea",
+      "placeholder": "Free text"
+    }
+  ],
+  "validation_by_variant": {
+    "fpp": [
+      {
+        "field": "legal_predicate_stated_gold",
+        "label": "Does the text state a legal predicate against this person?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes -- a crime/case/investigation/court action/charge is stated",
+            "key": "1",
+            "tone": "neutral"
+          },
+          {
+            "value": "no",
+            "label": "No -- nothing like that is stated",
+            "key": "2",
+            "tone": "neutral"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear from the text",
+            "key": "3",
+            "tone": "warn"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "sledcom": [
+      {
+        "field": "official_defendant_gold",
+        "label": "Is a government official the defendant/subject, in their official capacity?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes -- an official is the defendant/subject",
+            "key": "1",
+            "tone": "neutral"
+          },
+          {
+            "value": "no",
+            "label": "No -- private citizen, non-official role, or official is only a victim",
+            "key": "2",
+            "tone": "neutral"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear from the text",
+            "key": "3",
+            "tone": "warn"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "personnel": [
+      {
+        "field": "personnel_change_gold",
+        "label": "Does this report a change in who holds an official position?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes -- an appointment/dismissal/resignation/term end/death in office",
+            "key": "1",
+            "tone": "neutral"
+          },
+          {
+            "value": "no",
+            "label": "No -- not a position change",
+            "key": "2",
+            "tone": "neutral"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear from the text",
+            "key": "3",
+            "tone": "warn"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ]
+  }
+}
