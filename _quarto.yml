@@ -5,7 +5,12 @@ project:
     - CNAME
     - google7674fac84ca96997.html
     - robots.txt
-    - private/**
+    - 404.html         # also forwards old /private/... links to /resources/...
+    # Pages built outside this Quarto project. Each lives in a source folder here and
+    # Quarto copies it into docs/ on render. Never write into docs/ alone: a full render
+    # empties docs/ and rebuilds it from these folders (see resources/README.md).
+    - resources/**     # unlisted pages, index at /resources/
+    - teaching/**      # public: research guide, course sites
     - validation/**
 
 website:

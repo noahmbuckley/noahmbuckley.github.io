@@ -2,6 +2,9 @@
 title: "Teaching"
 ---
 
+**For students:** [Doing political science research](teaching/research-guide/), my
+advice for capstone and MSc dissertation projects.
+
 ## Trinity College Dublin
 
 ::: {.course}

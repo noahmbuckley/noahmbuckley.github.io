@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Noah Buckley">
+<meta name="dcterms.date" content="2026-09-11">
+<meta name="description" content="Advice, common pitfalls and data sources for students doing an independent research project in political science.">
+
+<title>Doing political science research</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5b538d48f0afc55746b1f4ad2839c979.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Doing political science research">
+<meta property="og:description" content="Advice for capstone and MSc dissertation students">
+<meta property="og:site_name" content="Doing political science research">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Doing political science research</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://noahbuckley.me/"> 
+<span class="menu-text">Noah Buckley</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#what-a-research-project-is" id="toc-what-a-research-project-is" class="nav-link active" data-scroll-target="#what-a-research-project-is">1. What a research project is</a></li>
+  <li><a href="#finding-a-question" id="toc-finding-a-question" class="nav-link" data-scroll-target="#finding-a-question">2. Finding a question</a></li>
+  <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">3. Theory</a></li>
+  <li><a href="#research-design" id="toc-research-design" class="nav-link" data-scroll-target="#research-design">4. Research design</a></li>
+  <li><a href="#measurement" id="toc-measurement" class="nav-link" data-scroll-target="#measurement">5. Measurement</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">6. Methods</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">7. Data</a></li>
+  <li><a href="#reading-and-the-literature" id="toc-reading-and-the-literature" class="nav-link" data-scroll-target="#reading-and-the-literature">8. Reading and the literature</a></li>
+  <li><a href="#writing-it-up" id="toc-writing-it-up" class="nav-link" data-scroll-target="#writing-it-up">9. Writing it up</a></li>
+  <li><a href="#process-time-help-ethics-ai" id="toc-process-time-help-ethics-ai" class="nav-link" data-scroll-target="#process-time-help-ethics-ai">10. Process: time, help, ethics, AI</a></li>
+  <li><a href="#the-msc-dissertation-whats-different" id="toc-the-msc-dissertation-whats-different" class="nav-link" data-scroll-target="#the-msc-dissertation-whats-different">11. The MSc dissertation: what’s different</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Doing political science research</h1>
+<p class="subtitle lead">Advice for capstone and MSc dissertation students</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Noah Buckley </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">11 September 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!--
+STYLE: plain, direct, first person, in Noah's register (his 2024-25 capstone
+slides and emails are the source for most of this). Short paragraphs, few
+dashes, no quips. Anything policy-like (limits, penalties, deadlines,
+permissions) points to the module or programme documents rather than
+restating them. Rebuild and publish: ../publish-guide.sh
+-->
+<p>I end up giving the same advice every year, to every group, so here it is in one place. It’s written for my final-year capstone students and for the MSc students whose dissertations I supervise. Most of it applies to both; where it doesn’t, I say so.</p>
+<p>Read it all once early on, then come back to sections as they become relevant. Each item is collapsed: click a title to open it, or open everything at once (useful if you want to search the page).</p>
+<button id="toggle-all" class="btn btn-sm btn-outline-secondary" type="button">
+Expand all
+</button>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>If you read nothing else:</strong> narrow your question. Make sure your outcome varies. Spell out the mechanism. Make sure your X comes before your Y. Find and download your data before Christmas.</p>
+</div>
+</div>
+</div>
+<section id="what-a-research-project-is" class="level1">
+<h1>1. What a research project is</h1>
+<div class="callout callout-style-default callout-important callout-titled" title="It has to be political science, not a report">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>It has to be political science, not a report
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is the thing I say most often in the autumn. A proposal on, say, Belarusian state media after 2020 can be well read and well written and still not be a research project. If it describes what happened, in what order and in detail, it’s a report. Reports are useful, but that’s not what this is.</p>
+<p>A research project finds out something new about the world, and does it rigorously. It makes a claim about cause and effect that could have turned out to be wrong, and then tests it. The contribution can be small (it usually is). What matters is that you couldn’t have written the project without doing some analysis.</p>
+<p><strong>Quick test:</strong> could a well-informed journalist with a library card and three weeks have written it? If so, it’s not there yet.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="What the finished project looks like">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>What the finished project looks like
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>It should look more or less like a journal article you’ve read in one of your classes: introduction, literature review, theory, research design, results, conclusion. Hypotheses if you have them, at least one table or figure, and a bibliography made up mostly of peer-reviewed political science. Not a book chapter, a policy brief or a magazine feature.</p>
+<p>There are thousands of examples on Google Scholar. When you’re stuck on how to structure a section, look at how three published articles close to your topic did it, and borrow.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="New doesn't mean revolutionary">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>New doesn’t mean revolutionary
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>People freeze up here because they think “new” means nobody has ever touched the topic. If literally nobody has studied your outcome, it’s probably either impossible to study or not very interesting. All science is iterative: we borrow from and build on what has been done before.</p>
+<p>A contribution can be: someone tested this in Latin America and you’re testing it in post-Soviet states; someone used television and you’re using Telegram; someone showed this in 1994 and the data are much better now. Your X and your Y probably aren’t new. X → Y in your setting, measured your way, is.</p>
+<p>If your question turns out to be an existing article in <em>Comparative Political Studies</em>, that’s fine, and even useful. You can extend it (they covered 1990–2010, and the interesting variation is since 2014), modify it (a better measure, a different set of cases), or look for where their argument stops working. You also get a blueprint, and often a replication dataset. What you can’t do is pretend you didn’t find it. I will find it.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="finding-a-question" class="level1">
+<h1>2. Finding a question</h1>
+<div class="callout callout-style-default callout-tip callout-titled" title="How to come up with an idea">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>How to come up with an idea
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There’s no magic bullet, but some things help. Set aside a few hours (not twenty minutes between other things) to read around and brainstorm. Go for a walk in the middle.</p>
+<ul>
+<li>Look back at old essays, and at syllabi from modules you liked. Did any papers or titles jump out at you, including in the recommended readings?</li>
+<li>Pick a country or topic you’re a bit interested in, read its Wikipedia page, and follow a few of the references.</li>
+<li>Skim articles in the <em>Annual Review of Political Science</em> or the Oxford Research Encyclopedias on topics you like, and look at what they cite.</li>
+<li>Connect your other interests, or things in the news, to political science: climate change, AI, migration, inequality, social media, populism, war. How might any of these interact with authoritarian politics?</li>
+</ul>
+<p>As you read, ask yourself: does this still seem true? Is it true in every case you can think of? When might it not be? Where do the authors stop, and why? Conclusions often say something like “future research should investigate…”. That’s a research question someone has handed you.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="A topic is not a question">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>A topic is not a question
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>“Digital authoritarianism in Central Asia” is a topic. “The effect of election fraud on protest” is getting closer. “Does documented ballot-stuffing in a precinct increase protest there afterwards?” is a question.</p>
+<p>A research question has a question mark, contains something that varies, and could be answered with yes, no, or “by about this much”. Most people arrive in the autumn with a topic and think they have a question. Write yours down and check: is there a verb, and does something in it vary? Be honest with yourself about which one you have, because you can’t design a study around a topic.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Your question should be narrower than you think">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Your question should be narrower than you think
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You have about six months, no budget, no team and 8,000 words. That’s enough for one clear claim, tested well. Instead of abandoning a big idea, find a small piece of it (an implication, a nuance, one set of cases) that you can actually test. The rest can wait for your MSc or PhD.</p>
+<p>Think of it as a funnel: political science → comparative politics → authoritarian politics → a research area → a topic → your research question. Most first drafts stop two steps too early. A question that’s too focused is rarely a problem. A question so broad that no evidence could answer it is a problem every year.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="&quot;Does X affect Y?&quot; beats &quot;how&quot; and &quot;why&quot;">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>“Does X affect Y?” beats “how” and “why”
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>“How did the Kremlin take control of regional media?” and “Why do dictators hold elections?” feel like the deep questions. They’re also hard to answer with evidence, because the answer is a story, and stories are hard to test. Roughly:</p>
+<ul>
+<li><em>How</em> and <em>why</em> questions are often very difficult to answer well.</li>
+<li><em>What is the effect of X on Y?</em> questions are good, though a bit descriptive.</li>
+<li><em>Does X have an effect on Y?</em> questions are great. They’re bounded and testable, and they make you name both variables from day one.</li>
+</ul>
+<p>You can still discuss how and why in your theory section and in your conclusion. But the thing you test should be the narrow version.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Explain it to someone outside politics">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Explain it to someone outside politics
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Imagine explaining your project to a parent, or to a friend who has never taken a politics module. They should be able to follow what you think causes what, and how you’d know if you were wrong. If you can’t do it without words like “discursive” or “problematise”, the problem usually isn’t their vocabulary. It’s that the idea hasn’t turned into a claim about the world yet.</p>
+<p>The capstone research design worksheet asks you to state your dependent variable in fifteen words or fewer. Students tend to find that the hardest box on the sheet, which tells you something.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="theory" class="level1">
+<h1>3. Theory</h1>
+<div class="callout callout-style-default callout-important callout-titled" title="Have a theory before you test anything">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Have a theory before you test anything
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Before you test anything, you need to know how you’ll interpret whatever you find. Otherwise you run a regression, get a coefficient, and write a story around whatever came out.</p>
+<p>A theory is general: “Whenever we see X, we should expect Y, because of A, B and C. People used to think it was because of D, but that’s wrong.” A, B and C should rest on something general about how people or organisations behave: how people process information, how politicians respond to incentives, how bureaucracies act under uncertainty. “The Kazakh government did this because Nazarbayev wanted to” isn’t a theory. “Leaders who fear their own elites more than the public invest in coup-proofing rather than propaganda” is.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Spell out the mechanism">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Spell out the mechanism
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>“Mechanism” is probably the comment I write most often on drafts. Your independent variable doesn’t reach your dependent variable by magic. Foreign agent laws don’t reduce independent media output directly. They impose financial and reputational costs, donors pull out, outlets can’t pay staff, and output falls.</p>
+<p>Spelling out the mechanism gives you more ways to check your theory, points you to other evidence you could look for, and helps rule out rival explanations that predict the same correlation through a different route. You often won’t be able to test the mechanism fully in 8,000 words. But you should state it, and say what evidence would fit it.</p>
+<p><strong>What I’ll ask you:</strong> what else has to happen for your X to affect your Y?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Alternative explanations, and what you'd see if you were wrong">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Alternative explanations, and what you’d see if you were wrong
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Good projects have a paragraph that starts, more or less, “Of course, there’s another way to read this.” What else could produce the pattern you expect? If more university education goes along with democratisation, is that the education, or are richer countries simply doing both?</p>
+<p>Then ask: <strong>what would I expect to see if I were wrong?</strong> Almost nobody writes this down, and it’s the most useful question here. If your theory is right, we should see A, B and C; if the main alternative is right, we’d see A but not B. That difference is what makes your evidence convincing. In quantitative work it shows up as control variables and robustness checks; in qualitative work, as rival hypotheses and evidence that could have gone against you.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Hypotheses: number them, and don't write eight">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Hypotheses: number them, and don’t write eight
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Write your expectations out as numbered hypotheses. H1: as X increases, Y decreases. H2: the effect in H1 is larger where Z is present. It feels bureaucratic, but it clarifies things. A hypothesis that needs more than one sentence is usually two hypotheses, and one you can’t imagine testing shouldn’t be there.</p>
+<p>The opposite problem also comes up every year: seven hypotheses, three with no data behind them and two that say the same thing. Three or four hypotheses tested well are better than eight you can only gesture at.</p>
+<p><strong>Quick test:</strong> for each hypothesis, can you name the variable and the data source that would test it? If not, cut it.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Answer &quot;so what?&quot; early">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answer “so what?” early
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>In the first paragraph or two of your introduction, tell the reader why they should care, in two ways. The scholarly reason: the literature believes X, and you’re showing that X is incomplete, or doesn’t hold outside the cases it was built on. The real-world reason: if you’re right, something we care about (repression, protest, war, whether elections constrain anyone) works differently than we thought.</p>
+<p>“Because it interests me” is a fine reason to pick a topic, but it doesn’t belong in the paper. And don’t save the “so what” for the conclusion. By then the reader has already made up their mind.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="research-design" class="level1">
+<h1>4. Research design</h1>
+<div class="callout callout-style-default callout-important callout-titled" title="Science is a comparative exercise">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Science is a comparative exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Your research question needs a comparison and variation built into it. This is the one requirement I won’t budge on. If you think some feature of a country or regime has made it more repressive, more stable, richer or whatever, you need to compare it (qualitatively or quantitatively) with cases that turned out differently. There has to be variation in your outcome, with some cases at Y<sub>1</sub> and others at Y<sub>2</sub>, and very likely variation in your explanation too: some cases with the policy, institution, shock or history, and some without. Otherwise you’re writing historical narrative, which isn’t the goal here.</p>
+<p>Another way to say this: your question should make clear how the world would be different if your cause hadn’t been there. Your job for the rest of the project is to show that you’re right.</p>
+<p><strong>What I’ll ask you:</strong> which are your Y<sub>1</sub> cases, and which are your Y<sub>2</sub> cases?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Say what your units are">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Say what your units are
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>“Compared to what?” is half the question. The other half is “compared across what?” Individuals? Countries? Provinces or cities? Parties? Media outlets? Protest events? Country-years?</p>
+<p>Your unit of observation determines your sample size, your data sources and what counts as a control. It also determines whether your claim holds together: a theory about how <em>individuals</em> respond to propaganda can’t simply be tested on <em>country</em>-level democracy scores. Put it in one line at the top of your design section, e.g.&nbsp;“The unit of observation is the Russian region-year, 2000–2023 (about 2,000 observations).”</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Don't select on the dependent variable">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Don’t select on the dependent variable
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The classic mistake. You want to know why some autocracies collapse, so you pick five that collapsed and look for what they have in common. You’ll always find something, and it’s tempting to conclude that it caused the collapse. But you can’t know that: the same thing may be just as common among the autocracies that survived. It’s one of the most common serious flaws in student comparative research, and it’s tempting because the cases where something happened are the interesting ones with the good sources.</p>
+<p>The fix is to include cases where the outcome didn’t happen: protest movements that succeeded and ones that fizzled, outlets that were shut down and ones that survived.</p>
+<p><em>See:</em> Barbara Geddes, “How the Cases You Choose Affect the Answers You Get,” <em>Political Analysis</em> 2 (1990).</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Your X has to come before your Y">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Your X has to come before your Y
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If your independent variable is measured after your dependent variable changed, you may be looking at reverse causation. This comes up most with slow-moving national indicators: if you think expanding university education leads to democratisation, your education data need to come from before the democracy scores you’re explaining.</p>
+<p>Related: watch for X being a <em>response</em> to Y. Outlets that were already struggling get labelled foreign agents; regions that were already restive get more police. If that’s plausible in your case, say so and do something about it: lag your variables, use a baseline from before, or at least write an honest paragraph about what you can’t rule out.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Your outcome can't contain your cause">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Your outcome can’t contain your cause
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This one is subtler than it sounds, and it comes up every year. Say you want to show that repressing civil society organisations weakens civil society, and you measure civil society with V-Dem’s core civil society index. That index is partly built from an indicator of CSO repression, so you’d be showing that repression predicts repression. The same trap applies to any composite index: check what goes into it, and if your cause is in there, use a component that leaves it out and say why. Overlapping concepts count too. If your outcome is “state capacity” and your explanation is “tax collection”, be nervous.</p>
+<p><strong>Quick test:</strong> open the codebook and read what goes into your outcome variable. Is your cause in there?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Control variables and fixed effects">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Control variables and fixed effects
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Controls are there to rule out alternative explanations, one at a time. Each one should come with a reason: “I control for GDP per capita because richer countries both educate more and democratise more.” There are two ways to get this wrong: throwing in twenty controls because they were in the dataset (some of which may sit on the causal path and absorb the very effect you’re looking for), and having none at all.</p>
+<p>Fixed effects are cheap and powerful. Country fixed effects absorb everything about each country that doesn’t change over time; year fixed effects absorb whatever happened to everyone in a given year. But they also soak up slow-moving variables: V-Dem scores plus country fixed effects can leave you with very little variation to work with.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Say where your claim stops">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Say where your claim stops
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>State the scope of your evidence explicitly: which cases, which years, which population. “Electoral autocracies in the post-Soviet region, 1995–2020” tells the reader you’re not making claims about Singapore, and it makes your argument more credible, not less. In the conclusion you can speculate about whether the argument travels further, as long as you were clear about scope earlier on.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="measurement" class="level1">
+<h1>5. Measurement</h1>
+<div class="callout callout-style-default callout-important callout-titled" title="Measure your X and Y concretely">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Measure your X and Y concretely
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Measurement is where a lot of good ideas run into trouble, so deal with it in November, not February.</p>
+<p>For your independent variable: how will you know whether a unit has been “treated”? What does a treated unit look like, concretely? If X is “exposure to state propaganda”, is that broadcast reach, self-reported TV viewing, or living in a region where the transmitter works?</p>
+<p>For your dependent variable: not “I will assess democratic backsliding”, but which source, which variable, which years, and at what level.</p>
+<p>Every year at least one project stalls because the concept is clear but the measure is a placeholder that never gets filled in.</p>
+<p><strong>What I’ll ask you:</strong> name the variable. Dataset, variable name, coverage.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="When democracy indices disagree">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>When democracy indices disagree
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>V-Dem, Polity and Freedom House often disagree about the same country in the same year, sometimes by a lot, because they measure different things in different ways. “I used a democracy score” isn’t a measurement decision. Which one you used, and why, is.</p>
+<p>V-Dem’s strength is that it’s broken down into many components, so you can pick the one that matches your concept. Its weakness is that many of those components move slowly. Freedom House is coarser but goes back to the 1970s. Polity5 stops in 2018 and has well-known quirks around transitions and interruptions.</p>
+<p>Whichever you choose, say in a sentence why it fits your concept, and check whether your result survives swapping in another one. If it doesn’t, that’s worth reporting.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Survey data from autocracies">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Survey data from autocracies
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Surveys are one of the best tools we have for studying authoritarian politics, and I use them a lot in my own work. But think about what a respondent risks by answering honestly. When a question touches on the regime, some people won’t take part, and some who do will give the answer they think is safe. That doesn’t make the data useless. It does mean you should think about which questions are sensitive, compare sensitive and non-sensitive items, and not take a headline approval rating at face value.</p>
+<p><em>See:</em> Timothy Frye, Scott Gehlbach, Kyle Marquardt and Ora John Reuter, “Is Putin’s Popularity Real?,” <em>Post-Soviet Affairs</em> 33(1) (2017).</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="If you build your own dataset, say so and document it">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>If you build your own dataset, say so and document it
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Hand-coding a few hundred news articles, party manifestos, court decisions or protest events is one of the more impressive things a student project can contain, and students tend to undersell it. If you built a dataset, say so in the introduction (“I construct a new dataset of…”).</p>
+<p>Then document it well enough that someone else could reproduce it: where the documents came from and how you chose them, your categories, what a borderline case looks like and how you decided it. A classmate should be able to take your coding rules and produce roughly the same dataset. Show a table of how the coding came out. If you can, code a sample twice (or have a classmate do it) and report how often you agree.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="methods" class="level1">
+<h1>6. Methods</h1>
+<div class="callout callout-style-default callout-important callout-titled" title="You almost certainly need to pick one: qualitative or quantitative">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>You almost certainly need to pick one: qualitative or quantitative
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The categories are fuzzy, and you should find the spot that works for (a) your research question and (b) your abilities and interests. Both can be convincing, both are a lot of work, and both can be done well or badly. In my capstone group I’ll nudge you towards quantitative work, but you will in no way be penalised for doing something qualitative. What matters is that the project meets the criteria above.</p>
+<p>Make the choice deliberately and early, rather than drifting into it in February because the data didn’t turn up. What I don’t want is a project that’s quantitative in the results section and qualitative in the theory section, with neither doing enough work.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Don't be afraid of quantitative work. Just do OLS!">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Don’t be afraid of quantitative work. Just do OLS!
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You don’t need a multilevel elastic-net Bayesian ordered multivariate probit with jackknifed heteroskedastic standard errors. Just do OLS (possibly with fixed effects). A clean, well-motivated regression with a good design beats a fancy estimator applied to a muddled one every time.</p>
+<p>Quantitative work is also practical. It’s transparent and reproducible: your marker can see exactly what you did. It’s iterative: trying a new variable or specification takes an afternoon, not a month. And it’s easy to get help with: every R error message has been answered somewhere online, and Google and an AI assistant will get you a long way. There’s a lot of data available, too (see section 7).</p>
+<p>I offer an optional R refresher early in the year, and capstone students can bring code problems to clinics.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Process tracing is harder than it looks">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Process tracing is harder than it looks
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Process tracing has a reputation as the qualitative option that lets you write a detailed narrative and call it a method. Done properly, it’s close to the opposite: one of the more demanding things in the discipline. You have to set out in advance what your theory predicts you’ll observe at each step of the causal chain, and ask what each piece of evidence actually does to your confidence. Some evidence fits your explanation and every rival equally well, and tells you nothing. Van Evera’s four tests (straw-in-the-wind, hoop, smoking gun, doubly decisive), which Collier lays out clearly, are about knowing which kind of evidence you have <em>before</em> you go looking.</p>
+<p>It also needs sources most students can’t get: archives, elite interviews, leaked documents, memoirs in a language you read. In authoritarian cases the most interesting evidence is often exactly what the regime has suppressed. If you tell me you’ll process-trace a single case, I’ll push you hard on it. A well-executed comparison of thirty cases is usually a safer route to a good mark than a poorly executed process trace of one.</p>
+<p><em>See:</em> David Collier, “Understanding Process Tracing,” <em>PS: Political Science &amp; Politics</em> 44(4) (2011).</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="A single case study needs a reason">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>A single case study needs a reason
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Single-case work can be excellent, but it has to do analytical work, not just descriptive work. It can test a theory where it’s most likely (or least likely) to hold, or trace a mechanism that large-N studies can only assume. It can’t show that X causes Y everywhere by describing one place carefully, and it can’t do either of those jobs unless you say which one it’s doing and why you chose this case.</p>
+<p>That case selection paragraph is one of the most important in the project. “I chose Hungary because I find it interesting” won’t do. “Hungary is a most-likely case for the EU-conditionality argument, since it depends heavily on EU funds and faces strong formal compliance mechanisms, so failure there is informative” will. You can also compare within a case (regions, years, sectors, before and after a shock), which gets you variation without leaving your country.</p>
+<p><em>See:</em> John Gerring, <em>Social Science Methodology</em> (2012); King, Keohane and Verba, <em>Designing Social Inquiry</em> (1994).</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Mixed methods: usually too ambitious">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Mixed methods: usually too ambitious
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Most years someone proposes a large-N analysis plus two case studies plus a content analysis. In 8,000 words that produces three thin things instead of one solid one, and they rarely talk to each other.</p>
+<p>If you want to mix methods, make it lopsided: one method carries the argument, and the other does one small, clearly defined job. For example, a regression plus two paragraphs illustrating the mechanism in one case, or a qualitative argument plus one figure showing the pattern is general. “I will triangulate” isn’t a plan. Say which method answers your research question, and give the other one a specific job.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="data" class="level1">
+<h1>7. Data</h1>
+<div class="callout callout-style-default callout-tip callout-titled" title="There's a huge amount of free data out there">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>There’s a huge amount of free data out there
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Students consistently underestimate this. Often you can download exactly what you need, ready to use. Some places to start (most are free; a few need you to register):</p>
+<p><strong>Regimes, democracy and institutions</strong></p>
+<ul>
+<li><a href="https://www.v-dem.net/">V-Dem</a>: the workhorse. Hundreds of indicators for nearly every country, some going back to 1789. R package <a href="https://github.com/vdeminstitute/vdemdata"><code>vdemdata</code></a>.</li>
+<li><a href="https://freedomhouse.org/">Freedom House</a>: <em>Freedom in the World</em>, and <em>Freedom on the Net</em> for digital authoritarianism.</li>
+<li><a href="https://www.systemicpeace.org/polityproject.html">Polity5</a>: long-running regime scores, ending in 2018.</li>
+<li><a href="https://www.gu.se/en/quality-government">Quality of Government</a>: hundreds of datasets merged into one country-year file. Often the quickest way to get control variables.</li>
+<li>Database of Political Institutions (DPI): executives, legislatures, parties, checks and balances.</li>
+<li><a href="https://comparativeconstitutionsproject.org/">Comparative Constitutions Project</a>: what constitutions actually say, coded.</li>
+<li><a href="https://www.parlgov.org/">ParlGov</a>, the <a href="https://manifesto-project.wzb.eu/">Manifesto Project</a> and the <a href="https://www.chesdata.eu/">Chapel Hill Expert Survey</a>: parties, cabinets and party positions.</li>
+</ul>
+<p><strong>Public opinion</strong></p>
+<ul>
+<li><a href="https://www.worldvaluessurvey.org/">World Values Survey</a> and <a href="https://europeanvaluesstudy.eu/">European Values Study</a></li>
+<li><a href="https://www.europeansocialsurvey.org/">European Social Survey</a></li>
+<li><a href="https://www.afrobarometer.org/">Afrobarometer</a>, <a href="https://www.arabbarometer.org/">Arab Barometer</a>, <a href="https://www.latinobarometro.org/">Latinobarómetro</a>, <a href="https://www.asianbarometer.org/">Asian Barometer</a></li>
+<li><a href="https://www.gesis.org/en/eurobarometer-data-service">Eurobarometer</a> (via GESIS)</li>
+<li><a href="https://cses.org/">Comparative Study of Electoral Systems</a></li>
+<li>National election studies, e.g.&nbsp;<a href="https://electionstudies.org/">ANES</a> (US) and the <a href="https://www.britishelectionstudy.com/">British Election Study</a></li>
+</ul>
+<p><strong>Conflict, protest and repression</strong></p>
+<ul>
+<li><a href="https://acleddata.com/">ACLED</a>: geocoded political violence and protest events, updated weekly. Registration required; check the access terms.</li>
+<li><a href="https://ucdp.uu.se/">UCDP</a>: armed conflict, the standard source for data on war.</li>
+<li><a href="https://massmobilization.github.io/">Mass Mobilization Project</a>: protests against governments since 1990.</li>
+<li><a href="https://www.gdeltproject.org/">GDELT</a>: huge amounts of automated event data from news reports. Powerful but messy, so check a sample by hand before relying on it.</li>
+</ul>
+<p><strong>Russia</strong></p>
+<ul>
+<li><a href="https://www.levada.ru/en/">Levada Center</a>: Russia’s main independent pollster. Results and reports are on its website, in Russian and partly in English.</li>
+<li><a href="https://data.ovd.info/">OVD-Info</a>: data on political persecution in Russia.</li>
+<li>If you’re working on Russia, talk to me. I work with a lot of Russian data and can point you to sources.</li>
+</ul>
+<p><strong>Economics and development</strong></p>
+<ul>
+<li><a href="https://databank.worldbank.org/source/world-development-indicators">World Development Indicators</a> (World Bank). R package <code>WDI</code>.</li>
+<li><a href="https://ourworldindata.org/">Our World in Data</a>: clean, well sourced and easy to download.</li>
+<li>IMF, OECD and UNESCO statistics.</li>
+</ul>
+<p><strong>Archives</strong></p>
+<ul>
+<li><a href="https://dataverse.harvard.edu/">Harvard Dataverse</a> and <a href="https://www.icpsr.umich.edu/">ICPSR</a> hold replication data and thousands of other datasets. Search them before you decide your data don’t exist.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Use replication data">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Use replication data
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Most political science journals now require authors to post their replication files, usually on Dataverse. So for many of the articles you’re reading, you can download the exact dataset behind the exact table. Someone may already have spent a year merging V-Dem with election results for your region. Extend their work rather than rebuilding it.</p>
+<p>If the data aren’t posted, email the authors. Say who you are and what you’re working on, which data you want, and what you’d use them for. Academics get very few emails from students who have clearly read the paper, and many of us are happy to help.</p>
+<p>Always cite the original data source, and check its terms of use.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Check that your data exist before you commit">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Check that your data exist before you commit
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Data availability is part of your research design, not something to sort out later. Check that your data exist <em>before</em> you settle on your question.</p>
+<p>The typical failure: a design that needs a variable measured every year, at the regional level, for twenty countries, which turns out to exist for four of them, for nine years, with a change of definition halfway through. By the time that comes to light it’s March. So in November, download the actual file, open it, count the rows, see how much is missing on your key variables, and check that the years match the period your theory is about. It takes ten minutes.</p>
+<p><strong>What I’ll ask you:</strong> have you opened the file yet?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Collecting your own data, or combining existing datasets">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Collecting your own data, or combining existing datasets
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Original data you collect yourself is cool but not at all necessary. If you want to:</p>
+<ul>
+<li>Survey friends, classmates and family. It’s not a representative sample, and you have to say so, but for some questions it’s informative.</li>
+<li>Go out and collect things: observe, count, record, code.</li>
+<li>Scrape news archives, government sites, court records, party websites, Telegram channels or speech transcripts. Check the site’s terms, and talk to me before you build anything large.</li>
+<li>Request data from a government body or a researcher.</li>
+</ul>
+<p>Combining existing datasets in new ways is a real contribution, and often the sweet spot for a student project: nobody has merged X with Y at this level before. It’s also where projects lose weeks. Country names, codes and years never quite match, and merges quietly drop rows. Check your row count before and after every merge, and know why it changed.</p>
+<p><strong>If you’re collecting data from people, you need ethics approval first</strong> (see section 10).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-and-the-literature" class="level1">
+<h1>8. Reading and the literature</h1>
+<div class="callout callout-style-default callout-important callout-titled" title="Don't reinvent the wheel">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Don’t reinvent the wheel
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Nobody will have done exactly your project, but plenty of people will have done something close: in democracies, in Latin America, with television instead of social media, or thirty years ago with worse data. You can learn a ton from them.</p>
+<p>Find them, and read how they set up the problem, what they measured and how, what they controlled for, how they structured the paper, and what they admit they couldn’t show. Use them as a blueprint. That’s what a literature is for. Read, read, read!</p>
+<p>The students who struggle most in February are usually the ones who skipped this in November, and are now inventing a measurement strategy from scratch under time pressure.</p>
+<p><strong>What I’ll ask you:</strong> whose design are you borrowing?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Search for your X and your Y separately">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Search for your X and your Y separately
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is the most useful search tip I have.</p>
+<p>Do one search on Google Scholar for work on your <strong>dependent variable</strong>: what do scholars think causes your Y? What are the main camps, and the standard measures and controls? Then do a <em>separate</em> search on your <strong>independent variable</strong>: what effects does your X have on other things, and how do people measure it?</p>
+<p>Your combination of X and Y is what’s new. X and Y on their own almost certainly aren’t, so get to know both literatures on their own terms. This also gives your literature review its structure.</p>
+<p>Other good starting points: the <em>Annual Review of Political Science</em>, the Oxford Research Encyclopedias, the literature review sections of recent articles, Google Scholar’s “Cited by” links, and the library’s subject librarians, who are excellent and hardly ever used by students.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Read smart">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Read smart
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You can’t read everything, and you shouldn’t try. The skill is knowing how closely each item deserves to be read.</p>
+<p>For most things, read the abstract, the introduction and the start of the conclusion. For a good number, also skim the research design. Only the five or ten papers your project is really in conversation with need a proper close reading.</p>
+<p>Early on, breadth beats depth: get as many abstracts, introductions and conclusions into your head as you can. And keep reading after November. Things you skimmed in October will matter again in February.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Build on well-known work">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Build on well-known work
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Good work sometimes appears in obscure journals and goes uncited. But if the main paper your project rests on is in a journal nobody on your reading lists has heard of, you’re probably missing the work everyone in the area has read.</p>
+<p>Some rough signals: citation counts (relative to how old the paper is), whether the journal appears on reading lists you’ve seen, and whether the authors’ other work keeps turning up. None of these is decisive, but they’re better than nothing. Predatory journals exist and will publish anything. Working papers and preprints are fine to cite, but say that’s what they are, and check whether a published version has since come out.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="A literature review is an argument, not a list">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>A literature review is an argument, not a list
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The most common weak literature review is ten paragraphs, each summarising one article, in no particular order: “Smith (2011) argues… Jones (2015) finds…”.</p>
+<p>A literature review is an argument about a literature, organised by ideas rather than authors. What does this field believe, and on what basis? What are the camps, and what do they disagree about? What has everyone assumed but nobody tested? That gap is where your project comes in.</p>
+<p>Push towards this even in a short annotated bibliography. For each item, say how it relates to your project: would your explanation extend it or contradict it, and what limitation of it could you build on?</p>
+<p><strong>Quick test:</strong> could you shuffle your paragraphs without the reader noticing? Then it’s a list.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="writing-it-up" class="level1">
+<h1>9. Writing it up</h1>
+<div class="callout callout-style-default callout-tip callout-titled" title="Structure and a word budget">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Structure and a word budget
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A reasonable budget for an 8,000-word capstone:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>Words</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Introduction</td>
+<td>800–1,000</td>
+<td>Puzzle, question, argument, findings, why it matters</td>
+</tr>
+<tr class="even">
+<td>Literature review</td>
+<td>1,200–1,500</td>
+<td>An argument about a literature, ending in the gap</td>
+</tr>
+<tr class="odd">
+<td>Theory and hypotheses</td>
+<td>1,200–1,500</td>
+<td>Mechanism and numbered expectations</td>
+</tr>
+<tr class="even">
+<td>Research design and data</td>
+<td>1,200–1,500</td>
+<td>Units, cases, measures, method, limitations</td>
+</tr>
+<tr class="odd">
+<td>Results</td>
+<td>1,500–2,000</td>
+<td>The evidence, plus robustness checks and alternatives</td>
+</tr>
+<tr class="even">
+<td>Conclusion</td>
+<td>600–800</td>
+<td>What we learned, scope, what’s next</td>
+</tr>
+</tbody>
+</table>
+<p>These are guides, not rules. But if a section is far outside its range, something is usually wrong: a 3,000-word literature review in an 8,000-word paper generally means the analysis is thin. In a longer MSc dissertation, the literature review and theory grow the most; the introduction barely changes.</p>
+<p>Word limits, what counts towards them, and house style are set in your module or programme documents, so check them there. The capstone limit is strict: going over 8,000 words costs 10 marks, and a successful project is unlikely to be much shorter.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Write the introduction last">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Write the introduction last
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Write a rough introduction early, because you need something to aim at. Then rewrite it from scratch at the end: you can’t introduce an argument you haven’t made yet. The final version does five things in about a page: sets up the puzzle, states the research question, gives your answer plainly (“I argue that…”), says what you find, and says why it matters. Yes, give away the findings. Readers want to know where they’re going.</p>
+<p>Don’t open with “In recent decades, scholars have increasingly turned their attention to…”. Open with the puzzle: a surprising fact, a pattern that shouldn’t exist, two cases that should have turned out the same and didn’t.</p>
+<p><strong>Quick test:</strong> does your first paragraph contain a claim someone could disagree with?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Tables and figures">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Tables and figures
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A good descriptive figure early in your results, showing the variation you’re trying to explain, does more than three paragraphs of prose. Show your outcome over time or across your cases before you show any model.</p>
+<p>Keep regression tables readable: one table with your main specifications, not six. Label variables in plain English, not <code>lngdppc_wdi</code>. Say what a coefficient <em>means</em>, not just whether it has stars: “a one standard deviation increase in X is associated with a 0.15-point drop on V-Dem’s 0–1 scale” is a start, and comparing that to a change the reader already knows is better. Every table and figure needs a caption that makes sense on its own. In R, <code>modelsummary</code> and <code>gt</code> produce good tables.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Citations, and checking your work">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Citations, and checking your work
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Pick one citation style and use it consistently. APA and Chicago author-date are both standard; if your module documents specify one, use that. Use a reference manager: <a href="https://www.zotero.org/">Zotero</a> is free, and the twenty minutes it takes to set up will save you a miserable evening in March. Cite everything, including datasets, working papers and the codebook that told you what a variable means.</p>
+<p>Before you submit, read your introduction and conclusion out loud, and check that the numbers in your text match your tables. After a few rounds of revision they often don’t, and a marker who spots one mismatch starts checking all of them.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="process-time-help-ethics-ai" class="level1">
+<h1>10. Process: time, help, ethics, AI</h1>
+<div class="callout callout-style-default callout-important callout-titled" title="The shape of the year">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The shape of the year
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-43" class="callout-43-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For the capstone, the year looks roughly like this (exact dates are in the module outline):</p>
+<ul>
+<li><strong>September–October:</strong> read widely, come up with three possible research questions, and pick one. If you might need ethics approval, tell me now.</li>
+<li><strong>November:</strong> annotated bibliography and research design. Find your data and <em>download it</em>.</li>
+<li><strong>December:</strong> research proposal. Over the Christmas break, assemble your dataset or gather most of your sources.</li>
+<li><strong>January:</strong> analysis under way. First results, however rough.</li>
+<li><strong>February:</strong> present preliminary results to the group, and draft.</li>
+<li><strong>March:</strong> write, revise, submit.</li>
+</ul>
+<p>The way this goes wrong is always the same. Everything slips: data collection lands in February, the analysis in the last two weeks, and the whole thing gets written in a week. The deadline doesn’t move. Have your data in hand, not just identified, by the end of January. If you leave things to the last minute and need help, I may not be able to give it.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Use the Christmas break">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-44-contents" aria-controls="callout-44" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Use the Christmas break
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-44" class="callout-44-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>For capstone students, the Christmas break is the longest uninterrupted stretch of time you’ll have all year, and it comes exactly when you need to do the boring, essential work: downloading files, merging them, cleaning them, discovering that the country names don’t match, and fixing that. A realistic target is a dataset that loads, with your outcome and main explanatory variable in it, and one plot of your outcome. Come back in January with that and the rest of the year will be much calmer.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="How to ask for help">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-45-contents" aria-controls="callout-45" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>How to ask for help
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-45" class="callout-45-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Send me the specific thing. “I’m stuck on my methodology” gives me nothing to work with. “Here’s my dataset and my R script; line 40 throws this error, and I’ve tried X and Y” usually gets you a fix in ten minutes. Say what you’re trying to do, what you’ve tried and what happened, and attach the file, paste the error or show me the table. Help me help you!</p>
+<p>In the capstone, clinics are the place for concrete problems like code, data and coding schemes, while workshops are for the bigger picture. The projects that discover a fixable problem two weeks before the deadline are usually the ones whose authors skipped clinics. Give me reasonable notice, and don’t expect same-day replies in the final fortnight.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Presenting, and being a discussant">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-46-contents" aria-controls="callout-46" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Presenting, and being a discussant
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-46" class="callout-46-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Workshops only work if everyone takes part.</p>
+<p><strong>When you present,</strong> keep your slides brief: one idea per slide, not many words. Walls of text are hard to follow, which means worse feedback, and feedback is the whole point. Show concrete things: a table of your data, your survey questions, a map of your cases, a scatterplot, a draft coding scheme. Concrete material gets concrete feedback. And spend your time on what’s stuck rather than on showing you have everything under control: the question you can’t answer, the result that came out backwards, the variable you can’t find. Circulate your draft in advance.</p>
+<p><strong>When you’re the discussant,</strong> read the draft properly and write your comments down beforehand. Tell the author what you didn’t understand. It’s the most useful feedback there is, and the one thing they can’t work out for themselves. Suggest, don’t just criticise: a different measure, a case to look at, another way to frame the question.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Ethics approval: only some of you, but start early">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-47-contents" aria-controls="callout-47" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Ethics approval: only some of you, but start early
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-47" class="callout-47-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you’re collecting original data from people (surveys, interviews, focus groups, experiments), you need ethics approval before you collect a single response. Approval isn’t retrospective: data collected without it can’t be used. Most projects don’t need it. Analysing an existing survey doesn’t; running your own does.</p>
+<p>If there’s any chance you’ll need approval, tell me as early as possible. Review takes weeks and approval isn’t guaranteed, so you’ll want a back-up plan. For the capstone, applications go in by December; the module outline has the details.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Using AI">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-48-contents" aria-controls="callout-48" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Using AI
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-48" class="callout-48-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>These tools exist, you use them, and you’ll use them after you graduate. What your project assesses, though, is whether <em>you</em> can ask a question, design a way to answer it, and write up what you found. So the line is: use these tools to help you think, to help you code, and to help you fix prose you wrote. Don’t use them to do the thinking or to produce the prose.</p>
+<ul>
+<li><strong>Code:</strong> useful. Google and an AI assistant will get you a long way with R. But you have to understand what your code does. If you can’t explain your own analysis, that’s a problem no matter who wrote it.</li>
+<li><strong>Brainstorming and pushback:</strong> fine. Argue with it about your theory, or ask it to attack your research design.</li>
+<li><strong>Finding literature:</strong> be careful. These tools confidently invent references that don’t exist. Nothing goes in your bibliography until you’ve found and read the actual source.</li>
+<li><strong>Writing:</strong> the argument and the words are what’s being assessed, so they need to be yours.</li>
+</ul>
+<p>The exact permissions for each piece of work are in your module documents, and you record what you used on the School’s Assignment Submission Form. Be straight with me about it.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-msc-dissertation-whats-different" class="level1">
+<h1>11. The MSc dissertation: what’s different</h1>
+<div class="callout callout-style-default callout-note callout-titled" title="Longer, more independent, less time">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-49-contents" aria-controls="callout-49" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Longer, more independent, less time
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-49" class="callout-49-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Everything above applies. What changes:</p>
+<p><strong>Length.</strong> The dissertation is longer than a capstone; your programme handbook has the exact limit. The extra space should go into a fuller literature review, a more developed theory section, and the robustness checks and extensions a capstone has to leave out, not into more of the same.</p>
+<p><strong>The literature review.</strong> I expect systematic engagement with the field, organised by argument, that places your work precisely. Not a survey of the ten things you found.</p>
+<p><strong>Independence.</strong> There are fewer scheduled meetings, and often nobody else working on anything close to your topic. The structure is up to you: set your own interim deadlines and tell me what they are.</p>
+<p><strong>Time.</strong> The dissertation runs over the spring and summer rather than a whole academic year, so “have your data by the end of January” becomes “have your data at least two months before the deadline”. Same rule, less slack.</p>
+<p><strong>Methods.</strong> You’re expected to justify your design against the alternatives, not just describe it. That doesn’t mean fancier statistics. OLS is still fine.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="further-reading" class="level1">
+<h1>Further reading</h1>
+<p><strong>Writing a thesis</strong></p>
+<ul>
+<li>Charles Lipson, <em>How to Write a BA Thesis</em> (2nd ed., 2018)</li>
+<li>Boston College Political Science, <a href="https://www.bc.edu/content/dam/bc1/schools/mcas/polisci/pdf/How%20to%20Write%20a%20Senior%20Thesis.pdf"><em>How to Write a Senior Thesis</em></a></li>
+<li>Middlebury College Political Science, <a href="https://www.middlebury.edu/college/academics/political-science/senior-theses/writing-tips"><em>Writing Tips for Senior Theses</em></a></li>
+<li>Scott Minkoff, <a href="https://www.scottminkoff.com/guides"><em>A Guide to Developing and Writing Research Papers in Political Science</em></a></li>
+</ul>
+<p><strong>Research design and methods</strong></p>
+<ul>
+<li>Paul Kellstedt and Guy Whitten, <em>The Fundamentals of Political Science Research</em></li>
+<li>Gary King, Robert Keohane and Sidney Verba, <em>Designing Social Inquiry</em> (1994)</li>
+<li>John Gerring, <em>Social Science Methodology: A Unified Framework</em> (2nd ed., 2012)</li>
+<li>Alan Bryman, <em>Social Research Methods</em></li>
+<li>Stephen Van Evera, <em>Guide to Methods for Students of Political Science</em> (1997)</li>
+<li>Barbara Geddes, “How the Cases You Choose Affect the Answers You Get,” <em>Political Analysis</em> 2 (1990)</li>
+<li>David Collier, “Understanding Process Tracing,” <em>PS: Political Science &amp; Politics</em> 44(4) (2011)</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+// Research guide helpers.
+// 1. "Expand all / Collapse all" button for the collapsible callouts
+//    (collapsed text is invisible to the browser's find-in-page).
+// 2. Every callout gets an id made from its title, so a link like
+//    .../research-guide/#spell-out-the-mechanism opens that item. Opening an
+//    item by hand puts its link in the address bar, ready to copy.
+document.addEventListener("DOMContentLoaded", function () {
+  var callouts = Array.prototype.slice.call(document.querySelectorAll(".callout"));
+  var bulk = false;
+
+  function slug(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
+
+  function panelOf(callout) {
+    return callout.querySelector(".callout-collapse");
+  }
+
+  // title text without Quarto's hidden "Tip"/"Warning" screen-reader label
+  function titleText(container) {
+    var copy = container.cloneNode(true);
+    var hidden = copy.querySelectorAll(".screen-reader-only, .visually-hidden");
+    for (var hx = 0; hx < hidden.length; hx++) hidden[hx].remove();
+    return copy.textContent;
+  }
+
+  for (var ix = 0; ix < callouts.length; ix++) {
+    var c = callouts[ix];
+    var title = c.querySelector(".callout-title-container");
+    var panel = panelOf(c);
+    if (!title || !panel) continue;
+    var id = slug(titleText(title));
+    if (id && !document.getElementById(id)) c.id = id;
+    panel.addEventListener("shown.bs.collapse", function (e) {
+      var owner = e.target.closest(".callout");
+      if (!bulk && owner && owner.id) history.replaceState(null, "", "#" + owner.id);
+    });
+  }
+
+  function openFromHash() {
+    if (!location.hash) return;
+    var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (!target || !target.classList.contains("callout")) return;
+    var panel = panelOf(target);
+    if (panel && !panel.classList.contains("show")) {
+      bootstrap.Collapse.getOrCreateInstance(panel, { toggle: false }).show();
+    }
+    // "instant" because the page sets scroll-behavior: smooth, and a smooth scroll
+    // started during page load can be cut short; repeat once the item has opened
+    function jump() { target.scrollIntoView({ behavior: "instant", block: "start" }); }
+    jump();
+    setTimeout(jump, 450);
+  }
+  // wait for Quarto's own load-time scrolling to finish first
+  if (document.readyState === "complete") setTimeout(openFromHash, 100);
+  else window.addEventListener("load", function () { setTimeout(openFromHash, 100); });
+  window.addEventListener("hashchange", openFromHash);
+
+  var btn = document.getElementById("toggle-all");
+  if (!btn) return;
+  var allOpen = false;
+  btn.addEventListener("click", function () {
+    var panels = document.querySelectorAll(".callout-collapse");
+    var open = !allOpen;
+    allOpen = open;
+    bulk = true;
+    for (var dx = 0; dx < panels.length; dx++) {
+      var inst = bootstrap.Collapse.getOrCreateInstance(panels[dx], { toggle: false });
+      if (open) inst.show(); else inst.hide();
+    }
+    btn.textContent = open ? "Collapse all" : "Expand all";
+    setTimeout(function () { bulk = false; }, 600);
+  });
+});
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/noahbuckley\.me\/teaching\/research-guide\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

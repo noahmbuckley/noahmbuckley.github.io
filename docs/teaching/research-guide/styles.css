@@ -1,0 +1,9 @@
+/* `::: cc` notes to Noah are never shown on the public page. Hidden is not
+   secret: the text is still in the page source, so keep them free of anything
+   that shouldn't be public. */
+.cc { display: none !important; }
+
+.callout { margin-top: 0.7em; margin-bottom: 0.7em; scroll-margin-top: 80px; }
+main { max-width: 900px; }
+
+#toggle-all { margin: 0.2em 0 1em; }

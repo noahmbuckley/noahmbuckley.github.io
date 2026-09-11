@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Page not found – Noah Buckley</title>
+<script>
+// GitHub Pages serves this page for any missing path. Old links from before the
+// 2026-09-11 reorganisation are forwarded to their new homes:
+//   /private/teaching/research-guide/...  ->  /teaching/research-guide/...  (now public)
+//   /private/resources.html               ->  /resources/
+//   /private/...                          ->  /resources/...
+(function () {
+  var p = location.pathname;
+  var to = null;
+  if (/^\/private\/teaching\/research-guide(\/|$)/.test(p)) {
+    to = p.replace(/^\/private\/teaching\/research-guide/, "/teaching/research-guide");
+  } else if (/^\/private\/resources\.html$/.test(p)) {
+    to = "/resources/";
+  } else if (/^\/private(\/|$)/.test(p)) {
+    to = p.replace(/^\/private/, "/resources");
+  }
+  if (to) location.replace(to + location.search + location.hash);
+})();
+</script>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #faf8f5; color: #2d2d2d;
+    max-width: 540px; margin: 4rem auto; padding: 0 1.5rem;
+    font-size: 15px; line-height: 1.7;
+  }
+  h1 { font-family: Georgia, serif; font-size: 1.6rem; }
+  a { color: #1a5f7a; }
+</style>
+</head>
+<body>
+<h1>Page not found</h1>
+<p>Sorry, there's nothing at this address. Try the <a href="/">home page</a>.</p>
+</body>
+</html>
