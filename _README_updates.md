@@ -120,3 +120,10 @@ A sitemap is automatically generated at `docs/sitemap.xml` when you render the s
 - **Data page** (`data.qmd`, unlisted draft, linked from `internal/index.html`): replication data on Dataverse, datasets Noah has built (none released yet), Russian data sources.
 - **Resources page** now holds only guides and general links; its data sections moved to the Data page.
 - **Work in progress** cut to six developed papers (drafted and presented or submitted), titles and coauthors only; no abstracts or descriptions for now.
+
+# Round 5, 2026-09-15
+
+- **Favicon**: lowercase serif "nb" in a site-blue circle (Noah picked it over a bold "NB" square that "looks a bit like a newspaper"). Files: `favicon.ico` (16/32/48, root, requested by default so hand-written pages get it too), `files/favicon.png` (192px, set as `website: favicon`), `apple-touch-icon.png` (180px, root). Drawn with PIL from Georgia Bold so it looks the same everywhere; no live-text SVG.
+- **This changelog** renamed `README_updates.md` → `_README_updates.md`: Quarto skips files starting with `_`, so it is no longer published as a public page or listed in the sitemap.
+- **Internal index** retitled "Internal" (was "Resources").
+- **Course site** (POU11011) title shortened to "POU11011" in its own `_quarto.yml` (teaching folder): the long navbar title made the site scroll sideways on phones and doubled up tab titles.

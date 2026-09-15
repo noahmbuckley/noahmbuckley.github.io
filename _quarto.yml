@@ -5,6 +5,8 @@ project:
     - CNAME
     - google7674fac84ca96997.html
     - robots.txt
+    - favicon.ico          # browsers request /favicon.ico by default (covers hand-written pages)
+    - apple-touch-icon.png # iOS home-screen icon, also requested by default
     - 404.html         # also forwards old /private/... links to /resources/...
     # Pages built outside this Quarto project. Each lives in a source folder here and
     # Quarto copies it into docs/ on render. Never write into docs/ alone: a full render
@@ -16,6 +18,7 @@ project:
 website:
   title: "Noah Buckley"
   site-url: "https://noahbuckley.me"
+  favicon: files/favicon.png
   description: "Noah Buckley, Assistant Professor of Political Science at Trinity College Dublin. Russian politics, authoritarian regimes, public opinion."
   search: false
 
