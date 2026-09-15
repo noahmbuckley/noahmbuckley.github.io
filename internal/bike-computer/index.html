@@ -60,8 +60,8 @@ a{color:var(--accent)}
 <p class="sub">Can a personal-use bike computer beat Garmin and Wahoo on iPhone, Apple Watch, Apple Health, Strava and map integration, with an e-ink touch screen, hardware buttons and an on-bike wind sensor?</p>
 
 <div class="verdict">
-<strong>Not crazy. A usable prototype is a ~$150, several-months-of-evenings project.</strong>
-<p>The pieces exist: a mature open-source e-ink bike computer on an off-the-shelf ESP32-S3 board (OpenTrailPaper), Apple's new third-party cycling-directions API (WWDC 2025), and $45 drone pitot-tube airspeed kits. The part that would actually be <em>better</em> than Garmin, Apple integration and routing UX, is a software problem on the iPhone, not a hardware problem. So the winning architecture is "iPhone is the brain, the device is a rugged e-ink face with buttons."</p>
+<strong>Not crazy. A usable prototype is a few hundred dollars and several months of evenings.</strong>
+<p>The pieces exist: a mature open-source e-ink bike computer on an off-the-shelf ESP32-S3 board (OpenTrailPaper), Apple's new third-party cycling-directions API (WWDC 2025), and a $30 pressure sensor that turns a drone pitot tube into a wind gauge. The part that would actually be <em>better</em> than Garmin, Apple integration and routing UX, is a software problem on the iPhone, not a hardware problem. So the winning architecture is "iPhone is the brain, the device is a rugged e-ink face with buttons."</p>
 <p>"Better than Garmin at everything" is not on the table. "Better at the things that annoy me" plausibly is.</p>
 </div>
 
@@ -115,15 +115,32 @@ a{color:var(--accent)}
 </ul>
 
 <h2><span class="n">06</span>The wind sensor: doable, and nobody has done it at consumer price</h2>
-<p>Every commercial "aero sensor" measures <strong>apparent airspeed with a pitot tube and a differential-pressure sensor</strong>: Notio (Argon 18, still listed, iOS-only), Velocomp AeroPod/PowerPod ($299–499; the replacement pitot tube is $8.99), Aerosensor.tech (adds yaw), Body Rocket (force plates, £1.5–3K). Several are dead. None publish a BLE characteristic, so reading one from a custom device would need sniffing with nRF Connect.</p>
-<p>The DIY version is the same physics, smaller and cheaper, straight from the drone hobby:</p>
+<p>Every commercial "aero sensor" measures <strong>apparent airspeed with a pitot tube and a differential-pressure sensor</strong>: Notio (Argon 18, still listed, iOS-only), Velocomp AeroPod/PowerPod ($299–499; the replacement pitot tube is $8.99), Aerosensor.tech (adds yaw), Body Rocket (force plates, £1.5–3K). Several are dead. None publish a BLE characteristic, so reading one from a custom device would need sniffing with nRF Connect. The DIY version is the same physics for about $40.</p>
+<h3>Pick a sensor sized for bike speeds</h3>
+<p>A bike's apparent airspeed, your speed plus any headwind, is small by aircraft standards, so the pressure difference the sensor has to read is tiny:</p>
 <div class="tw"><table>
-<tr><th>Part</th><th>Interface</th><th>Range</th><th>Cost</th><th>Note</th></tr>
-<tr><td>MS4525DO kit</td><td>I2C</td><td>0–100 m/s</td><td>~$43</td><td>Pixhawk standard; tube, tubing and cable included</td></tr>
-<tr><td>Sensirion SDP33</td><td>I2C</td><td>±1500 Pa (~50 m/s)</td><td>~$59 kit</td><td>5×8×5 mm, developed with PX4</td></tr>
-<tr><td>Omron D6F-PH</td><td>I2C</td><td>small</td><td>~$20</td><td>Used in <a href="https://github.com/ekspla/Pitot_GPS_Sensor_Logger">ekspla/Pitot_GPS_Sensor_Logger</a>, the one directly relevant GitHub project</td></tr>
+<tr><th>Apparent wind</th><th>m/s</th><th>Pressure difference</th></tr>
+<tr><td>18 km/h</td><td>5</td><td>~15 Pa</td></tr>
+<tr><td>36 km/h</td><td>10</td><td>~60 Pa</td></tr>
+<tr><td>54 km/h</td><td>15</td><td>~135 Pa</td></tr>
+<tr><td>72 km/h</td><td>20</td><td>~240 Pa</td></tr>
 </table></div>
-<p>Bike relative airspeeds of 4–20 m/s sit comfortably inside all of these. <strong>True wind vector = apparent-wind vector minus GPS ground-velocity vector.</strong> A single forward pitot gives only the head/tail component (falls off roughly as cos² of yaw); real crosswind needs a multi-hole probe or a wind vane, and rider body position changes the calibration constantly. For "how much headwind am I fighting" a single pitot is fine. For drag coefficient (CdA) you want the Chung virtual-elevation method, which GoldenCheetah's Aerolab already implements open-source with no sensor at all. Miniature ultrasonic anemometers (TriSonica Mini, Calypso Ultrasonic Mini with BLE) give a full vector with no moving parts but are pro-priced.</p>
+<p>Drone airspeed sensors are built for aircraft and read up to 2,500–6,900 Pa, which makes them 10–30 times too coarse here. Their boards are also wired for 5 volts and use a different plug. Buy a drone kit only for its tube and tubing.</p>
+<div class="tw"><table>
+<tr><th>Part</th><th>Range</th><th>Cost</th><th>Verdict</th></tr>
+<tr><td>Sensirion SDP810-500Pa</td><td>±500 Pa</td><td>~$30</td><td><strong>Pick.</strong> Barbed ports the tubes push onto, runs on 3.3 V, no zero drift</td></tr>
+<tr><td>Sensirion SDP31</td><td>±500 Pa</td><td>~$30</td><td>Same sensing element as a tiny bare part; more soldering</td></tr>
+<tr><td>Sensirion SDP32</td><td>±125 Pa</td><td>~$30</td><td>Finer, but tops out around 52 km/h of apparent wind</td></tr>
+<tr><td>Drone kits (MS4525DO, DLVR)</td><td>±2,500–6,900 Pa</td><td>~$45</td><td>Too coarse; use the tube and tubing only</td></tr>
+</table></div>
+<h3>How it goes together</h3>
+<ul>
+<li><strong>Physically:</strong> a small aluminium pitot tube pokes 5–8 cm ahead of the out-front mount, level, pointing dead ahead and angled very slightly down so rain drains out. Two short silicone tubes of equal length run from its two ports to the sensor, which sits inside the computer's case or in a small pod under the mount, the way Notio does it.</li>
+<li><strong>Electrically:</strong> four wires, power, ground and the two I2C data lines, go to the board's Qwiic port. Nobody sells a Qwiic board for this sensor any more, so you solder a short Qwiic pigtail cable to it.</li>
+<li><strong>In software:</strong> the firmware reads the pressure difference 10–25 times a second and smooths it. Airspeed is V = √(2ΔP / ρ), with air density ρ = P / (R·T) from the barometer's pressure and temperature (R ≈ 287 for dry air). Headwind is airspeed minus ground speed. The screen shows "headwind 14 km/h" and the phone logs the raw values. ArduPilot's open-source airspeed drivers cover this sensor family and are the code to copy.</li>
+<li><strong>Calibration:</strong> one out-and-back ride on a calm, flat road gives a correction factor for the air bunching up ahead of your body. Redo it after moving the mount; Notio's rule is that clothing or wheel changes don't need it.</li>
+</ul>
+<p><strong>Limits.</strong> A single forward tube measures the head/tail component only. It under-reads by a few percent once crosswind yaw passes about 15–20°, and true crosswind needs a multi-hole probe or a vane: <strong>true wind vector = apparent-wind vector minus GPS ground-velocity vector.</strong> For drag coefficient (CdA), the Chung virtual-elevation method, which GoldenCheetah's Aerolab implements open-source, works without a sensor and gets sharper with one. The one directly relevant open project, <a href="https://github.com/ekspla/Pitot_GPS_Sensor_Logger">ekspla/Pitot_GPS_Sensor_Logger</a>, pairs a drone pitot tube with an Omron ±500 Pa sensor and a barometer in the same way. Miniature ultrasonic anemometers (TriSonica Mini, Calypso Ultrasonic Mini with BLE) give a full wind vector with no moving parts but are pro-priced.</p>
 
 <h2><span class="n">07</span>Recommended architecture: iPhone brain, e-ink face</h2>
 <pre>Apple Watch ──HR──┐
@@ -152,10 +169,10 @@ BLE power/cad ────┤
 <tr><td>0</td><td>Order the LilyGo T5 E-Paper S3 Pro, flash OpenTrailPaper, ride with it as-is</td><td>1 weekend, ~$90</td><td><span class="pill lo">low</span> tells you if e-ink on the bars is tolerable</td></tr>
 <tr><td>1</td><td>Own iOS app: HealthKit cycling workout, Watch HR, BLE cadence/power, MapKit cycling route with reroute, Strava upload. Test with the iPhone on the bars.</td><td>3–6 weekends</td><td><span class="pill md">medium</span> background BLE; MapKit cycling coverage in Ireland</td></tr>
 <tr><td>2</td><td>Fork OpenTrailPaper firmware: BLE display protocol, data pages, turn card, map snapshot, buttons</td><td>4–8 weekends</td><td><span class="pill md">medium</span> e-ink UI state machine</td></tr>
-<tr><td>3</td><td>Pitot module on I2C; show headwind component; log for Chung/CdA in GoldenCheetah</td><td>2 weekends, ~$45</td><td><span class="pill lo">low</span> for headwind, high for true wind</td></tr>
+<tr><td>3</td><td>Wind sensor (Sensirion SDP810) on I2C; show headwind; log for Chung/CdA in GoldenCheetah</td><td>2 weekends, ~$40</td><td><span class="pill lo">low</span> for headwind, high for true wind</td></tr>
 <tr><td>4</td><td>Printed case, gasket, quarter-turn mount, panel protection</td><td>2–3 weekends</td><td><span class="pill md">medium</span> fragility is the #1 DIY killer</td></tr>
 </table></div>
-<p>Rough prototype bill of materials: about $175 for the board with plug-in barometer, compass, buttons and a bigger battery (section 12), plus ~$45 for the pitot. Apple developer account $99/yr for HealthKit on device.</p>
+<p>Rough prototype bill of materials: about $175 for the board with plug-in barometer, compass, buttons and a bigger battery (section 12), plus ~$40 for the wind sensor. Full costs, including a spare board, are in section 13. Apple developer account $99/yr for HealthKit on device.</p>
 
 <h2><span class="n">09</span>What could sink it</h2>
 <ul>
@@ -240,12 +257,60 @@ BLE power/cad ────┤
 <p>Building from components is realistic in three tiers. <strong>Tier A</strong>, no soldering: the S3 Pro plus plug-in barometer, compass, buttons and a bigger battery, about $175. <strong>Tier B</strong>, wires and headers: the $40 V2.3 plus the multi-band GPS, sensors and buttons, about $170 and more firmware work. <strong>Tier C</strong>, your own circuit board from the open EPDiy design, assembled by JLCPCB for roughly $20–50 a board, once A or B has proved the design. What isn't realistic by hand is driving the 4.7" panel from scratch: it needs a dedicated high-voltage controller, which is why every board ships one. Hobbyist SPI panels are easy to wire but much slower.</p>
 <p><strong>Recommendation:</strong> start with Tier A. Every sensor carries over to B or C unchanged.</p>
 
-<h2><span class="n">13</span>Sources</h2>
+<h2><span class="n">13</span>The price of these choices</h2>
+<h3>Battery</h3>
+<p>Expect about 8 hours on the stock board today, perhaps 25–30 hours with firmware work and a bigger battery. The 100-plus hours of a Coros Dura is out of reach with this chip.</p>
+<div class="tw"><table>
+<tr><th>Setup</th><th>Average draw</th><th>Hours</th></tr>
+<tr><td>Stock board today</td><td>~180 mA</td><td>~8</td></tr>
+<tr><td>OpenTrailPaper's tuning</td><td>~100 mA</td><td>~15</td></tr>
+<tr><td>Tuning + 3000 mAh (est.)</td><td>~100 mA</td><td>~30</td></tr>
+<tr><td>Garmin Edge 540 / 840</td><td>not published</td><td>26 rated</td></tr>
+<tr><td>Garmin Edge 1050</td><td>not published</td><td>20 rated</td></tr>
+<tr><td>Coros Dura (960 mAh)</td><td>~8 mA</td><td>120 rated</td></tr>
+</table></div>
+<p>The first two rows are OpenTrailPaper's own measurements on a 1500 mAh cell. The tuning figures come from bench tests on 10 September 2026 and haven't been confirmed over a full ride.</p>
+<p><strong>The screen isn't the main reason.</strong> The Garmin Edge 1050 has a backlit screen and still rates 20 hours. The chip is. The ESP32-S3 is a WiFi-class chip, and holding a Bluetooth connection keeps waking its radio and processor. OpenTrailPaper found the phone link is the biggest thing stopping the board sleeping; on one real ride it slept about 1% of the time. Garmin and Coros use ultra-low-power chips with years of firmware tuning behind them. E-ink helps less than you'd expect: a still image costs nothing, but every redraw costs energy, so a screen updating every second loses most of that advantage.</p>
+<div class="tw"><table>
+<tr><th>Component</th><th>Draw</th><th>Note</th></tr>
+<tr><td>Board while riding</td><td>90–180 mA</td><td>OpenTrailPaper, current firmware</td></tr>
+<tr><td>Bluetooth link held</td><td>~5 mA</td><td>even asleep between radio events</td></tr>
+<tr><td>GPS tracking</td><td>~8 mA</td><td>u-blox M10; can stay off while the phone supplies position</td></tr>
+<tr><td>E-ink panel idle</td><td>~0.2 mA</td><td>each redraw costs extra</td></tr>
+<tr><td>Deep sleep, as shipped</td><td>5–6 mA</td><td>known LilyGo bug; ~0.4 mA once fixed</td></tr>
+</table></div>
+<p><strong>Levers:</strong> redraw every 2–5 seconds instead of every second, lengthen the Bluetooth connection interval, keep the device's GPS off on phone rides, fix the deep-sleep bug, and fit a 3000 mAh cell in the custom case. Your iPhone's battery also becomes part of the ride budget.</p>
+<h3>What each decision costs</h3>
+<div class="tw"><table>
+<tr><th>Decision</th><th>What it buys</th><th>What it costs</th></tr>
+<tr><td>iPhone as the brain</td><td>Every Apple integration, no cloud account</td><td>The constant Bluetooth link is the device's biggest drain; the phone's battery joins the budget; if the phone dies, so does the display</td></tr>
+<tr><td>ESP32-S3 board</td><td>Cheap, open, WiFi and Bluetooth, OpenTrailPaper to fork</td><td>Sleeps poorly while connected, which caps battery life well below Garmin and Coros</td></tr>
+<tr><td>E-ink screen</td><td>Sunlight readability, a big screen, something nobody sells</td><td>Page-flip maps, energy per redraw, fragile glass, sluggish below freezing, ghosting</td></tr>
+<tr><td>Phone for multi-band GPS</td><td>Accurate position under trees at no hardware cost</td><td>Phone-free rides fall back to basic GPS; a multi-band module on the device costs ~$60, ~20 mA and soldering</td></tr>
+<tr><td>Self-hosted routing</td><td>Calm rerouting, personal avoid-lists, ride memory</td><td>A server to keep running; no rerouting without signal</td></tr>
+<tr><td>Own iOS app</td><td>HealthKit, MapKit, Strava and full control</td><td>Most of the build time, and $99 a year for an Apple developer account</td></tr>
+<tr><td>DIY wind sensor</td><td>Live headwind at consumer price</td><td>Calibration rides, crosswind error, one more thing sticking out of the mount</td></tr>
+</table></div>
+<h3>Money and time</h3>
+<div class="tw"><table>
+<tr><th>Item</th><th>Cost</th></tr>
+<tr><td>LilyGo T5 E-Paper S3 Pro</td><td>~$90</td></tr>
+<tr><td>Barometer, compass, buttons, battery</td><td>~$85</td></tr>
+<tr><td>Wind sensor, tube and tubing</td><td>~$40</td></tr>
+<tr><td>Printed case, mount, waterproof vent</td><td>~$20 (estimate)</td></tr>
+<tr><td>Spare board for the first cracked panel</td><td>~$90</td></tr>
+<tr><td><strong>One-off total</strong></td><td><strong>~$325</strong></td></tr>
+<tr><td>Apple developer account</td><td>$99 a year</td></tr>
+</table></div>
+<p>Time is the bigger cost. The phased plan in section 08, plus the phone-control work in section 10, adds up to roughly 14–23 weekends, before most of the routing features in section 11.</p>
+
+<h2><span class="n">14</span>Sources</h2>
 <div class="src">
 <p><strong>DIY:</strong> OpenTrailPaper repo, its Hacker News thread and the CNX Software write-up; OpenBikeComputer; pizero_bikecomputer; HalFrgrd/Open-source-bike-computer; trimm One and Omata One reviews; IEEE Spectrum "Build a Readable Bicycle Computer".</p>
 <p><strong>Commercial and iOS:</strong> DC Rainmaker reviews of Edge 1050, Edge 850 and Karoo 3; Wahoo and Hammerhead Apple Health support pages; the5krunner, BikeRadar and Bikepacking.com on Coros Dura; Cyclingnews and road.cc on Beeline Velo 2; Apple documentation for MKDirectionsTransportType.cycling and WWDC25 session 204; Apple developer forums on background BLE and workout-session sensors; Strava rate-limit docs.</p>
-<p><strong>Wind:</strong> Cycling Weekly and BikeRadar on Notio; DC Rainmaker on AeroPod; Velo on Aerosensor and Body Rocket; Sensirion SDP33 and Holybro MS4525DO product pages; ekspla/Pitot_GPS_Sensor_Logger; GoldenCheetah Aerolab source; Hackaday on pitot tubes (May 2025).</p>
+<p><strong>Wind:</strong> Cycling Weekly and BikeRadar on Notio; DC Rainmaker on AeroPod; Velo on Aerosensor and Body Rocket; Sensirion SDP31, SDP32 and SDP810 catalogue pages; Holybro, Matek and PX4 airspeed-sensor docs; Notio quick-start guide and Velocomp AeroPod manual on mounting and calibration; Aerosensor on yaw pitots; ArduPilot AP_Airspeed drivers; ekspla/Pitot_GPS_Sensor_Logger; GoldenCheetah Aerolab source; Hackaday on pitot tubes (May 2025).</p>
 <p><strong>Hardware:</strong> LilyGo T5 E-Paper S3 Pro wiki and GitHub pin map; OpenTrailPaper hardware page; SparkFun DAN-F10N, NEO-F10N, BMP581, MMC5983MA and ICM-20948 pages; Adafruit BNO085, DPS310, BMP390 and LIS3MDL pages; Garmin multi-band support page; Soldered Inkplate 6MOTION and the Hackaday hands-on; M5Stack, Seeed reTerminal and EPDiy pages; JLCPCB assembly-cost guide; Waveshare, Good Display and Pervasive Displays catalogues; Ben Krasnow's fast partial-refresh post; Good e-Reader on Kaleido and Spectra; LilyGo T5 pages; u-blox M10 and Quectel LC76G; osrtos ESP32 map-tile projects; IceNav-v3; pycycling.</p>
+<p><strong>Battery:</strong> OpenTrailPaper's battery investigations (10 Sept 2026); Qoitech and Espressif ESP32-S3 sleep-current measurements; LilyGo EPD47 issue #144 on deep-sleep drain; u-blox MIA-M10 product page; Coros Dura and Garmin Edge specification pages.</p>
 </div>
 </div>
 </body>
