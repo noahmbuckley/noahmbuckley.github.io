@@ -1,0 +1,110 @@
+---
+title: "Data"
+description: "Replication data for my papers, datasets I've built, and the Russian data sources I use."
+include-in-header:
+  text: '<meta name="robots" content="noindex, nofollow">'
+search: false
+---
+
+<!-- UNLISTED DRAFT. To go live: delete the include-in-header and search lines above,
+     and add Data to the navbar in _quarto.yml. -->
+
+::: {.small}
+Draft. Nothing under "Datasets I've built" has been released yet.
+:::
+
+## Replication data
+
+Replication files for my published papers are on Harvard Dataverse.
+
+::: {.entry}
+::: {.entry-when}
+2026
+:::
+::: {.entry-body}
+**[The Demand for Elections under Autocracy](https://doi.org/10.7910/DVN/GWVP2A)**\
+with Quintin Beazer and Ora John Reuter · *American Journal of Political Science*
+:::
+:::
+
+::: {.entry}
+::: {.entry-when}
+2024
+:::
+::: {.entry-body}
+**[Endogenous Popularity](https://doi.org/10.7910/DVN/NVXQ0G)**\
+with Kyle Marquardt, Ora John Reuter, and Katerina Tertytchnaya · *American Political Science Review*
+:::
+:::
+
+::: {.entry}
+::: {.entry-when}
+2022
+:::
+::: {.entry-body}
+**[Staying Out of Trouble: Criminal Cases Against Russian Mayors](https://doi.org/10.7910/DVN/XD2KRJ)**\
+with Ora John Reuter, Michael Rochlitz, and Anton Aisin · *Comparative Political Studies*
+:::
+:::
+
+::: {.entry}
+::: {.entry-when}
+2021
+:::
+::: {.entry-body}
+**[Who Reports Crime?](https://doi.org/10.7910/DVN/4CFH8B)**\
+with Timothy Frye, Scott Gehlbach, and Lauren McCarthy · *Europe-Asia Studies*
+:::
+:::
+
+::: {.entry}
+::: {.entry-when}
+2016
+:::
+::: {.entry-body}
+**[Cooperating with the State](https://doi.org/10.7910/DVN/PG5FA9)**\
+with Timothy Frye, Scott Gehlbach, and Lauren McCarthy · *Journal of Experimental Political Science*
+:::
+:::
+
+## Datasets I've built
+
+::: {.project}
+**Russian election fraud measures, 2000--2024**\
+[91 regions · 12 federal elections]{.project-meta}\
+A region-by-election panel for every federal election since 2000: turnout and vote totals alongside the standard statistical fraud indicators (abnormal turnout, integer-percentage spikes, last-digit tests, and the Klimek and Shpilkin estimates, among others), all computed from the same precinct-level results.
+:::
+
+::: {.project}
+**Party presence in Russia's regions, 2008--2025**\
+[five Duma parties · region by year]{.project-meta}\
+How present United Russia, the KPRF, the LDPR, A Just Russia and New People are on the ground in each region, combining registered branches, archived party websites, regional Telegram channels, mapped party offices, and single-member-district contests.
+:::
+
+::: {.project}
+**Russian region code crosswalk**\
+[one row per region]{.project-meta}\
+Links the region identifier I use across projects to region names in English and Russian, licence-plate codes, OKATO and OKTMO codes, and federal districts.
+:::
+
+::: {.project}
+**Russian governors, 1991--2026**\
+[region by year · 88 regions]{.project-meta}\
+Who governed each region in each year, with how they came to office (elected or appointed), party membership, security-service background, gender, birth year, and tenure.
+:::
+
+::: {.project}
+**Russian mayors, 1989--2026**\
+[220 large cities]{.project-meta}\
+The heads of Russia's large cities since 1989, with each city's system for choosing its head and when that system changed.
+:::
+
+## Russian data I use
+
+- [Levada Center](https://www.levada.ru/en/): independent Russian polling.
+- [VTsIOM](https://wciom.ru/): Russia's state-owned pollster.
+- [FOM](https://fom.ru/): the Public Opinion Foundation.
+- [Roper Center](https://ropercenter.cornell.edu/): archive that holds VTsIOM survey microdata.
+- [Precinct-level Russian election results](https://github.com/dkobak/elections): Dmitry Kobak's repository, federal elections since 2000.
+- [EMISS](https://www.fedstat.ru/): Rosstat's official statistics portal.
+- [GADM](https://gadm.org/maps/RUS.html): administrative boundaries.

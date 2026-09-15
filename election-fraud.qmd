@@ -2,7 +2,9 @@
 title: "Russian Election Fraud, 2000-2024"
 subtitle: "Triangulating statistical, survey, and behavioral evidence"
 date: "May 2026"
-robots: "noindex, nofollow"
+include-in-header:
+  text: '<meta name="robots" content="noindex, nofollow">'
+search: false
 listing: false
 toc: true
 toc-depth: 2

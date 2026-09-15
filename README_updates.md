@@ -92,3 +92,31 @@ A sitemap is automatically generated at `docs/sitemap.xml` when you render the s
 3. Set up Google Analytics (optional)
 4. Submit sitemap to search engines
 5. Consider adding a `robots.txt` file if needed
+
+---
+
+# Redesign, September 2026
+
+- **Layout**: left sidebar replaced by a top navbar (Research · Teaching · Writing ▾ · CV; Email · Scholar on the right). Design lives in `custom.scss` (warm paper background, Source Serif 4 headings, Inter body, one accent colour). `styles.css` only carries course-card and `hr` rules.
+- **Home**: hero (name / role / affiliation) with a commented-out photo slot (`files/noah.jpg`), bio, a "Recent" box, and the contact block. `contact.qmd` and `links.qmd` were retired; old `/contact.html` and `/links.html` URLs now 404.
+- **Research**: styled `.pub` entries (title / authors / venue / DOI + inline Abstract toggle), the three older working papers, a **Work in progress** list drafted from `_notes/project_index.md` for Noah to prune (HTML comment in the source), and public writing moved here from the CV.
+- **Teaching**: 2026–27 modules first (POU11011 links to its course site), supervision, other Trinity modules, earlier teaching collapsed. Course sites live in `teaching/<code>/` and are published by `~/Dropbox/teaching/templates/slides/publish-site.sh`.
+- **Advice pages** (revised 2026-09-15): no nav menu for them. The research guide is linked from Teaching. `ai.qmd` (draft) and `claude-code.qmd` are unlisted (`noindex`) and linked only from `resources/index.html`.
+- **Revision 2026-09-15**: navbar = three links on the right, never collapses (`collapse: false`), no search, no Email/Scholar items; navbar aligned to the 700px text column. One typeface (Source Serif 4). Recent box removed. Publications and courses use an `.entry` layout with the year/term in a left gutter.
+- **CV**: AJPS paper now published (doi:10.1111/ajps.70060, early view June 2026); Sweden policy-panel talk (Sep 2026) added; teaching list synced. Same edits applied to the canonical `../cv/cv.qmd`; rebuild the PDF with `../cv/build_cv.sh` when convenient.
+- `check_updates.py` still reviews index/research/cv only; add `teaching.qmd` and `ai.qmd` if they should be checked nightly.
+- **noindex fix (2026-09-15)**: Quarto silently ignores a bare `robots:` front-matter key, so `alternate-russias`, `election-fraud` and `claude-code` never actually carried noindex. Unlisted `.qmd` pages now use `include-in-header` with the meta tag plus `search: false` (keeps their text out of `docs/search.json`). Use that block for any new unlisted page.
+
+# Round 3, 2026-09-15
+
+- **Home**: no h1 or role line (the name appeared twice with the navbar brand); a visually-hidden h1 keeps the page accessible. ORCID (0000-0002-4641-6664, verified) added to "Elsewhere".
+- **Resources page** (`resources.qmd`, unlisted draft): Guides (research guide, AI, Claude Code), Data (replication data on Dataverse; a slot for datasets Noah releases; Russian data sources), and the links from the retired `links.qmd` (dead Political Methodologist domain dropped; Cochrane and APSA eJobs URLs corrected). To go live: see the comment at the top of the file.
+- **Unlisted area moved** `resources/` → `internal/` so the public page gets `/resources`. `404.html` forwards only known old subpaths (tested 15/15). Producers repointed: `~/Dropbox/teaching/templates/slides/publish-site.sh`, `me/tcd/tutor/web/build_site.py`, `internal/build_apps.sh`.
+- **Research**: every paper now carries its verified free version (PDF = publisher copy, Preprint = author version) and Dataverse replication data where it exists (5 of 10). 2014 E-AS title corrected to "…Election and Appointment" (Crossref) and DOI added.
+
+# Round 4, 2026-09-15
+
+- **Unlisted area renamed** `desk-z417xq/` → `internal/` (Noah: easier to remember). Index at https://noahbuckley.me/internal/ (`internal/index.html`). The name is guessable; passphrase anything sensitive.
+- **Data page** (`data.qmd`, unlisted draft, linked from `internal/index.html`): replication data on Dataverse, datasets Noah has built (none released yet), Russian data sources.
+- **Resources page** now holds only guides and general links; its data sections moved to the Data page.
+- **Work in progress** cut to six developed papers (drafted and presented or submitted), titles and coauthors only; no abstracts or descriptions for now.

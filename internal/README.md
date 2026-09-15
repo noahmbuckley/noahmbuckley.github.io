@@ -1,20 +1,26 @@
-# `resources/` — unlisted pages on noahbuckley.me
+# `internal/` — unlisted pages on noahbuckley.me
+
+**Moved from `resources/` on 2026-09-15** so the public Resources page can have
+`/resources`. Renamed `internal/` the same day (easy to remember). Bookmark https://noahbuckley.me/internal/.
+**The name is guessable**, so anything that needs real protection gets a passphrase (see below).
+Old `/resources/<page>` and `/private/<page>` links to the pages listed below are
+forwarded by `404.html`; `/resources/` itself now goes to the public Resources page.
 
 Renamed from `private/` on 2026-09-11 (the old name read badly in URLs). Old
 `/private/...` links still work: the site's `404.html` forwards any
-`/private/<path>` to `/resources/<path>`, keeping `#anchors`, and
+`/private/<path>` to `/internal/<path>`, keeping `#anchors`, and
 `/private/teaching/research-guide/` to the now-public `/teaching/research-guide/`.
 
 Pages here are **unlisted, not secret**:
 
 - Nothing on the public site links to them; you reach them from the index,
-  https://noahbuckley.me/resources/ (`index.html` in this folder). **Add every
+  https://noahbuckley.me/internal/ (`index.html` in this folder). **Add every
   new for-me page there.**
 - Every page carries `<meta name="robots" content="noindex, nofollow">`.
-  `robots.txt` deliberately does NOT `Disallow: /resources/`: a robots block
+  `robots.txt` deliberately does NOT `Disallow: /internal/`: a robots block
   stops crawlers reading the noindex tag, so a URL that leaks via a link can
   still be listed bare. noindex alone is the stronger signal.
-- The repo is PUBLIC, so anyone browsing GitHub can see `docs/resources/`.
+- The repo is PUBLIC, so anyone browsing GitHub can see `docs/internal/`.
   Treat obscurity as a courtesy, not a control. Nothing with personal data,
   student data, or unpublished results that matter goes here.
 
@@ -30,7 +36,7 @@ So every page built outside the Quarto project lives in a source folder that
 
 | Source folder | Served at | Listed as |
 |---|---|---|
-| `resources/` | `/resources/...` (unlisted) | `resources/**` |
+| `internal/` | `/internal/...` (unlisted) | `internal/**` |
 | `teaching/` | `/teaching/...` (public: research guide, course sites) | `teaching/**` |
 | `validation/` | `/validation/...` | `validation/**` |
 
@@ -50,8 +56,8 @@ is public).
 
 ```bash
 cd ~/Dropbox/Projects/me/website
-./encrypt_page.sh resources/apps/sdb/edit/index.html "silly phrase"
-git add docs/resources/apps/sdb/edit && git commit -m "encrypt" && git push
+./encrypt_page.sh internal/apps/sdb/edit/index.html "silly phrase"
+git add docs/internal/apps/sdb/edit && git commit -m "encrypt" && git push
 ```
 
 It encrypts only the `docs/` copy and leaves the source plain, so **a full
@@ -83,6 +89,7 @@ once more than a couple of pages need real access control.
 | `sdb_report/` | SDB report | sdb project |
 | `talks/` | slide decks | Quarto revealjs (see `disaster/slides/README.md`) |
 | `teaching/<code>/slides/` | Noah's complete lecturing decks (encrypted) | `~/Dropbox/teaching/templates/slides/publish-site.sh` |
+| `bike-computer/` | DIY e-ink bike computer intro | sanitised copy of `me/bikeComputer/artifact/bike_computer_feasibility.html` (regenerate from there; never hand-edit) |
 
 The public course pages (`/teaching/<code>/`) and the research guide
 (`/teaching/research-guide/`, public since 2026-09-11, rebuilt by

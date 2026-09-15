@@ -1,6 +1,6 @@
 #!/bin/bash
 # build_apps.sh — re-bundle SDB + Tracker as Shinylive apps for the unlisted
-# resources/ section of the website. Run after updates to sdb/app/ or tracker/app/.
+# internal/ section of the website. Run after updates to sdb/app/ or tracker/app/.
 #
 # Output: ~88-98 MB per app under resources/apps/<slug>/
 # Time:   ~2-3 min per app (longer on first run; webR runtime cached at
@@ -11,7 +11,7 @@
 set -euo pipefail
 
 PROJECTS="$HOME/Dropbox/Projects"
-PRIVATE="$PROJECTS/me/website/resources"
+PRIVATE="$PROJECTS/me/website/internal"
 APPS_OUT="$PRIVATE/apps"
 
 echo "▸ Bundling SDB ..."

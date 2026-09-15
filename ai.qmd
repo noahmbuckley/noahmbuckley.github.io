@@ -1,0 +1,55 @@
+---
+title: "AI and the university"
+description: "How I think students and researchers should use AI tools."
+include-in-header:
+  text: '<meta name="robots" content="noindex, nofollow">'
+search: false
+---
+
+::: {.small}
+Draft, September 2026. Unlisted for now. The rules for a particular assignment are in that module's documents, not here.
+:::
+
+I use AI tools every day, and they've changed how I do research more than anything since I learned to code (I've written about that [here](claude-code.qmd)). So I'm not writing this as a sceptic. I'm writing it because the tools are now good enough that it's easy to use them in a way that quietly defeats the purpose of being at university, and I'd like my students to avoid that.
+
+## What you're here for
+
+Most of what a degree asks you to hand in can now be produced in seconds: a summary of a reading, a competent essay on a set question, a tidy literature review. That doesn't make the degree pointless, but it does make clear that the essay was never really the point. What you're meant to leave with is the ability to read an argument and find where it's weak, to compare cases and see what actually differs between them, and to come up with a question of your own and answer it in your own words. You only get that by doing the work yourself.
+
+So the line I draw, in my modules and in the projects I supervise, is: use these tools to help you think and to help you fix prose you wrote. Don't use them to do the thinking or to write the prose for you.
+
+## Writing is thinking
+
+The writing is the part people most want to hand off, and it's the part you can least afford to. You don't really know what you think about a reading until you try to write it down. A vague sense that the author is wrong somewhere either turns into a specific objection once you have to put it in a sentence, or it turns out there was nothing there. Finding that out is most of the work, and a first draft is where it happens.
+
+If a model writes the paragraph, you skip that step. You end up with fluent text and no idea behind it, and that shows as soon as someone asks a follow-up question in a tutorial, a viva or a job interview.
+
+You will use these tools at work, and I'm not pretending otherwise. But the people who'll be useful in a world full of them are the ones who can tell good output from bad and know what to ask for, and that comes from having done the reading and writing yourself.
+
+## Curiosity
+
+The students who do best, here and afterwards, aren't the ones with the best technique. They're the ones who actually want to know: who read the recommended reading because they wondered what was in it, or who notice that an argument doesn't fit a case they know and can't let it go.
+
+For someone like that, a model is a great tool. You can ask the naive question you didn't want to ask in the seminar, have it argue the other side until you see why your position is weaker than you thought, or get it to walk you through the method in a paper you nearly gave up on. For someone who isn't curious, it mostly supplies the appearance of understanding. It's worth asking yourself now and then whether you wanted to know the answer or just wanted the paragraph.
+
+## In practice
+
+- **Reading.** Read it. Asking a model what an article says instead of reading it defeats the point of it being assigned, and your tutor will be able to tell. It's fine to ask about a passage you couldn't follow after trying, or a term the author assumes you know, and then go back to the text.
+- **Arguing.** Give it your thesis and ask for the strongest objection, or ask what a sceptical reader would say about your research design. This is the most useful thing it does for students, and the one they use least.
+- **Editing.** Write the draft yourself. Then, where the module allows it, use a model to help tighten it. Editing your own draft isn't the same as editing one it wrote for you.
+- **References.** Don't ask it for them. It makes up articles, authors and page numbers. Nothing goes in your bibliography until you've found and read the source.
+- **Code.** Go ahead, it'll get you a long way with R. But you need to understand what your code does. If you can't explain your analysis, that's a problem whoever wrote it.
+- **Disclosure.** Say what you used on the submission form. Using something the module permits costs you nothing, and I'd much rather you were straight with me.
+
+If you're not sure whether a particular use is fine, ask whether you could now do the thing without the tool. If you could, and it saved you time, go ahead. If you couldn't, you've skipped the part you were supposed to learn.
+
+## On the research side
+
+My own use is much wider than what I allow students, because the aim is different: I'm trying to find out something true about the world, not to show I can write an R script. Agentic tools now write most of my code and do data work that used to take a research assistant months.
+
+Two things still hold, and I have to work at both. The judgement has to be mine. These tools are very good at execution and much less good at knowing which question matters, noticing that a clean result is clean because of a coding error, or deciding what a coefficient means. In my own projects the model reports what the estimates show and what they mean is my call, partly because if you ask a model whether your results support your hypothesis, it will tend to say yes. And the writing has to be mine too, for the same reason it has to be yours: writing the paper is how I find out whether the argument actually follows from the results.
+
+## Further reading
+
+- Seva Gunitsky, ["The Age of Academic Slop Is Upon Us"](https://hegemon.substack.com/p/the-age-of-academic-slop-is-upon)
+- Tom Pepinsky, ["Agentic AI and Social Science Research Practice"](https://tompepinsky.com/2026/01/23/agentic-ai-and-social-science-research-practice/)

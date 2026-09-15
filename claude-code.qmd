@@ -1,7 +1,9 @@
 ---
 title: "Claude Code for Political Scientists"
 pagetitle: "Claude Code for Political Scientists"
-robots: "noindex, nofollow"
+include-in-header:
+  text: '<meta name="robots" content="noindex, nofollow">'
+search: false
 ---
 
 I've been telling everyone I know about [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) and figured I should write something down instead of cornering people at conferences. If you're curious, skeptical, or just wondering what I won't shut up about, this is for you.

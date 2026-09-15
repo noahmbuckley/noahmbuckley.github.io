@@ -1,0 +1,40 @@
+---
+title: "Resources"
+description: "Guides and links for students and researchers working on Russia and authoritarian politics."
+include-in-header:
+  text: '<meta name="robots" content="noindex, nofollow">'
+search: false
+---
+
+<!-- UNLISTED DRAFT (2026-09-15). To go live: delete the include-in-header and
+     search lines above, and add `- text: "Resources" / href: resources.qmd` to the
+     navbar in _quarto.yml. Check the AI and Claude Code lines below first: they are
+     unlisted pages, so listing this page publishes them too. -->
+
+## Guides
+
+- **[Doing political science research](teaching/research-guide/index.html).** Advice for capstone and MSc dissertation students, from finding a question to writing it up.
+<!-- The next two pages are unlisted. Remove these lines before listing this page, unless you're ready to publish them. -->
+- **[AI and the university](ai.qmd).** How I think students and researchers should, and shouldn't, use AI tools.
+- **[Claude Code for political scientists](claude-code.qmd).** What agentic coding tools are good for in social science research, and where they fall short.
+
+## Links
+
+### News and analysis
+
+- [PONARS Eurasia](https://www.ponarseurasia.org/): policy memos.
+- [Meduza](https://meduza.io/en): independent news.
+- [Riddle Russia](https://ridl.io/)
+- [The Moscow Times](https://www.themoscowtimes.com/)
+
+### Methods and tools
+
+- [CRAN Task Views](https://cran.r-project.org/web/views/)
+- [R Graph Gallery](https://r-graph-gallery.com/)
+- [Statistical Modeling, Causal Inference, and Social Science](https://statmodeling.stat.columbia.edu/): Andrew Gelman's blog.
+- [Connected Papers](https://www.connectedpapers.com/)
+
+### For students
+
+- [Writing Tips for PhD Students](https://www.johnhcochrane.com/research-all/writing-tips-for-phd-studentsnbsp): John Cochrane.
+- [APSA eJobs](https://apsanet.org/careers/ejobs/)

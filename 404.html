@@ -6,33 +6,36 @@
 <meta name="robots" content="noindex">
 <title>Page not found – Noah Buckley</title>
 <script>
-// GitHub Pages serves this page for any missing path. Old links from before the
-// 2026-09-11 reorganisation are forwarded to their new homes:
-//   /private/teaching/research-guide/...  ->  /teaching/research-guide/...  (now public)
-//   /private/resources.html               ->  /resources/
-//   /private/...                          ->  /resources/...
+// GitHub Pages serves this page for any missing path. Old links are forwarded:
+//   /private/teaching/research-guide/...     -> /teaching/research-guide/...  (public since 2026-09-11)
+//   /resources/<known page>/...,
+//   /private/<known page>/...                -> /internal/<known page>/... (unlisted area, moved 2026-09-15)
+//   /resources/, /private/, /private/resources.html -> /resources.html  (public Resources page)
+// Only the known unlisted pages are forwarded, so guessing /resources/<anything> doesn't reveal the new path.
 (function () {
   var p = location.pathname;
+  var DESK = "/internal";
+  var KNOWN = /^\/(resources|private)\/(tutor-desk|talks|apps|viewer|sdb_report|teaching\/[^\/]+\/slides)(\/|$)/;
   var to = null;
   if (/^\/private\/teaching\/research-guide(\/|$)/.test(p)) {
     to = p.replace(/^\/private\/teaching\/research-guide/, "/teaching/research-guide");
-  } else if (/^\/private\/resources\.html$/.test(p)) {
-    to = "/resources/";
-  } else if (/^\/private(\/|$)/.test(p)) {
-    to = p.replace(/^\/private/, "/resources");
+  } else if (KNOWN.test(p)) {
+    to = p.replace(/^\/(resources|private)/, DESK);
+  } else if (/^\/(resources|private)(\/(index\.html)?)?$/.test(p) || p === "/private/resources.html") {
+    to = "/resources.html";
   }
   if (to) location.replace(to + location.search + location.hash);
 })();
 </script>
 <style>
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #faf8f5; color: #2d2d2d;
+    font-family: "Source Serif 4", Georgia, serif;
+    background: #fbf9f6; color: #222;
     max-width: 540px; margin: 4rem auto; padding: 0 1.5rem;
-    font-size: 15px; line-height: 1.7;
+    font-size: 17px; line-height: 1.6;
   }
-  h1 { font-family: Georgia, serif; font-size: 1.6rem; }
-  a { color: #1a5f7a; }
+  h1 { font-size: 1.6rem; }
+  a { color: #1b5e7b; }
 </style>
 </head>
 <body>

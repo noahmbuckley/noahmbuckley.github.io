@@ -1,47 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://noahbuckley.github.io/cv.html</loc>
-    <lastmod>2026-05-08T04:39:07.525Z</lastmod>
+    <loc>https://noahbuckley.me/data.html</loc>
+    <lastmod>2026-09-15T21:53:04.807Z</lastmod>
   </url>
   <url>
-    <loc>https://noahbuckley.github.io/template.html</loc>
-    <lastmod>2026-02-06T20:58:52.750Z</lastmod>
+    <loc>https://noahbuckley.me/validation/data/events-gold-mixed/START_HERE_2026-09-10.html</loc>
+    <lastmod>2026-09-10T09:46:40.506Z</lastmod>
   </url>
   <url>
-    <loc>https://noahbuckley.github.io/README_updates.html</loc>
-    <lastmod>2026-02-06T20:08:48.079Z</lastmod>
+    <loc>https://noahbuckley.me/validation/data/disaster-response-markers/START_HERE_2026-09-15.html</loc>
+    <lastmod>2026-09-15T12:57:41.517Z</lastmod>
   </url>
   <url>
-    <loc>https://noahbuckley.github.io/alternate-russias.html</loc>
-    <lastmod>2026-03-10T07:50:14.409Z</lastmod>
+    <loc>https://noahbuckley.me/validation/notes/session_2026-07-06.html</loc>
+    <lastmod>2026-07-07T00:39:46.883Z</lastmod>
   </url>
   <url>
-    <loc>https://noahbuckley.github.io/research.html</loc>
-    <lastmod>2026-05-08T04:39:03.935Z</lastmod>
+    <loc>https://noahbuckley.me/ai.html</loc>
+    <lastmod>2026-09-15T18:19:40.463Z</lastmod>
   </url>
   <url>
-    <loc>https://noahbuckley.github.io/teaching.html</loc>
-    <lastmod>2026-02-06T07:41:52.010Z</lastmod>
+    <loc>https://noahbuckley.me/claude-code.html</loc>
+    <lastmod>2026-09-15T18:19:40.464Z</lastmod>
   </url>
   <url>
-    <loc>https://noahbuckley.github.io/contact.html</loc>
-    <lastmod>2026-02-06T07:41:52.012Z</lastmod>
+    <loc>https://noahbuckley.me/index.html</loc>
+    <lastmod>2026-09-15T21:12:20.021Z</lastmod>
   </url>
   <url>
-    <loc>https://noahbuckley.github.io/index.html</loc>
-    <lastmod>2026-03-11T06:07:18.164Z</lastmod>
+    <loc>https://noahbuckley.me/election-fraud.html</loc>
+    <lastmod>2026-09-15T18:19:40.465Z</lastmod>
   </url>
   <url>
-    <loc>https://noahbuckley.github.io/claude-code.html</loc>
-    <lastmod>2026-02-06T20:40:18.360Z</lastmod>
+    <loc>https://noahbuckley.me/teaching.html</loc>
+    <lastmod>2026-09-15T18:16:04.281Z</lastmod>
   </url>
   <url>
-    <loc>https://noahbuckley.github.io/links.html</loc>
-    <lastmod>2026-02-06T07:41:52.014Z</lastmod>
+    <loc>https://noahbuckley.me/research.html</loc>
+    <lastmod>2026-09-15T21:48:35.658Z</lastmod>
   </url>
   <url>
-    <loc>https://noahbuckley.github.io/election-fraud.html</loc>
-    <lastmod>2026-05-16T05:49:22.679Z</lastmod>
+    <loc>https://noahbuckley.me/alternate-russias.html</loc>
+    <lastmod>2026-09-15T18:19:40.464Z</lastmod>
+  </url>
+  <url>
+    <loc>https://noahbuckley.me/README_updates.html</loc>
+    <lastmod>2026-09-15T21:50:16.013Z</lastmod>
+  </url>
+  <url>
+    <loc>https://noahbuckley.me/cv.html</loc>
+    <lastmod>2026-09-15T21:11:57.437Z</lastmod>
+  </url>
+  <url>
+    <loc>https://noahbuckley.me/resources.html</loc>
+    <lastmod>2026-09-15T21:48:38.161Z</lastmod>
+  </url>
+  <url>
+    <loc>https://noahbuckley.me/validation/data/arrests-llm-only-precision/START_HERE_2026-09-05.html</loc>
+    <lastmod>2026-09-05T14:08:28.538Z</lastmod>
+  </url>
+  <url>
+    <loc>https://noahbuckley.me/validation/data/disaster-D31-stated-date/START_HERE_2026-09-05.html</loc>
+    <lastmod>2026-09-05T14:08:14.527Z</lastmod>
+  </url>
+  <url>
+    <loc>https://noahbuckley.me/validation/data/fpp-primary-type-gold/START_HERE_2026-09-09.html</loc>
+    <lastmod>2026-09-09T13:55:10.183Z</lastmod>
   </url>
 </urlset>

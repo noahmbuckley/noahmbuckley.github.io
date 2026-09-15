@@ -1,154 +1,164 @@
 [
   {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "CV",
+    "objectID": "validation/data/events-gold-mixed/START_HERE_2026-09-10.html",
+    "href": "validation/data/events-gold-mixed/START_HERE_2026-09-10.html",
+    "title": "START HERE — Events gold: FPP + sledcom + personnel (72 items, 2026-09-10)",
     "section": "",
-    "text": "Download PDF",
-    "crumbs": [
-      "CV"
-    ]
+    "text": "Where: open the validation PWA (same app as every other chunk). Pick the task named “Events gold: FPP + sledcom + personnel (72)” — it’s now at the top of the list.\nWhy one chunk, three tasks: your hand labels are the only thing that can calibrate the two-referee “silver” standard used across this program, and silver is now load-bearing in three places that do NOT calibrate each other — a good read on the FPP boundary tells us nothing about whether sledcom’s involves_official field over-includes, and that tells us nothing about whether rusclf’s personnel filter over-fires. The three sections are interleaved (not grouped) with a fixed seed so you don’t settle into answering one section on autopilot — no more than 4 items from the same section appear in a row.\nEvery item is ONE fast factual yes/no/unclear question about the text shown — never a category choice, and the decision rule / model output / referee verdict is never shown. The question wording changes depending on which of the three sections an item belongs to (you won’t be told which section you’re in, but the question itself makes it obvious — it’s shown above the text each time).\nRealistic total time: ~12 minutes of pure answering (30 fpp items × ~5s + 20 sledcom items × ~17s, since those are longer + 15 personnel items × ~8s = 696s, computed directly by the builder script from the actual item counts). Budget 20–25 minutes in one sitting once you allow for reading time and any notes.\n\n\n\n\n\naction/charge against this person?”\nA trimmed subset of the fpp-primary-type-gold v3 chunk you may have already seen (15 of its 30 referee-disagreement items + 8 of its 15 possible-false-positive items + 7 of its 15 possible-false-negative items). This feeds the arrest_legal / governor_political boundary rule that drives the arrests paper’s treatment coding and the decision on whether to deploy the newly-drafted v3 classification prompt. If you already started the old 67-item chunk, these 30 are a subset of what you saw — some items will repeat (that’s fine, more data).\n\n\n\nlegal action, in their official capacity?”\nYou’re shown a Sledcom (SK) press-release title + lead paragraph (the release is often 1,500+ characters; you’re shown the part — usually the first sentence or two after the title — that says who is being charged). This section has three parts:\n\n10 items are the hardest, highest-value cases: rows where two independent frontier-model referees genuinely disagreed, mostly a “по факту” boundary (a case opened over an incident, citing an officials-only negligence article, before anyone is confirmed as the defendant).\n6 items are a direct human check on a live decision: whether to drop 497 rows from arrests_master that are currently included ONLY via a field (involves_official) that a silver audit could not validate (the audit’s own 6.5-to-1 no:yes ratio suggests most of these 497 don’t actually belong). These 6 were deliberately picked to cover all four failure patterns the audit found — not a random draw — so you see the range of what’s in that slice, not just the most common kind. The loader states directly, with a confidence interval, what fraction of these 6 you also judge “No” — i.e., whether you endorse the drop.\n4 items are already-confirmed official-defendant cases (control — checks that you agree with an easy case).\n\n\n\n\nposition?”\nShort Telegram excerpts (rusclf’s own local classifier, no LLM cost) flagged as a personnel change. A silver audit found only 60.5% of what rusclf calls a “personnel change” holds up under independent review — this feeds whether that 60.5% precision is good enough to keep using rusclf for free, or whether elitesData should spend $150–300 to re-do this with Haiku.\n\n8 items are cases silver says are NOT a personnel change — checks that finding directly.\n4 items are the referee-split pool (this is the WHOLE pool — only 8 such items exist in the audited sample, you’re seeing half of them).\n3 items are already-confirmed personnel changes (control).\n\n\n\n\n\n\n7 of the 72 items are silent exact repeats of an earlier item, shown again later at an unpredictable, non-adjacent position. You’re not told which. Just answer each item as it comes — the loader compares your two answers on each repeated item afterward to measure your own test-retest agreement, separately for each of the three sections where there are enough repeats to say anything.\n\n\n\nTap Export. Save the file (validation_events-gold-mixed_&lt;date&gt;.json) to ~/Dropbox/_validation_exports/ — the same folder every other export goes to.\n\n\n\neventsData/code/99g_load_events_gold_mixed.R scores each of the three sections SEPARATELY against its own referees, silver, and production label — it does not compute or print any pooled accuracy number, across sections or within a section’s item classes, because this is a deliberately targeted, non-representative sample built to answer three specific decisions, not to estimate a corpus-wide accuracy rate.\n\n\n\nFPP primary_type gold (67, v3) is still registered in the task list (renamed to mark it superseded) but should NOT be worked on separately — its 30 highest-value items are the ones included here. It has not been started (no export exists yet in ~/Dropbox/_validation_exports/ as of this build), so nothing is lost by switching to this combined chunk instead.\nThis chunk is built, registered, and synced into docs/validation/ (the deployed copy), but not yet committed or pushed — that’s a separate step."
   },
   {
-    "objectID": "cv.html#research-interests",
-    "href": "cv.html#research-interests",
-    "title": "CV",
-    "section": "Research Interests",
-    "text": "Research Interests\nComparative politics; authoritarian politics; Russian and post-communist politics; public opinion; corruption; political methodology and experimental methods; political economy; bureaucracy; policing.",
-    "crumbs": [
-      "CV"
-    ]
-  },
-  {
-    "objectID": "cv.html#academic-experience",
-    "href": "cv.html#academic-experience",
-    "title": "CV",
-    "section": "Academic Experience",
-    "text": "Academic Experience\nAssistant Professor (with tenure since 2023), Department of Political Science Trinity College Dublin, University of Dublin, Ireland 2019–present\nVisiting Scholar, Center for Applied Social and Economic Research (CASER) NYU Shanghai, China January–May 2026\nVisiting Scholar, NYU Jordan Center New York University, New York September–December 2022\nPostdoctoral Associate NYU Abu Dhabi, United Arab Emirates 2017–2019 Faculty mentors: Rebecca Morton (NYU) and Joshua Tucker (NYU)\nResearch Fellow | Postdoctoral Researcher International Center for the Study of Institutions and Development Higher School of Economics, Moscow, Russia 2011–2022 | January–August 2017",
-    "crumbs": [
-      "CV"
-    ]
-  },
-  {
-    "objectID": "cv.html#education",
-    "href": "cv.html#education",
-    "title": "CV",
-    "section": "Education",
-    "text": "Education\nColumbia University in the City of New York Ph.D. in Political Science, 2017\nUniversity of Wisconsin-Madison B.A. received 2006; Political Science, Russian Language and Culture",
-    "crumbs": [
-      "CV"
-    ]
-  },
-  {
-    "objectID": "cv.html#peer-reviewed-publications",
-    "href": "cv.html#peer-reviewed-publications",
-    "title": "CV",
-    "section": "Peer-Reviewed Publications",
-    "text": "Peer-Reviewed Publications\n“The Demand for Elections under Autocracy: Regime Approval and the Elimination of Local Elections in Russia” (with Quintin Beazer and Ora John Reuter). American Journal of Political Science. Accepted for publication, 2025.\n“Endogenous Popularity: How Perceptions of Regime Support Affect the Popularity of Authoritarian Regimes” (with Kyle Marquardt, Ora John Reuter, and Ekaterina Tertytchnaya). American Political Science Review. 2024;118(2):1046-1052.\n“Staying Out of Trouble: Criminal Cases Against Russian Mayors” (with Ora John Reuter, Michael Rochlitz, and Anton Aisin). Comparative Political Studies 55(9), 1539-1568. 2022.\n“Who Reports Crime? Citizen Engagement with the Police in Russia and Georgia” (with Timothy Frye, Scott Gehlbach, and Lauren McCarthy). Europe-Asia Studies 73(1):8-35. 2021.\n“Performance Incentives under Autocracy: Evidence from Russia’s Regions” (with Ora John Reuter). Comparative Politics 51(2):239-266. 2019.\n“Staring at the West through Kremlin-tinted glasses: Russian mass and elite divergence in attitudes toward the United States, European Union, and Ukraine before and after Crimea” (with Joshua A. Tucker). Post-Soviet Affairs 35(5-6):365-375. 2019.\n“Local Elections in Authoritarian Regimes: An Elite-Based Theory with Evidence from Russian Mayoral Elections” (with Ora John Reuter, Guzel Garifullina, and Alexandra Shubenkova). Comparative Political Studies 49:5. 2016.\n“Cooperating with the State: Evidence from Survey Experiments on Policing” (with Timothy Frye, Scott Gehlbach, and Lauren McCarthy). Journal of Experimental Political Science 3(2):124-139. 2016.\n“The Political Economy of Russian Gubernatorial Elections and Appointments” (with Timothy Frye, Guzel Garifullina, and Ora John Reuter). Europe-Asia Studies 66:8. 2014.\n“Elections, Appointments, and Human Capital: The Case of Russian Mayors” (with Guzel Garifullina, Ora John Reuter, and Alexandra Shubenkova). Demokratizatsiya 22:1. 2014.",
-    "crumbs": [
-      "CV"
-    ]
-  },
-  {
-    "objectID": "cv.html#working-papers",
-    "href": "cv.html#working-papers",
-    "title": "CV",
-    "section": "Working Papers",
-    "text": "Working Papers\n“A Watched Pot Boiling: Street Protest and Public Opinion in Authoritarian Russia,” presented at ASEEES 2021.\n“Rotten Eggs or Bad Apples: Corruption Arrests and Public Opinion in Authoritarian Russia.”\n“Economic Blame Attribution in Times of Boom and Bust: The Case of Authoritarian Russia,” presented at EPSA 2018.",
-    "crumbs": [
-      "CV"
-    ]
-  },
-  {
-    "objectID": "cv.html#grants-fellowships",
-    "href": "cv.html#grants-fellowships",
-    "title": "CV",
-    "section": "Grants & Fellowships",
-    "text": "Grants & Fellowships\nArts and Social Sciences Benefaction Fund, Trinity College Dublin, 2020, 2025\nDissertation Development Grant, Department of Political Science, Columbia University, 2014\nWilliam T.R. Fox Fellowship in Political Science, Graduate School of Arts and Sciences, Columbia University, 2013–2014\nSummer Grant for field research, Columbia Center for the Study of Development Strategies, April 2010 (with David Szakonyi)\nPepsiCo Fellowship for Travel/Research in the Former Soviet Union, Harriman Institute, April 2010",
-    "crumbs": [
-      "CV"
-    ]
-  },
-  {
-    "objectID": "cv.html#additional-research-experience",
-    "href": "cv.html#additional-research-experience",
-    "title": "CV",
-    "section": "Additional Research Experience",
-    "text": "Additional Research Experience\nContributing Author Russia Political Economy Project in the Eurasia Program Foreign Policy Research Institute 2017–2018\nConsultant and Research Assistant Project: Assessing Transition and Rent-Seeking in Poland, Russia, and China Supervisor: Joel Hellman, The World Bank 2015\nResearch Assistant Project: “The Social Impact of the Millennium Village Project in Rwanda” The Earth Institute, Columbia University; Columbia Center for the Study of Development Strategies 2011\nResearch Assistant Project: “Incentives for Implementation of Regulatory Reform – A Comparative Survey of Federal and Regional Government Officials in Russia” Supervisors: Ekaterina Zhuravskaya, Mikhail Pryadilnikov Center for Economic and Financial Research (CEFIR), Moscow, Russia; The World Bank 2008",
-    "crumbs": [
-      "CV"
-    ]
-  },
-  {
-    "objectID": "cv.html#teaching-experience",
-    "href": "cv.html#teaching-experience",
-    "title": "CV",
-    "section": "Teaching Experience",
-    "text": "Teaching Experience\nInstructor, Trinity College Dublin\n\nComparative Politics B: The Comparative Politics of the Developing World (undergraduate lecture)\nRussian Politics under Putin (postgraduate/Masters seminar)\nVarieties of Authoritarianism (postgraduate/Masters seminar)\nRussian Politics after Communism (undergraduate seminar)\nPublic Opinion (undergraduate seminar)\n\nCo-Instructor, Higher School of Economics\n\nComparative Political Economy (graduate-level seminar), 2011–2013, 2017–2018",
-    "crumbs": [
-      "CV"
-    ]
-  },
-  {
-    "objectID": "cv.html#other-publications",
-    "href": "cv.html#other-publications",
-    "title": "CV",
-    "section": "Other Publications",
-    "text": "Other Publications\n“How popular is Putin, really?” blog post on The Monkey Cage, with Kyle L. Marquardt, Ora John Reuter and Katerina Tertytchnaya. April 13, 2022.\n“Putin’s approval has stayed strong over the years – war in Ukraine could change that,” article on The Conversation, republished on several news sites. March 2, 2022.\n“Here’s what you can expect from Putin’s next 6 years,” blog post on The Monkey Cage, with David Szakonyi. March 22, 2018.\n“The End of the Vertical? Corruption and Stagnation in Putin’s Fourth Term,” blog post on Eurasianet and FPRI Geopoliticus. March 9 and 13, 2018.\n“Corruption and Power in Post-Communist Russia,” policy memo for FPRI Russia Political Economy Project. April 2018.",
-    "crumbs": [
-      "CV"
-    ]
-  },
-  {
-    "objectID": "cv.html#professional-service",
-    "href": "cv.html#professional-service",
-    "title": "CV",
-    "section": "Professional Service",
-    "text": "Professional Service\nJournal Reviewer: APSR, AJPS, JOP, BJPS, Comparative Politics, Problems of Post-Communism, Governance, Democratization, Europe-Asia Studies, Electoral Studies, Political Behavior, Comparative Political Studies, World Politics, Journal of Quantitative Description: Digital Media, Political Research Quarterly, Post-Soviet Affairs, Russian Politics.\nDepartmental Service\n\nAssociate Director and Director of the MSc Program in International Politics, Trinity College Dublin, 2021–2024\n\nMemberships: APSA, ASEEES, EPSA, BASEES",
-    "crumbs": [
-      "CV"
-    ]
-  },
-  {
-    "objectID": "cv.html#selected-presentations",
-    "href": "cv.html#selected-presentations",
-    "title": "CV",
-    "section": "Selected Presentations",
-    "text": "Selected Presentations\n\nInvited talk at Dublin City U Politics Seminar, February 2025\nInvited talk at Oxford Internet Institute workshop, January 2024\nInvited talk at U Limerick PPA seminar, October 2023\nInvited talk at U Zurich politics seminar, 2022\nInvited talk at U Bremen, December 2021\nInvited talk, “Issues in Russian and Post-Communist Political Economy and Politics” seminar, Oxford University, 2021\nAPSA (2012–2018, 2021)\nASEEES (2011–2018, 2020–2021)\nEPSA (2012–2014, 2016–2019)\nInvited workshop: “Political Rents and Political Elites in Russia and Beyond,” Oxford University, 2017\nBASEES (2017–2018)",
-    "crumbs": [
-      "CV"
-    ]
-  },
-  {
-    "objectID": "cv.html#skills",
-    "href": "cv.html#skills",
-    "title": "CV",
-    "section": "Skills",
-    "text": "Skills\nLanguage: English (native); Russian (proficient)",
-    "crumbs": [
-      "CV"
-    ]
-  },
-  {
-    "objectID": "template.html",
-    "href": "template.html",
-    "title": "Page Title",
+    "objectID": "validation/data/events-gold-mixed/START_HERE_2026-09-10.html#what-each-section-decides",
+    "href": "validation/data/events-gold-mixed/START_HERE_2026-09-10.html#what-each-section-decides",
+    "title": "START HERE — Events gold: FPP + sledcom + personnel (72 items, 2026-09-10)",
     "section": "",
-    "text": "Brief introductory text for the page."
+    "text": "action/charge against this person?”\nA trimmed subset of the fpp-primary-type-gold v3 chunk you may have already seen (15 of its 30 referee-disagreement items + 8 of its 15 possible-false-positive items + 7 of its 15 possible-false-negative items). This feeds the arrest_legal / governor_political boundary rule that drives the arrests paper’s treatment coding and the decision on whether to deploy the newly-drafted v3 classification prompt. If you already started the old 67-item chunk, these 30 are a subset of what you saw — some items will repeat (that’s fine, more data).\n\n\n\nlegal action, in their official capacity?”\nYou’re shown a Sledcom (SK) press-release title + lead paragraph (the release is often 1,500+ characters; you’re shown the part — usually the first sentence or two after the title — that says who is being charged). This section has three parts:\n\n10 items are the hardest, highest-value cases: rows where two independent frontier-model referees genuinely disagreed, mostly a “по факту” boundary (a case opened over an incident, citing an officials-only negligence article, before anyone is confirmed as the defendant).\n6 items are a direct human check on a live decision: whether to drop 497 rows from arrests_master that are currently included ONLY via a field (involves_official) that a silver audit could not validate (the audit’s own 6.5-to-1 no:yes ratio suggests most of these 497 don’t actually belong). These 6 were deliberately picked to cover all four failure patterns the audit found — not a random draw — so you see the range of what’s in that slice, not just the most common kind. The loader states directly, with a confidence interval, what fraction of these 6 you also judge “No” — i.e., whether you endorse the drop.\n4 items are already-confirmed official-defendant cases (control — checks that you agree with an easy case).\n\n\n\n\nposition?”\nShort Telegram excerpts (rusclf’s own local classifier, no LLM cost) flagged as a personnel change. A silver audit found only 60.5% of what rusclf calls a “personnel change” holds up under independent review — this feeds whether that 60.5% precision is good enough to keep using rusclf for free, or whether elitesData should spend $150–300 to re-do this with Haiku.\n\n8 items are cases silver says are NOT a personnel change — checks that finding directly.\n4 items are the referee-split pool (this is the WHOLE pool — only 8 such items exist in the audited sample, you’re seeing half of them).\n3 items are already-confirmed personnel changes (control)."
   },
   {
-    "objectID": "template.html#section-one",
-    "href": "template.html#section-one",
-    "title": "Page Title",
-    "section": "Section One",
-    "text": "Section One\nContent goes here."
+    "objectID": "validation/data/events-gold-mixed/START_HERE_2026-09-10.html#repeats",
+    "href": "validation/data/events-gold-mixed/START_HERE_2026-09-10.html#repeats",
+    "title": "START HERE — Events gold: FPP + sledcom + personnel (72 items, 2026-09-10)",
+    "section": "",
+    "text": "7 of the 72 items are silent exact repeats of an earlier item, shown again later at an unpredictable, non-adjacent position. You’re not told which. Just answer each item as it comes — the loader compares your two answers on each repeated item afterward to measure your own test-retest agreement, separately for each of the three sections where there are enough repeats to say anything."
   },
   {
-    "objectID": "template.html#section-two",
-    "href": "template.html#section-two",
-    "title": "Page Title",
-    "section": "Section Two",
-    "text": "Section Two\nContent goes here."
+    "objectID": "validation/data/events-gold-mixed/START_HERE_2026-09-10.html#when-done",
+    "href": "validation/data/events-gold-mixed/START_HERE_2026-09-10.html#when-done",
+    "title": "START HERE — Events gold: FPP + sledcom + personnel (72 items, 2026-09-10)",
+    "section": "",
+    "text": "Tap Export. Save the file (validation_events-gold-mixed_&lt;date&gt;.json) to ~/Dropbox/_validation_exports/ — the same folder every other export goes to."
+  },
+  {
+    "objectID": "validation/data/events-gold-mixed/START_HERE_2026-09-10.html#what-this-feeds",
+    "href": "validation/data/events-gold-mixed/START_HERE_2026-09-10.html#what-this-feeds",
+    "title": "START HERE — Events gold: FPP + sledcom + personnel (72 items, 2026-09-10)",
+    "section": "",
+    "text": "eventsData/code/99g_load_events_gold_mixed.R scores each of the three sections SEPARATELY against its own referees, silver, and production label — it does not compute or print any pooled accuracy number, across sections or within a section’s item classes, because this is a deliberately targeted, non-representative sample built to answer three specific decisions, not to estimate a corpus-wide accuracy rate."
+  },
+  {
+    "objectID": "validation/data/events-gold-mixed/START_HERE_2026-09-10.html#status",
+    "href": "validation/data/events-gold-mixed/START_HERE_2026-09-10.html#status",
+    "title": "START HERE — Events gold: FPP + sledcom + personnel (72 items, 2026-09-10)",
+    "section": "",
+    "text": "FPP primary_type gold (67, v3) is still registered in the task list (renamed to mark it superseded) but should NOT be worked on separately — its 30 highest-value items are the ones included here. It has not been started (no export exists yet in ~/Dropbox/_validation_exports/ as of this build), so nothing is lost by switching to this combined chunk instead.\nThis chunk is built, registered, and synced into docs/validation/ (the deployed copy), but not yet committed or pushed — that’s a separate step."
+  },
+  {
+    "objectID": "validation/data/disaster-response-markers/START_HERE_2026-09-15.html",
+    "href": "validation/data/disaster-response-markers/START_HERE_2026-09-15.html",
+    "title": "START HERE — Disaster response-markers validation",
+    "section": "",
+    "text": "START HERE — Disaster response-markers validation\nWhere: open the validation PWA (same app as the D-31 stated-date chunk). Pick the task named “Disaster response-markers validation (~60)”.\nWhat it is: 60 disaster events where a Haiku LLM pass read matched news/ social snippets and tagged government-response markers (CHS/emergency-regime declared, governor on-site, federal attention) — nobody has checked whether the underlying snippets actually describe a response to THIS event, or whether the marker is right. Stratified by deaths bracket x Haiku-yes/no on CHS x Haiku-yes/no on federal attention, oversampling high-severity and CHS=yes events.\nPer event you will see: - FPP/summary description (RU), disaster type, deaths, event date. - The Haiku CHS / federal-attention calls. - Up to 3 supporting snippets, each tagged with which marker it was pulled for (governor-onsite / CHS / federal). These come from the regex first pass, which is what fed the Haiku LLM prompt, so checking the regex snippet is checking what the LLM actually saw. - ru.wikipedia and Google search links.\nWhat to record per item: - snippet_matches_event — do the snippets actually describe a response to THIS event? Yes / Some / No. - confirmed_markers — free-text list of markers you can confirm as genuinely present (e.g. “governor_onsite, chs”), blank if none confirmed. - notes — anything worth flagging.\nWhen done: Export from the app menu, save to ~/Dropbox/_validation_exports/ (same convention as every other chunk).\nWhat this feeds: the coverage/agreement tables in disaster/notes/response_master_build_2026-09-15.md and disaster/data/processed/response/event_response_master.csv — this is the first human check of the Haiku response-marker layer (4,235-event Haiku Batches pass, commit 3e18e1cb). Build script: disaster/code/response/08_build_response_validation_chunk.R."
+  },
+  {
+    "objectID": "validation/notes/session_2026-07-06.html",
+    "href": "validation/notes/session_2026-07-06.html",
+    "title": "Validation PWA — session 2026-07-06",
+    "section": "",
+    "text": "Got the stalled/orphaned hand-coding tasks actually onto the iPad app and added three new ones with divergence-first sampling. Registry went 14 → 20 tasks; every task validated (both validation/ and docs/validation/ trees, all schemas parse, every item carries its id_field); confirmed end-to-end render locally (picker + an item view + form, no console errors). Not pushed — awaiting Noah’s OK (public GitHub Pages site).\n\n\n\nWired 3 already-built-but-unregistered tasks into tasks.json (both trees): - sentiment-prompt-comparison (200) — the standing “5th-audit” blocker; template existed since 2026-05-08 but fell out of tasks.json in the 2026-05-26 reboot. 120/200 are model-disagreement rows; 80 all-agree anchor for a reweighted estimate. - rusSocial-responsibility-blind (81) + rusSocial-responsibility-focused (20) — blame-attribution; PWA schemas already trimmed to 6/clear fields (the 30-col bloat was only in the old xlsx). Blind = no Haiku (unbiased κ); focused = Haiku confirm/correct.\n(channel-actor-A + courts-extract-A were already registered in the working tasks.json, just uncommitted — they ride along in the same commit.)\nBuilt 3 new tasks via build_2026-07-06_tasks.py (seed=20260706, writes to both trees): - topics-A (150) — campaign message topic gold, confirm/correct, 16-topic taxonomy, sorted hard-first (medium/low-confidence + multi-topic). - dedup-A (150) — elite person-merge same/different, the 150 hardest of the 555 (smallest score_gap to runner-up) + a small calibration draw. - disaster-date-A (60) — does Haiku’s quoted evidence support the extracted event date; uncertain-first (low/med confidence or evidence_matches_event≠True).\nDesign principle applied: divergent/hard-first ordering with a stratum/bucket tag on every item, so Noah’s labels are maximally informative AND an unbiased estimate is recoverable by reweighting. LLM guesses shown as confirm/correct chips for speed, with an anchoring caveat in the instructions.\n\n\n\n\nOpen the app on the iPad after the push + a Refresh; the 6 new tasks should appear.\ntopics-A row 1 is a genuinely ambiguous case (governor signs a trolleybus-mfg deal, Haiku→agriculture_industry vs infrastructure_transport) — confirms hard-first worked.\nRebuild is reproducible: /usr/bin/python3 build_2026-07-06_tasks.py.\n\n\n\n\n\nPushed to the website repo (2432e1f, 96bc867) + dissReboot to monorepo (c645cd9).\ncampaign-relevance-A (250) built + pushed: balanced 125/125, boundary-oversampled, text joined from the rusSocial TG corpus, DIRECT binary gold (not confirm/correct, to avoid anchoring on the gate we’re training). build_campaign_relevance.py. Registry → 21.\nVerified channel-actor-A / courts-extract-A iPad label schemes MATCH the rusclf training schemas (Q_CHANNEL / Q_COURTS) byte-for-byte — no JC-A1/A4 drift.\nFixed a pre-existing bug in eventsData/protestData/code/99b_load_validation_results.R (hardcoded x$id → schema-robust id extraction); ran it: 66 answered, 39 YES / 20 NO / 7 borderline.\n\n\n\n\nThree of these tasks are NOT rusclf training tasks (still necessary, but feed other pipelines): - sentiment-prompt-comparison → validates RuBERT-tiny2 (7B too slow at 113M-post scale; stays on RuBERT). - disaster-date-A → validates Haiku date extraction (eventEnrich/verification), not a classifier task. - dedup-A → validates elitesData record-linkage, not a classifier task. rusclf v3 tasks among these: channel-actor-A, courts-extract-A, campaign-relevance-A, topics-A (+ protest_topic already in v2). Retrain is BUNDLE-FROM-BASE → no catastrophic forgetting of v2."
+  },
+  {
+    "objectID": "validation/notes/session_2026-07-06.html#tldr",
+    "href": "validation/notes/session_2026-07-06.html#tldr",
+    "title": "Validation PWA — session 2026-07-06",
+    "section": "",
+    "text": "Got the stalled/orphaned hand-coding tasks actually onto the iPad app and added three new ones with divergence-first sampling. Registry went 14 → 20 tasks; every task validated (both validation/ and docs/validation/ trees, all schemas parse, every item carries its id_field); confirmed end-to-end render locally (picker + an item view + form, no console errors). Not pushed — awaiting Noah’s OK (public GitHub Pages site)."
+  },
+  {
+    "objectID": "validation/notes/session_2026-07-06.html#what-changed",
+    "href": "validation/notes/session_2026-07-06.html#what-changed",
+    "title": "Validation PWA — session 2026-07-06",
+    "section": "",
+    "text": "Wired 3 already-built-but-unregistered tasks into tasks.json (both trees): - sentiment-prompt-comparison (200) — the standing “5th-audit” blocker; template existed since 2026-05-08 but fell out of tasks.json in the 2026-05-26 reboot. 120/200 are model-disagreement rows; 80 all-agree anchor for a reweighted estimate. - rusSocial-responsibility-blind (81) + rusSocial-responsibility-focused (20) — blame-attribution; PWA schemas already trimmed to 6/clear fields (the 30-col bloat was only in the old xlsx). Blind = no Haiku (unbiased κ); focused = Haiku confirm/correct.\n(channel-actor-A + courts-extract-A were already registered in the working tasks.json, just uncommitted — they ride along in the same commit.)\nBuilt 3 new tasks via build_2026-07-06_tasks.py (seed=20260706, writes to both trees): - topics-A (150) — campaign message topic gold, confirm/correct, 16-topic taxonomy, sorted hard-first (medium/low-confidence + multi-topic). - dedup-A (150) — elite person-merge same/different, the 150 hardest of the 555 (smallest score_gap to runner-up) + a small calibration draw. - disaster-date-A (60) — does Haiku’s quoted evidence support the extracted event date; uncertain-first (low/med confidence or evidence_matches_event≠True).\nDesign principle applied: divergent/hard-first ordering with a stratum/bucket tag on every item, so Noah’s labels are maximally informative AND an unbiased estimate is recoverable by reweighting. LLM guesses shown as confirm/correct chips for speed, with an anchoring caveat in the instructions."
+  },
+  {
+    "objectID": "validation/notes/session_2026-07-06.html#verify",
+    "href": "validation/notes/session_2026-07-06.html#verify",
+    "title": "Validation PWA — session 2026-07-06",
+    "section": "",
+    "text": "Open the app on the iPad after the push + a Refresh; the 6 new tasks should appear.\ntopics-A row 1 is a genuinely ambiguous case (governor signs a trolleybus-mfg deal, Haiku→agriculture_industry vs infrastructure_transport) — confirms hard-first worked.\nRebuild is reproducible: /usr/bin/python3 build_2026-07-06_tasks.py."
+  },
+  {
+    "objectID": "validation/notes/session_2026-07-06.html#done-after-the-initial-push",
+    "href": "validation/notes/session_2026-07-06.html#done-after-the-initial-push",
+    "title": "Validation PWA — session 2026-07-06",
+    "section": "",
+    "text": "Pushed to the website repo (2432e1f, 96bc867) + dissReboot to monorepo (c645cd9).\ncampaign-relevance-A (250) built + pushed: balanced 125/125, boundary-oversampled, text joined from the rusSocial TG corpus, DIRECT binary gold (not confirm/correct, to avoid anchoring on the gate we’re training). build_campaign_relevance.py. Registry → 21.\nVerified channel-actor-A / courts-extract-A iPad label schemes MATCH the rusclf training schemas (Q_CHANNEL / Q_COURTS) byte-for-byte — no JC-A1/A4 drift.\nFixed a pre-existing bug in eventsData/protestData/code/99b_load_validation_results.R (hardcoded x$id → schema-robust id extraction); ran it: 66 answered, 39 YES / 20 NO / 7 borderline."
+  },
+  {
+    "objectID": "validation/notes/session_2026-07-06.html#reframe-from-the-rusclassifier-deep-read-important",
+    "href": "validation/notes/session_2026-07-06.html#reframe-from-the-rusclassifier-deep-read-important",
+    "title": "Validation PWA — session 2026-07-06",
+    "section": "",
+    "text": "Three of these tasks are NOT rusclf training tasks (still necessary, but feed other pipelines): - sentiment-prompt-comparison → validates RuBERT-tiny2 (7B too slow at 113M-post scale; stays on RuBERT). - disaster-date-A → validates Haiku date extraction (eventEnrich/verification), not a classifier task. - dedup-A → validates elitesData record-linkage, not a classifier task. rusclf v3 tasks among these: channel-actor-A, courts-extract-A, campaign-relevance-A, topics-A (+ protest_topic already in v2). Retrain is BUNDLE-FROM-BASE → no catastrophic forgetting of v2."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "\nNoah Buckley\n",
+    "section": "",
+    "text": "Noah Buckley"
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "\nNoah Buckley\n",
+    "section": "Contact",
+    "text": "Contact\n\n\nEmail noah.buckley@tcd.ie\nElsewhere Google Scholar · SSRN · ORCID\n\n\nOffice Department of Political Science 3 College Green Trinity College Dublin Dublin 2, Ireland\n\n\n\nLooking for Noah M. Buckley-Farlee? That’s me."
+  },
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "Office hours are by appointment: email me with a couple of times that suit you. If you’re writing a capstone or MSc dissertation with me, start with Doing political science research, which collects the advice I end up giving every year."
+  },
+  {
+    "objectID": "teaching.html#section",
+    "href": "teaching.html#section",
+    "title": "Teaching",
+    "section": "2026–27",
+    "text": "2026–27\n\n\nMT 2026\n\n\nPOU11011 Introduction to Political Science\nFirst-year lecture module. What politics is, what power is, why states exist and why some of them work; ideologies and identity; democracy, dictatorship and the grey zone; institutions; who gets what. The course site has the module outline, FAQ and slides.\n\n\n\n\nMT 2026\n\n\nPOU33201 Authoritarianism\nThird-year seminar. How dictatorships work: repression and co-optation, elections without democracy, information control, elite politics, and why some regimes fall while most don’t.\n\n\n\n\nHT 2027\n\n\nPOU44172 Russian Politics\nFinal-year seminar. Russian politics from the Soviet collapse to the war in Ukraine, with the post-2022 transformation of the regime running through every week."
+  },
+  {
+    "objectID": "teaching.html#supervision",
+    "href": "teaching.html#supervision",
+    "title": "Teaching",
+    "section": "Supervision",
+    "text": "Supervision\nI supervise final-year capstone projects and MSc dissertations on authoritarian politics, Russia and the post-Soviet region, public opinion, corruption, and elections, mostly using quantitative methods. Please read the research guide before we meet."
+  },
+  {
+    "objectID": "teaching.html#also-taught-at-trinity",
+    "href": "teaching.html#also-taught-at-trinity",
+    "title": "Teaching",
+    "section": "Also taught at Trinity",
+    "text": "Also taught at Trinity\n\nRussian Politics under Putin (MSc seminar)\nVarieties of Authoritarianism (MSc seminar)\nComparative Politics A and B (second-year lecture modules)\nRussian Politics after Communism (final-year seminar)\nPublic Opinion (final-year capstone)\n\n\n\nEarlier teaching\n\nHigher School of Economics, Moscow. Comparative Political Economy (graduate seminar, co-instructor), 2011–2013 and 2017–2018.\nColumbia University (teaching assistant). Advanced Topics in Quantitative Research: Limited and Qualitative Dependent Variables; Quantitative Political Research; Multivariate Political Analysis; Post-Soviet States and Markets; Honors Senior Thesis Seminar; Statistics and Data Analysis; Introduction to Comparative Politics; Introduction to International Politics."
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "I study how authoritarian regimes hold on to power and how the people living under them respond: to elections and their cancellation, to protest, to corruption and its punishment, to disasters and war. Most of my work is on Putin-era Russia, and most of it combines large public-opinion datasets (more than a million survey responses, harmonised across pollsters and decades) with event data I collect, scrape, and classify. The designs are usually survey experiments or difference-in-differences around political events."
+  },
+  {
+    "objectID": "research.html#publications",
+    "href": "research.html#publications",
+    "title": "Research",
+    "section": "Publications",
+    "text": "Publications\n\n\n2026\n\n\nThe Demand for Elections under Autocracy: Regime Approval and the Elimination of Local Elections in Russia\nwith Quintin Beazer and Ora John Reuter · American Journal of Political Science (early view)\n\nDOI Preprint Data\n\n\nAbstract\n\n\nMost contemporary autocracies hold elections. Does the public value these elections and, if so, do they value them enough to punish incumbents that subvert elections? We examine this question in the case of contemporary Russia by examining whether individuals withdraw support from regime leaders when local elections are abolished. Over the past 20 years, most Russian cities have replaced their directly elected mayors with appointed chief executives. This paper uses the largest dataset on public opinion ever assembled on Russia—containing over 1.4 million polling responses drawn from two decades of polling by Russia’s top polling agencies—to analyze how the abolition of elections in Russia’s large cities has affected public attitudes toward the authorities. We find that election abolition reduces support for President Vladimir Putin. This effect is stronger in settings with histories of robust electoral competition. This suggests that the public is more likely to punish incumbents for abolishing elections when those elections are perceived as meaningful.\n\n\n\n\n\n\n\n2024\n\n\nEndogenous Popularity: How Perceptions of Regime Support Affect the Popularity of Authoritarian Regimes\nwith Kyle Marquardt, Ora John Reuter, and Katerina Tertytchnaya · American Political Science Review, 118(2): 1046–1052\n\nDOI PDF Data\n\n\nAbstract\n\n\nBeing popular makes it easier for dictators to govern. A growing body of scholarship therefore focuses on the factors that influence authoritarian popularity. However, it is possible that the perception of popularity itself affects incumbent approval in autocracies. We use framing experiments embedded in four surveys in Russia to examine this phenomenon. These experiments reveal that manipulating information—and thereby perceptions—about Russian President Vladimir Putin’s popularity can significantly affect respondents’ support for him. Additional analyses indicate that these changes in support are not due to preference falsification, but are in fact genuine. This study has implications for research on support for authoritarian leaders and defection cascades in nondemocratic regimes.\n\n\n\n\n\n\n\n2022\n\n\nStaying Out of Trouble: Criminal Cases Against Russian Mayors\nwith Ora John Reuter, Michael Rochlitz, and Anton Aisin · Comparative Political Studies, 55(9): 1539–1568\n\nDOI Preprint Data\n\n\nAbstract\n\n\nAlthough repression against elites is a common occurrence in authoritarian regimes, we know little about which elites are targeted. This paper uses an original dataset on the prosecution of mayors in large Russian cities to examine the factors that make elites more likely to be arrested. We argue that in electoral authoritarian regimes like Russia, regime leaders are reluctant to arrest popular officials. Such officials command political capital that is useful to the regime, and arrests of prominent officials can produce popular backlash. We examine this argument using an original dataset on all arrests of municipal leaders in Russia’s 221 largest cities between 2002 and 2018. We find that mayors who win office with larger vote shares are less likely to be arrested.\n\n\n\n\n\n\n\n2021\n\n\nWho Reports Crime? Citizen Engagement with the Police in Russia and Georgia\nwith Timothy Frye, Scott Gehlbach, and Lauren McCarthy · Europe-Asia Studies, 73(1): 8–35\n\nDOI PDF Data\n\n\nAbstract\n\n\nWhat factors affect citizens’ engagement with the state? We explore this question through a study of victims’ and bystanders’ willingness to report crimes to the police, using data from survey experiments conducted in Russia and Georgia. We find that citizens’ willingness to report in both countries is strongly influenced by the nature of the crime, but not generally by instruments that the state might use to encourage greater reporting. Our results recommend scepticism about the ability of governments to easily engineer citizens’ engagement with the state.\n\n\n\n\n\n\n\n2019\n\n\nPerformance Incentives under Autocracy: Evidence from Russia’s Regions\nwith Ora John Reuter · Comparative Politics, 51(2): 239–266\n\nDOI Preprint\n\n\nAbstract\n\n\nAvailable evidence indicates that there is considerable variation among autocracies in the extent to which subnational officials are rewarded for economic growth. Why is economic performance used as a criterion for appointment in some autocracies but not in others? We argue that in more competitive—though still autocratic—regimes, the political imperatives of maintaining an electoral machine that can win semi-competitive elections leads regime leaders to abandon cadre policies that promote economic development. Using data on turnover among high-level economic bureaucrats in Russia’s 89 regions between 2001 and 2012, we find that performance-based appointments are more frequent in less competitive regions. These findings demonstrate one way that semi-competitive elections can actually undermine economic development under autocracy.\n\n\n\n\n\n\n\n2019\n\n\nStaring at the West through Kremlin-tinted Glasses: Russian Mass and Elite Divergence in Attitudes toward the United States, European Union, and Ukraine before and after Crimea\nwith Joshua A. Tucker · Post-Soviet Affairs, 35(5–6): 365–375\n\nDOI PDF Appendix\n\n\nAbstract\n\n\nIn this paper, we investigate the divergence in Russian public opinion between the masses and elites in terms of attitudes toward foreign countries in the post-Crimea era. To do so, we combine elite surveys conducted in Russia from 2000 to 2016 with an extensive database of Levada Center mass public opinion polling to test two competing models for explaining the observed divergence in mass and elite opinion: a demographic-driven Common Determinants model and a novel Kremlin Cueing model. More specifically, we assess the extent to which a set of demographic variables trained on a model of mass attitudes is able to predict elite attitudes. Our empirical evidence is more consistent with the predictions of the Kremlin Cueing model, indicating that, in some cases, elite opinion reacts very differently to shocks such as the Crimea crisis due to “where they sit” rather than who they are as individuals.\n\n\n\n\n\n\n\n2016\n\n\nLocal Elections in Authoritarian Regimes: An Elite-Based Theory with Evidence from Russian Mayoral Elections\nwith Ora John Reuter, Guzel Garifullina, and Alexandra Shubenkova · Comparative Political Studies, 49(5): 662–697\n\nDOI Preprint\n\n\nAbstract\n\n\nWhy do authoritarian regimes permit elections in some settings but not in others? Focusing on the decision to hold subnational elections, we argue that autocrats can use local elections to assuage powerful subnational elites. When subnational elites control significant political resources, such as local political machines, leaders may need to co-opt them to govern cost-effectively. Elections are an effective tool of co-optation because they provide elites with autonomy and the opportunity to cultivate their own power bases. We test this argument by analyzing variation in the decision to hold mayoral elections in Russia’s 207 largest cities between 2000 and 2012. Our findings suggest that Russian mayoral elections were more likely to be retained in cities where elected mayors sat atop strong political machines. Our findings also illustrate how subnational elections may actually serve to perpetuate authoritarianism by helping to ensure elite loyalty and putting the resources of powerful elites to work for the regime.\n\n\n\n\n\n\n\n2016\n\n\nCooperating with the State: Evidence from Survey Experiments on Policing\nwith Timothy Frye, Scott Gehlbach, and Lauren McCarthy · Journal of Experimental Political Science, 3(2): 124–139\n\nDOI Preprint Data\n\n\nAbstract\n\n\nWe examine cooperation with the state using a series of survey experiments on policing conducted in late 2011 in Moscow, Russia, where distrust of the state is high and attempts to reform the police have been ineffective. Through various vignettes that place respondents in situations in which they are the witness or victim of a crime, we experimentally manipulate crime severity, identity of the perpetrator (whether the crime is committed by a police officer), monetary rewards, appeals to civic duty, and the opportunity cost of time spent reporting. Of these factors, crime severity and identity of the perpetrator are robustly associated with a propensity to report. Our research design and results contribute to a large literature on cooperation with the state by examining variables that may be more salient or function differently in countries with weak institutions than in developed democracies.\n\n\n\n\n\n\n\n2014\n\n\nThe Political Economy of Russian Gubernatorial Election and Appointment\nwith Timothy Frye, Guzel Garifullina, and Ora John Reuter · Europe-Asia Studies, 66(8): 1213–1233\n\nDOI Working paper\n\n\nAbstract\n\n\nPolitical and economic outcomes depend, in part, on the quality of the officials making policy. Many scholars argue that free and fair elections are the best method for selecting competent officials. Others, however, argue that elections can lead to the selection of amateurs, demagogues, and political sycophants. Under this view, sub-national officials should be appointed by centralized planners who are insulated from local popular pressures. In this paper, we use original data on the biographies of Russian regional governors to determine whether the backgrounds of governors elected between 1992 and 2004 differ from the backgrounds of appointed governors post-2004. We find that the two groups are surprisingly similar on many dimensions.\n\n\n\n\n\n\n\n2014\n\n\nElections, Appointments, and Human Capital: The Case of Russian Mayors\nwith Guzel Garifullina, Ora John Reuter, and Alexandra Shubenkova · Demokratizatsiya, 22(1): 87–116\n\nPDF\n\n\nAbstract\n\n\nHow do the personal characteristics of elected and appointed subnational officials differ? We address this question using an original dataset of Russian mayors collected between 2000 and 2012. We find that elected mayors are more likely to have built careers in business or legislative posts and to have held prior elected office, while appointed mayors are slightly more likely to come from the local or regional executive branch."
+  },
+  {
+    "objectID": "research.html#work-in-progress",
+    "href": "research.html#work-in-progress",
+    "title": "Research",
+    "section": "Work in progress",
+    "text": "Work in progress\nTitles are provisional.\n\nMobilizing the Demobilized: The Limits of Authoritarian Inducements to Participation in War\nwith Nikita Khokhlov\n\n\nSore Spots: How Past Repression Shapes Present Responses to Autocratic Coercion\nwith Quintin Beazer and Holger Kern\n\n\nOff the Hook: Disasters and the Absence of Accountability in Authoritarian Russia\n\n\nA Watched Pot Boiling: Street Protest and Public Opinion in Authoritarian Russia\n\n\nRotten Eggs or Bad Apples: Corruption Arrests and Public Opinion in Authoritarian Russia\n\n\nEconomic Blame Attribution in Times of Boom and Bust: The Case of Authoritarian Russia"
+  },
+  {
+    "objectID": "research.html#public-writing",
+    "href": "research.html#public-writing",
+    "title": "Research",
+    "section": "Public writing",
+    "text": "Public writing\n\n“How popular is Putin, really?” The Monkey Cage, with Kyle L. Marquardt, Ora John Reuter and Katerina Tertytchnaya. April 2022.\n“Putin’s approval has stayed strong over the years – war in Ukraine could change that.” The Conversation, March 2022.\n“Here’s what you can expect from Putin’s next 6 years.” The Monkey Cage, with David Szakonyi. March 2018.\n“The End of the Vertical? Corruption and Stagnation in Putin’s Fourth Term.” Eurasianet and FPRI Geopoliticus, March 2018.\n“Corruption and Power in Post-Communist Russia.” Policy memo, FPRI Russia Political Economy Project, April 2018."
   },
   {
     "objectID": "README_updates.html",
@@ -214,220 +224,115 @@
     "text": "Build and preview the updated site\nIf satisfied, commit and push changes\nSet up Google Analytics (optional)\nSubmit sitemap to search engines\nConsider adding a robots.txt file if needed"
   },
   {
-    "objectID": "alternate-russias.html",
-    "href": "alternate-russias.html",
-    "title": "Alternate Russias: A Counterfactual Explorer",
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "CV",
     "section": "",
-    "text": "What would Russia look like today if history had gone differently? This interactive tool uses cross-national empirical modeling to explore counterfactual scenarios — what if Medvedev had continued reforms? What if Russia hadn’t annexed Crimea? What if there had been no war?\nThe tool combines panel data from 190+ countries with Russian household survey data to translate macro-level differences (GDP, democracy, corruption) into concrete lived experiences for five representative Russians.\n\n\n\n\n\n\nNoteEarly Access\n\n\n\nThis project is in active development. Please do not share the link publicly.\n\n\nLaunch the Interactive App\n\nScenarios\n\n\n\n\n\n\n\n\nScenario\nBranch Point\nKey Question\n\n\n\n\nMedvedev Reforms\n2012\nWhat if Russia had continued light liberalization instead of tightening?\n\n\nNo Crimea\n2014\nWhat if Russia hadn’t annexed Crimea and faced no sanctions?\n\n\nNo War\n2022\nWhat if Russia hadn’t invaded Ukraine?\n\n\nGradual Democratization\n2008\nWhat if Russia had followed a Poland/South Korea path?\n\n\nOil Curse Deepens\n2008\nWhat if Russia had followed a Venezuela/Nigeria path?\n\n\n\n\n\nResources\n\nWorking paper (PDF): Coming soon\nRussian-language version: Coming soon\n\n\n\nContact\nNoah Buckley, Assistant Professor of Political Science, Trinity College Dublin. noah.buckley@tcd.ie"
+    "text": "Download PDF"
   },
   {
-    "objectID": "research.html",
-    "href": "research.html",
-    "title": "Research",
-    "section": "",
-    "text": "The Demand for Elections under Autocracy: Regime Approval and the Elimination of Local Elections in Russia (with Quintin Beazer and Ora John Reuter) American Journal of Political Science, accepted for publication, 2025\n\n\nAbstract\n\nMost contemporary autocracies hold elections. Does the public value these elections and, if so, do they value them enough to punish incumbents that subvert elections? We examine this question in the case of contemporary Russia by examining whether individuals withdraw support from regime leaders when local elections are abolished. Over the past 20 years, most Russian cities have replaced their directly elected mayors with appointed chief executives. This paper uses the largest dataset on public opinion ever assembled on Russia—containing over 1.4 million polling responses drawn from two decades of polling by Russia’s top polling agencies—to analyze how the abolition of elections in Russia’s large cities has affected public attitudes toward the authorities. We find that election abolition reduces support for President Vladimir Putin. This effect is stronger in settings with histories of robust electoral competition. This suggests that the public is more likely to punish incumbents for abolishing elections when those elections are perceived as meaningful.\n\n\nEndogenous Popularity: How Perceptions of Regime Support Affect the Popularity of Authoritarian Regimes (with Kyle Marquardt, Ora John Reuter, and Katerina Tertytchnaya) American Political Science Review, 2024, 118(2):1046-1052 DOI\n\n\nAbstract\n\nBeing popular makes it easier for dictators to govern. A growing body of scholarship therefore focuses on the factors that influence authoritarian popularity. However, it is possible that the perception of popularity itself affects incumbent approval in autocracies. We use framing experiments embedded in four surveys in Russia to examine this phenomenon. These experiments reveal that manipulating information—and thereby perceptions—about Russian President Vladimir Putin’s popularity can significantly affect respondents’ support for him. Additional analyses indicate that these changes in support are not due to preference falsification, but are in fact genuine. This study has implications for research on support for authoritarian leaders and defection cascades in nondemocratic regimes.\n\n\nStaying Out of Trouble: Criminal Cases Against Russian Mayors (with Ora John Reuter, Michael Rochlitz, and Anton Aisin) Comparative Political Studies, 2022, 55(9):1539-1568 DOI\n\n\nAbstract\n\nAlthough repression against elites is a common occurrence in authoritarian regimes, we know little about which elites are targeted. This paper uses an original dataset on the prosecution of mayors in large Russian cities to examine the factors that make elites more likely to be arrested. We argue that in electoral authoritarian regimes like Russia, regime leaders are reluctant to arrest popular officials. Such officials command political capital that is useful to the regime, and arrests of prominent officials can produce popular backlash. We examine this argument using an original dataset on all arrests of municipal leaders in Russia’s 221 largest cities between 2002 and 2018. We find that mayors who won their elections by large margins are less likely to be arrested. In addition, we document several other substantively important patterns: (1) a mayor’s professional background is not related to the likelihood of arrest, (2) opposition mayors are four times more likely to be arrested, and (3) mobilization of votes for the regime is not protective against arrest.\n\n\nWho Reports Crime? Citizen Engagement with the Police in Russia and Georgia (with Timothy Frye, Scott Gehlbach, and Lauren McCarthy) Europe-Asia Studies, 2021, 73(1):8-35 DOI\n\n\nAbstract\n\nWhat factors affect citizens’ engagement with the state? We explore this question through a study of victims’ and bystanders’ willingness to report crimes to the police, using data from survey experiments conducted in Russia and Georgia. We find that citizens’ willingness to report in both countries is strongly influenced by the nature of the crime, but not generally by instruments that the state might use to encourage greater reporting. Our results recommend scepticism about the ability of governments to easily engineer citizens’ engagement with the state.\n\n\nPerformance Incentives under Autocracy: Evidence from Russia’s Regions (with Ora John Reuter) Comparative Politics, 2019, 51(2):239-266 DOI\n\n\nAbstract\n\nAvailable evidence indicates that there is considerable variation among autocracies in the extent to which subnational officials are rewarded for economic growth. Why is economic performance used as a criterion for appointment in some autocracies but not in others? We argue that in more competitive—though still autocratic—regimes, the political imperatives of maintaining an electoral machine that can win semi-competitive elections leads regime leaders to abandon cadre policies that promote economic development. Using data on turnover among high-level economic bureaucrats in Russia’s 89 regions between 2001 and 2012, we find that performance-based appointments are more frequent in less competitive regions. These findings demonstrate one way that semi-competitive elections can actually undermine economic development under autocracy.\n\n\nStaring at the West through Kremlin-tinted Glasses: Russian Mass and Elite Divergence in Attitudes toward the United States, European Union, and Ukraine before and after Crimea (with Joshua A. Tucker) Post-Soviet Affairs, 2019, 35(5-6):365-375 DOI\n\n\nAbstract\n\nIn this paper, we investigate the divergence in Russian public opinion between the masses and elites in terms of attitudes toward foreign countries in the post-Crimea era. To do so, we combine elite surveys conducted in Russia from 2000 to 2016 with an extensive database of Levada Center mass public opinion polling to test two competing models for explaining the observed divergence in mass and elite opinion: a demographic-driven Common Determinants model and a novel Kremlin Cueing model. More specifically, we assess the extent to which a set of demographic variables trained on a model of mass attitudes is able to predict elite attitudes. Our empirical evidence is more consistent with the predictions of the Kremlin Cueing model, indicating that, in some cases, elite opinion reacts very differently to shocks such as the Crimea crisis due to “where they sit” rather than who they are as individuals.\n\n\nLocal Elections in Authoritarian Regimes: An Elite-Based Theory with Evidence from Russian Mayoral Elections (with Ora John Reuter, Guzel Garifullina, and Alexandra Shubenkova) Comparative Political Studies, 2016, 49(5):662-697 DOI\n\n\nAbstract\n\nWhy do authoritarian regimes permit elections in some settings but not in others? Focusing on the decision to hold subnational elections, we argue that autocrats can use local elections to assuage powerful subnational elites. When subnational elites control significant political resources, such as local political machines, leaders may need to co-opt them to govern cost-effectively. Elections are an effective tool of co-optation because they provide elites with autonomy and the opportunity to cultivate their own power bases. We test this argument by analyzing variation in the decision to hold mayoral elections in Russia’s 207 largest cities between 2000 and 2012. Our findings suggest that Russian mayoral elections were more likely to be retained in cities where elected mayors sat atop strong political machines. Our findings also illustrate how subnational elections may actually serve to perpetuate authoritarianism by helping to ensure elite loyalty and putting the resources of powerful elites to work for the regime.\n\n\nCooperating with the State: Evidence from Survey Experiments on Policing (with Timothy Frye, Scott Gehlbach, and Lauren McCarthy) Journal of Experimental Political Science, 2016, 3(2):124-139 DOI\n\n\nAbstract\n\nWe examine cooperation with the state using a series of survey experiments on policing conducted in late 2011 in Moscow, Russia, where distrust of the state is high and attempts to reform the police have been ineffective. Through various vignettes that place respondents in situations in which they are the witness or victim of a crime, we experimentally manipulate crime severity, identity of the perpetrator (whether the crime is committed by a police officer), monetary rewards, appeals to civic duty, and the opportunity cost of time spent reporting. Of these factors, crime severity and identity of the perpetrator are robustly associated with a propensity to report. Our research design and results contribute to a large literature on cooperation with the state by examining variables that may be more salient or function differently in countries with weak institutions than in developed democracies.\n\n\nThe Political Economy of Russian Gubernatorial Elections and Appointments (with Timothy Frye, Guzel Garifullina, and Ora John Reuter) Europe-Asia Studies, 2014, 66(8):1213-1233\n\n\nAbstract\n\nPolitical and economic outcomes depend, in part, on the quality of the officials making policy. Many scholars argue that free and fair elections are the best method for selecting competent officials. Others, however, argue that elections can lead to the selection of amateurs, demagogues, and political sycophants. Under this view, sub-national officials should be appointed by centralized planners who are insulated from local popular pressures. In this paper, we use original data on the biographies of Russian regional governors to determine whether the backgrounds of governors elected between 1992 and 2004 differ from the backgrounds of appointed governors post-2004. We find that the two groups are surprisingly similar on many dimensions.\n\n\nElections, Appointments, and Human Capital: The Case of Russian Mayors (with Guzel Garifullina, Ora John Reuter, and Alexandra Shubenkova) Demokratizatsiya, 2014, 22(1):87-116\n\n\nAbstract\n\nHow do the personal characteristics of elected and appointed subnational officials differ? We address this question using an original dataset of Russian mayors collected between 2000 and 2012. We find that elected mayors are more likely to have built careers in business or legislative posts and to have held prior elected office, while appointed mayors are slightly more likely to come from the local or regional executive branch.",
-    "crumbs": [
-      "Research"
-    ]
+    "objectID": "cv.html#research-interests",
+    "href": "cv.html#research-interests",
+    "title": "CV",
+    "section": "Research Interests",
+    "text": "Research Interests\nComparative politics; authoritarian politics; Russian and post-communist politics; public opinion; corruption; political methodology and experimental methods; political economy; bureaucracy; policing."
   },
   {
-    "objectID": "research.html#publications",
-    "href": "research.html#publications",
-    "title": "Research",
-    "section": "",
-    "text": "The Demand for Elections under Autocracy: Regime Approval and the Elimination of Local Elections in Russia (with Quintin Beazer and Ora John Reuter) American Journal of Political Science, accepted for publication, 2025\n\n\nAbstract\n\nMost contemporary autocracies hold elections. Does the public value these elections and, if so, do they value them enough to punish incumbents that subvert elections? We examine this question in the case of contemporary Russia by examining whether individuals withdraw support from regime leaders when local elections are abolished. Over the past 20 years, most Russian cities have replaced their directly elected mayors with appointed chief executives. This paper uses the largest dataset on public opinion ever assembled on Russia—containing over 1.4 million polling responses drawn from two decades of polling by Russia’s top polling agencies—to analyze how the abolition of elections in Russia’s large cities has affected public attitudes toward the authorities. We find that election abolition reduces support for President Vladimir Putin. This effect is stronger in settings with histories of robust electoral competition. This suggests that the public is more likely to punish incumbents for abolishing elections when those elections are perceived as meaningful.\n\n\nEndogenous Popularity: How Perceptions of Regime Support Affect the Popularity of Authoritarian Regimes (with Kyle Marquardt, Ora John Reuter, and Katerina Tertytchnaya) American Political Science Review, 2024, 118(2):1046-1052 DOI\n\n\nAbstract\n\nBeing popular makes it easier for dictators to govern. A growing body of scholarship therefore focuses on the factors that influence authoritarian popularity. However, it is possible that the perception of popularity itself affects incumbent approval in autocracies. We use framing experiments embedded in four surveys in Russia to examine this phenomenon. These experiments reveal that manipulating information—and thereby perceptions—about Russian President Vladimir Putin’s popularity can significantly affect respondents’ support for him. Additional analyses indicate that these changes in support are not due to preference falsification, but are in fact genuine. This study has implications for research on support for authoritarian leaders and defection cascades in nondemocratic regimes.\n\n\nStaying Out of Trouble: Criminal Cases Against Russian Mayors (with Ora John Reuter, Michael Rochlitz, and Anton Aisin) Comparative Political Studies, 2022, 55(9):1539-1568 DOI\n\n\nAbstract\n\nAlthough repression against elites is a common occurrence in authoritarian regimes, we know little about which elites are targeted. This paper uses an original dataset on the prosecution of mayors in large Russian cities to examine the factors that make elites more likely to be arrested. We argue that in electoral authoritarian regimes like Russia, regime leaders are reluctant to arrest popular officials. Such officials command political capital that is useful to the regime, and arrests of prominent officials can produce popular backlash. We examine this argument using an original dataset on all arrests of municipal leaders in Russia’s 221 largest cities between 2002 and 2018. We find that mayors who won their elections by large margins are less likely to be arrested. In addition, we document several other substantively important patterns: (1) a mayor’s professional background is not related to the likelihood of arrest, (2) opposition mayors are four times more likely to be arrested, and (3) mobilization of votes for the regime is not protective against arrest.\n\n\nWho Reports Crime? Citizen Engagement with the Police in Russia and Georgia (with Timothy Frye, Scott Gehlbach, and Lauren McCarthy) Europe-Asia Studies, 2021, 73(1):8-35 DOI\n\n\nAbstract\n\nWhat factors affect citizens’ engagement with the state? We explore this question through a study of victims’ and bystanders’ willingness to report crimes to the police, using data from survey experiments conducted in Russia and Georgia. We find that citizens’ willingness to report in both countries is strongly influenced by the nature of the crime, but not generally by instruments that the state might use to encourage greater reporting. Our results recommend scepticism about the ability of governments to easily engineer citizens’ engagement with the state.\n\n\nPerformance Incentives under Autocracy: Evidence from Russia’s Regions (with Ora John Reuter) Comparative Politics, 2019, 51(2):239-266 DOI\n\n\nAbstract\n\nAvailable evidence indicates that there is considerable variation among autocracies in the extent to which subnational officials are rewarded for economic growth. Why is economic performance used as a criterion for appointment in some autocracies but not in others? We argue that in more competitive—though still autocratic—regimes, the political imperatives of maintaining an electoral machine that can win semi-competitive elections leads regime leaders to abandon cadre policies that promote economic development. Using data on turnover among high-level economic bureaucrats in Russia’s 89 regions between 2001 and 2012, we find that performance-based appointments are more frequent in less competitive regions. These findings demonstrate one way that semi-competitive elections can actually undermine economic development under autocracy.\n\n\nStaring at the West through Kremlin-tinted Glasses: Russian Mass and Elite Divergence in Attitudes toward the United States, European Union, and Ukraine before and after Crimea (with Joshua A. Tucker) Post-Soviet Affairs, 2019, 35(5-6):365-375 DOI\n\n\nAbstract\n\nIn this paper, we investigate the divergence in Russian public opinion between the masses and elites in terms of attitudes toward foreign countries in the post-Crimea era. To do so, we combine elite surveys conducted in Russia from 2000 to 2016 with an extensive database of Levada Center mass public opinion polling to test two competing models for explaining the observed divergence in mass and elite opinion: a demographic-driven Common Determinants model and a novel Kremlin Cueing model. More specifically, we assess the extent to which a set of demographic variables trained on a model of mass attitudes is able to predict elite attitudes. Our empirical evidence is more consistent with the predictions of the Kremlin Cueing model, indicating that, in some cases, elite opinion reacts very differently to shocks such as the Crimea crisis due to “where they sit” rather than who they are as individuals.\n\n\nLocal Elections in Authoritarian Regimes: An Elite-Based Theory with Evidence from Russian Mayoral Elections (with Ora John Reuter, Guzel Garifullina, and Alexandra Shubenkova) Comparative Political Studies, 2016, 49(5):662-697 DOI\n\n\nAbstract\n\nWhy do authoritarian regimes permit elections in some settings but not in others? Focusing on the decision to hold subnational elections, we argue that autocrats can use local elections to assuage powerful subnational elites. When subnational elites control significant political resources, such as local political machines, leaders may need to co-opt them to govern cost-effectively. Elections are an effective tool of co-optation because they provide elites with autonomy and the opportunity to cultivate their own power bases. We test this argument by analyzing variation in the decision to hold mayoral elections in Russia’s 207 largest cities between 2000 and 2012. Our findings suggest that Russian mayoral elections were more likely to be retained in cities where elected mayors sat atop strong political machines. Our findings also illustrate how subnational elections may actually serve to perpetuate authoritarianism by helping to ensure elite loyalty and putting the resources of powerful elites to work for the regime.\n\n\nCooperating with the State: Evidence from Survey Experiments on Policing (with Timothy Frye, Scott Gehlbach, and Lauren McCarthy) Journal of Experimental Political Science, 2016, 3(2):124-139 DOI\n\n\nAbstract\n\nWe examine cooperation with the state using a series of survey experiments on policing conducted in late 2011 in Moscow, Russia, where distrust of the state is high and attempts to reform the police have been ineffective. Through various vignettes that place respondents in situations in which they are the witness or victim of a crime, we experimentally manipulate crime severity, identity of the perpetrator (whether the crime is committed by a police officer), monetary rewards, appeals to civic duty, and the opportunity cost of time spent reporting. Of these factors, crime severity and identity of the perpetrator are robustly associated with a propensity to report. Our research design and results contribute to a large literature on cooperation with the state by examining variables that may be more salient or function differently in countries with weak institutions than in developed democracies.\n\n\nThe Political Economy of Russian Gubernatorial Elections and Appointments (with Timothy Frye, Guzel Garifullina, and Ora John Reuter) Europe-Asia Studies, 2014, 66(8):1213-1233\n\n\nAbstract\n\nPolitical and economic outcomes depend, in part, on the quality of the officials making policy. Many scholars argue that free and fair elections are the best method for selecting competent officials. Others, however, argue that elections can lead to the selection of amateurs, demagogues, and political sycophants. Under this view, sub-national officials should be appointed by centralized planners who are insulated from local popular pressures. In this paper, we use original data on the biographies of Russian regional governors to determine whether the backgrounds of governors elected between 1992 and 2004 differ from the backgrounds of appointed governors post-2004. We find that the two groups are surprisingly similar on many dimensions.\n\n\nElections, Appointments, and Human Capital: The Case of Russian Mayors (with Guzel Garifullina, Ora John Reuter, and Alexandra Shubenkova) Demokratizatsiya, 2014, 22(1):87-116\n\n\nAbstract\n\nHow do the personal characteristics of elected and appointed subnational officials differ? We address this question using an original dataset of Russian mayors collected between 2000 and 2012. We find that elected mayors are more likely to have built careers in business or legislative posts and to have held prior elected office, while appointed mayors are slightly more likely to come from the local or regional executive branch.",
-    "crumbs": [
-      "Research"
-    ]
+    "objectID": "cv.html#academic-experience",
+    "href": "cv.html#academic-experience",
+    "title": "CV",
+    "section": "Academic Experience",
+    "text": "Academic Experience\nAssistant Professor (with tenure since 2023), Department of Political Science Trinity College Dublin, University of Dublin, Ireland 2019–present\nVisiting Scholar, Center for Applied Social and Economic Research (CASER) NYU Shanghai, China January–May 2026\nVisiting Scholar, NYU Jordan Center New York University, New York September–December 2022\nPostdoctoral Associate NYU Abu Dhabi, United Arab Emirates 2017–2019 Faculty mentors: Rebecca Morton (NYU) and Joshua Tucker (NYU)\nResearch Fellow | Postdoctoral Researcher International Center for the Study of Institutions and Development Higher School of Economics, Moscow, Russia 2011–2022 | January–August 2017"
   },
   {
-    "objectID": "research.html#working-papers",
-    "href": "research.html#working-papers",
-    "title": "Research",
+    "objectID": "cv.html#education",
+    "href": "cv.html#education",
+    "title": "CV",
+    "section": "Education",
+    "text": "Education\nColumbia University in the City of New York Ph.D. in Political Science, 2017\nUniversity of Wisconsin-Madison B.A. received 2006; Political Science, Russian Language and Culture"
+  },
+  {
+    "objectID": "cv.html#peer-reviewed-publications",
+    "href": "cv.html#peer-reviewed-publications",
+    "title": "CV",
+    "section": "Peer-Reviewed Publications",
+    "text": "Peer-Reviewed Publications\n“The Demand for Elections under Autocracy: Regime Approval and the Elimination of Local Elections in Russia” (with Quintin Beazer and Ora John Reuter). American Journal of Political Science. 2026, early view. doi:10.1111/ajps.70060\n“Endogenous Popularity: How Perceptions of Regime Support Affect the Popularity of Authoritarian Regimes” (with Kyle Marquardt, Ora John Reuter, and Ekaterina Tertytchnaya). American Political Science Review. 2024;118(2):1046-1052.\n“Staying Out of Trouble: Criminal Cases Against Russian Mayors” (with Ora John Reuter, Michael Rochlitz, and Anton Aisin). Comparative Political Studies 55(9), 1539-1568. 2022.\n“Who Reports Crime? Citizen Engagement with the Police in Russia and Georgia” (with Timothy Frye, Scott Gehlbach, and Lauren McCarthy). Europe-Asia Studies 73(1):8-35. 2021.\n“Performance Incentives under Autocracy: Evidence from Russia’s Regions” (with Ora John Reuter). Comparative Politics 51(2):239-266. 2019.\n“Staring at the West through Kremlin-tinted glasses: Russian mass and elite divergence in attitudes toward the United States, European Union, and Ukraine before and after Crimea” (with Joshua A. Tucker). Post-Soviet Affairs 35(5-6):365-375. 2019.\n“Local Elections in Authoritarian Regimes: An Elite-Based Theory with Evidence from Russian Mayoral Elections” (with Ora John Reuter, Guzel Garifullina, and Alexandra Shubenkova). Comparative Political Studies 49:5. 2016.\n“Cooperating with the State: Evidence from Survey Experiments on Policing” (with Timothy Frye, Scott Gehlbach, and Lauren McCarthy). Journal of Experimental Political Science 3(2):124-139. 2016.\n“The Political Economy of Russian Gubernatorial Election and Appointment” (with Timothy Frye, Guzel Garifullina, and Ora John Reuter). Europe-Asia Studies 66:8. 2014. doi:10.1080/09668136.2014.941695\n“Elections, Appointments, and Human Capital: The Case of Russian Mayors” (with Guzel Garifullina, Ora John Reuter, and Alexandra Shubenkova). Demokratizatsiya 22:1. 2014."
+  },
+  {
+    "objectID": "cv.html#working-papers",
+    "href": "cv.html#working-papers",
+    "title": "CV",
     "section": "Working Papers",
-    "text": "Working Papers\nA Watched Pot Boiling: Street Protest and Public Opinion in Authoritarian Russia Presented at ASEEES 2021\n\n\nAbstract\n\nWhen does street protest breed more dissatisfaction with the status quo? The threat of mass public protest looms large for authoritarian regimes, yet scholars know relatively little about how protest affects public opinion in autocracies. In this paper, I examine the effects of exposure to protest on attitudes toward regime actors and on willingness to engage in future protest. Combining 220,000 survey responses from Russia (2007–2019) with data on 5,000 protest events in a generalized difference-in-differences design, I find that protest significantly depresses approval of regional governors (3–4 percentage points) but has smaller effects on Putin approval (1.5–2 pp). Local issue protests particularly affect local officials, while broader political protests show weaker effects on central regime support. These results suggest that protest serves as an informational shock that enables citizens to “blame the right target” for governance failures—a disillusionment mechanism—rather than triggering broader cascades of regime defection.\n\n\nRotten Eggs or Bad Apples: Corruption Arrests and Public Opinion in Authoritarian Russia\n\n\nAbstract\n\nInformation about corruption can be a powerful force in shaping how the public assesses politicians and the political system. In autocracies, malfeasance frequently serves as a spark for discontent. As a result, authoritarian leaders often attempt to portray egregious cases of corruption in a neutral or positive light: these are merely a few bad apples, whom the regime is evidently finding success in rooting out. When does the public view corrupt officials as emblematic of a rotten regime and when do they see them as isolated cases of an imperfect regime doing its best to clean house? In this paper, I examine the effects of officials in an authoritarian regime being legally punished for corruption on public opinion. I compile a dataset of millions of public opinion survey responses regarding regime approval in Putin-era Russia from 2003-2020 and combine this with extensive region-level data on the arrest, prosecution, and jailing of officials. Together with a difference-in-differences design, this allows me to identify the positive, negative, or neutral effects of the discovery of corruption in an authoritarian regime on the public’s attitudes.\n\n\nEconomic Blame Attribution in Times of Boom and Bust: The Case of Authoritarian Russia Presented at EPSA 2018",
-    "crumbs": [
-      "Research"
-    ]
+    "text": "Working Papers\n“A Watched Pot Boiling: Street Protest and Public Opinion in Authoritarian Russia,” presented at ASEEES 2021.\n“Rotten Eggs or Bad Apples: Corruption Arrests and Public Opinion in Authoritarian Russia.”\n“Economic Blame Attribution in Times of Boom and Bust: The Case of Authoritarian Russia,” presented at EPSA 2018."
   },
   {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
+    "objectID": "cv.html#grants-fellowships",
+    "href": "cv.html#grants-fellowships",
+    "title": "CV",
+    "section": "Grants & Fellowships",
+    "text": "Grants & Fellowships\nArts and Social Sciences Benefaction Fund, Trinity College Dublin, 2020, 2025\nDissertation Development Grant, Department of Political Science, Columbia University, 2014\nWilliam T.R. Fox Fellowship in Political Science, Graduate School of Arts and Sciences, Columbia University, 2013–2014\nSummer Grant for field research, Columbia Center for the Study of Development Strategies, April 2010 (with David Szakonyi)\nPepsiCo Fellowship for Travel/Research in the Former Soviet Union, Harriman Institute, April 2010"
+  },
+  {
+    "objectID": "cv.html#additional-research-experience",
+    "href": "cv.html#additional-research-experience",
+    "title": "CV",
+    "section": "Additional Research Experience",
+    "text": "Additional Research Experience\nContributing Author Russia Political Economy Project in the Eurasia Program Foreign Policy Research Institute 2017–2018\nConsultant and Research Assistant Project: Assessing Transition and Rent-Seeking in Poland, Russia, and China Supervisor: Joel Hellman, The World Bank 2015\nResearch Assistant Project: “The Social Impact of the Millennium Village Project in Rwanda” The Earth Institute, Columbia University; Columbia Center for the Study of Development Strategies 2011\nResearch Assistant Project: “Incentives for Implementation of Regulatory Reform – A Comparative Survey of Federal and Regional Government Officials in Russia” Supervisors: Ekaterina Zhuravskaya, Mikhail Pryadilnikov Center for Economic and Financial Research (CEFIR), Moscow, Russia; The World Bank 2008"
+  },
+  {
+    "objectID": "cv.html#teaching-experience",
+    "href": "cv.html#teaching-experience",
+    "title": "CV",
+    "section": "Teaching Experience",
+    "text": "Teaching Experience\nInstructor, Trinity College Dublin\n\nIntroduction to Political Science (first-year lecture module, 2026)\nAuthoritarianism (third-year seminar, 2026)\nComparative Politics A and B: The Comparative Politics of the Developing World (second-year lecture modules)\nRussian Politics under Putin (postgraduate/Masters seminar)\nVarieties of Authoritarianism (postgraduate/Masters seminar)\nRussian Politics after Communism (final-year seminar)\nPublic Opinion (final-year capstone)\nCapstone and MSc dissertation supervision\n\nCo-Instructor, Higher School of Economics\n\nComparative Political Economy (graduate-level seminar), 2011–2013, 2017–2018"
+  },
+  {
+    "objectID": "cv.html#other-publications",
+    "href": "cv.html#other-publications",
+    "title": "CV",
+    "section": "Other Publications",
+    "text": "Other Publications\n“How popular is Putin, really?” blog post on The Monkey Cage, with Kyle L. Marquardt, Ora John Reuter and Katerina Tertytchnaya. April 13, 2022.\n“Putin’s approval has stayed strong over the years – war in Ukraine could change that,” article on The Conversation, republished on several news sites. March 2, 2022.\n“Here’s what you can expect from Putin’s next 6 years,” blog post on The Monkey Cage, with David Szakonyi. March 22, 2018.\n“The End of the Vertical? Corruption and Stagnation in Putin’s Fourth Term,” blog post on Eurasianet and FPRI Geopoliticus. March 9 and 13, 2018.\n“Corruption and Power in Post-Communist Russia,” policy memo for FPRI Russia Political Economy Project. April 2018."
+  },
+  {
+    "objectID": "cv.html#professional-service",
+    "href": "cv.html#professional-service",
+    "title": "CV",
+    "section": "Professional Service",
+    "text": "Professional Service\nJournal Reviewer: APSR, AJPS, JOP, BJPS, Comparative Politics, Problems of Post-Communism, Governance, Democratization, Europe-Asia Studies, Electoral Studies, Political Behavior, Comparative Political Studies, World Politics, Journal of Quantitative Description: Digital Media, Political Research Quarterly, Post-Soviet Affairs, Russian Politics.\nDepartmental Service\n\nAssociate Director and Director of the MSc Program in International Politics, Trinity College Dublin, 2021–2024\n\nMemberships: APSA, ASEEES, EPSA, BASEES"
+  },
+  {
+    "objectID": "cv.html#selected-presentations",
+    "href": "cv.html#selected-presentations",
+    "title": "CV",
+    "section": "Selected Presentations",
+    "text": "Selected Presentations\n\nInvited policy panel talk, “Can we measure Russian public opinion?”, Sweden, September 2026\nInvited talk at Dublin City U Politics Seminar, February 2025\nInvited talk at Oxford Internet Institute workshop, January 2024\nInvited talk at U Limerick PPA seminar, October 2023\nInvited talk at U Zurich politics seminar, 2022\nInvited talk at U Bremen, December 2021\nInvited talk, “Issues in Russian and Post-Communist Political Economy and Politics” seminar, Oxford University, 2021\nAPSA (2012–2018, 2021)\nASEEES (2011–2018, 2020–2021)\nEPSA (2012–2014, 2016–2019)\nInvited workshop: “Political Rents and Political Elites in Russia and Beyond,” Oxford University, 2017\nBASEES (2017–2018)"
+  },
+  {
+    "objectID": "cv.html#skills",
+    "href": "cv.html#skills",
+    "title": "CV",
+    "section": "Skills",
+    "text": "Skills\nLanguage: English (native); Russian (proficient)"
+  },
+  {
+    "objectID": "validation/data/arrests-llm-only-precision/START_HERE_2026-09-05.html",
+    "href": "validation/data/arrests-llm-only-precision/START_HERE_2026-09-05.html",
+    "title": "START HERE — Arrests LLM-only precision",
     "section": "",
-    "text": "Postgraduate (Masters) seminar\n\n\n\n\n\nPostgraduate (Masters) seminar\n\n\n\n\n\nUndergraduate lecture\n\n\n\n\n\nUndergraduate seminar\n\n\n\n\n\nUndergraduate seminar",
-    "crumbs": [
-      "Teaching"
-    ]
+    "text": "START HERE — Arrests LLM-only precision\nWhere: open the validation PWA on your iPad (same app as the earlier arrests-sample-A/B/C/D chunks). Pick the task named “Arrests LLM-only precision (100)”.\nWhat it is: the 2026-05-07 cross-project LLM audit flagged that nobody had ever checked the precision of arrests the LLM found that a human never saw — either because they came from Telegram/Shkulev/Sledcom (sources that were never hand-coded at all) or because they’re FPP events the LLM called an arrest that the original hand-coded FPP spreadsheet missed. This chunk is 100 such events: 25 each from FPP-LLM-only, Telegram, Shkulev, Sledcom, spread across crime types within each source.\nPer event you’ll see: the source text (Russian), plus everything the LLM extracted — official name/position/level, crime_type, arrest_stage, is_corruption, in_office, region, whether it’s flagged as a federal event.\nWhat to record per item: - is_real_corruption_arrest_of_official — Yes / No / Unsure. Is this actually a corruption/legal-case arrest OF AN OFFICIAL — not a random crime report, a rumor, someone merely mentioned in passing, or a private citizen? This is the main precision question. - type_correct — is the LLM’s crime_type roughly right? Yes/No/Unsure. - region_correct — is the region roughly right? Yes/No/Unsure. - notes — free text, especially for anything weird (multi-defendant case collapsed into one row, official actually a private citizen, etc — these feed the separate multi-defendant-collapse issue in CLAUDE.md too, worth a note if you spot one).\nWhen done: tap Export. Save the file (validation_arrests-llm-only-precision_&lt;date&gt;.json) to ~/Dropbox/_validation_exports/ — the same folder every other arrests/disaster export goes to.\nWhat this feeds: an honest precision estimate (with a 95% Wilson CI) for the 8,652 FPP-LLM-only arrests plus the three never-hand-coded sources, answering the 2026-05-07 audit’s open item 3 (“no precision check on the LLM-only arrests”). Overall and per-source precision numbers are what decide whether these sources can be trusted as-is in the arrests paper, or need a stricter LLM re-classification pass first.\nLoader (run after you export):\nRscript eventsData/code/99d_load_llm_only_precision_results.R\nWrites eventsData/output/validation_llm_only_precision_handcoded.csv and prints precision overall, by source, and the type/region-correct rates, each with a Wilson 95% CI."
   },
   {
-    "objectID": "teaching.html#trinity-college-dublin",
-    "href": "teaching.html#trinity-college-dublin",
-    "title": "Teaching",
+    "objectID": "validation/data/disaster-D31-stated-date/START_HERE_2026-09-05.html",
+    "href": "validation/data/disaster-D31-stated-date/START_HERE_2026-09-05.html",
+    "title": "START HERE — Disaster D-31 stated-date validation",
     "section": "",
-    "text": "Postgraduate (Masters) seminar\n\n\n\n\n\nPostgraduate (Masters) seminar\n\n\n\n\n\nUndergraduate lecture\n\n\n\n\n\nUndergraduate seminar\n\n\n\n\n\nUndergraduate seminar",
-    "crumbs": [
-      "Teaching"
-    ]
+    "text": "START HERE — Disaster D-31 stated-date validation\nWhere: open the validation PWA on your iPad (same app/home-screen icon you already use for the disaster-sample-E / disaster-date-coding chunks — it lives at the me/website/validation/ site). Pick the task named “Disaster D-31 — stated-date validation (~60)” from the task list.\nWhat it is: 60 disaster events where the pipeline already extracted a specific date (stated_date) from media text and marked it day_high confidence — but nobody has ever checked whether that date is actually correct. This is different from the earlier “date-coding” chunk, which filled in missing days; this one checks dates that already look filled in.\nPer event you’ll see: - The FPP one-line description (RU) of the event. - The LLM’s extracted stated_date and the exact sentence it pulled the date from. - Up to 2 independent evidence snippets pulled from other sources (media/social) — note these were matched loosely and are sometimes about a different event entirely; ignore them if so. - A ru.wikipedia search link and a Google search link, pre-filled with the region + facility + disaster-type keywords, to help you find the real date.\nWhat to record per item: - true_date — the real date if you can find it (YYYY-MM-DD, or partial like “2013-04” if that’s all you can pin down). Leave blank if you can’t find it. - matches_event — does the stated_date match the true date? Yes / No / Unsure. Pick Unsure rather than guessing if you can’t verify. - notes — anything worth flagging (wrong event entirely, right date wrong format, ambiguous FPP text, etc).\nWhen done: tap Export in the app menu. It saves (or shares, on iPad) a file named validation_disaster-D31-stated-date_&lt;date&gt;.json. Save it to ~/Dropbox/_validation_exports/ (same folder every other chunk export goes to) — from Mac Files/Dropbox app, or AirDrop it to yourself and move it there.\nWhat this feeds: the per-source date-accuracy check called for in disaster/notes/audit_2026-05-13.md (search “drop sources below ~70% accuracy”): “When chunk E lands, run a per-source agreement check (Wikidata vs hand, Sledcom vs hand, etc.) and drop sources below ~70% accuracy.” This chunk is that check for the llm_stated_date source specifically — the single biggest date source in the master (1,756 of ~4,235 events). If it comes back under ~70% “Yes”, that source’s dates should not be trusted at day precision without a fix.\nLoader (run after you export):\nRscript disaster/code/validation/99d_load_date_validation_results.R\nThis is a new standalone loader (kept separate from the existing 99c_load_validation_results.R rather than editing it) — it reads your export from ~/Dropbox/_validation_exports/, writes disaster/data/processed/verification/validation_D31_stated_date_handcoded.csv, and prints the accuracy % against the 70% threshold."
   },
   {
-    "objectID": "teaching.html#previous-teaching",
-    "href": "teaching.html#previous-teaching",
-    "title": "Teaching",
-    "section": "Previous Teaching",
-    "text": "Previous Teaching\nHigher School of Economics, Moscow\n\nComparative Political Economy (graduate seminar), 2011–2013, 2017–2018\n\nColumbia University (Teaching Assistant)\n\nAdvanced Topics in Quantitative Research: Limited and Qualitative Dependent Variables\nQuantitative Political Research\nMultivariate Political Analysis\nPost-Soviet States and Markets\nHonors Senior Thesis Seminar\nStatistics and Data Analysis\nIntroduction to Comparative Politics\nIntroduction to International Politics",
-    "crumbs": [
-      "Teaching"
-    ]
-  },
-  {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact",
+    "objectID": "validation/data/fpp-primary-type-gold/START_HERE_2026-09-09.html",
+    "href": "validation/data/fpp-primary-type-gold/START_HERE_2026-09-09.html",
+    "title": "START HERE – FPP primary_type gold (67, v3, 2026-09-09)",
     "section": "",
-    "text": "Email: noah.buckley@tcd.ie\nOffice:\nDepartment of Political Science\n3 College Green\nTrinity College Dublin\nDublin 2, Ireland\nPhone: +353 1 896 1029\n\nGoogle Scholar · SSRN"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Noah Buckley",
-    "section": "",
-    "text": "Noah Buckley\n\nAssistant Professor of Political Science\n\n\nDepartment of Political Science, Trinity College Dublin\n\n\nI am an assistant professor (with tenure) in the Department of Political Science at Trinity College Dublin. I received my Ph.D. from Columbia University in 2017 and was previously a postdoctoral associate at NYU Abu Dhabi.\nMy research focuses on authoritarian politics and Putin-era Russian politics. How do autocratic regimes sustain themselves, how the mass public understands their authoritarian environment, and why corruption persists. I use quantitative methods and micro-level data in my research.\nMy work has appeared in the American Political Science Review, American Journal of Political Science, Comparative Political Studies, Comparative Politics, Journal of Experimental Political Science, Europe-Asia Studies, and Post-Soviet Affairs.\n(Looking for Noah M. Buckley-Farlee? That’s me.)",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "claude-code.html",
-    "href": "claude-code.html",
-    "title": "Claude Code for Political Scientists",
-    "section": "",
-    "text": "I’ve been telling everyone I know about Claude Code and figured I should write something down instead of cornering people at conferences. If you’re curious, skeptical, or just wondering what I won’t shut up about, this is for you.\nThe short version: it has helped me do literally months of RA work in a few weeks. I think it will change the field quickly, in good and bad and unexpected ways. I gave a demo to a skeptical friend the other day and converted him instantly."
-  },
-  {
-    "objectID": "claude-code.html#so-what-is-it",
-    "href": "claude-code.html#so-what-is-it",
-    "title": "Claude Code for Political Scientists",
-    "section": "So what is it?",
-    "text": "So what is it?\nYou open a terminal in your project folder, describe what you want in plain English, and an AI agent reads your files, writes code, runs it, looks at the output, fixes its mistakes, and iterates. You watch—or go make coffee and come back to finished work.\nIt’s not a chatbot you paste code into. It lives inside your project. It can see your directory structure, read your data files, and remember context across a conversation. Less “AI autocomplete,” more “RA who reads fast, codes fast, and never sleeps.”"
-  },
-  {
-    "objectID": "claude-code.html#what-ive-actually-used-it-for",
-    "href": "claude-code.html#what-ive-actually-used-it-for",
-    "title": "Claude Code for Political Scientists",
-    "section": "What I’ve actually used it for",
-    "text": "What I’ve actually used it for\nMost discussion of AI coding tools is aimed at software engineers. We have different problems—messy data, weird file formats, legacy code from 2014 that nobody wants to touch. Turns out it’s good at exactly this kind of thing.\nRoughly in order of how much it’s changed my life:\nCleaning and harmonizing data. I work with decades of Russian survey data across dozens of waves—different formats, inconsistent variable names, coding schemes that change over time, column headers in Cyrillic that sometimes look like Latin characters but aren’t. This is exactly the tedious, detail-oriented work that used to eat weeks. Claude Code does it well and fast.\nBuilding whole analysis pipelines. I had precinct-level election data for 12 Russian elections and wanted to implement a bunch of fraud detection methods. I described what I needed, and over a few sessions it built the entire pipeline—data loading, a dozen statistical tests, validation against published estimates, export to a panel dataset, publication figures. The kind of project I’d budget a full semester for.\nScraping and data collection. It has enabled me to collect data that I didn’t think was possible without a very technical RA—web scraping, processing government budget documents in inconsistent Excel formats across years, API work.\nRebooting stalled papers. This one’s my favorite. I wrote a custom command that I point at a project folder—maybe it has years of accumulated code, old drafts, emails from coauthors, reviewer comments sitting in a stuff/ folder. Claude reads everything, builds a clean replication pipeline, inventories what data I have across my other projects, and writes up a prioritized to-do list. You go from “I can’t face reopening this” to a clean, running pipeline in a few hours. For someone with multiple papers in various stages of dormancy (i.e., everyone), this is genuinely transformative.\nSimulations and methods. A colleague asked about a methodological question. I described the simulation, went to do other things, came back to complete Monte Carlo results with figures. Maybe three hours elapsed, very little of it mine.\nThe unglamorous stuff. Regression tables, figures, codebooks, Stata exports. It does all of this quickly and saves you the time you’d spend on Stack Overflow remembering modelsummary options."
-  },
-  {
-    "objectID": "claude-code.html#where-it-falls-short",
-    "href": "claude-code.html#where-it-falls-short",
-    "title": "Claude Code for Political Scientists",
-    "section": "Where it falls short",
-    "text": "Where it falls short\nInterpretation. Tom Pepinsky nails it: “Use agentic AI for tasks that involve following rules. Do not use agentic AI for tasks that generate answers, arguments, or interpretations.” It can run your regressions; you still have to know what they mean.\nCitations. It makes them up. Don’t ask it for literature reviews.\nKnowing when your design is wrong. It will cheerfully implement whatever you ask for, including bad ideas. You’re still the researcher.\nIf your work is mostly clean experiments. The gains are biggest when there’s a lot of messy data wrangling. If you run pre-registered survey experiments with tidy datasets, you’ll still find it useful, but less life-changing."
-  },
-  {
-    "objectID": "claude-code.html#the-academic-slop-worry",
-    "href": "claude-code.html#the-academic-slop-worry",
-    "title": "Claude Code for Political Scientists",
-    "section": "The “academic slop” worry",
-    "text": "The “academic slop” worry\nSeva Gunitsky raises a real concern: if competent empirical work becomes cheap, we’ll drown in technically adequate but pointless papers. I think about this a lot, and he’s right to worry.\nMy take: the tool amplifies what you bring to it. Good questions and careful instincts? It removes the barriers to pursuing them. Bad questions? You produce bad papers faster. The bottleneck moves from execution to judgment—which, honestly, is where it always should have been."
-  },
-  {
-    "objectID": "claude-code.html#getting-started",
-    "href": "claude-code.html#getting-started",
-    "title": "Claude Code for Political Scientists",
-    "section": "Getting started",
-    "text": "Getting started\nInstall it. You need a Claude Max subscription ($100/month, easiest option) or an Anthropic API key. Then:\nnpm install -g @anthropic-ai/claude-code\nOpen a terminal in any project folder and type claude.\nStart small. Clean a dataset you’ve been avoiding. Make a figure. Reformat a regression table. Don’t try to build an entire pipeline on day one.\nWrite a CLAUDE.md file. This is the single most important trick. It’s a plain text file in your project that Claude reads at the start of every session. Put your coding preferences, project structure, data locations, and rules in there. I have strong feelings about R style (base R, explicit loops, no pipes) and it follows them reliably once they’re written down. Think of it as onboarding an RA.\nVerify everything. Same discipline you’d apply to RA work. Check output, run the code yourself, look at the data. It’s tempting to skip this because the tool is fast. Don’t. Scott Cunningham’s “Referee 2 protocol”—opening a second Claude instance to adversarially audit the first—is a clever approach."
-  },
-  {
-    "objectID": "claude-code.html#further-reading",
-    "href": "claude-code.html#further-reading",
-    "title": "Claude Code for Political Scientists",
-    "section": "Further reading",
-    "text": "Further reading\n\nScott Cunningham on Claude Code for empirical research — best resource I’ve found for social scientists. His whole series is worth reading.\nTom Pepinsky, “Agentic AI and Social Science Research Practice” — clear-eyed on what it’s good and bad at.\nSeva Gunitsky, “The Age of Academic Slop Is Upon Us” — the risks. Read this alongside any enthusiasm.\nClaude Code docs — official documentation, more geared toward developers but the basics transfer.\n\n\nHappy to give a live demo anytime. Seeing is believing.\nLast updated: February 2026"
-  },
-  {
-    "objectID": "links.html",
-    "href": "links.html",
-    "title": "Links",
-    "section": "",
-    "text": "Curated resources for students, colleagues, and myself."
-  },
-  {
-    "objectID": "links.html#russia-post-soviet",
-    "href": "links.html#russia-post-soviet",
-    "title": "Links",
-    "section": "Russia & Post-Soviet",
-    "text": "Russia & Post-Soviet\n\nData\n\nLevada Center — independent Russian polling\nRussian Election Data\nGADM Russia — administrative boundaries\n\n\n\nNews & Analysis\n\nPONARS Eurasia — policy memos\nMeduza — independent news\nRiddle Russia\nThe Moscow Times"
-  },
-  {
-    "objectID": "links.html#research-tools",
-    "href": "links.html#research-tools",
-    "title": "Links",
-    "section": "Research Tools",
-    "text": "Research Tools\n\nWriting\n\nOverleaf\nConnected Papers\nSSRN\n\n\n\nData & Methods\n\nR Graph Gallery\nCRAN Task Views\nAndrew Gelman’s blog"
-  },
-  {
-    "objectID": "links.html#for-students",
-    "href": "links.html#for-students",
-    "title": "Links",
-    "section": "For Students",
-    "text": "For Students\n\nJob Market\n\nAPSA eJobs\nPoliSci Rumors\n\n\n\nWriting Advice\n\nWriting Tips for PhD Students — Cochrane\nThe Political Methodologist"
-  },
-  {
-    "objectID": "election-fraud.html",
-    "href": "election-fraud.html",
-    "title": "Russian Election Fraud, 2000-2024",
-    "section": "",
-    "text": "Russia has held twelve federal elections since 2000 — six presidential, five Duma, one constitutional referendum. The official outcomes aren’t in dispute. What is in dispute is how much of those results reflects actual votes and how much reflects fabrication, ballot stuffing, vote switching, and (since 2020) algorithmic manipulation of distance electronic voting.\nA generation of researchers has produced a remarkable set of statistical tools to answer that question: turnout-vote scatter analysis (Shpilkin, Klimek), integer-percentage detection (Kobak-Shpilkin-Pshenichnikov, Rozenas), digit forensics (Mebane, EFToolkit), and explicit decomposition into stuffing-vs-switching (NonparamEF). Watchdog organizations — most importantly Golos, dissolved in July 2025 — have produced ground-truth violation reports. A landmark randomized experiment in 2011 Moscow (Enikolopov et al., PNAS) measured a real-world fraud margin of 10.8 percentage points.\nThis page summarizes a working project that does three things on top of that foundation."
-  },
-  {
-    "objectID": "election-fraud.html#a-unified-panel-of-every-method-on-every-election",
-    "href": "election-fraud.html#a-unified-panel-of-every-method-on-every-election",
-    "title": "Russian Election Fraud, 2000-2024",
-    "section": "1. A unified panel of every method on every election",
-    "text": "1. A unified panel of every method on every election\nWe systematically apply the major statistical fraud-detection methods to all twelve federal elections, on the same underlying precinct data (dkobak/elections), producing a complete (region × election × method) panel — the first such public resource. Eleven methods are implemented (Shpilkin, Klimek, EFToolkit, Rozenas spikes, Benford, abnormal turnout, turnout-vote correlation, integer-percentage spikes, Cedar-Russia comparison, distribution shape, EFToolkit NonparamEF decomposition).\nThe master dataset is 1,024 region-elections × 66 measures, with derived z-scores per method per election so they’re directly comparable.\nHeadline statistical findings (confirming the established consensus):\n\n\n\n\n\n\n\nMetric\nValue\n\n\n\n\nPutin 2024 official Russia-wide share\n88.2%\n\n\nPutin 2024 Shpilkin-adjusted share\n72.8%\n\n\nExcess Putin votes in 2024 (statistical)\n≈11.4 million\n\n\nOfficial-vs-adjusted gap, 2000\n4 pp\n\n\nOfficial-vs-adjusted gap, 2024\n15.5 pp\n\n\nShpilkin correlation with Cedar-Russia independent estimate\nr = 0.86\n\n\nStuffing-dominant regions in 2024\n44% (up from 7-26% historically)\n\n\n% Russian × fraud composite correlation\nr = -0.57\n\n\n\nThe 12-panel geography of the fraud composite:\n\nThe pattern is geographically stable: the top-fraud set (Dagestan, Mordovia, Chechnya, Tatarstan, Tuva) appears at the top in every election. Within-region temporal variance is small; between-region variance is large; fraud is essentially fixed by region with magnitude growing over time."
-  },
-  {
-    "objectID": "election-fraud.html#a-survey-based-estimate-this-projects-main-novelty",
-    "href": "election-fraud.html#a-survey-based-estimate-this-projects-main-novelty",
-    "title": "Russian Election Fraud, 2000-2024",
-    "section": "2. A survey-based estimate (this project’s main novelty)",
-    "text": "2. A survey-based estimate (this project’s main novelty)\nStatistical fraud detection has a known ceiling. Every method depends on a signature of fraud — a deviation from what an honest election’s distribution would look like — but “honest” varies by region. Chechnya could plausibly have 90% turnout for Putin without any stuffing; Magadan could not. A method tuned to detect deviations is going to overstate fraud in genuinely pro-regime regions and understate it in regions where authorities are sophisticated enough to spread fabrication evenly. We need a way to ground the statistical signal against revealed preferences.\nRussian survey data is the only source of revealed preferences at any meaningful scale. For each election we assemble individual-level survey reports of regime support — vote recall, or, for some elections, vote intention or approval (the construct varies by election; see the caveat below) — across the major Russian polling organizations (Levada Courier, VTsIOM Sputnik, FOM Georating, RES, PROPA), with up to 7 million respondents across the 12-election window. For each election we fit:\n\\[\\Pr(\\text{voted}_i = 1) = \\text{logit}^{-1}\\!\\left(\\beta_0 + \\beta_\\text{age} \\cdot \\text{age}_i + \\beta_\\text{sex} \\cdot \\text{sex}_i + \\beta_\\text{educ} \\cdot \\text{educ}_i + \\beta_\\text{urban} \\cdot \\text{urban}_i + u_{r[i]}\\right)\\]\nwhere \\(u_r\\) is a region random intercept. The shrunken posterior regional intercept gives the predicted regional regime share at the population mean of demographic controls. The gap between this share and the official regional share is the survey-derived fraud estimate.\n2018 presidential pilot, Levada Courier, N=64,144:\n\n\n\nRegion\nOfficial Putin %\nMRP-adjusted %\nGap (pp)\n\n\n\n\nKabardino-Balkaria\n93.5\n63.1\n30.4\n\n\nDagestan\n91.2\n63.8\n27.4\n\n\nKarachay-Cherkessia\n88.0\n73.5\n14.5\n\n\nStavropol Krai\n81.3\n70.5\n10.8\n\n\nKursk Oblast\n81.7\n73.0\n8.7\n\n\n\nThese are the same regions the statistical methods in §1 flag as top-fraud. Two methods that rely on entirely different mechanisms — precinct-distribution shape vs. individual survey reports — converge on the same regional ranking. That convergence is the point. When two independent methods agree, the conclusion is more defensible than either alone.\nThe survey-based estimate has now been computed for six elections (Duma 2011/2016/2021, Presidential 2012/2018/2024). A methodological caveat that we state plainly: the survey quantity is not identical across elections. For Duma 2011/2016 and Presidential 2012/2018 it is post-election vote recall (Levada Courier). For Duma 2021 and the 2020 referendum the only available individual data is vote intention (VTsIOM Sputnik), not recall. For Presidential 2024 it is Putin approval (PROPA), not a vote-recall item — approval and vote share are related but distinct constructs. We therefore treat the 2024 and intention-based numbers as suggestive rather than as clean vote-gap estimates, and the recall-based elections (2011/2012/2016/2018) as the primary survey evidence. This is disclosed here, in the methodology notes, and in the per-election data provenance.\nCaveats: even for the recall-based elections, magnitudes are likely inflated by social-desirability bias (some respondents under-report their Putin/United Russia vote even to a surveyor). The ordering across regions is the robust feature; the absolute level should be read as an upper bound. Intention- and approval-based elections (2021, 2024, the 2020 referendum) carry the additional construct caveat above and should not be read as direct vote-fraud magnitudes."
-  },
-  {
-    "objectID": "election-fraud.html#behavioral-signals-wordstat-telegram-vk",
-    "href": "election-fraud.html#behavioral-signals-wordstat-telegram-vk",
-    "title": "Russian Election Fraud, 2000-2024",
-    "section": "3. Behavioral signals (Wordstat, Telegram, VK)",
-    "text": "3. Behavioral signals (Wordstat, Telegram, VK)\nA third angle: what were people in each region searching for and writing about during the election week?\nWe compute weekly Yandex Wordstat search volumes for election-relevant phrases per region around each election date, then z-score against a 12-week baseline. Spike z-scores per region × election capture “did residents of this region notice something unusual happening.” We also pull free-text data from regional Telegram and VKontakte channels — these carry the fraud-allegation vocabulary (фальсификация, вброс, карусель, наблюдатель) that the Wordstat panel does not — and apply a custom election keyword pack to detect election-period spikes in fraud-related discussion per region × election.\nThese behavioral signals don’t directly measure fraud. They measure whether people noticed something happening. As a third leg, they validate (or contradict) the statistical and survey signals."
-  },
-  {
-    "objectID": "election-fraud.html#the-triangulated-composite",
-    "href": "election-fraud.html#the-triangulated-composite",
-    "title": "Russian Election Fraud, 2000-2024",
-    "section": "4. The triangulated composite",
-    "text": "4. The triangulated composite\nFor each (region × election) we combine the four signal sources — statistical, EFToolkit, survey MRP, Wordstat, social — into a weighted-average composite with default weights chosen so that the well-validated statistical methods carry the most weight and the social signals are confirmatory. A confidence flag reports how many signal sources were available for each cell.\nConfidence distribution across all 12 elections after wiring in MRP (6 elections so far) and rusSocial signals (5 elections):\n\nHigh confidence (≥4 sources): 315 region-cells\nMedium confidence (3 sources): 179 region-cells\nLow confidence (≤2 sources): 530 region-cells\n\nThe high-confidence cells are the strongest evidence-from-many-angles in the dataset."
-  },
-  {
-    "objectID": "election-fraud.html#validation",
-    "href": "election-fraud.html#validation",
-    "title": "Russian Election Fraud, 2000-2024",
-    "section": "Validation",
-    "text": "Validation\nTwo ground-truth sources let us validate the composite:\n\nEnikolopov et al. (2013 PNAS): a randomized observer experiment in Moscow during the 2011 Duma election. 3,164 UIKs, 156 randomly assigned observers. The measured fraud effect was 10.8pp; statistical methods agree at this level.\nGolos 2021 SPb: 682 observer violation reports across 276 UIKs in the 2021 Duma election. The composite predicts observer-flagged precincts better than any single method."
-  },
-  {
-    "objectID": "election-fraud.html#code-and-data",
-    "href": "election-fraud.html#code-and-data",
-    "title": "Russian Election Fraud, 2000-2024",
-    "section": "Code and data",
-    "text": "Code and data\nAll scripts, intermediate datasets, and figures are versioned in the electionDataFraud project. The Shiny app for interactive exploration is in development. The methodology paper builds on Shpilkin (independent / Troitsky Variant), Klimek et al. (2012 PNAS), Kobak/Shpilkin/Pshenichnikov (2016 Annals of Applied Statistics), Rozenas (2017 Political Analysis), Enikolopov et al. (2013 PNAS), Mebane (forensics), Kalinin (EFToolkit), Myagkov/Ordeshook/Shakin (2009), and Skovoroda/Lankina (2017 Post-Soviet Affairs)."
-  },
-  {
-    "objectID": "election-fraud.html#contact",
-    "href": "election-fraud.html#contact",
-    "title": "Russian Election Fraud, 2000-2024",
-    "section": "Contact",
-    "text": "Contact\nNoah Buckley, Assistant Professor of Political Science, Trinity College Dublin. noah.buckley@tcd.ie"
+    "text": "START HERE – FPP primary_type gold (67, v3, 2026-09-09)\nWhere: open the validation PWA (same app as the arrests/disaster chunks). Pick the task named “FPP primary_type gold (67, v3)”.\nWhat changed from v2: v2 (170 items) showed the full 9-way typology menu to a random-control stratum and a factual binary question to two boundary strata. Noah’s call this session: shrink to 60 items total, ALL of them boundary items, split into two halves that answer two different questions about the program’s silver reference (two independent frontier-model referees, Opus 5 + gpt-5, whose AGREEMENT defines “silver” – see notes/silver_reference_2026-09-09.md):\n\nHalf 1 – referee disagreement (30 items). The two referees disagree on primary_type for 59/600 events in the validation sample (9.8%). This half draws 30 of those 59 – specifically the 46 where at least one referee said arrest_legal or governor_political, i.e. where the disagreement plausibly bears on the SAME boundary this whole chunk targets – sampled proportionally to each item’s original stratum. Your answer tells us, per item, which referee (if either) was reading the text the way you do.\nHalf 2 – silver AGREES but might be wrong (30 items), covering BOTH error directions:\n\n15 possible FALSE POSITIVES – silver says arrest_legal, but the event’s own extracted arrest_stage is a bare removal/resignation (removal_from_office / resignation_under_pressure), and/or the current haiku_v2 or nano_low_v2 model dissents from silver’s call. If you say “No” on these, that’s evidence silver over-called arrest_legal.\n15 possible FALSE NEGATIVES – silver says governor_political, but haiku_v2, nano_low_v1, or nano_low_v2 says arrest_legal, and/or the text itself contains a legal-predicate cue word (уголовн, дело, следствие, суд, обвин, взятка, задержан, арест, проверка, хищение). If you say “Yes” on these, that’s evidence silver under-called arrest_legal (missed a real legal predicate).\n\n\nEvery item asks the SAME question (no more typology menu): “Does the text state a crime, criminal case, investigation, court action, or formal charge against this person?” – Yes / No / Unclear. The 2026-09-09 decision rule is NOT shown, so your answer is an independent check on it, not an application of it. Estimated ~5 seconds/item.\nRealistic total completion time: about 6 minutes (67 items x 5s = 335s pure answering time). Expect more in practice for reading and notes – budget 10-15 minutes in one sitting.\nRepeats are SILENT. 7 of the 67 items (~10%) are exact repeats of an earlier item in this same list, shown again later at an unpredictable (non-adjacent) position. You are not told which ones. Just answer each item as it comes – the loader compares your two answers on each repeated event afterward to measure your own test-retest agreement.\nWhat to record per item: legal_predicate_stated_gold (Yes/No/Unclear) + optional Notes.\nWhen done: tap Export. Save the file (validation_fpp-primary-type-gold_&lt;date&gt;.json) to ~/Dropbox/_validation_exports/ – the same folder every other export goes to.\nWhat this feeds: eventsData/code/99f_load_primary_type_gold60_results.R scores, SEPARATELY (never pooled into one corpus-level number – this sample is deliberately boundary-only and non-representative): (a) per-referee agreement on the disagreement half; (b) the false-positive confirmation rate and the false-negative confirmation rate, kept apart because a silver error in one direction means something different from the other; (c) every model arm (haiku_v1/v2, nano_low_v1/v2) vs your labels; (d) your own test-retest agreement from the repeats.\nv2 (170 items, two question types) is preserved at items_170.json.bak/schema_170.json.bak for reference, not loaded by the app.\nStatus as of the build date: this chunk is BUILT AND REGISTERED but the website has NOT been redeployed (no quarto render, no push) – deployment is a separate, later step."
   }
 ]

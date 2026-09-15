@@ -1,6 +1,8 @@
 ---
 title: "Alternate Russias: A Counterfactual Explorer"
-robots: "noindex, nofollow"
+include-in-header:
+  text: '<meta name="robots" content="noindex, nofollow">'
+search: false
 listing: false
 ---
 

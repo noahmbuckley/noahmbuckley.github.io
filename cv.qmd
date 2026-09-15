@@ -42,7 +42,7 @@ B.A. received 2006; Political Science, Russian Language and Culture
 
 ## Peer-Reviewed Publications
 
-"The Demand for Elections under Autocracy: Regime Approval and the Elimination of Local Elections in Russia" (with Quintin Beazer and Ora John Reuter). *American Journal of Political Science*. Accepted for publication, 2025.
+"The Demand for Elections under Autocracy: Regime Approval and the Elimination of Local Elections in Russia" (with Quintin Beazer and Ora John Reuter). *American Journal of Political Science*. 2026, early view. doi:10.1111/ajps.70060
 
 "Endogenous Popularity: How Perceptions of Regime Support Affect the Popularity of Authoritarian Regimes" (with Kyle Marquardt, Ora John Reuter, and Ekaterina Tertytchnaya). *American Political Science Review*. 2024;118(2):1046-1052.
 
@@ -58,7 +58,7 @@ B.A. received 2006; Political Science, Russian Language and Culture
 
 "Cooperating with the State: Evidence from Survey Experiments on Policing" (with Timothy Frye, Scott Gehlbach, and Lauren McCarthy). *Journal of Experimental Political Science* 3(2):124-139. 2016.
 
-"The Political Economy of Russian Gubernatorial Elections and Appointments" (with Timothy Frye, Guzel Garifullina, and Ora John Reuter). *Europe-Asia Studies* 66:8. 2014.
+"The Political Economy of Russian Gubernatorial Election and Appointment" (with Timothy Frye, Guzel Garifullina, and Ora John Reuter). *Europe-Asia Studies* 66:8. 2014. doi:10.1080/09668136.2014.941695
 
 "Elections, Appointments, and Human Capital: The Case of Russian Mayors" (with Guzel Garifullina, Ora John Reuter, and Alexandra Shubenkova). *Demokratizatsiya* 22:1. 2014.
 
@@ -109,11 +109,14 @@ Center for Economic and Financial Research (CEFIR), Moscow, Russia; The World Ba
 
 **Instructor**, Trinity College Dublin<br>
 
-- Comparative Politics B: The Comparative Politics of the Developing World (undergraduate lecture)
+- Introduction to Political Science (first-year lecture module, 2026)
+- Authoritarianism (third-year seminar, 2026)
+- Comparative Politics A and B: The Comparative Politics of the Developing World (second-year lecture modules)
 - Russian Politics under Putin (postgraduate/Masters seminar)
 - Varieties of Authoritarianism (postgraduate/Masters seminar)
-- Russian Politics after Communism (undergraduate seminar)
-- Public Opinion (undergraduate seminar)
+- Russian Politics after Communism (final-year seminar)
+- Public Opinion (final-year capstone)
+- Capstone and MSc dissertation supervision
 
 **Co-Instructor**, Higher School of Economics<br>
 
@@ -143,6 +146,7 @@ Center for Economic and Financial Research (CEFIR), Moscow, Russia; The World Ba
 
 ## Selected Presentations
 
+- Invited policy panel talk, "Can we measure Russian public opinion?", Sweden, September 2026
 - Invited talk at Dublin City U Politics Seminar, February 2025
 - Invited talk at Oxford Internet Institute workshop, January 2024
 - Invited talk at U Limerick PPA seminar, October 2023

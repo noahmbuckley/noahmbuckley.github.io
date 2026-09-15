@@ -1,62 +1,59 @@
 ---
 title: "Teaching"
+description: "Modules, supervision, and advice for students at Trinity College Dublin."
 ---
 
-**For students:** [Doing political science research](teaching/research-guide/), my
-advice for capstone and MSc dissertation projects.
+Office hours are by appointment: [email me](mailto:noah.buckley@tcd.ie) with a couple of times that suit you. If you're writing a capstone or MSc dissertation with me, start with [Doing political science research](teaching/research-guide/index.html), which collects the advice I end up giving every year.
 
-## Trinity College Dublin
+## 2026--27
 
-::: {.course}
-### Russian Politics under Putin
-::: {.level}
-Postgraduate (Masters) seminar
+::: {.entry}
+::: {.entry-when}
+MT 2026
+:::
+::: {.entry-body}
+**[POU11011 Introduction to Political Science](teaching/pou11011/)**\
+First-year lecture module. What politics is, what power is, why states exist and why some of them work; ideologies and identity; democracy, dictatorship and the grey zone; institutions; who gets what. The course site has the module outline, FAQ and slides.
 :::
 :::
 
-::: {.course}
-### Varieties of Authoritarianism
-::: {.level}
-Postgraduate (Masters) seminar
+::: {.entry}
+::: {.entry-when}
+MT 2026
+:::
+::: {.entry-body}
+**POU33201 Authoritarianism**\
+Third-year seminar. How dictatorships work: repression and co-optation, elections without democracy, information control, elite politics, and why some regimes fall while most don't.
 :::
 :::
 
-::: {.course}
-### Comparative Politics B: The Comparative Politics of the Developing World
-::: {.level}
-Undergraduate lecture
+::: {.entry}
+::: {.entry-when}
+HT 2027
+:::
+::: {.entry-body}
+**POU44172 Russian Politics**\
+Final-year seminar. Russian politics from the Soviet collapse to the war in Ukraine, with the post-2022 transformation of the regime running through every week.
 :::
 :::
 
-::: {.course}
-### Russian Politics after Communism
-::: {.level}
-Undergraduate seminar
-:::
-:::
+## Supervision
 
-::: {.course}
-### Public Opinion
-::: {.level}
-Undergraduate seminar
-:::
-:::
+I supervise final-year capstone projects and MSc dissertations on authoritarian politics, Russia and the post-Soviet region, public opinion, corruption, and elections, mostly using quantitative methods. Please read the [research guide](teaching/research-guide/index.html) before we meet.
 
----
+## Also taught at Trinity
 
-## Previous Teaching
+- Russian Politics under Putin (MSc seminar)
+- Varieties of Authoritarianism (MSc seminar)
+- Comparative Politics A and B (second-year lecture modules)
+- Russian Politics after Communism (final-year seminar)
+- Public Opinion (final-year capstone)
 
-**Higher School of Economics, Moscow**
+<details>
+<summary>Earlier teaching</summary>
 
-- Comparative Political Economy (graduate seminar), 2011–2013, 2017–2018
+**Higher School of Economics, Moscow.** Comparative Political Economy (graduate seminar, co-instructor), 2011--2013 and 2017--2018.
 
-**Columbia University** *(Teaching Assistant)*
+**Columbia University** (teaching assistant). Advanced Topics in Quantitative Research: Limited and Qualitative Dependent Variables; Quantitative Political Research; Multivariate Political Analysis; Post-Soviet States and Markets; Honors Senior Thesis Seminar; Statistics and Data Analysis; Introduction to Comparative Politics; Introduction to International Politics.
 
-- Advanced Topics in Quantitative Research: Limited and Qualitative Dependent Variables
-- Quantitative Political Research
-- Multivariate Political Analysis
-- Post-Soviet States and Markets
-- Honors Senior Thesis Seminar
-- Statistics and Data Analysis
-- Introduction to Comparative Politics
-- Introduction to International Politics
+</details>

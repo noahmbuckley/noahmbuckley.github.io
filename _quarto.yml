@@ -8,37 +8,32 @@ project:
     - 404.html         # also forwards old /private/... links to /resources/...
     # Pages built outside this Quarto project. Each lives in a source folder here and
     # Quarto copies it into docs/ on render. Never write into docs/ alone: a full render
-    # empties docs/ and rebuilds it from these folders (see resources/README.md).
-    - resources/**     # unlisted pages, index at /resources/
+    # empties docs/ and rebuilds it from these folders (see internal/README.md).
+    - internal/**   # unlisted pages, index at /internal/ (was resources/ until 2026-09-15)
     - teaching/**      # public: research guide, course sites
     - validation/**
 
 website:
   title: "Noah Buckley"
-  site-url: "https://noahbuckley.github.io"
+  site-url: "https://noahbuckley.me"
+  description: "Noah Buckley, Assistant Professor of Political Science at Trinity College Dublin. Russian politics, authoritarian regimes, public opinion."
+  search: false
 
-  sidebar:
-    style: "floating"
-    search: false
-    contents:
-      - text: "Home"
-        href: index.qmd
+  # Three plain links, never collapsed into a menu. The advice pages (research guide,
+  # AI, Claude Code) are reached from Teaching or the unlisted /resources/ index.
+  navbar:
+    collapse: false
+    pinned: false
+    right:
       - text: "Research"
         href: research.qmd
       - text: "Teaching"
         href: teaching.qmd
       - text: "CV"
         href: cv.qmd
-    footer: |
-      <div class="sidebar-links">
-      <a href="mailto:noah.buckley@tcd.ie">Email</a>
-      <a href="https://scholar.google.com/citations?user=TZ07K8wAAAAJ">Google Scholar</a>
-      <a href="http://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1678779">SSRN</a>
-      </div>
 
   page-footer:
-    left: ""
-    right: ""
+    center: "Noah Buckley · Trinity College Dublin · [noah.buckley@tcd.ie](mailto:noah.buckley@tcd.ie) · [Google Scholar](https://scholar.google.com/citations?user=TZ07K8wAAAAJ) · [SSRN](http://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1678779)"
 
   open-graph: true
   twitter-card: true
@@ -51,5 +46,9 @@ format:
     css: styles.css
     toc: false
     page-layout: article
+    grid:
+      body-width: 700px
+      margin-width: 150px
     description-meta: "Noah Buckley - Assistant Professor of Political Science at Trinity College Dublin. Research on Russian politics, authoritarian regimes, public opinion, and corruption."
     author-meta: "Noah Buckley"
+    link-external-newwindow: false

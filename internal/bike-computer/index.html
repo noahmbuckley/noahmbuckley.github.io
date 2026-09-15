@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Open Bike Computer Feasibility</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F3F5F4; --surface:#FFFFFF; --ink:#18221F; --muted:#5B6A65; --line:#D6DDDA;
+  --accent:#1D6F5E; --accent-ink:#FFFFFF; --warn:#B8860B; --warn-bg:#FBF3DD; --soft:#E7EFEC;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121A18; --surface:#1A2422; --ink:#E4EAE7; --muted:#98A7A1; --line:#2E3B37;
+    --accent:#5EC2A3; --accent-ink:#0F1A17; --warn:#E3B858; --warn-bg:#2A2416; --soft:#1F2C29;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121A18; --surface:#1A2422; --ink:#E4EAE7; --muted:#98A7A1; --line:#2E3B37;
+  --accent:#5EC2A3; --accent-ink:#0F1A17; --warn:#E3B858; --warn-bg:#2A2416; --soft:#1F2C29;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:16px;line-height:1.55;padding-inline:clamp(16px,5vw,48px);padding-block:40px 96px;margin:0}
+.wrap{max-width:760px;margin:0 auto}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",sans-serif;text-wrap:balance;margin:0;line-height:1.05}
+h1{font-size:clamp(40px,7vw,64px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:30px;font-weight:600;margin-top:56px;margin-bottom:14px;display:flex;align-items:baseline;gap:14px}
+h2 .n{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--accent);letter-spacing:.08em}
+h3{font-size:21px;font-weight:600;margin-top:26px;margin-bottom:8px}
+p{margin:0 0 14px;max-width:68ch}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.sub{color:var(--muted);font-size:17px;max-width:60ch;margin-top:14px}
+.verdict{margin-top:36px;background:var(--surface);border-left:5px solid var(--accent);padding:20px 22px;border-radius:0 6px 6px 0}
+.verdict strong{font-family:"Barlow Condensed",sans-serif;font-size:24px;font-weight:700;display:block;margin-bottom:6px}
+.verdict p:last-child{margin:0}
+ul{padding-left:20px;margin:0 0 14px}li{margin-bottom:7px;max-width:68ch}
+li strong,p strong{font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:14.5px;margin:10px 0 18px;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+th{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:2px solid var(--line);font-weight:500}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:600;white-space:nowrap}
+.flag{background:var(--warn-bg);border-left:4px solid var(--warn);padding:12px 16px;border-radius:0 4px 4px 0;margin:14px 0}
+.flag p:last-child{margin:0}
+pre{background:var(--soft);padding:16px;border-radius:6px;overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.45;margin:14px 0 18px}
+.pill{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;padding:2px 8px;border-radius:3px;background:var(--soft);color:var(--muted);white-space:nowrap}
+.pill.lo{background:var(--accent);color:var(--accent-ink)}
+.pill.md{background:var(--warn-bg);color:var(--warn)}
+a{color:var(--accent)}
+.src{font-size:13.5px;color:var(--muted)}
+.src p{max-width:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="eyebrow">A project idea · September 2026</div>
+<h1>Open Bike Computer</h1>
+<p class="sub">Can a personal-use bike computer beat Garmin and Wahoo on iPhone, Apple Watch, Apple Health, Strava and map integration, with an e-ink touch screen, hardware buttons and an on-bike wind sensor?</p>
+
+<div class="verdict">
+<strong>Not crazy. A usable prototype is a ~$150, several-months-of-evenings project.</strong>
+<p>The pieces exist: a mature open-source e-ink bike computer on an off-the-shelf ESP32-S3 board (OpenTrailPaper), Apple's new third-party cycling-directions API (WWDC 2025), and $45 drone pitot-tube airspeed kits. The part that would actually be <em>better</em> than Garmin, Apple integration and routing UX, is a software problem on the iPhone, not a hardware problem. So the winning architecture is "iPhone is the brain, the device is a rugged e-ink face with buttons."</p>
+<p>"Better than Garmin at everything" is not on the table. "Better at the things that annoy me" plausibly is.</p>
+</div>
+
+<h2><span class="n">01</span>Why the incumbents are structurally bad at Apple integration</h2>
+<ul>
+<li><strong>Garmin</strong> routes everything through Garmin Connect's cloud; Apple Health gets a relay.</li>
+<li><strong>Wahoo and Hammerhead Karoo 3</strong> both write to HealthKit only while their companion iOS app is foregrounded. Apple lets only an installed iPhone app write HealthKit, so a device with its own cloud can never be seamless.</li>
+<li><strong>Coros Dura</strong> ($249, best battery, MIP screen) creates all routes on the phone and needs cell signal to reroute. No street names on device.</li>
+<li><strong>Beeline Velo 2</strong> (~€110) is closest to the phone-as-brain idea but is navigation-only, no power or cadence.</li>
+<li><strong>No e-ink cycling computer exists commercially.</strong> Dura and Garmin use transflective memory-in-pixel LCD, not e-ink. Genuine gap.</li>
+<li><strong>Routing complaints in reviews</strong>: Garmin throws "Navigation Error" when you leave the route and nags you to return long after you rejoin; Wahoo's reroute is weak; Coros needs signal. Karoo 3 is rated best for maps and is a 12-hour-battery Android phone.</li>
+</ul>
+
+<h2><span class="n">02</span>What Apple now gives a third-party developer</h2>
+<ul>
+<li><strong>Cycling directions in MapKit</strong> (<code>MKDirectionsTransportType.cycling</code>) arrived at WWDC 2025. Before that, third parties got car, walk and transit only. Almost no shipping app uses it yet, and routing quality outside big metros is unverified. Fallback: Komoot or Ride with GPS routes as GPX, Valhalla on OpenStreetMap for reroute.</li>
+<li><strong>HealthKit</strong>: your own app writes cycling workouts directly. This alone dissolves the Garmin/Wahoo sync problem.</li>
+<li><strong>Apple Watch (watchOS 10+)</strong>: a cycling workout mirrors to the iPhone as a Live Activity; the Watch pairs BLE power, cadence and speed sensors natively; Watch as heart-rate source for an iPhone app is standard.</li>
+<li><strong>Core Bluetooth</strong> covers heart rate, power, cadence and trainers via standard GATT services. iPhone has <strong>no ANT+</strong>; nearly every modern sensor dual-broadcasts, so fine.</li>
+<li><strong>Strava API v3</strong>: 200 requests per 15 minutes, 2,000 per day by default. Plenty for one rider.</li>
+</ul>
+<div class="flag"><p><strong>Gotchas.</strong> Background BLE on iOS needs the <code>bluetooth-central</code> background mode plus state restoration and is a real engineering lift over a four-hour ride. Power and cadence sensors do not auto-reconnect inside an iPhone workout session the way heart rate does (open Apple developer-forum issue).</p></div>
+
+<h2><span class="n">03</span>Existing DIY projects: don't start from zero</h2>
+<div class="tw"><table>
+<tr><th>Project</th><th>Hardware</th><th>Status</th><th>Use</th></tr>
+<tr><td><a href="https://github.com/RaemondBW/OpenTrailPaper">OpenTrailPaper</a></td><td>LilyGo T5 E-Paper S3 Pro: ESP32-S3, 4.7" 960×540 touch e-ink, u-blox M10 GPS, RTC, fuel gauge, SD, LoRa</td><td>Active, ~230 stars, SwiftUI iOS app on the App Store, BLE HR/power/cadence, GPX routes, FIT recording, ANT+ reverse-engineered</td><td><strong>Fork this</strong></td></tr>
+<tr><td><a href="https://github.com/timohueser/OpenBikeComputer">OpenBikeComputer</a></td><td>nRF54 + Sharp memory LCD, Rust, SwiftUI companion</td><td>Active prototype</td><td>Reference for BLE route-transfer pain</td></tr>
+<tr><td><a href="https://github.com/hishizuka/pizero_bikecomputer">pizero_bikecomputer</a></td><td>Pi Zero 2W, MIP or e-paper, Python/Qt, ~18 h battery</td><td>Long-running, active</td><td>Reference for the Linux route</td></tr>
+<tr><td>trimm One, Omata One</td><td>Memory LCD / analog dial Kickstarters</td><td>Shipped late, software fell short</td><td>Cautionary tales</td></tr>
+</table></div>
+<p>Community-consensus failure points for DIY builds: e-ink glass cracking under handlebar vibration, refresh and ghosting UI logic, GPS cold start (phone-assisted warm start fixes it), battery budgeting, offline map tiling, pushing large GPX files over BLE reliably, and ANT+ having no open spec.</p>
+
+<h2><span class="n">04</span>Display choice</h2>
+<h3>E-ink (Carta monochrome)</h3>
+<p>Superb in sunlight, near-zero static power, 4.2"–7.5" raw panels at $25–57 (Waveshare, Good Display). Partial refresh takes roughly 0.3–0.6 s; a full refresh takes 1–3 s with a visible flash, and ghosting needs a periodic full refresh. <strong>No smooth map panning.</strong> The map redraws as a page, like a Kindle. Standard panels are rated 0–50 °C and go sluggish below freezing (Kaleido 3 "outdoor" variant: −15 to 65 °C). Fragile glass. Touch-bonded modules exist (Pervasive Displays 2.7"–3.7", Good Display 4.2" touch + frontlight, and the LilyGo T5 4.7" with GT911 touch).</p>
+<h3>MIP transflective LCD (what Garmin and Coros use)</h3>
+<p>Always-on, sunlight-readable, fast enough for live graphs and a moving map, low power. Harder to source above ~2.7" at hobbyist scale (Sharp, JDI; Adafruit breakouts to 2.7").</p>
+<h3>Sunlight-readable TFT (what Karoo uses)</h3>
+<p>Phone-like UI, costs you battery (~12 h).</p>
+<div class="flag"><p><strong>Judgment.</strong> E-ink is the interesting choice and the one nobody sells. Accept page-flip navigation and a hard case. Design the UI as data fields, a turn card and a static map snapshot, not a scrolling map.</p></div>
+
+<h2><span class="n">05</span>Compute, radios, GPS</h2>
+<ul>
+<li><strong>ESP32-S3</strong>: dual core, PSRAM, WiFi + BLE. What every working open bike computer uses. Use NimBLE with WiFi off.</li>
+<li><strong>nRF52840</strong>: best BLE efficiency and the only hobbyist path to ANT+ (SoftDevice S340). Only needed to read ANT+-only Garmin sensors. You have an iPhone, so probably not.</li>
+<li><strong>Pi Zero 2W</strong>: easy software (real vector maps), poor battery. Not for the handlebars.</li>
+<li><strong>Map rendering on a microcontroller</strong> means pre-baked raster tiles on an SD card (OpenTrailPaper uses H3 hex tiles to avoid seams). In the phone-as-brain design the iPhone renders the map and ships a bitmap over BLE, which sidesteps this entirely.</li>
+<li><strong>GPS</strong>: u-blox M10 draws under 25 mW while tracking. Keep a cheap one aboard for phone-free rides even if the phone is the primary fix.</li>
+<li><strong>Mount</strong>: the Garmin quarter-turn is a de facto open standard with many free STL files.</li>
+</ul>
+
+<h2><span class="n">06</span>The wind sensor: doable, and nobody has done it at consumer price</h2>
+<p>Every commercial "aero sensor" measures <strong>apparent airspeed with a pitot tube and a differential-pressure sensor</strong>: Notio (Argon 18, still listed, iOS-only), Velocomp AeroPod/PowerPod ($299–499; the replacement pitot tube is $8.99), Aerosensor.tech (adds yaw), Body Rocket (force plates, £1.5–3K). Several are dead. None publish a BLE characteristic, so reading one from a custom device would need sniffing with nRF Connect.</p>
+<p>The DIY version is the same physics, smaller and cheaper, straight from the drone hobby:</p>
+<div class="tw"><table>
+<tr><th>Part</th><th>Interface</th><th>Range</th><th>Cost</th><th>Note</th></tr>
+<tr><td>MS4525DO kit</td><td>I2C</td><td>0–100 m/s</td><td>~$43</td><td>Pixhawk standard; tube, tubing and cable included</td></tr>
+<tr><td>Sensirion SDP33</td><td>I2C</td><td>±1500 Pa (~50 m/s)</td><td>~$59 kit</td><td>5×8×5 mm, developed with PX4</td></tr>
+<tr><td>Omron D6F-PH</td><td>I2C</td><td>small</td><td>~$20</td><td>Used in <a href="https://github.com/ekspla/Pitot_GPS_Sensor_Logger">ekspla/Pitot_GPS_Sensor_Logger</a>, the one directly relevant GitHub project</td></tr>
+</table></div>
+<p>Bike relative airspeeds of 4–20 m/s sit comfortably inside all of these. <strong>True wind vector = apparent-wind vector minus GPS ground-velocity vector.</strong> A single forward pitot gives only the head/tail component (falls off roughly as cos² of yaw); real crosswind needs a multi-hole probe or a wind vane, and rider body position changes the calibration constantly. For "how much headwind am I fighting" a single pitot is fine. For drag coefficient (CdA) you want the Chung virtual-elevation method, which GoldenCheetah's Aerolab already implements open-source with no sensor at all. Miniature ultrasonic anemometers (TriSonica Mini, Calypso Ultrasonic Mini with BLE) give a full vector with no moving parts but are pro-priced.</p>
+
+<h2><span class="n">07</span>Recommended architecture: iPhone brain, e-ink face</h2>
+<pre>Apple Watch ──HR──┐
+BLE power/cad ────┤
+                  ▼
+ ┌──────────────────────────────────┐          BLE (custom GATT)
+ │ iOS app (Swift)                  │◀───────────────────────────┐
+ │ · HealthKit workout writer       │  fields, turn card,        │
+ │ · MapKit cycling route + reroute │  map bitmap, alerts   ──▶  │
+ │ · Strava upload (API v3)         │  ◀── buttons, touch,       │
+ │ · sensor recording, FIT export   │      pitot, heading        │
+ │ · phone GPS (L1+L5) + barometer  │                            │
+ └──────────────────────────────────┘                            │
+                                              ┌──────────────────┴─────────┐
+                                              │ Device (ESP32-S3)          │
+                                              │ 4.7" touch e-ink, I2C keys │
+                                              │ BNO085 compass, BMP581 baro│
+                                              │ backup GPS, pitot tube     │
+                                              │ LiPo, Garmin ¼-turn mount  │
+                                              └────────────────────────────┘</pre>
+<p>Every integration you care about is an iOS API. The device never needs a cloud, an account or map storage. The phone stays in a pocket, out of the sun and off the bars. A phone-free fallback (record GPS and sensors to SD, sync later) is a bonus, not the core. Cost: iOS background-BLE engineering, and the ride display dies if the phone dies.</p>
+
+<h2><span class="n">08</span>Phased plan</h2>
+<div class="tw"><table>
+<tr><th>Phase</th><th>Deliverable</th><th>Effort</th><th>Risk</th></tr>
+<tr><td>0</td><td>Order the LilyGo T5 E-Paper S3 Pro, flash OpenTrailPaper, ride with it as-is</td><td>1 weekend, ~$90</td><td><span class="pill lo">low</span> tells you if e-ink on the bars is tolerable</td></tr>
+<tr><td>1</td><td>Own iOS app: HealthKit cycling workout, Watch HR, BLE cadence/power, MapKit cycling route with reroute, Strava upload. Test with the iPhone on the bars.</td><td>3–6 weekends</td><td><span class="pill md">medium</span> background BLE; MapKit cycling coverage in Ireland</td></tr>
+<tr><td>2</td><td>Fork OpenTrailPaper firmware: BLE display protocol, data pages, turn card, map snapshot, buttons</td><td>4–8 weekends</td><td><span class="pill md">medium</span> e-ink UI state machine</td></tr>
+<tr><td>3</td><td>Pitot module on I2C; show headwind component; log for Chung/CdA in GoldenCheetah</td><td>2 weekends, ~$45</td><td><span class="pill lo">low</span> for headwind, high for true wind</td></tr>
+<tr><td>4</td><td>Printed case, gasket, quarter-turn mount, panel protection</td><td>2–3 weekends</td><td><span class="pill md">medium</span> fragility is the #1 DIY killer</td></tr>
+</table></div>
+<p>Rough prototype bill of materials: about $175 for the board with plug-in barometer, compass, buttons and a bigger battery (section 12), plus ~$45 for the pitot. Apple developer account $99/yr for HealthKit on device.</p>
+
+<h2><span class="n">09</span>What could sink it</h2>
+<ul>
+<li>MapKit cycling routing may be thin outside metros. Test Dublin and Wicklow in week one of Phase 1.</li>
+<li>E-ink below ~0 °C. Irish winters mostly fine; check the panel datasheet.</li>
+<li>Vibration cracking the glass. Budget for one broken panel.</li>
+<li>iOS background BLE reliability across a four-hour ride.</li>
+<li>Garmin's 30–60 h battery, ruggedness and sensor ecosystem will not be matched. The win is integration and UX only.</li>
+</ul>
+
+<h2><span class="n">10</span>Never pull the phone out: controlling the iPhone from the bars</h2>
+<p>Very doable, and it needs no iOS app. iOS exposes two BLE services to any paired accessory: <strong>Apple Media Service (AMS)</strong> for play/pause/skip/volume plus now-playing title, artist and app, and <strong>Apple Notification Center Service (ANCS)</strong> for incoming notifications with dismiss, answer and decline actions. Every Pebble and Bangle.js watch works this way, and ESP32 and nRF52 examples exist. Both need BLE pairing and bonding, which OpenTrailPaper's firmware already does for its own protocol.</p>
+<div class="tw"><table>
+<tr><th>Function</th><th>Mechanism</th><th>Limit</th></tr>
+<tr><td>Play, pause, skip, volume</td><td>AMS, or a BLE HID media-key profile (dumbest, most reliable)</td><td>Controls whatever app is playing</td></tr>
+<tr><td>Now-playing on the e-ink</td><td>AMS metadata</td><td>None that matter</td></tr>
+<tr><td>See a message or call</td><td>ANCS: app, title, body, time</td><td>Body truncated to a few hundred characters</td></tr>
+<tr><td>Dismiss, answer, decline</td><td>ANCS actions</td><td>Call audio still goes to earbuds or phone</td></tr>
+<tr><td>Reply with text</td><td><strong>Not possible.</strong> ANCS carries no reply, and third-party apps cannot send iMessages</td><td>Canned replies exist only on the Watch</td></tr>
+<tr><td>Siri</td><td>BLE HID Siri key</td><td>Phone listens through AirPods or its pocket mic</td></tr>
+</table></div>
+<p>With your own iOS app on top, MusicKit adds full Apple Music library and playlist control ("start the ride playlist"). Apple Podcasts has no third-party API beyond transport controls, so episode picking would mean the app being its own RSS player.</p>
+<div class="flag"><p><strong>Phone-free audio: skip it for now.</strong> Apple Music playback on non-Apple hardware does not exist and the tracks are DRM-protected; the Apple Watch is the only phone-free Apple Music device. Podcasts are DRM-free and could live on the SD card with position memory and WiFi sync at home, but the ESP32-S3 has no Bluetooth Classic, so no A2DP audio to earbuds. LE Audio is immature and AirPods don't speak it. It would take a second radio chip or a headphone jack. Watch plus AirPods already does offline music, podcasts, message replies and heart rate without the phone.</p></div>
+<p>This adds a <strong>Phase 2b</strong> (~2–3 weekends) after the display firmware: now-playing line, notification banner with dismiss, call answer/decline, media keys. The Apple-API claims in this section are from memory rather than fresh research and still need checking.</p>
+
+<h2><span class="n">11</span>Routing and maps: the core differentiator</h2>
+<p>All of it is doable, and it is software, so it is effort rather than risk. Garmin and Wahoo cannot do this because their routing runs on a low-power device with a fixed costing model and your history lives in a cloud they don't let you compute on. An iPhone app with your whole ride history on-device and a routing engine you control can.</p>
+<h3>Route following that stays calm</h3>
+<p>Replace the binary on/off-route with an explicit state machine. Within ~30 m you are on route. Drift for under 20 s changes nothing. Beyond ~150 m the route line stays drawn, the screen shows bearing and distance to the nearest point ahead, ETA pauses, nothing beeps. Rejoining anywhere ahead resumes silently. Reroute only when you press a key: <strong>Rejoin ahead · Skip waypoint · Reroute · Home</strong>. This is geometry on the phone and the first routing feature to build.</p>
+<h3>One-key actions on the bike</h3>
+<p>Home. Nearest café, shop, water, toilet, bike shop or station, inserted as a via so the original destination survives. Detour via a tapped point. Mark this spot as view, water, café, hazard or "come back here". Loop me home in N km avoiding today's roads. Bail out to the nearest station that takes bikes. Reverse from here.</p>
+<h3>Personal road memory</h3>
+<p>Import every ride ever from Apple Health, Strava and FIT archives and map-match them to OpenStreetMap road IDs. Then: a "ridden before" overlay with never-ridden roads highlighted; today's ride turned into a clean route; habitual loops auto-detected and saved in one tap; personal segments from any stretch ridden three or more times, with a live delta against your median or best; your real café stops from pause clusters and your real viewpoints from geotagged photos in Apple Photos.</p>
+<h3>Route workshop on the phone</h3>
+<p>Copy, reverse, split, join with the engine filling the gap, trim, extend, drag a leg onto other roads, avoid a road forever, quiet/unpaved/climby sliders, out-and-back and loop generators, import from Komoot, Ride with GPS, Strava, GPX and Apple or Google Maps pins, copy-on-edit versions.</p>
+<h3>Layers</h3>
+<div class="tw"><table>
+<tr><th>Layer</th><th>Source</th><th>Note</th></tr>
+<tr><td>Cafés, shops, hours</td><td>Apple MKLocalSearch; Google Places or Foursquare for opening hours</td><td>Hours matter on Sundays</td></tr>
+<tr><td>Water, toilets, shelters, viewpoints</td><td>OpenStreetMap tags</td><td>Water taps sparse in Irish OSM; your own marks fill in</td></tr>
+<tr><td>Surface, gradient ahead</td><td>OSM tags; 30 m elevation model</td><td>Garmin ClimbPro equivalent</td></tr>
+<tr><td>Wind along the route</td><td>Open-Meteo forecast × route bearing, validated by the pitot</td><td>Head/tail colouring, wind-aware ETA. Genuinely novel</td></tr>
+<tr><td>Rain, daylight</td><td>Met Éireann radar; sunset minus ETA</td><td>"Rain at km 40 in 25 min"</td></tr>
+<tr><td>Trains</td><td>Irish Rail GTFS</td><td>Bail-out planning</td></tr>
+</table></div>
+<div class="flag"><p><strong>Engine decision (flag-able).</strong> MapKit for POI search. Self-hosted <strong>Valhalla</strong> on a small rented cloud server for routing, map matching, isochrones and round trips, which gives full control of costing and personal avoid-lists. MapLibre with an offline PMTiles basemap on the phone for custom overlays. Without signal the bike falls back to the cached route and bearing-to-route, degrading gracefully instead of failing.</p></div>
+<div class="tw"><table>
+<tr><th>Feature</th><th>Effort</th><th>Risk</th></tr>
+<tr><td>Calm state machine + soft keys</td><td>S</td><td><span class="pill lo">low</span></td></tr>
+<tr><td>Home, nearest, detour, reverse</td><td>S</td><td><span class="pill lo">low</span></td></tr>
+<tr><td>Route workshop</td><td>M</td><td><span class="pill lo">low</span></td></tr>
+<tr><td>Valhalla on a cloud server + sliders + avoid list</td><td>M</td><td><span class="pill lo">low</span> ops, not code</td></tr>
+<tr><td>Ride import, map matching, ridden-before overlay</td><td>M</td><td><span class="pill md">medium</span> noisy GPS in cities</td></tr>
+<tr><td>Habitual routes, personal segments, live delta</td><td>L</td><td><span class="pill md">medium</span> segment definition is a judgment call</td></tr>
+<tr><td>Wind, rain, daylight layers</td><td>M</td><td><span class="pill lo">low</span></td></tr>
+<tr><td>Loop generator</td><td>M</td><td><span class="pill md">medium</span></td></tr>
+</table></div>
+<p>The total is a serious app, but each feature is useful alone, and all of it runs with the iPhone on the bars before the e-ink device exists.</p>
+
+<h2><span class="n">12</span>Hardware: fixing the board's gaps</h2>
+<p>OpenTrailPaper's own site lists three gaps on the LilyGo board: no barometer, basic single-band GPS, no compass. All three are fixable. The board has <strong>two Qwiic connectors</strong> on its I2C bus, so a barometer and compass plug in with a cable and no soldering. It has <strong>no spare serial port</strong>, which makes a better GPS the hard one.</p>
+<div class="tw"><table>
+<tr><th>Gap</th><th>Fix</th><th>Cost</th><th>Work</th></tr>
+<tr><td>Barometer</td><td>Bosch BMP581 on Qwiic (DPS310 as cheap fallback). The case needs a breathable waterproof vent.</td><td>$23</td><td><span class="pill lo">plug in</span></td></tr>
+<tr><td>Compass</td><td>BNO085 9-axis with on-chip fusion; also gives crash detection and auto-pause. One-time figure-8 calibration on the bars.</td><td>$30</td><td><span class="pill lo">plug in</span></td></tr>
+<tr><td>Multi-band GPS</td><td>Use the iPhone's dual-frequency GPS on normal rides. For the device itself: SparkFun DAN-F10N with a built-in dual-band antenna.</td><td>$0 / $60</td><td><span class="pill md">solder</span> no free serial port on this board</td></tr>
+<tr><td>Buttons</td><td>Sealed switches on an I2C GPIO expander, with its address moved off 0x20, which the board already uses.</td><td>~$15</td><td><span class="pill lo">plug in</span></td></tr>
+<tr><td>Battery (~8 h)</td><td>Larger plug-in LiPo inside the custom case</td><td>~$15</td><td><span class="pill lo">plug in</span></td></tr>
+</table></div>
+<div class="flag"><p><strong>The architecture already solves GPS and altitude.</strong> Recent iPhones (14 Pro and later) have dual-frequency GPS and a barometer, and both work fine in a pocket. So on phone rides the phone supplies position and altitude, and the device's own GPS is the phone-free fallback. The one sensor the device truly needs is the compass: a phone in a pocket can't tell which way the handlebars point.</p></div>
+<h3>WiFi</h3>
+<p>OpenTrailPaper uses Bluetooth only, although the chip has WiFi. Bluetooth moves tens of KB per second in practice; WiFi moves megabytes. Use WiFi at home for offline maps for phone-free rides, over-the-air firmware updates, and uploading phone-free rides. It isn't needed for routing or maps on phone rides, because the phone renders the map and sends a picture. Keep it off while riding.</p>
+<h3>Alternatives, and building from parts</h3>
+<div class="tw"><table>
+<tr><th>Board</th><th>Display</th><th>Price</th><th>Verdict</th></tr>
+<tr><td>LilyGo T5 4.7" V2.3</td><td>Same 4.7" touch panel, 11 free GPIO</td><td>$40</td><td>Best solder-it-yourself base: room for a multi-band GPS and buttons. No GPS or battery gauge; firmware needs re-pinning.</td></tr>
+<tr><td>Inkplate 6MOTION</td><td>6", ~11 fps partial refresh, no touch</td><td>$169–199</td><td>Only board fast enough for smooth map scrolling. Different chips, full rewrite.</td></tr>
+<tr><td>M5PaperS3</td><td>4.7" touch</td><td>~$90</td><td>End of life</td></tr>
+<tr><td>Inkplate 10, reTerminal E1001</td><td>9.7" / 7.5", no touch</td><td>$70–220</td><td>Too big or too slow</td></tr>
+<tr><td>EPDiy v7 controller</td><td>Any panel 6"–13.3"</td><td>quote</td><td>Open design; the route to a bigger screen later</td></tr>
+</table></div>
+<p>Building from components is realistic in three tiers. <strong>Tier A</strong>, no soldering: the S3 Pro plus plug-in barometer, compass, buttons and a bigger battery, about $175. <strong>Tier B</strong>, wires and headers: the $40 V2.3 plus the multi-band GPS, sensors and buttons, about $170 and more firmware work. <strong>Tier C</strong>, your own circuit board from the open EPDiy design, assembled by JLCPCB for roughly $20–50 a board, once A or B has proved the design. What isn't realistic by hand is driving the 4.7" panel from scratch: it needs a dedicated high-voltage controller, which is why every board ships one. Hobbyist SPI panels are easy to wire but much slower.</p>
+<p><strong>Recommendation:</strong> start with Tier A. Every sensor carries over to B or C unchanged.</p>
+
+<h2><span class="n">13</span>Sources</h2>
+<div class="src">
+<p><strong>DIY:</strong> OpenTrailPaper repo, its Hacker News thread and the CNX Software write-up; OpenBikeComputer; pizero_bikecomputer; HalFrgrd/Open-source-bike-computer; trimm One and Omata One reviews; IEEE Spectrum "Build a Readable Bicycle Computer".</p>
+<p><strong>Commercial and iOS:</strong> DC Rainmaker reviews of Edge 1050, Edge 850 and Karoo 3; Wahoo and Hammerhead Apple Health support pages; the5krunner, BikeRadar and Bikepacking.com on Coros Dura; Cyclingnews and road.cc on Beeline Velo 2; Apple documentation for MKDirectionsTransportType.cycling and WWDC25 session 204; Apple developer forums on background BLE and workout-session sensors; Strava rate-limit docs.</p>
+<p><strong>Wind:</strong> Cycling Weekly and BikeRadar on Notio; DC Rainmaker on AeroPod; Velo on Aerosensor and Body Rocket; Sensirion SDP33 and Holybro MS4525DO product pages; ekspla/Pitot_GPS_Sensor_Logger; GoldenCheetah Aerolab source; Hackaday on pitot tubes (May 2025).</p>
+<p><strong>Hardware:</strong> LilyGo T5 E-Paper S3 Pro wiki and GitHub pin map; OpenTrailPaper hardware page; SparkFun DAN-F10N, NEO-F10N, BMP581, MMC5983MA and ICM-20948 pages; Adafruit BNO085, DPS310, BMP390 and LIS3MDL pages; Garmin multi-band support page; Soldered Inkplate 6MOTION and the Hackaday hands-on; M5Stack, Seeed reTerminal and EPDiy pages; JLCPCB assembly-cost guide; Waveshare, Good Display and Pervasive Displays catalogues; Ben Krasnow's fast partial-refresh post; Good e-Reader on Kaleido and Spectra; LilyGo T5 pages; u-blox M10 and Quectel LC76G; osrtos ESP32 map-tile projects; IceNav-v3; pycycling.</p>
+</div>
+</div>
+</body>
+</html>

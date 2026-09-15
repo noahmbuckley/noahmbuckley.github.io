@@ -11,4 +11,4 @@ subfolder is written by its publish script, which also mirrors it into `docs/`.
 | `<code>/` (e.g. `pou11011/`) | `~/Dropbox/teaching/templates/slides/publish-site.sh "<course>"` |
 
 Why the source copy exists: a full site render empties `docs/` first, so
-anything only in `docs/` is deleted. Conventions: `../resources/README.md`.
+anything only in `docs/` is deleted. Conventions: `../internal/README.md`.

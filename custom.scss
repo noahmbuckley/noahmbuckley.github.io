@@ -1,286 +1,229 @@
 /*-- scss:defaults --*/
 
-// Typography
-$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-$font-family-monospace: 'IBM Plex Mono', monospace;
-$font-size-root: 15px;
+// One typeface for everything (Source Serif 4). Monospace only for code.
+$font-family-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+$font-family-sans-serif: $font-family-serif;
+$font-family-monospace: "IBM Plex Mono", SFMono-Regular, Menlo, monospace;
+$font-size-root: 17px;
 $line-height-base: 1.6;
+$headings-font-family: $font-family-serif;
 $headings-font-weight: 600;
 
-// Colors - warm tones
-$body-color: #2d2d2d;
-$link-color: #1a5f7a;
-$body-bg: #faf8f5;
-
-// Spacing
-$spacer: 1rem;
-$paragraph-margin-bottom: 0.8rem;
+// Warm paper, near-black text, one accent colour.
+$body-bg: #fbf9f6;
+$body-color: #222222;
+$link-color: #1b5e7b;
+$navbar-bg: #fbf9f6;
+$navbar-fg: #222222;
+$navbar-hl: #1b5e7b;
+$footer-bg: #fbf9f6;
+$paragraph-margin-bottom: 0.85rem;
 
 /*-- scss:rules --*/
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono&display=swap');
 
-// Tighten up the body
-body {
-  font-size: 15px;
-  letter-spacing: -0.01em;
+:root {
+  --accent: #{$link-color};
+  --muted: #6b6560;
+  --rule: #e4ddd3;
+  --col: 700px;             // keep equal to grid body-width in _quarto.yml
 }
 
-// Headers - clean and tight
-h1 {
-  font-size: 1.7rem;
-  margin-bottom: 0.8rem;
-  letter-spacing: -0.02em;
+body { -webkit-font-smoothing: antialiased; }
+
+
+// ---------- Navbar: same width as the text column, never collapses ----------
+.navbar {
+  border-bottom: 1px solid var(--rule);
+  padding: 1.1rem 0 0.9rem !important;   // no side padding: the container carries it
+  box-shadow: none;
 }
+.navbar > .navbar-container,
+.navbar > .container-fluid {
+  max-width: var(--col);        // same box as the body column...
+  margin: 0 auto;
+  padding: 0 1.5rem;            // ...which has 1.5em side padding
+  flex-wrap: nowrap;
+}
+.navbar .navbar-brand-container { margin: 0 !important; flex-shrink: 0; }
+.navbar .navbar-title { overflow: visible !important; text-overflow: clip !important; white-space: nowrap; }
+.navbar .navbar-brand {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: $body-color !important;
+  padding: 0;
+}
+.navbar .navbar-collapse { display: flex !important; justify-content: flex-end; }
+.navbar .navbar-nav { flex-direction: row; }
+.navbar .navbar-nav .nav-link {
+  font-size: 1rem;
+  color: #4a4540;
+  padding: 0 0 0 1.25rem !important;
+  &:hover { color: $body-color; }
+}
+.navbar .navbar-nav .nav-link.active {
+  color: $body-color;
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: $link-color;
+}
+.navbar .navbar-toggler { display: none; }
+@media (max-width: 480px) {
+  .navbar .navbar-brand { font-size: 1.05rem; }
+  .navbar .navbar-nav .nav-link { font-size: 0.95rem; padding-left: 0.7rem !important; }
+}
+
+
+// ---------- Page grid ----------
+// Quarto's full-width (no-TOC) grid goes lopsided above ~1200px: more margin on
+// the left, and a 700px text column instead of 649px. Use its symmetric mid-width
+// grid at every width >=768px so the text column is always centred and always
+// matches the navbar box above (max-width var(--col), 1.5rem padding).
+@media (min-width: 768px) {
+  body.fullcontent:not(.floating):not(.docked) .page-columns {
+    grid-template-columns: [screen-start] 1.5em [screen-start-inset page-start page-start-inset body-start-outset] 5fr [body-start] 1.5em [body-content-start] minmax(500px, calc(700px - 3em)) [body-content-end] 1.5em [body-end body-end-outset page-end-inset page-end] 5fr [screen-end-inset] 1.5em [screen-end] !important;
+  }
+}
+
+
+// ---------- Text ----------
+#quarto-content { margin-top: 1.25rem; }
+main.content { padding-bottom: 2.5rem; }
+
+h1, .title { font-size: 1.9rem; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+.quarto-title-block .description { display: none; }   // kept for meta tags only
 
 h2 {
   font-size: 1.25rem;
-  margin-top: 2rem;
-  margin-bottom: 0.6rem;
-  color: #1a1a1a;
-  border-bottom: 1px solid #ddd5ca;
-  padding-bottom: 0.3rem;
+  margin-top: 2.2rem;
+  margin-bottom: 0.7rem;
+  border: none;
+  padding: 0;
 }
+h3 { font-size: 1.05rem; margin-top: 1.4rem; margin-bottom: 0.4rem; }
 
-h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin-top: 1.2rem;
-  margin-bottom: 0.4rem;
-}
-
-// Links - understated
 a {
   color: $link-color;
-  text-decoration: none;
-  border-bottom: 1px solid #ccd;
-  
-  &:hover {
-    border-bottom-color: $link-color;
-  }
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: #b9c9d1;
+  &:hover { text-decoration-color: $link-color; }
 }
 
-// Sidebar styling - wider and more prominent
-.sidebar {
-  font-size: 13px;
-  border-right: 1px solid #e4ddd4;
-  width: 260px !important;  // Increased from default ~200px
-  background: $body-bg;
-}
+ul, ol { padding-left: 1.2rem; li { margin-bottom: 0.3rem; } }
 
-.sidebar-title {
-  font-size: 1.25rem !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.01em;
-}
+details > summary { color: $link-color; cursor: pointer; }
 
-// Name in sidebar: not a link
-.sidebar-title a,
-a.sidebar-title {
-  color: #1a1a1a !important;
-  border-bottom: none !important;
-  text-decoration: none !important;
-  pointer-events: none;
-  cursor: default;
-}
+.small { color: var(--muted); font-size: 0.92rem; }
 
-.sidebar-item a {
-  border-bottom: none !important;
-  color: #555;
-  
-  &:hover {
-    color: #1a1a1a;
-  }
-}
 
-.sidebar-item.active a {
-  color: #1a1a1a;
-  font-weight: 500;
-}
-
-// Main content area - centered with left margin
-.content {
-  max-width: 680px;
-  margin-left: 80px;  // Add left spacing for better centering
-}
-
-// Adjust for smaller screens
-@media (max-width: 991px) {
-  .content {
-    margin-left: 0;  // Remove left margin on mobile
-  }
-}
-
-// Publication styling
-.pub {
-  margin-bottom: 1.2rem;
-  
-  .pub-title {
-    font-weight: 500;
-    color: #1a1a1a;
-  }
-  
-  .pub-authors {
-    color: #666;
-    font-style: italic;
-  }
-  
-  .pub-venue {
-    color: #444;
-  }
-  
-  .pub-links {
-    margin-top: 0.3rem;
-    
-    a {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-right: 0.8rem;
-      border-bottom: none;
-      color: $link-color;
-      
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-}
-
-// Lists - tighter
-ul, ol {
-  padding-left: 1.2rem;
-  
-  li {
-    margin-bottom: 0.3rem;
-  }
-}
-
-// Navbar - hide it since we have sidebar
-.navbar {
-  display: none;
-}
-
-// Footer - minimal
-.page-footer {
-  display: none;
-}
-
-// Profile section on home page
-.info {
-  margin-bottom: 1.5rem;
-
-  h1 {
-    margin-top: 0;
-    margin-bottom: 0.3rem;
-    font-family: 'Libre Baskerville', Georgia, serif;
-    font-size: 1.9rem;
-  }
-
-  .title {
-    color: #555;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    font-family: 'Libre Baskerville', Georgia, serif;
-    font-style: italic;
-  }
-
-  .affiliation {
-    font-size: 0.92rem;
-    color: #666;
-    line-height: 1.5;
-
-    a {
-      border-bottom: none;
-
-      &:hover {
-        border-bottom: 1px solid $link-color;
-      }
-    }
-  }
-
-  .contact-links {
-    margin-top: 0.6rem;
-    font-size: 0.85rem;
-
-    a {
-      margin-right: 1rem;
-    }
-  }
-}
-
-// Profile with photo (add back when photo available)
-.profile {
+// ---------- Home ----------
+.hero {
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  justify-content: space-between;
   align-items: flex-start;
+  gap: 2rem;
+  margin: 0.5rem 0 0.5rem 0;
 
-  img {
-    width: 130px;
-    height: 130px;
-    border-radius: 3px;
-    object-fit: cover;
-    flex-shrink: 0;
+  .role {
+    color: var(--muted);
+    line-height: 1.5;
+    p { margin: 0; }
+    a { color: var(--muted); text-decoration-color: var(--rule); }
+    a:hover { color: $link-color; }
   }
+  .photo img { width: 140px; height: 140px; object-fit: cover; border-radius: 3px; }
+  .photo:not(:has(img)) { display: none; }
 }
 
-@media (max-width: 768px) {
-  .profile {
-    flex-direction: column;
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  p { margin-bottom: 0.4rem; }
+}
+@media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; gap: 0; } }
 
-    img {
-      width: 100px;
-      height: 100px;
+
+// ---------- Entries (publications, courses): date in a left gutter ----------
+.entry {
+  display: grid;
+  grid-template-columns: 4.3rem 1fr;
+  column-gap: 0.9rem;
+  margin: 0 0 1.05rem 0;
+
+  > .entry-when {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    p { margin: 0; }
+  }
+  > .entry-body > p { margin: 0; }
+  strong { font-weight: 600; }
+
+  .entry-links {
+    font-size: 0.92rem;
+    p { display: inline; margin: 0; }
+    a, summary {
+      color: $link-color;
+      text-decoration: none;
+      margin-right: 0.9rem;
+      cursor: pointer;
+    }
+    a:hover, summary:hover { text-decoration: underline; }
+    details { display: inline; }
+    summary { display: inline; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    details[open] summary { color: var(--muted); }
+    details > p {
+      display: block;
+      margin: 0.35rem 0 0.5rem 0;
+      font-size: 0.95rem;
+      color: #4a4540;
     }
   }
 }
-
-// Sidebar footer links
-.sidebar-links {
-  padding: 1rem 0.8rem;
-  border-top: 1px solid #eee;
-  margin-top: 1rem;
-  font-size: 12px;
-  line-height: 2;
-
-  a {
-    display: block;
-    border-bottom: none !important;
-    color: #666;
-
-    &:hover {
-      color: #1a1a1a;
-    }
-  }
+@media (max-width: 600px) {
+  .entry { grid-template-columns: 3.4rem 1fr; column-gap: 0.6rem; }
 }
 
-// CV page
-.cv-pdf-link {
-  font-size: 13px;
-  display: inline-block;
-  margin-bottom: 1rem;
+.cv-pdf-link { display: inline-block; margin-bottom: 0.5rem; }
+
+
+// ---------- Work in progress: themed groups of project blocks ----------
+// Each project: title, a muted line (coauthors · status), a sentence on the
+// question, and an optional links row (draft, slides, app, data).
+.project {
+  margin: 0 0 1.3rem 0;
+  > p { margin: 0; }
+  strong { font-weight: 600; }
+  .project-meta { color: var(--muted); font-size: 0.95rem; }
+  .project-desc { margin-top: 0.15rem; }
+  .entry-links {
+    margin-top: 0.2rem;
+    font-size: 0.92rem;
+    p { display: inline; margin: 0; }
+    a { color: $link-color; text-decoration: none; margin-right: 0.9rem; }
+    a:hover { text-decoration: underline; }
+  }
+}
+h3.wip-theme, .wip-theme {
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 1.6rem 0 0.7rem 0;
 }
 
-// Abstract toggle (for future use)
-details {
-  margin-top: 0.3rem;
-  
-  summary {
-    font-size: 12px;
-    color: #888;
-    cursor: pointer;
-    
-    &:hover {
-      color: #555;
-    }
-  }
-  
-  p {
-    margin-top: 0.5rem;
-    padding-left: 1rem;
-    border-left: 2px solid #eee;
-    font-size: 13px;
-    color: #555;
-  }
+
+// ---------- Footer ----------
+.nav-footer {
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+  color: var(--muted);
+  a { color: var(--muted); }
 }
+.nav-footer-left, .nav-footer-right { display: none; }
+.nav-footer-center { flex: 1 1 auto; max-width: 100%; text-align: center; }

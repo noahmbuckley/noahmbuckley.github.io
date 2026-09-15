@@ -3,24 +3,43 @@ pagetitle: "Noah Buckley"
 description: "Noah Buckley is an Assistant Professor of Political Science at Trinity College Dublin, specializing in Russian politics, authoritarian regimes, public opinion, and corruption."
 ---
 
-::: {.info}
+<h1 class="visually-hidden">Noah Buckley</h1>
 
-# Noah Buckley
+::: {.hero}
+::: {.hero-text}
+I am an assistant professor (with tenure) in the [Department of Political Science](https://www.tcd.ie/Political_Science/) at [Trinity College Dublin](https://www.tcd.ie). I received my Ph.D. from Columbia University in 2017 and was previously a postdoctoral associate at NYU Abu Dhabi.
 
-::: {.title}
-Assistant Professor of Political Science
+My research is on authoritarian politics, mostly in Putin-era Russia: how autocratic regimes sustain themselves, how ordinary people understand and respond to the political environment they live in, and why corruption persists. I combine large-scale survey data with observational data I build myself from scraped and hand-coded sources, and use it to identify the effects of political events and information on attitudes and behaviour under authoritarianism.
+
+My work has appeared in the *American Political Science Review*, *American Journal of Political Science*, *Comparative Political Studies*, *Comparative Politics*, *Journal of Experimental Political Science*, *Europe-Asia Studies*, and *Post-Soviet Affairs*. A full list is on the [research](research.qmd) page.
 :::
 
-::: {.affiliation}
-[Department of Political Science](https://www.tcd.ie/Political_Science/), [Trinity College Dublin](https://www.tcd.ie)
+::: {.photo}
+<!-- Photo slot. Put a file at files/noah.jpg and uncomment:
+<img src="files/noah.jpg" alt="Noah Buckley">
+-->
+:::
 :::
 
+## Contact
+
+::: {.contact-grid}
+::: {}
+**Email**<br>
+[noah.buckley@tcd.ie](mailto:noah.buckley@tcd.ie)
+
+**Elsewhere**<br>
+[Google Scholar](https://scholar.google.com/citations?user=TZ07K8wAAAAJ) · [SSRN](http://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1678779) · [ORCID](https://orcid.org/0000-0002-4641-6664)
+:::
+::: {}
+**Office**<br>
+Department of Political Science<br>
+3 College Green<br>
+Trinity College Dublin<br>
+Dublin 2, Ireland
+:::
 :::
 
-I am an assistant professor (with tenure) in the Department of Political Science at Trinity College Dublin. I received my Ph.D. from Columbia University in 2017 and was previously a postdoctoral associate at NYU Abu Dhabi.
-
-My research focuses on authoritarian politics and Putin-era Russian politics. How do autocratic regimes sustain themselves, how the mass public understands their authoritarian environment, and why corruption persists. I use quantitative methods and micro-level data in my research.
-
-My work has appeared in the *American Political Science Review*, *American Journal of Political Science*, *Comparative Political Studies*, *Comparative Politics*, *Journal of Experimental Political Science*, *Europe-Asia Studies*, and *Post-Soviet Affairs*.
-
-*(Looking for Noah M. Buckley-Farlee? That's me.)*
+::: {.small}
+Looking for Noah M. Buckley-Farlee? That's me.
+:::
