@@ -73,6 +73,14 @@
       "description": "v3 (2026-09-09 SHRINK). Replaces the 170-item v2 chunk (preserved as items_170.json.bak/schema_170.json.bak) with 60 boundary items + 7 silent repeats (67 total), per Noah's call: v2 spent most of its budget re-confirming cases two independent silver referees (Claude Opus 5, gpt-5) already agree on. 30 items are drawn from the 59-event referee-DISAGREEMENT set (restricted to the 46 that bear on the arrest_legal/governor_political boundary), 15 are silver-agreed arrest_legal events flagged as possible FALSE POSITIVES (removal/resignation arrest_stage, and/or haiku_v2/nano_low_v2 dissent), 15 are silver-agreed governor_political events flagged as possible FALSE NEGATIVES (haiku_v2/nano_low_v1/v2 dissent, and/or a legal-predicate cue word in the text). Every item asks the SAME factual binary question (does the text state a legal predicate?) -- the 9-way typology variant from v2 is dropped since every item is now a boundary item. Loader (eventsData/code/99f_load_primary_type_gold60_results.R) reports, separately: referee-disagreement agreement per referee, false-positive vs false-negative confirmation rates (NOT pooled -- a silver error rate means something different in each direction), every model arm vs Noah, and Noah's own test-retest from the repeats. This is a deliberately boundary-only, non-representative sample -- NOT used for population/corpus accuracy; the loader refuses to print a pooled corpus-accuracy number.",
       "schema_url": "data/fpp-primary-type-gold/schema.json",
       "items_url": "data/fpp-primary-type-gold/items.json"
+    },
+    {
+      "id": "disaster-response-markers",
+      "name": "Disaster response-markers validation (~60)",
+      "project": "disaster",
+      "description": "Validate the Haiku LLM government-response markers (CHS declared, governor on-site, federal attention) against their supporting snippets. Stratified by deaths bracket x Haiku-yes/no on CHS x Haiku-yes/no on federal attention. Feeds the response-markers layer of event_response_master.csv. Built 2026-09-15.",
+      "schema_url": "data/disaster-response-markers/schema.json",
+      "items_url": "data/disaster-response-markers/items.json"
     }
   ]
 }

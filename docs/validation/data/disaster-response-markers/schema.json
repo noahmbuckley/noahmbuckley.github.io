@@ -1,0 +1,111 @@
+{
+  "task_id": "disaster-response-markers",
+  "name": "Disaster response-markers validation (~60)",
+  "version": "2026-09-15",
+  "id_field": "item_id",
+  "instructions": "For each event: read the FPP/summary text and the supporting snippets (each tagged with which marker it was pulled for -- governor-onsite / CHS-emergency-regime / federal-attention). For EACH snippet shown, decide whether it actually describes a government response to THIS specific event (not a different event, a generic policy mention, or an unrelated news item). Record which response markers you can confirm are genuinely present, and flag anything wrong.",
+  "display": [
+    {
+      "field": "stratum",
+      "label": "stratum",
+      "format": "tag"
+    },
+    {
+      "field": "year",
+      "label": "year",
+      "format": "compact"
+    },
+    {
+      "field": "region",
+      "label": "region",
+      "format": "compact"
+    },
+    {
+      "field": "disaster_type",
+      "label": "type",
+      "format": "compact"
+    },
+    {
+      "field": "deaths",
+      "label": "deaths",
+      "format": "compact"
+    },
+    {
+      "field": "event_date",
+      "label": "event date",
+      "format": "compact"
+    },
+    {
+      "field": "fpp_text",
+      "label": "FPP/summary description (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "haiku_chs",
+      "label": "Haiku: CHS declared?",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "haiku_federal",
+      "label": "Haiku: federal attention?",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "evidence_snippets",
+      "label": "Supporting snippets (marker-tagged)",
+      "format": "longtext"
+    },
+    {
+      "field": "wiki_search_url",
+      "label": "ru.wikipedia search",
+      "format": "link"
+    },
+    {
+      "field": "google_search_url",
+      "label": "Google search",
+      "format": "link"
+    }
+  ],
+  "validation": [
+    {
+      "field": "snippet_matches_event",
+      "label": "Do the snippets describe THIS event (not a different one)?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes, on-topic",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "partial",
+          "label": "Some on-topic, some not",
+          "key": "2",
+          "tone": "neutral"
+        },
+        {
+          "value": "no",
+          "label": "No / wrong event",
+          "key": "3",
+          "tone": "bad"
+        }
+      ]
+    },
+    {
+      "field": "confirmed_markers",
+      "label": "Which markers are genuinely confirmed present? (comma list)",
+      "type": "text",
+      "placeholder": "e.g. governor_onsite, chs -- leave blank if none"
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "type": "textarea",
+      "placeholder": "Free text"
+    }
+  ]
+}
