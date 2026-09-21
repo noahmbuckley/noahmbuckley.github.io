@@ -12,7 +12,7 @@ Office hours are by appointment: [email me](mailto:noah.buckley@tcd.ie) with a c
 MT 2026
 :::
 ::: {.entry-body}
-**[POU11011 Introduction to Political Science](teaching/pou11011/)**\
+**[POU11011 Introduction to Political Science](teaching/pou11011-mt2026/)**\
 First-year lecture module. What politics is, what power is, why states exist and why some of them work; ideologies and identity; democracy, dictatorship and the grey zone; institutions; who gets what. The course site has the module outline, FAQ and slides.
 :::
 :::
@@ -22,7 +22,7 @@ First-year lecture module. What politics is, what power is, why states exist and
 MT 2026
 :::
 ::: {.entry-body}
-**POU33201 Authoritarianism**\
+**[POU33201 Authoritarianism](teaching/pou33201-mt2026/)**\
 Third-year seminar. How dictatorships work: repression and co-optation, elections without democracy, information control, elite politics, and why some regimes fall while most don't.
 :::
 :::
@@ -39,7 +39,7 @@ Final-year seminar. Russian politics from the Soviet collapse to the war in Ukra
 
 ## Supervision
 
-I supervise final-year capstone projects and MSc dissertations on authoritarian politics, Russia and the post-Soviet region, public opinion, corruption, and elections, mostly using quantitative methods. Please read the [research guide](teaching/research-guide/index.html) before we meet.
+I supervise final-year capstone projects and MSc dissertations on authoritarian politics, Russia and the post-Soviet region, public opinion, corruption, and elections, mostly using quantitative methods.
 
 ## Also taught at Trinity
 
