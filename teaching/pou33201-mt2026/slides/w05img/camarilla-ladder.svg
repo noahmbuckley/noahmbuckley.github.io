@@ -1,0 +1,43 @@
+<svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrowDown" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#A04000"/>
+    </marker>
+  </defs>
+
+  <!-- Tier 1: patron -->
+  <rect x="360" y="20" width="180" height="75" rx="8" fill="#A04000"/>
+  <text x="450" y="65" text-anchor="middle" fill="white" font-size="24" font-weight="bold">Patron</text>
+
+  <!-- arrows tier1 -> tier2 -->
+  <path d="M 400 97 L 250 175" stroke="#A04000" stroke-width="3.5" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 500 97 L 650 175" stroke="#A04000" stroke-width="3.5" fill="none" marker-end="url(#arrowDown)"/>
+
+  <!-- Tier 2: juniors -->
+  <rect x="150" y="185" width="200" height="70" rx="8" fill="#1A5276"/>
+  <text x="250" y="227" text-anchor="middle" fill="white" font-size="21" font-weight="bold">Junior</text>
+
+  <rect x="550" y="185" width="200" height="70" rx="8" fill="#1A5276"/>
+  <text x="650" y="227" text-anchor="middle" fill="white" font-size="21" font-weight="bold">Junior</text>
+
+  <!-- arrows tier2 -> tier3 (each junior brings up their own juniors) -->
+  <path d="M 200 257 L 110 335" stroke="#1A5276" stroke-width="3" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 300 257 L 330 335" stroke="#1A5276" stroke-width="3" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 600 257 L 570 335" stroke="#1A5276" stroke-width="3" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 700 257 L 790 335" stroke="#1A5276" stroke-width="3" fill="none" marker-end="url(#arrowDown)"/>
+
+  <!-- Tier 3: juniors' own juniors -->
+  <rect x="40" y="345" width="140" height="58" rx="7" fill="#B7791F"/>
+  <text x="110" y="380" text-anchor="middle" fill="white" font-size="15" font-weight="bold">their juniors</text>
+
+  <rect x="260" y="345" width="140" height="58" rx="7" fill="#B7791F"/>
+  <text x="330" y="380" text-anchor="middle" fill="white" font-size="15" font-weight="bold">their juniors</text>
+
+  <rect x="500" y="345" width="140" height="58" rx="7" fill="#B7791F"/>
+  <text x="570" y="380" text-anchor="middle" fill="white" font-size="15" font-weight="bold">their juniors</text>
+
+  <rect x="720" y="345" width="140" height="58" rx="7" fill="#B7791F"/>
+  <text x="790" y="380" text-anchor="middle" fill="white" font-size="15" font-weight="bold">their juniors</text>
+
+  <text x="450" y="450" text-anchor="middle" fill="#5B6770" font-size="19" font-style="italic">climb by loyalty to your camarilla, not by winning votes</text>
+</svg>

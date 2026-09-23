@@ -1,0 +1,28 @@
+<svg viewBox="0 0 1000 260" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrowFlow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5B6770"/>
+    </marker>
+  </defs>
+
+  <rect x="10" y="70" width="200" height="100" rx="10" fill="#A04000"/>
+  <text x="110" y="128" text-anchor="middle" fill="white" font-size="26" font-weight="bold">Ruler</text>
+
+  <path d="M 220 120 L 270 120" stroke="#5B6770" stroke-width="4" fill="none" marker-end="url(#arrowFlow)"/>
+
+  <rect x="280" y="70" width="200" height="100" rx="10" fill="#7B2D4B"/>
+  <text x="380" y="128" text-anchor="middle" fill="white" font-size="24" font-weight="bold">Broker</text>
+
+  <path d="M 490 120 L 540 120" stroke="#5B6770" stroke-width="4" fill="none" marker-end="url(#arrowFlow)"/>
+
+  <rect x="550" y="70" width="200" height="100" rx="10" fill="#1A5276"/>
+  <text x="650" y="128" text-anchor="middle" fill="white" font-size="24" font-weight="bold">Client</text>
+
+  <path d="M 760 120 L 810 120" stroke="#5B6770" stroke-width="4" fill="none" marker-end="url(#arrowFlow)"/>
+
+  <rect x="820" y="70" width="170" height="100" rx="10" fill="#B7791F"/>
+  <text x="905" y="118" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Vote /</text>
+  <text x="905" y="146" text-anchor="middle" fill="white" font-size="20" font-weight="bold">loyalty</text>
+
+  <text x="500" y="225" text-anchor="middle" fill="#5B6770" font-size="19" font-style="italic">a good, or a job, or a favour — moving down the chain for loyalty moving up it</text>
+</svg>
