@@ -65,6 +65,15 @@
       "description": "v3 (2026-09-09 SHRINK). Replaces the 170-item v2 chunk (preserved as items_170.json.bak/schema_170.json.bak) with 60 boundary items + 7 silent repeats (67 total), per Noah's call: v2 spent most of its budget re-confirming cases two independent silver referees (Claude Opus 5, gpt-5) already agree on. 30 items are drawn from the 59-event referee-DISAGREEMENT set (restricted to the 46 that bear on the arrest_legal/governor_political boundary), 15 are silver-agreed arrest_legal events flagged as possible FALSE POSITIVES (removal/resignation arrest_stage, and/or haiku_v2/nano_low_v2 dissent), 15 are silver-agreed governor_political events flagged as possible FALSE NEGATIVES (haiku_v2/nano_low_v1/v2 dissent, and/or a legal-predicate cue word in the text). Every item asks the SAME factual binary question (does the text state a legal predicate?) -- the 9-way typology variant from v2 is dropped since every item is now a boundary item. Loader (eventsData/code/99f_load_primary_type_gold60_results.R) reports, separately: referee-disagreement agreement per referee, false-positive vs false-negative confirmation rates (NOT pooled -- a silver error rate means something different in each direction), every model arm vs Noah, and Noah's own test-retest from the repeats. This is a deliberately boundary-only, non-representative sample -- NOT used for population/corpus accuracy; the loader refuses to print a pooled corpus-accuracy number.",
       "schema_url": "data/fpp-primary-type-gold/schema.json",
       "items_url": "data/fpp-primary-type-gold/items.json"
+    },
+    {
+      "id": "c26-content-mode-350",
+      "name": "T1 · Campaign content MODE gold (350, blind)",
+      "project": "campaign2026",
+      "description": "TIER 1. Blind gold for 26_content_mode: primary mode (policy_specific / issue_position / valence_personal / mobilization_generic / attack / ...), all modes, specificity 0-3. 350 msgs stratified source x party x predicted mode, full classifier text (median ~1,000 chars; ~3-4 h, splittable). No model output shown. Gates any appeal-mode claim and the full ~$25-70 run. PROPOSED bars: campaign2026/validation/DECISION_RULES_PROPOSED_2026-09-28.md (confirm first). Loader campaign2026/code/26l_load_content_mode_gold.R.",
+      "schema_url": "data/c26-content-mode-350/schema.json",
+      "items_url": "data/c26-content-mode-350/items.json",
+      "retired_note": "2026-09-28 night: rebuilt as c26-content-mode-rel40 + c26-content-mode-310 (codebook v4; programmes and party-less/multi-speaker debate turns removed). Noah's 9 round-1 answers are in ~/Dropbox/_validation_exports/validation_c26-content-mode-350_2026-09-28.json; 6 carried into rel40."
     }
   ]
 }

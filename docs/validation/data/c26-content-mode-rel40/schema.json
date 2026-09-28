@@ -1,0 +1,200 @@
+{
+  "task_id": "c26-content-mode-rel40",
+  "name": "T1 - Content MODE reliability (40, blind, Noah+John)",
+  "version": "2026-09-28-v4",
+  "id_field": "item_id",
+  "instructions": "RELIABILITY ROUND (40 items). Noah and John code these SAME 40 independently, before the other 310. Noah + John Cohen's kappa on primary mode (9 classes, `unreadable` excluded) decides whether the 9-class measure stands (kappa >= 0.60) or the pre-declared 4-class collapse is used (campaign2026/validation/DECISION_RULES_content_mode_v2_2026-09-28.md). Do not compare notes until both are done. Noah: items 2, 3, 4, 6, 17, 38 (positions in this app) are ones you coded on 09-28 under the OLD v3 definitions; the loader keeps those answers separately and flags them, but please code them afresh here under codebook v4.\n\nCODEBOOK v4 (2026-09-28). The classifier gets these exact definitions and rules. Code from the text alone; no model output is shown.\n\nWHAT YOU CODE (per message): (1) PRIMARY mode: one of the 9 modes below, or `unreadable` (coders only, see below). (2) ALL modes present: tap every mode that is substantively present, at most 2, the primary included. (3) SPECIFICITY 0-3. (4) Notes (optional). Code from the text alone.\n\nAXIS A - MODE (pick ONE primary; mode = HOW the message persuades, topic = WHAT it is about):\npolicy_specific = a concrete, checkable proposal or promise (names an instrument, sum, or deadline)\nissue_position = takes a side on an issue with no concrete instrument ('за справедливые тарифы')\nwar_stance = СВО/front/veterans/victory as the campaign's identity; set military_bio=true if it is framed as the candidate's OWN service biography. NOT local attack/damage/compensation news (see war_frame)\nvalues_ideas = patriotism, tradition, sovereignty, anti-West framing, history — ideas without a policy\nconstituency_service = casework/pork: 'добился ремонта двора', fixed a specific local thing, helped a specific person/group\nvalence_personal = competence, experience, endorsement by a senior figure, biography, likeability — no issue content\nmobilization_generic = dates, turnout instructions, ДЭГ how-to, 'поддержите нас' with no substance\nattack = negative/critical content about a NAMED opponent, party, or official — set attack_target\nnot_campaign = not political/campaign content at all (admin notice, unrelated repost, greeting, ad)\n\nUNREADABLE (human coders only; the classifier has no such option). Choose primary mode `unreadable` when the text is a garbled transcript or a fragment from which you cannot tell what the message does (e.g. speech-to-text output with scrambled words, a passage cut off mid-thought). Use it sparingly: a message that is merely vague, dull or short is NOT unreadable; code it. For an `unreadable` item leave specificity blank. Unreadable items are left out of the human-agreement statistic.\n\nDECISION RULES (verbatim from the classifier prompt):\n1. `modes`: ALL modes substantively present (cap at 2, the two most central). `primary_mode`: the single most central (must be in `modes`).\n2. PRIMARY MODE WHEN SEVERAL APPLY. When more than one mode is present, `primary_mode` is the mode that carries the largest share of the message's substantive content (in an attack-plus-policy message, whichever occupies more of the sentences), not the one that comes first or sounds most dramatic.\n3. MODE IS HOW, TOPIC IS WHAT. Mode is HOW the message persuades; topic is WHAT it is about. Any policy domain (e.g. family support, ecology, pensions) can carry any mode: a vague direction on it («поддержим семьи», «за чистую экологию») is issue_position (specificity 1), a concrete measure on it (an instrument, sum, deadline or specific promise) is policy_specific. Being about a policy area is never by itself a reason to pick a mode; ask what the message DOES.\n4. A message can be BOTH an attack and a policy claim (e.g. \"Депутат X провалил ремонт школ — мы построим новую за 2 года\" -> modes=[\"attack\",\"policy_specific\"], primary_mode judged by which carries more of the sentence).\n5. constituency_service is casework/local delivery, NOT a policy proposal — keep it separate from policy_specific even though both are concrete. The test: did the candidate/party DO or PROMISE a specific local fix (service) vs propose a general rule/law/program (policy)?\n6. A repost of a governor's or federal official's statement, posted without added commentary, is coded on its own content exactly as if the channel said it themselves (the panel measures the channel's output mix, not authorship) — but if the repost is bare (no framing at all, \"🔻\" or forwarded-tag only) and the content is itself vapid, code it mobilization_generic/not_campaign as appropriate.\n7. `not_campaign` is used ONLY when nothing else applies (admin/service notice, unrelated news, pure greeting/ad).\n8. GOVERNMENT DECISIONS ARE NOT PARTY POLICY. A message that RELAYS a decision, allocation, or achievement of the state (President, Government, governor, ministry, «по поручению Президента», «регион получит…», «списание долгов») without the party/candidate proposing or claiming to have secured it is NOT policy_specific. Code it valence_personal (borrowed credit / proximity to power) if the channel frames it as \"our\" result or stands next to it, otherwise not_campaign. Only code policy_specific/issue_position when the PARTY or CANDIDATE itself proposes, promises, demands, or claims authorship.\n9. PROFESSIONAL-HOLIDAY AND CALENDAR GREETINGS («С Днём эколога!», «С Днём знаний!», «С Днём города!», «С праздником!») are not_campaign even when they praise a profession or mention the party's youth wing attending an event. They are not constituency_service (nothing was fixed or delivered) and not values_ideas unless the text makes an explicit political/values claim beyond the greeting.\n10. NEWS ABOUT THE CAMPAIGN'S OWN PROCESS is not policy. A report that a forum was held, a programme is \"being formed\", a congress adopted a list, candidates were registered, or «мы подвели итоги» — with no concrete proposal stated in the message itself — is valence_personal (competence/organisation signalling) with specificity 0-1, NOT policy_specific 3. Specificity is scored on claims PRESENT IN THE TEXT, never on what the programme presumably contains.\n11. OFFICIAL/INSTITUTIONAL NEWS RELAYS (the President nominated governor candidates; the Duma passed a law; ЦИК announced dates; a governor's schedule) are not mobilization_generic unless the message itself calls the reader to vote or gives voting instructions. Code them not_campaign (pure news relay) or valence_personal (if the channel attaches itself to the actor); topic as the content warrants (election_process for ЦИК/nomination news).\n12. LOCAL WAR IMPACT IS NOT WAR-AS-IDENTITY. An alert, attack report, damage tally, evacuation, or compensation/repair message about the region itself gets war_frame=[\"local_security\"] and its MODE by what the message does: not_campaign for a bare alert or damage report; constituency_service when the author delivers or organises concrete help (repaired homes, paid compensation, opened a shelter); policy_specific when it proposes a general rule or programme. It is war_stance ONLY if the text turns the war into the campaign's identity (heroism, \"our boys\", victory rhetoric).\n13. PARTY ACTIVITY REPORTS. A report on a party's own events, contests, projects, meetings or forums (e.g. «Агродиктант», a «Народная программа» forum, a round table, a volunteer action) with no concrete proposal and no local delivery stated in the text is valence_personal (organisational/competence signalling), specificity 0-1. If the text states a concrete proposal, or something specific that was fixed or delivered locally, code that instead (policy_specific / constituency_service).\n14. PARTY-AS-PROVIDER ASSOCIATION. A party's name or ballot number attached to a local event, fair, festival, or lifestyle/community content (e.g. «… — номер N в бюллетене» beside a regional fair), where nothing is fixed, delivered or proposed, is valence_personal (the party presents itself as a presence in local life). It is not constituency_service (nothing was fixed or delivered) and not policy. If something concrete WAS delivered or fixed, constituency_service applies.\n15. VAGUE VISION PLUS CALL TO VOTE. A vague vision or aspiration together with a call to vote («Мы хотим страну, где ценят труд и порядок. Голосуйте за нас») is values_ideas if a vision or values claim is stated; mobilization_generic only if the message is essentially 'go vote / vote for us' with no vision or values content.\n\nAXIS B - SPECIFICITY (0-3):\n  0 = none: no substantive claim at all (pure mobilization/greeting/attack-with-no-content)\n  1 = vague direction: names a value or direction with no concrete proposal (\"нужно поддержать семьи\")\n  2 = concrete but unquantified: a specific proposal/action with no number or deadline (\"построим детскую площадку во дворе\")\n  3 = quantified with an instrument or deadline: a law, sum, percentage, or date attached (\"снизим тариф на 15% с 1 января\", \"внесём закон об индексации пенсий на уровень инфляции\")\nScore the MOST specific substantive claim in the message. A message with primary_mode=not_campaign or mobilization_generic and no substantive claim is specificity=0.\n\nNOTES FOR CODERS ON PROMPT-ONLY ELEMENTS. The classifier prompt also asks for military_bio, war_frame and attack_target. Humans do NOT code those in this round; where a rule or a mode definition below mentions them (war_stance, LOCAL WAR IMPACT), apply only the MODE part of the rule.\n\nWORKED EXAMPLES (the classifier's own; mode and specificity only):\nText: \"Мы внесём в Госдуму законопроект об индексации пенсий работающим пенсионерам на уровень фактической инфляции с 1 января 2027 года.\"\n  -> primary_mode=policy_specific; modes=policy_specific; specificity=3. quantified (instrument=law, deadline=1 Jan 2027) — the top specificity anchor.\nText: \"Мы за справедливые тарифы ЖКХ для всех регионов страны.\"\n  -> primary_mode=issue_position; modes=issue_position; specificity=1. a side taken, no instrument -> issue_position, specificity 1 (vague direction).\nText: \"Депутат нашей фракции добился ремонта дороги на улице Ленина и установки новых лавочек во дворе дома 14.\"\n  -> primary_mode=constituency_service; modes=constituency_service; specificity=2. concrete, delivered, named place — but casework, not a general policy -> constituency_service NOT policy_specific. Specificity 2 (no number/deadline beyond the fact of delivery).\nText: \"В нашем избирательном округе мы построим новую детскую поликлинику — современную, с полным набором специалистов.\"\n  -> primary_mode=policy_specific; modes=policy_specific; specificity=2. a PROMISE of a general facility (not yet delivered, not a personal favor) -> policy_specific; no number/deadline -> specificity 2. Contrast with ex3: delivered casework for a named person/place = service; a general facility promise = policy.\nText: \"Наш кандидат — ветеран СВО, прошёл фронт, знает цену Победы. Теперь он будет защищать интересы округа так же, как защищал Родину.\"\n  -> primary_mode=war_stance; modes=war_stance|valence_personal; specificity=1. war as the candidate's own biography -> military_bio=true; also valence (competence-by-service) but war_stance is the sentence's core.\nText: \"Помним подвиг наших дедов. Победа деда — это и моя Победа. Патриотизм — это не лозунг, а образ жизни.\"\n  -> primary_mode=values_ideas; modes=values_ideas; specificity=0. history/memory framing with no policy or personal-service claim -> values_ideas, not war_stance (no current front/mobilization content) or svo_war topic.\nText: \"Своих не бросаем: продолжаем гуманитарную помощь бойцам на передовой и их семьям. Отправили очередную партию медикаментов и техники.\"\n  -> primary_mode=war_stance; modes=war_stance; specificity=2. concrete action (medical supplies shipment) but framed as war-identity content, not a general \"policy\" proposal -> war_stance stays primary; specificity 2 for the concrete-but-unquantified delivery.\nText: \"Уже 20 сентября! Приходите на избирательные участки и голосуйте за нашу команду. Каждый голос важен!\"\n  -> primary_mode=mobilization_generic; modes=mobilization_generic; specificity=0. calls to vote with no substance -> mobilization_generic + election_process topic (do not confuse with mode-C 'not vapid' cases below).\nText: \"Электронное голосование (ДЭГ) пройдёт 18-20 сентября. Подать заявление можно на портале госуслуг до 11 сентября включительно.\"\n  -> primary_mode=mobilization_generic; modes=mobilization_generic; specificity=2. election LOGISTICS, not a vapid \"vote for us\" slogan — still mode mobilization_generic (it is not campaign advocacy content) but topic election_process and specificity can be >0 for concrete procedural detail. Mode and specificity are independent of whether the content is procedural vs slogan-vapid.\nText: \"Наш кандидат Иванов — опытный хозяйственник, 15 лет руководил заводом, знает жизнь округа не понаслышке.\"\n  -> primary_mode=valence_personal; modes=valence_personal; specificity=1. pure competence/biography claim, no issue content -> valence_personal; topic=other since no substantive issue is touched.\nText: \"Пока действующий депутат Петров годами обещал новую поликлинику, ничего не построено. Хватит пустых слов — мы построим её за 2 года.\"\n  -> primary_mode=attack; modes=attack|policy_specific; specificity=2. a named attack PLUS a concrete counter-promise -> both modes coded; primary is attack here because the criticism occupies the larger share of the message's substantive content. (Per PRIMARY MODE WHEN SEVERAL APPLY: if the promise occupied more of the message, primary_mode would be policy_specific.)\nText: \"Власти снова задержали нашего активиста и признали движение иноагентом. Это политическое давление перед выборами.\"\n  -> primary_mode=attack; modes=attack|issue_position; specificity=1. attack on unnamed collective authorities still counts (attack_target can be a role/institution, not only a personal name).\nText: \"Поздравляем всех с Днём города! Хорошего праздника и отличного настроения 🎉\"\n  -> primary_mode=not_campaign; modes=not_campaign; specificity=0. \nText: \"⚡️ Области спишут часть задолженности по бюджетным кредитам. Решение принято по поручению Президента. Высвобожденные средства направят на ЖКХ и общественный транспорт.\"\n  -> primary_mode=not_campaign; modes=not_campaign; specificity=0. a STATE decision relayed by a party organ with no party claim of authorship -> not policy_specific. (If the text said «по инициативе Единой России» or «наш депутат добился», it would be policy_specific or constituency_service.) Topics still coded on content.\nText: \"💚 Региональное отделение поздравляет всех специалистов в области охраны окружающей среды с Днём эколога! Благодаря вашему труду сохраняются леса и чистый воздух нашего края.\"\n  -> primary_mode=not_campaign; modes=not_campaign; specificity=0. calendar greeting: nothing delivered, nothing proposed -> not constituency_service, not values_ideas.\nText: \"«Есть результат!»: партия подвела итоги работы и начала формирование новой Народной программы. Главная задача — выработать предложения для нового программного документа.\"\n  -> primary_mode=valence_personal; modes=valence_personal; specificity=1. process news about the programme, no proposal stated in the text -> valence (organisational competence), specificity 1 at most. NEVER specificity 3 for a programme that is only named.\nText: \"🇷🇺 Президент представил Парламенту республики кандидатуры для избрания на должность Главы региона: Темрезов, Иванов, Петров.\"\n  -> primary_mode=not_campaign; modes=not_campaign; specificity=0. institutional news relay with no call to vote -> not mobilization_generic; topic election_process.\nText: \"Депутат встретился с губернатором на открытии новой школы в райцентре и обсудил перспективы развития региона.\"\n  -> primary_mode=valence_personal; modes=valence_personal; specificity=0. a governor-adjacent photo-op repost, no added framing and no substantive claim -> valence (proximity to power), specificity 0, not policy.\nText: \"В результате атаки БПЛА на Шебекинский округ повреждены два частных дома и автомобиль. Пострадавших нет. Оперативные службы работают на месте.\"\n  -> primary_mode=not_campaign; modes=not_campaign; specificity=0. a bare local attack/damage report -> not_campaign, war_frame local_security. NOT war_stance: nothing turns the war into identity.\nText: \"Всем жителям, чьё жильё пострадало от обстрелов, выплатим компенсацию до 1 октября. Уже восстановили 140 домов в приграничье, работу продолжаем.\"\n  -> primary_mode=constituency_service; modes=constituency_service; specificity=3. delivered, quantified help for war damage at home -> constituency_service with local_security; specificity 3 (number + deadline).\nText: \"Вручил ордена Мужества семьям наших земляков, погибших в зоне СВО. Их подвиг — пример для всех нас. Герои не умирают.\"\n  -> primary_mode=war_stance; modes=war_stance; specificity=0. honouring fallen fighters as heroes -> military_identity; war_stance because the war is the message's value core. military_bio false: not the author's own service.\nText: \"Подписал постановление: участники СВО и члены их семей получат бесплатное зачисление детей в детские сады и приоритет при трудоустройстве в областные учреждения.\"\n  -> primary_mode=policy_specific; modes=policy_specific; specificity=2. a general rule benefiting veterans and families -> policy_specific with front_support (the author claims authorship: «подписал»).",
+  "display": [
+    {
+      "field": "source",
+      "label": "Source",
+      "format": "compact"
+    },
+    {
+      "field": "party_slug",
+      "label": "Party",
+      "format": "compact"
+    },
+    {
+      "field": "region",
+      "label": "Region",
+      "format": "compact"
+    },
+    {
+      "field": "date",
+      "label": "Date",
+      "format": "compact"
+    },
+    {
+      "field": "text",
+      "label": "Text (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "text_note",
+      "label": "Text length",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "primary_mode",
+      "label": "PRIMARY mode (one; unreadable = garbled/fragment)",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "policy_specific",
+          "label": "policy_specific",
+          "key": "1",
+          "tone": "neutral"
+        },
+        {
+          "value": "issue_position",
+          "label": "issue_position",
+          "key": "2",
+          "tone": "neutral"
+        },
+        {
+          "value": "war_stance",
+          "label": "war_stance",
+          "key": "3",
+          "tone": "neutral"
+        },
+        {
+          "value": "values_ideas",
+          "label": "values_ideas",
+          "key": "4",
+          "tone": "neutral"
+        },
+        {
+          "value": "constituency_service",
+          "label": "constituency_service",
+          "key": "5",
+          "tone": "neutral"
+        },
+        {
+          "value": "valence_personal",
+          "label": "valence_personal",
+          "key": "6",
+          "tone": "neutral"
+        },
+        {
+          "value": "mobilization_generic",
+          "label": "mobilization_generic",
+          "key": "7",
+          "tone": "neutral"
+        },
+        {
+          "value": "attack",
+          "label": "attack",
+          "key": "8",
+          "tone": "neutral"
+        },
+        {
+          "value": "not_campaign",
+          "label": "not_campaign",
+          "key": "9",
+          "tone": "warn"
+        },
+        {
+          "value": "unreadable",
+          "label": "unreadable: garbled transcript / fragment (coders only)",
+          "tone": "bad"
+        }
+      ]
+    },
+    {
+      "field": "modes",
+      "label": "All modes present (tap; at most 2, the primary included; blank = primary only)",
+      "type": "multi",
+      "options": [
+        {
+          "value": "policy_specific",
+          "label": "policy_specific",
+          "tone": "neutral"
+        },
+        {
+          "value": "issue_position",
+          "label": "issue_position",
+          "tone": "neutral"
+        },
+        {
+          "value": "war_stance",
+          "label": "war_stance",
+          "tone": "neutral"
+        },
+        {
+          "value": "values_ideas",
+          "label": "values_ideas",
+          "tone": "neutral"
+        },
+        {
+          "value": "constituency_service",
+          "label": "constituency_service",
+          "tone": "neutral"
+        },
+        {
+          "value": "valence_personal",
+          "label": "valence_personal",
+          "tone": "neutral"
+        },
+        {
+          "value": "mobilization_generic",
+          "label": "mobilization_generic",
+          "tone": "neutral"
+        },
+        {
+          "value": "attack",
+          "label": "attack",
+          "tone": "neutral"
+        },
+        {
+          "value": "not_campaign",
+          "label": "not_campaign",
+          "tone": "warn"
+        }
+      ],
+      "show_if": {
+        "primary_mode": ["policy_specific", "issue_position", "war_stance", "values_ideas", "constituency_service", "valence_personal", "mobilization_generic", "attack", "not_campaign"]
+      }
+    },
+    {
+      "field": "specificity",
+      "label": "Specificity 0-3",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "0",
+          "label": "0 none: no substantive claim",
+          "tone": "neutral"
+        },
+        {
+          "value": "1",
+          "label": "1 vague direction",
+          "tone": "neutral"
+        },
+        {
+          "value": "2",
+          "label": "2 concrete, unquantified",
+          "tone": "neutral"
+        },
+        {
+          "value": "3",
+          "label": "3 quantified (sum / % / date / law)",
+          "tone": "neutral"
+        }
+      ],
+      "show_if": {
+        "primary_mode": ["policy_specific", "issue_position", "war_stance", "values_ideas", "constituency_service", "valence_personal", "mobilization_generic", "attack", "not_campaign"]
+      }
+    },
+    {
+      "field": "notes",
+      "label": "Notes (optional)",
+      "type": "textarea",
+      "placeholder": "Ambiguity, oddities, why unreadable, etc."
+    }
+  ]
+}

@@ -19,12 +19,20 @@
       "items_url": "data/disaster-response-markers/items.json"
     },
     {
-      "id": "c26-content-mode-350",
-      "name": "T1 · Campaign content MODE gold (350, blind)",
+      "id": "c26-content-mode-rel40",
+      "name": "T1 · Content MODE reliability (40, blind, Noah+John) — do FIRST",
       "project": "campaign2026",
-      "description": "TIER 1. Blind gold for 26_content_mode: primary mode (policy_specific / issue_position / valence_personal / mobilization_generic / attack / ...), all modes, specificity 0-3. 350 msgs stratified source x party x predicted mode, full classifier text (median ~1,000 chars; ~3-4 h, splittable). No model output shown. Gates any appeal-mode claim and the full ~$25-70 run. PROPOSED bars: campaign2026/validation/DECISION_RULES_PROPOSED_2026-09-28.md (confirm first). Loader campaign2026/code/26l_load_content_mode_gold.R.",
-      "schema_url": "data/c26-content-mode-350/schema.json",
-      "items_url": "data/c26-content-mode-350/items.json"
+      "description": "TIER 1, do FIRST. Same 40 messages coded independently by Noah and John under codebook v4 (the model's prompt uses the identical rule text). Noah–John kappa (9-class, unreadable excluded) >= 0.60 keeps 9 classes; < 0.60 switches to the pre-declared 4-class collapse. Your 6 surviving round-1 items are in here — re-code them under v4. Full classifier text, no model output. Rules: campaign2026/validation/DECISION_RULES_content_mode_v2_2026-09-28.md. Loader campaign2026/code/26l2_load_content_mode_v4_gold.R.",
+      "schema_url": "data/c26-content-mode-rel40/schema.json",
+      "items_url": "data/c26-content-mode-rel40/items.json"
+    },
+    {
+      "id": "c26-content-mode-310",
+      "name": "T1 · Content MODE gold (310, blind) — after rel40",
+      "project": "campaign2026",
+      "description": "TIER 1, after rel40 (and only if kappa decides 9 vs 4 classes first). Rebuilt gold: programmes, party-less and multi-speaker debate turns removed, replacements drawn; codebook v4; full classifier text (~3 h, splittable). No model output shown. Loader campaign2026/code/26l2_load_content_mode_v4_gold.R.",
+      "schema_url": "data/c26-content-mode-310/schema.json",
+      "items_url": "data/c26-content-mode-310/items.json"
     },
     {
       "id": "c26-topics-150",
