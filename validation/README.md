@@ -35,9 +35,16 @@ validation/
 
 ## Currently wired tasks
 
-| task_id                  | what                                                | source                                                                  |
-|--------------------------|-----------------------------------------------------|-------------------------------------------------------------------------|
-| `disaster-spot-check`    | 300-event stratified verification (FP / FN / TP)    | `disaster/data/processed/verification/verification_sample_2026-04-22.csv` |
+The live list is `tasks.json`. The program-wide queue that says what each task unblocks, its decision
+rule and its loader is `~/Dropbox/Projects/_notes/human_queue_and_paid_runs.md` §1. As of 2026-09-28 the
+app carries only Tier-1 tasks: `disaster-D31-stated-date`, `disaster-response-markers`,
+`c26-content-mode-350`, `c26-topics-150`, `c26-war-text-120`. Retired entries are kept in
+`tasks_retired_<date>.json`, with their `data/` dirs left on disk.
+
+**When tasks change:**
+- Bump `const VERSION` in `sw.js` so iPads drop cached items.
+- `rsync -a validation/ docs/validation/`.
+- Commit only `validation/` + `docs/validation/` in the website repo, then push.
 
 ## Adding a new task
 
