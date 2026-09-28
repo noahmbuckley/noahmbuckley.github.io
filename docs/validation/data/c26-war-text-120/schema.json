@@ -1,0 +1,113 @@
+{
+  "task_id": "c26-war-text-120",
+  "name": "War-salience pilot TEXT gold (120, blind)",
+  "version": "2026-09-28-v2",
+  "id_field": "item_id",
+  "instructions": "BLIND war-salience text gold (governor-channel pilot). Channel, period and all model output are hidden. The text is the classifier input (up to 3,000 characters; the Text length line says if it is cut). Three codes: war frame(s) (text, blank = war absent), primary mode (one), military_bio (TRUE only if the text frames the AUTHOR's OWN military service/veteran identity). An item counts as coded once the primary mode is set. WAR FRAME (text field; ids separated by |; BLANK if the war is absent -- several may apply): local_security = the war as a LOCAL safety/governance matter: alerts, attack damage, casualties, evacuation, shelters, air defence, compensation/repairs for war damage. front_support = material/social support for fighters, families, veterans, wounded: convoys, supplies, benefits, jobs, rehabilitation. military_identity = СВО participants/heroes/veterans/service as VALUE or IDENTITY: honouring heroes, «Время героев», medals/ceremonies, own service biography. war_policy = a position on the war itself: aims, victory, negotiations, mobilisation, the West/NATO as enemy. NOTE: WWII memory alone is NOT a war_frame. Full rules: code/26_content_mode.py SYSTEM_PROMPT (prompt v3). MODE (pick ONE primary): policy_specific = a concrete, checkable proposal or promise (names an instrument, sum, or deadline). issue_position = takes a side on an issue with no concrete instrument ('за справедливые тарифы'). war_stance = СВО/front/veterans/victory as the campaign's identity; (set military_bio=true if it is framed as the candidate's OWN service biography). values_ideas = patriotism, tradition, sovereignty, anti-West framing, history — ideas without a policy. constituency_service = casework/pork: 'добился ремонта двора', fixed a specific local thing, helped a specific person/group. valence_personal = competence, experience, endorsement by a senior figure, biography, likeability — no issue content. mobilization_generic = dates, turnout instructions, ДЭГ how-to, 'поддержите нас' with no substance. attack = negative/critical content about a NAMED opponent, party, or official. not_campaign = not political/campaign content at all (admin notice, unrelated repost, greeting, ad). Pointer: campaign2026/validation/DECISION_RULES_PROPOSED_2026-09-28.md (PROPOSED bars).",
+  "display": [
+    {
+      "field": "text",
+      "label": "Post (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "text_note",
+      "label": "Text length",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "coder_war_frame",
+      "label": "War frame(s): local_security|front_support|military_identity|war_policy (blank = none)",
+      "type": "text",
+      "placeholder": "e.g. local_security|front_support   (blank = war absent)"
+    },
+    {
+      "field": "coder_primary_mode",
+      "label": "PRIMARY mode (one)",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "policy_specific",
+          "label": "policy_specific: concrete checkable proposal/promise",
+          "key": "1",
+          "tone": "neutral"
+        },
+        {
+          "value": "issue_position",
+          "label": "issue_position: side on an issue, no instrument",
+          "key": "2",
+          "tone": "neutral"
+        },
+        {
+          "value": "war_stance",
+          "label": "war_stance: СВО/front/veterans/victory as identity",
+          "key": "3",
+          "tone": "neutral"
+        },
+        {
+          "value": "values_ideas",
+          "label": "values_ideas: patriotism/tradition/anti-West, no policy",
+          "key": "4",
+          "tone": "neutral"
+        },
+        {
+          "value": "constituency_service",
+          "label": "constituency_service: casework / fixed a specific thing",
+          "key": "5",
+          "tone": "neutral"
+        },
+        {
+          "value": "valence_personal",
+          "label": "valence_personal: competence/biography/endorsement",
+          "key": "6",
+          "tone": "neutral"
+        },
+        {
+          "value": "mobilization_generic",
+          "label": "mobilization_generic: dates/turnout/'support us'",
+          "key": "7",
+          "tone": "neutral"
+        },
+        {
+          "value": "attack",
+          "label": "attack: negative on a NAMED opponent/party/official",
+          "key": "8",
+          "tone": "neutral"
+        },
+        {
+          "value": "not_campaign",
+          "label": "not_campaign: not political/campaign content",
+          "key": "9",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "coder_military_bio",
+      "label": "Author's OWN military service/veteran identity framed?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "TRUE",
+          "label": "TRUE -- own service/veteran identity",
+          "tone": "neutral"
+        },
+        {
+          "value": "FALSE",
+          "label": "FALSE",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes (optional)",
+      "type": "textarea",
+      "placeholder": "Ambiguity, clear model-independent oddities, dead text, etc."
+    }
+  ]
+}

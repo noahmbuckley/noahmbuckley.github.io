@@ -1,3 +1,5 @@
+> SUPERSEDED 2026-09-28 by START_HERE_2026-09-28.md (chunk rebuilt: 75 items, new strata, new decision-rule text).
+
 # START HERE — Disaster D-31 stated-date validation
 
 **Where:** open the validation PWA on your iPad (same app/home-screen icon you

@@ -1,0 +1,6 @@
+output     : /Users/noahbuckley/Dropbox/Projects/me/website/validation/data/c26-topics-150/items.json
+script     : campaign2026/code/26k_build_ipad_gold_chunks.R
+timestamp  : 2026-09-28 20:44:30 +0100
+R_version  : R version 4.6.0 (2026-04-24)
+n_items    : 150
+blind      : no pred_*/model_*/john_* fields; predictions sheets never read

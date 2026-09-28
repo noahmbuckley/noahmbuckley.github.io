@@ -1,8 +1,10 @@
 # Provenance for items.json
-output     : ~/Dropbox/Projects/me/website/validation/data/disaster-D31-stated-date/items.json
-script     : disaster/code/validation/99d_build_date_validation_chunk.R
-git_sha    : bc9fb6e91d823c4dd84427a559733fc30a24e0e6
-timestamp  : 2026-09-05 15:05:33.065216
+output     : /Users/noahbuckley/Dropbox/Projects/me/website/validation/data/disaster-D31-stated-date/items.json
+script     : code/validation/99d_build_date_validation_chunk.R
+git_sha    : d6de10f921f98571a2f5476786b30f429bf7f8dc
+git_dirty  : 2 modified/untracked files under the script's dir at run time (tree was DIRTY; git_sha may not match the code that ran)
+script_md5 : 7314347dfffa9a478bf10ddf40c65cc2
+timestamp  : 2026-09-28 20:28:23.828276
 R_version  : R version 4.6.0 (2026-04-24)
 platform   : aarch64-apple-darwin23
 packages_loaded:

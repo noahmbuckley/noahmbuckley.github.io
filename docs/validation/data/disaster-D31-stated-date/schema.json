@@ -1,9 +1,9 @@
 {
   "task_id": "disaster-D31-stated-date",
-  "name": "Disaster D-31 — stated-date validation (~60)",
-  "version": "2026-09-05",
+  "name": "Disaster D-31 — stated-date validation (75)",
+  "version": "2026-09-28",
   "id_field": "item_id",
-  "instructions": "For each event: read the FPP text and the extracted stated date + its quoted evidence. Check the evidence snippets, then use the Wikipedia/Google search links to find the real date if you can. Record the TRUE date if findable (YYYY-MM-DD or partial), whether the extracted stated_date MATCHES the true event date, and a note. 'Unsure' is fine if you can't find independent confirmation -- don't guess.",
+  "instructions": "Check the LLM's stated_date against the real event date. Read the FPP text, the extracted date and its quoted evidence, then use the Wikipedia/Google links to find when the event actually HAPPENED (the accident/disaster itself -- NOT a trial, sentence, inspection, anniversary or the publication date). Answer YES only if the stated date is the exact event day (or, for multi-day events, the first day). If not exact, answer NO and enter the true date in true_date: the loader then also scores within-3-days agreement from true_date. 'Unsure' if you cannot verify -- don't guess. For a NO, pick the error type. 'Why sampled' tells you which error to look for; it says nothing about whether the date is right.",
   "display": [
     {
       "field": "stratum",
@@ -16,11 +16,6 @@
       "format": "compact"
     },
     {
-      "field": "year",
-      "label": "year",
-      "format": "compact"
-    },
-    {
       "field": "region",
       "label": "region",
       "format": "compact"
@@ -28,6 +23,11 @@
     {
       "field": "disaster_type",
       "label": "type",
+      "format": "compact"
+    },
+    {
+      "field": "fpp_month",
+      "label": "FPP month (when the FPP digest logged it)",
       "format": "compact"
     },
     {
@@ -42,13 +42,28 @@
       "highlight": "llm"
     },
     {
+      "field": "date_offset_note",
+      "label": "vs FPP month",
+      "format": "compact"
+    },
+    {
       "field": "date_evidence_quote",
       "label": "LLM date-evidence quote",
       "format": "longtext"
     },
     {
+      "field": "extract_summary",
+      "label": "LLM summary of the evidence",
+      "format": "longtext"
+    },
+    {
       "field": "evidence_snippets",
       "label": "Independent evidence snippets",
+      "format": "longtext"
+    },
+    {
+      "field": "sample_reason",
+      "label": "Why sampled",
       "format": "longtext"
     },
     {
@@ -65,19 +80,19 @@
   "validation": [
     {
       "field": "true_date",
-      "label": "True date (if findable)",
+      "label": "True EVENT date (YYYY-MM-DD; partial ok)",
       "type": "text",
-      "placeholder": "YYYY-MM-DD or partial; blank if unknown"
+      "placeholder": "Fill whenever you find it, esp. for NO"
     },
     {
       "field": "matches_event",
-      "label": "Stated date matches true event date?",
+      "label": "Stated date = exact event day?",
       "type": "enum",
       "required": true,
       "options": [
         {
           "value": "yes",
-          "label": "Yes",
+          "label": "Yes (exact day)",
           "key": "1",
           "tone": "good"
         },
@@ -91,6 +106,48 @@
           "value": "unsure",
           "label": "Unsure / can't verify",
           "key": "3",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "error_type",
+      "label": "If NO: what is the stated date?",
+      "type": "enum",
+      "show_if": {
+        "matches_event": [
+          "no"
+        ]
+      },
+      "options": [
+        {
+          "value": "later_event",
+          "label": "Trial / court / sentence / aftermath / anniversary",
+          "key": "4",
+          "tone": "warn"
+        },
+        {
+          "value": "earlier_or_other_date",
+          "label": "Earlier event or other unrelated date",
+          "key": "5",
+          "tone": "warn"
+        },
+        {
+          "value": "publication_date",
+          "label": "Publication / reporting date",
+          "key": "6",
+          "tone": "warn"
+        },
+        {
+          "value": "wrong_event",
+          "label": "Text is about a different incident",
+          "key": "7",
+          "tone": "warn"
+        },
+        {
+          "value": "small_offset",
+          "label": "Same event, off by a few days",
+          "key": "8",
           "tone": "neutral"
         }
       ]

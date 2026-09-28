@@ -1,0 +1,143 @@
+{
+  "task_id": "c26-content-mode-350",
+  "name": "Campaign content MODE gold (350, blind)",
+  "version": "2026-09-28-v2",
+  "id_field": "item_id",
+  "instructions": "BLIND content-mode gold. Code from the text alone; no model output is shown. The text is the classifier input (up to 3,000 characters; the Text length line says if it is cut). Fields: primary mode (one), all modes present (text, ids separated by |, primary optional -- it is added automatically; blank = primary only), specificity 0-3, notes. Full codebook (verbatim from the workbook codebook sheet; military_bio / attack_target are NOT coded in this chunk). MODE (pick ONE primary): policy_specific = a concrete, checkable proposal or promise (names an instrument, sum, or deadline). issue_position = takes a side on an issue with no concrete instrument ('за справедливые тарифы'). war_stance = СВО/front/veterans/victory as the campaign's identity; (set military_bio=true if it is framed as the candidate's OWN service biography). values_ideas = patriotism, tradition, sovereignty, anti-West framing, history — ideas without a policy. constituency_service = casework/pork: 'добился ремонта двора', fixed a specific local thing, helped a specific person/group. valence_personal = competence, experience, endorsement by a senior figure, biography, likeability — no issue content. mobilization_generic = dates, turnout instructions, ДЭГ how-to, 'поддержите нас' with no substance. attack = negative/critical content about a NAMED opponent, party, or official. not_campaign = not political/campaign content at all (admin notice, unrelated repost, greeting, ad). SPECIFICITY (0-3): 0 = none: no substantive claim at all (pure mobilization/greeting/attack-with-no-content). 1 = vague direction: names a value or direction with no concrete proposal ('нужно поддержать семьи'). 2 = concrete but unquantified: a specific proposal/action with no number or deadline ('построим детскую площадку во дворе'). 3 = quantified with an instrument or deadline: a law, sum, percentage, or date attached ('снизим тариф на 15% с 1 января', 'внесём закон об индексации пенсий на уровень инфляции'). Pointer: campaign2026/validation/DECISION_RULES_PROPOSED_2026-09-28.md (PROPOSED bars, not yet decided).",
+  "display": [
+    {
+      "field": "source",
+      "label": "Source",
+      "format": "compact"
+    },
+    {
+      "field": "party_slug",
+      "label": "Party",
+      "format": "compact"
+    },
+    {
+      "field": "region",
+      "label": "Region",
+      "format": "compact"
+    },
+    {
+      "field": "date",
+      "label": "Date",
+      "format": "compact"
+    },
+    {
+      "field": "text",
+      "label": "Text (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "text_note",
+      "label": "Text length",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "primary_mode",
+      "label": "PRIMARY mode (one)",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "policy_specific",
+          "label": "policy_specific: concrete checkable proposal/promise",
+          "key": "1",
+          "tone": "neutral"
+        },
+        {
+          "value": "issue_position",
+          "label": "issue_position: side on an issue, no instrument",
+          "key": "2",
+          "tone": "neutral"
+        },
+        {
+          "value": "war_stance",
+          "label": "war_stance: СВО/front/veterans/victory as identity",
+          "key": "3",
+          "tone": "neutral"
+        },
+        {
+          "value": "values_ideas",
+          "label": "values_ideas: patriotism/tradition/anti-West, no policy",
+          "key": "4",
+          "tone": "neutral"
+        },
+        {
+          "value": "constituency_service",
+          "label": "constituency_service: casework / fixed a specific thing",
+          "key": "5",
+          "tone": "neutral"
+        },
+        {
+          "value": "valence_personal",
+          "label": "valence_personal: competence/biography/endorsement",
+          "key": "6",
+          "tone": "neutral"
+        },
+        {
+          "value": "mobilization_generic",
+          "label": "mobilization_generic: dates/turnout/'support us'",
+          "key": "7",
+          "tone": "neutral"
+        },
+        {
+          "value": "attack",
+          "label": "attack: negative on a NAMED opponent/party/official",
+          "key": "8",
+          "tone": "neutral"
+        },
+        {
+          "value": "not_campaign",
+          "label": "not_campaign: not political/campaign content",
+          "key": "9",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "modes",
+      "label": "All modes present (ids separated by |; optional)",
+      "type": "text",
+      "placeholder": "e.g. policy_specific|attack  (blank = primary only)"
+    },
+    {
+      "field": "specificity",
+      "label": "Specificity 0-3",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "0",
+          "label": "0 none: no substantive claim",
+          "tone": "neutral"
+        },
+        {
+          "value": "1",
+          "label": "1 vague direction",
+          "tone": "neutral"
+        },
+        {
+          "value": "2",
+          "label": "2 concrete, unquantified",
+          "tone": "neutral"
+        },
+        {
+          "value": "3",
+          "label": "3 quantified (sum / % / date / law)",
+          "tone": "neutral"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes (optional)",
+      "type": "textarea",
+      "placeholder": "Ambiguity, clear model-independent oddities, dead text, etc."
+    }
+  ]
+}

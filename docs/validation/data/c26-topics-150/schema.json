@@ -1,0 +1,162 @@
+{
+  "task_id": "c26-topics-150",
+  "name": "Campaign message TOPICS gold (150, blind)",
+  "version": "2026-09-28-v2",
+  "id_field": "item_id",
+  "instructions": "BLIND topics gold for 25_message_topics.py. Code from the text alone; no model output is shown. The text is the classifier input (up to 3,000 characters; the Text length line says if it is cut); all posts are June 2026. Order is shuffled (the source sheet was sorted by party). 1) Relevant? YES if the post is a political/campaign message; NO if admin/service/greeting/ad/non-political filler (then primary topic is 'other' automatically). 2) PRIMARY topic: the ONE most central issue. 3) All topics (text, ids separated by |; primary optional -- added automatically; blank = primary only). TOPIC axis (pick the ONE most central issue; list ALL issues the post substantively touches). svo_war = war in Ukraine / СВО / mobilization / soldiers / veterans / defense / front support. economy_prices = economy / prices / inflation / wages / jobs / taxes / business / budget. social_welfare = pensions / benefits / social support / families / maternity capital / poverty. housing_utilities = ЖКХ / utility tariffs / capital repairs / yards / heating / water / waste collection. infrastructure_transport = roads / public transport / construction / bridges. healthcare = healthcare / hospitals / clinics / doctors / medicines. education = education / schools / kindergartens / universities / teachers. corruption_accountability = corruption / accountability to voters / oversight of officials / transparency. patriotism_values = patriotism / traditional values / history & memory / religion / family-as-value. opposition_repression = repression / detentions / foreign agents / political prisoners / free speech / criticism of authorities. ecology = ecology / landfills / environment / climate / green zones. agriculture_industry = agriculture / industry / production / import substitution. migration = migration / migrants / interethnic relations. youth_sport_culture = youth / sport / culture / events for residents. election_process = the campaign itself: calls to vote, turnout, observers, registration, generic 'support our party/candidate' with no substantive issue. other = none of the above / not campaign-related / everyday/admin filler. There is deliberately NO mode/specificity coding on this chunk. Pointer: campaign2026/validation/DECISION_RULES_PROPOSED_2026-09-28.md (PROPOSED bars).",
+  "display": [
+    {
+      "field": "party_slug",
+      "label": "Party",
+      "format": "compact"
+    },
+    {
+      "field": "region",
+      "label": "Region",
+      "format": "compact"
+    },
+    {
+      "field": "date",
+      "label": "Date",
+      "format": "compact"
+    },
+    {
+      "field": "text",
+      "label": "Post (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "text_note",
+      "label": "Text length",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "noah_relevant",
+      "label": "Political / campaign message?",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "1",
+          "label": "Yes -- political/campaign",
+          "key": "1",
+          "tone": "neutral"
+        },
+        {
+          "value": "0",
+          "label": "No -- admin/service/greeting/ad/filler",
+          "key": "2",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "noah_primary",
+      "label": "PRIMARY topic (one)",
+      "type": "enum",
+      "required": true,
+      "options": [
+        {
+          "value": "svo_war",
+          "label": "svo_war: war in Ukraine / СВО / soldiers / veterans / defense",
+          "tone": "neutral"
+        },
+        {
+          "value": "economy_prices",
+          "label": "economy_prices: economy / prices / wages / jobs / taxes / budget",
+          "tone": "neutral"
+        },
+        {
+          "value": "social_welfare",
+          "label": "social_welfare: pensions / benefits / families / poverty",
+          "tone": "neutral"
+        },
+        {
+          "value": "housing_utilities",
+          "label": "housing_utilities: ЖКХ / tariffs / capital repairs / yards / heating / waste",
+          "tone": "neutral"
+        },
+        {
+          "value": "infrastructure_transport",
+          "label": "infrastructure_transport: roads / public transport / construction / bridges",
+          "tone": "neutral"
+        },
+        {
+          "value": "healthcare",
+          "label": "healthcare: hospitals / clinics / doctors / medicines",
+          "tone": "neutral"
+        },
+        {
+          "value": "education",
+          "label": "education: schools / kindergartens / universities / teachers",
+          "tone": "neutral"
+        },
+        {
+          "value": "corruption_accountability",
+          "label": "corruption_accountability: corruption / accountability to voters / oversight / transparency",
+          "tone": "neutral"
+        },
+        {
+          "value": "patriotism_values",
+          "label": "patriotism_values: patriotism / traditional values / history & memory / religion",
+          "tone": "neutral"
+        },
+        {
+          "value": "opposition_repression",
+          "label": "opposition_repression: repression / detentions / foreign agents / free speech",
+          "tone": "neutral"
+        },
+        {
+          "value": "ecology",
+          "label": "ecology: ecology / landfills / environment / green zones",
+          "tone": "neutral"
+        },
+        {
+          "value": "agriculture_industry",
+          "label": "agriculture_industry: agriculture / industry / production / import substitution",
+          "tone": "neutral"
+        },
+        {
+          "value": "migration",
+          "label": "migration: migration / migrants / interethnic relations",
+          "tone": "neutral"
+        },
+        {
+          "value": "youth_sport_culture",
+          "label": "youth_sport_culture: youth / sport / culture / events for residents",
+          "tone": "neutral"
+        },
+        {
+          "value": "election_process",
+          "label": "election_process: the campaign itself: calls to vote, turnout, generic 'support us'",
+          "tone": "neutral"
+        },
+        {
+          "value": "other",
+          "label": "other: none of the above / not campaign-related / admin filler",
+          "tone": "warn"
+        }
+      ],
+      "show_if": {
+        "noah_relevant": ["1"]
+      }
+    },
+    {
+      "field": "noah_topics",
+      "label": "All topics touched (ids separated by |; optional)",
+      "type": "text",
+      "placeholder": "e.g. economy_prices|social_welfare  (blank = primary only)",
+      "show_if": {
+        "noah_relevant": ["1"]
+      }
+    },
+    {
+      "field": "notes",
+      "label": "Notes (optional)",
+      "type": "textarea",
+      "placeholder": "Ambiguity, clear model-independent oddities, dead text, etc."
+    }
+  ]
+}
