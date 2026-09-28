@@ -140,17 +140,86 @@
         }
       ],
       "show_if": {
-        "noah_relevant": ["1"]
+        "noah_relevant": [
+          "1"
+        ]
       }
     },
     {
       "field": "noah_topics",
-      "label": "All topics touched (ids separated by |; optional)",
-      "type": "text",
-      "placeholder": "e.g. economy_prices|social_welfare  (blank = primary only)",
+      "label": "All topics touched (tap all that apply; primary is added automatically)",
+      "type": "multi",
       "show_if": {
-        "noah_relevant": ["1"]
-      }
+        "noah_relevant": [
+          "1"
+        ]
+      },
+      "options": [
+        {
+          "value": "svo_war",
+          "label": "svo_war: war in Ukraine / СВО / soldiers / veterans / defense"
+        },
+        {
+          "value": "economy_prices",
+          "label": "economy_prices: economy / prices / wages / jobs / taxes / budget"
+        },
+        {
+          "value": "social_welfare",
+          "label": "social_welfare: pensions / benefits / families / poverty"
+        },
+        {
+          "value": "housing_utilities",
+          "label": "housing_utilities: ЖКХ / tariffs / capital repairs / yards / heating / waste"
+        },
+        {
+          "value": "infrastructure_transport",
+          "label": "infrastructure_transport: roads / public transport / construction / bridges"
+        },
+        {
+          "value": "healthcare",
+          "label": "healthcare: hospitals / clinics / doctors / medicines"
+        },
+        {
+          "value": "education",
+          "label": "education: schools / kindergartens / universities / teachers"
+        },
+        {
+          "value": "corruption_accountability",
+          "label": "corruption_accountability: corruption / accountability to voters / oversight / transparency"
+        },
+        {
+          "value": "patriotism_values",
+          "label": "patriotism_values: patriotism / traditional values / history & memory / religion"
+        },
+        {
+          "value": "opposition_repression",
+          "label": "opposition_repression: repression / detentions / foreign agents / free speech"
+        },
+        {
+          "value": "ecology",
+          "label": "ecology: ecology / landfills / environment / green zones"
+        },
+        {
+          "value": "agriculture_industry",
+          "label": "agriculture_industry: agriculture / industry / production / import substitution"
+        },
+        {
+          "value": "migration",
+          "label": "migration: migration / migrants / interethnic relations"
+        },
+        {
+          "value": "youth_sport_culture",
+          "label": "youth_sport_culture: youth / sport / culture / events for residents"
+        },
+        {
+          "value": "election_process",
+          "label": "election_process: the campaign itself: calls to vote, turnout, generic 'support us'"
+        },
+        {
+          "value": "other",
+          "label": "other: none of the above / not campaign-related / admin filler"
+        }
+      ]
     },
     {
       "field": "notes",

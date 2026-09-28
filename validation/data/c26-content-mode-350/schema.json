@@ -101,9 +101,46 @@
     },
     {
       "field": "modes",
-      "label": "All modes present (ids separated by |; optional)",
-      "type": "text",
-      "placeholder": "e.g. policy_specific|attack  (blank = primary only)"
+      "label": "All modes present (tap all that apply; primary is added automatically)",
+      "type": "multi",
+      "options": [
+        {
+          "value": "policy_specific",
+          "label": "policy_specific: concrete checkable proposal/promise"
+        },
+        {
+          "value": "issue_position",
+          "label": "issue_position: side on an issue, no instrument"
+        },
+        {
+          "value": "war_stance",
+          "label": "war_stance: СВО/front/veterans/victory as identity"
+        },
+        {
+          "value": "values_ideas",
+          "label": "values_ideas: patriotism/tradition/anti-West, no policy"
+        },
+        {
+          "value": "constituency_service",
+          "label": "constituency_service: casework / fixed a specific thing"
+        },
+        {
+          "value": "valence_personal",
+          "label": "valence_personal: competence/biography/endorsement"
+        },
+        {
+          "value": "mobilization_generic",
+          "label": "mobilization_generic: dates/turnout/'support us'"
+        },
+        {
+          "value": "attack",
+          "label": "attack: negative on a NAMED opponent/party/official"
+        },
+        {
+          "value": "not_campaign",
+          "label": "not_campaign: not political/campaign content"
+        }
+      ]
     },
     {
       "field": "specificity",

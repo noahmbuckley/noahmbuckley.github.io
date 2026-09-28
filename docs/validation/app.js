@@ -393,6 +393,29 @@ function renderForm() {
         wrap.appendChild(b);
       }
       grp.appendChild(wrap);
+    } else if (v.type === 'multi') {
+      // Multi-select (2026-09-28): tap to toggle; stored as a pipe-joined string in option order,
+      // so loaders that parse "a|b" keep working and old typed answers still load.
+      const wrap = document.createElement('div');
+      wrap.className = 'options-row';
+      const have = String(cur[v.field] ?? '').split('|').map(s => s.trim()).filter(Boolean);
+      for (const opt of v.options) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'option-btn tone-' + (opt.tone || 'neutral');
+        if (have.includes(opt.value)) b.classList.add('selected');
+        b.textContent = opt.label;
+        b.addEventListener('click', () => {
+          const now = String(state.answersCache[currentItemId()]?.[v.field] ?? '')
+            .split('|').map(s => s.trim()).filter(Boolean);
+          const next = now.includes(opt.value) ? now.filter(x => x !== opt.value) : now.concat([opt.value]);
+          const ordered = v.options.map(o => o.value).filter(x => next.includes(x));
+          setAnswerField(v.field, ordered.join('|'));
+          renderForm();
+        });
+        wrap.appendChild(b);
+      }
+      grp.appendChild(wrap);
     } else if (v.type === 'text') {
       const inp = document.createElement('input');
       inp.type = 'text';

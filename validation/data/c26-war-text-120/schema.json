@@ -19,9 +19,26 @@
   "validation": [
     {
       "field": "coder_war_frame",
-      "label": "War frame(s): local_security|front_support|military_identity|war_policy (blank = none)",
-      "type": "text",
-      "placeholder": "e.g. local_security|front_support   (blank = war absent)"
+      "label": "War frame(s) (tap all that apply; none = war absent)",
+      "type": "multi",
+      "options": [
+        {
+          "value": "local_security",
+          "label": "local_security"
+        },
+        {
+          "value": "front_support",
+          "label": "front_support"
+        },
+        {
+          "value": "military_identity",
+          "label": "military_identity"
+        },
+        {
+          "value": "war_policy",
+          "label": "war_policy"
+        }
+      ]
     },
     {
       "field": "coder_primary_mode",

@@ -5,7 +5,7 @@
      - activate: precache all task data listed in tasks.json (best effort)
      - fetch:    cache-first for our scope; network falls back to cache
    ============================================================= */
-const VERSION = 'v10-2026-09-28';
+const VERSION = 'v11-2026-09-28';
 const SHELL_CACHE = 'shell-' + VERSION;
 const DATA_CACHE  = 'data-'  + VERSION;
 
