@@ -9,7 +9,7 @@
 <meta name="author" content="Noah Buckley">
 <meta name="description" content="Noah Buckley - Assistant Professor of Political Science at Trinity College Dublin. Research on Russian politics, authoritarian regimes, public opinion, and corruption.">
 
-<title>start_here_2026-09-15 – Noah Buckley</title>
+<title>start_here_2026-09-28 – Noah Buckley</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,19 +107,101 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="start-here-disaster-d-31-stated-date-validation-v2-rebuilt-2026-09-28" class="level1">
+<h1>START HERE — Disaster D-31 stated-date validation (v2, rebuilt 2026-09-28)</h1>
+<p><strong>Supersedes</strong> <code>START_HERE_2026-09-05.md</code> (old 60-item chunk: <code>items_2026-09-05.json.bak</code>). Same task in the app: <strong>“Disaster D-31 — stated-date validation (75)”</strong>.</p>
+<section id="what-it-checks" class="level2">
+<h2 class="anchored" data-anchor-id="what-it-checks">What it checks</h2>
+<p>The stage-09 LLM read matched media/social text and extracted a <code>stated_event_date</code>. For 1,756 events that date is the day used in the DiD (<code>best_date_source == llm_stated_date</code>). Nobody has checked it against reality. Per item: is the stated date the <strong>day the accident/disaster itself happened</strong>?</p>
+</section>
+<section id="what-is-new-in-v2-the-later-event-date-stratum-audit-d-57" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-new-in-v2-the-later-event-date-stratum-audit-d-57">What is new in v2: the “later-event date” stratum (audit D-57)</h2>
+<p>Some FPP entries are about the legal/aftermath step (Krymsk eventid 7932: “start of hearings”). The concern: the extractor (or the pipeline) picks a <strong>trial / court / anniversary / aftermath date</strong> instead of the event date. Items are tagged with why they were sampled (“Why sampled”):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 28%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>tier</th>
+<th>rule</th>
+<th style="text-align: right;">pool</th>
+<th style="text-align: right;">shown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>W</td>
+<td>stated date &gt; 45 d outside the FPP month; the pipeline’s ±45 d window rejects it (NOT in the DiD). Includes Krymsk 7932</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td>T</td>
+<td>суд / судебн / приговор / обвинительн / годовщин / слушани / апелляц / “лет назад” in FPP text, date quote or LLM summary</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td>O1</td>
+<td>stated date after the last day of the FPP month</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td>O2</td>
+<td>stated date &gt; 7 d before the FPP month</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td>M</td>
+<td>extractor confidence = medium (none of the above)</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="even">
+<td>H</td>
+<td>high-confidence random baseline, spread across years</td>
+<td style="text-align: right;">1,657</td>
+<td style="text-align: right;">35</td>
+</tr>
+</tbody>
+</table>
+<p>(pool = 1,756 llm_stated_date events + W; strata mutually exclusive, priority W&gt;T&gt;O1&gt;O2&gt;M&gt;H.)</p>
+<p><strong>Finding to know before you start:</strong> in Krymsk 7932 the extractor’s stated date (2012-07-06) is the CORRECT flood date; the FPP month (2013-05) is the trial month. The pipeline’s ±45 d window rejected the extractor’s date and the dossier fell back to <code>media_first</code> (2013-04-22). So D-57’s “trial date mistaken for the event” was a window/FPP-month problem, not an extractor error, in that case. Stratum W tests whether that is typical (7 events only exist).</p>
+</section>
+<section id="per-item-what-to-record" class="level2">
+<h2 class="anchored" data-anchor-id="per-item-what-to-record">Per item — what to record</h2>
+<ul>
+<li><code>true_date</code> — the real EVENT date (YYYY-MM-DD; partial ok). Fill it whenever you find it, especially for NO.</li>
+<li><code>matches_event</code> — <strong>Yes = stated date is the exact event day</strong> (first day for multi-day events); No; Unsure.</li>
+<li>if No: <code>error_type</code> — trial/court/aftermath/anniversary; earlier or other date; publication date; different incident; same event off by a few days.</li>
+<li><code>notes</code>.</li>
+</ul>
+</section>
+<section id="decision-rule-pre-declared-2026-09-28-before-any-coding" class="level2">
+<h2 class="anchored" data-anchor-id="decision-rule-pre-declared-2026-09-28-before-any-coding">DECISION RULE (pre-declared 2026-09-28, before any coding)</h2>
 <blockquote class="blockquote">
-<p>SUPERSEDED 2026-09-28 by START_HERE_2026-09-28.md (chunk rebuilt from the v2 Haiku pass).</p>
+<p><strong>PROPOSED BY CC — NOT PREVIOUSLY DEFINED; Noah to confirm or edit BEFORE coding.</strong> The existing docs (<code>audit_2026-05-13.md:220</code>, the 09-05 START_HERE) say only “drop sources below ~70% accuracy” and never define how close a date must be. There is no tolerance N.</p>
 </blockquote>
-<section id="start-here-disaster-response-markers-validation" class="level1">
-<h1>START HERE — Disaster response-markers validation</h1>
-<p><strong>Where:</strong> open the validation PWA (same app as the D-31 stated-date chunk). Pick the task named <strong>“Disaster response-markers validation (~60)”</strong>.</p>
-<p><strong>What it is:</strong> 60 disaster events where a Haiku LLM pass read matched news/ social snippets and tagged government-response markers (CHS/emergency-regime declared, governor on-site, federal attention) — nobody has checked whether the underlying snippets actually describe a response to THIS event, or whether the marker is right. Stratified by deaths bracket x Haiku-yes/no on CHS x Haiku-yes/no on federal attention, oversampling high-severity and CHS=yes events.</p>
-<p><strong>Per event you will see:</strong> - FPP/summary description (RU), disaster type, deaths, event date. - The Haiku CHS / federal-attention calls. - Up to 3 supporting snippets, each tagged with which marker it was pulled for (governor-onsite / CHS / federal). These come from the <em>regex</em> first pass, which is what fed the Haiku LLM prompt, so checking the regex snippet is checking what the LLM actually saw. - ru.wikipedia and Google search links.</p>
-<p><strong>What to record per item:</strong> - <code>snippet_matches_event</code> — do the snippets actually describe a response to THIS event? Yes / Some / No. - <code>confirmed_markers</code> — free-text list of markers you can confirm as genuinely present (e.g.&nbsp;“governor_onsite, chs”), blank if none confirmed. - <code>notes</code> — anything worth flagging.</p>
-<p><strong>When done:</strong> Export from the app menu, save to <code>~/Dropbox/_validation_exports/</code> (same convention as every other chunk).</p>
-<p><strong>What this feeds:</strong> the coverage/agreement tables in <code>disaster/notes/response_master_build_2026-09-15.md</code> and <code>disaster/data/processed/response/event_response_master.csv</code> — this is the first human check of the Haiku response-marker layer (4,235-event Haiku Batches pass, commit 3e18e1cb). Build script: <code>disaster/code/response/08_build_response_validation_chunk.R</code>.</p>
+<ol type="1">
+<li><strong>“Correct” = <code>matches_event == yes</code> = exact event day</strong> (N = 0). Secondary statistic: agreement within <strong>±3 days</strong>, computed by the loader from <code>true_date</code> (±3 matters for the 7- and 14-day treatment windows).</li>
+<li><strong>Statistic</strong> = post-stratified accuracy over the 1,756-event pool (strata T, O1, O2, M, H weighted by pool size; W excluded and reported separately; ‘unsure’ excluded and its count reported). The oversampled suspicious strata do NOT drive the headline.</li>
+<li><strong>Rule:</strong> point estimate <strong>&lt; 70%</strong> → <code>llm_stated_date</code> is not trusted at day precision until fixed (Noah decides the fix; nothing automatic). 95% CI straddling 70% → reported as <strong>inconclusive</strong>, not as a pass.</li>
+<li>Per-stratum accuracy and the error_type tally are reported as descriptives, not as tests.</li>
+</ol>
+<p><strong>Flag — the result is very sensitive to N.</strong> A separate known-answer check (extractor vs EM-DAT / Sledcom days, n=101, <code>disaster/code/validation/99g_known_answer_stated_date.R</code>) finds exact-day agreement 42.6% (Wilson CI 33-52), within ±3 d 61%, within ±7 d 71% — those reference dates carry their own error, so this is not a substitute for your hand check, but exact-day vs ±3 vs ±7 would move the pass/fail line. Decide N first.</p>
+</section>
+<section id="export-and-load" class="level2">
+<h2 class="anchored" data-anchor-id="export-and-load">Export and load</h2>
+<p>Menu → Export → save to <code>~/Dropbox/_validation_exports/</code>. Then <code>Rscript disaster/code/validation/99d_load_date_validation_results.R</code> (writes <code>disaster/data/processed/verification/validation_D31_stated_date_handcoded.csv</code> and prints the per-stratum table, the post-stratified estimate, and the error tally).</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

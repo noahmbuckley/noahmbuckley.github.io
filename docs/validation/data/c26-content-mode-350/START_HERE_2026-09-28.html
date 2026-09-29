@@ -9,7 +9,7 @@
 <meta name="author" content="Noah Buckley">
 <meta name="description" content="Noah Buckley - Assistant Professor of Political Science at Trinity College Dublin. Research on Russian politics, authoritarian regimes, public opinion, and corruption.">
 
-<title>start_here_2026-09-15 – Noah Buckley</title>
+<title>start_here_2026-09-28 – Noah Buckley</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,17 +107,14 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<blockquote class="blockquote">
-<p>SUPERSEDED 2026-09-28 by START_HERE_2026-09-28.md (chunk rebuilt from the v2 Haiku pass).</p>
-</blockquote>
-<section id="start-here-disaster-response-markers-validation" class="level1">
-<h1>START HERE — Disaster response-markers validation</h1>
-<p><strong>Where:</strong> open the validation PWA (same app as the D-31 stated-date chunk). Pick the task named <strong>“Disaster response-markers validation (~60)”</strong>.</p>
-<p><strong>What it is:</strong> 60 disaster events where a Haiku LLM pass read matched news/ social snippets and tagged government-response markers (CHS/emergency-regime declared, governor on-site, federal attention) — nobody has checked whether the underlying snippets actually describe a response to THIS event, or whether the marker is right. Stratified by deaths bracket x Haiku-yes/no on CHS x Haiku-yes/no on federal attention, oversampling high-severity and CHS=yes events.</p>
-<p><strong>Per event you will see:</strong> - FPP/summary description (RU), disaster type, deaths, event date. - The Haiku CHS / federal-attention calls. - Up to 3 supporting snippets, each tagged with which marker it was pulled for (governor-onsite / CHS / federal). These come from the <em>regex</em> first pass, which is what fed the Haiku LLM prompt, so checking the regex snippet is checking what the LLM actually saw. - ru.wikipedia and Google search links.</p>
-<p><strong>What to record per item:</strong> - <code>snippet_matches_event</code> — do the snippets actually describe a response to THIS event? Yes / Some / No. - <code>confirmed_markers</code> — free-text list of markers you can confirm as genuinely present (e.g.&nbsp;“governor_onsite, chs”), blank if none confirmed. - <code>notes</code> — anything worth flagging.</p>
-<p><strong>When done:</strong> Export from the app menu, save to <code>~/Dropbox/_validation_exports/</code> (same convention as every other chunk).</p>
-<p><strong>What this feeds:</strong> the coverage/agreement tables in <code>disaster/notes/response_master_build_2026-09-15.md</code> and <code>disaster/data/processed/response/event_response_master.csv</code> — this is the first human check of the Haiku response-marker layer (4,235-event Haiku Batches pass, commit 3e18e1cb). Build script: <code>disaster/code/response/08_build_response_validation_chunk.R</code>.</p>
+<section id="start-here-campaign-content-mode-gold-350-items-blind-2026-09-28" class="level1">
+<h1>START HERE — Campaign content MODE gold (350 items, blind, 2026-09-28)</h1>
+<p><strong>Where:</strong> validation PWA → task <strong>“Campaign content MODE gold (350, blind)”</strong> (<code>c26-content-mode-350</code>).</p>
+<p><strong>What it is:</strong> the 350-message blind gold for <code>26_content_mode.py</code> (prompt v2), drawn 2026-09-15 stratified source × party × predicted mode, order shuffled. Sources: debate turns, TV ads, programmes, party sites, TG, VK, poster OCR. <strong>No model output is shown or stored in this chunk</strong> (items carry only source, party, region name, date, text; nothing is highlighted as LLM). Text is the FULL classifier input (up to 3,000 characters), recovered from the classifier’s own input tables rather than the workbook’s 600-character cut; a “Text length” line under each text says how long it is and flags any item where the full text could not be recovered. 198 of 350 have no region (national sources) and show “—”. 69 have no date.</p>
+<p><strong>Per item (the texts are long, median about 1,000 characters, so about 30-45 s each and roughly 3-4 hours in total, best split over several sittings; stop and export any time, the loader handles partial exports):</strong> 1. <strong>PRIMARY mode</strong> — tap one of the 9 (keys 1-9 on a Mac). Definitions are on each button and in full at the top (verbatim from the workbook codebook). 2. <strong>All modes present</strong> — optional text: ids separated by <code>|</code> (e.g.&nbsp;<code>policy_specific|attack</code>). Blank = primary only; the primary is added automatically. Full ids are safest; unique prefixes work, ambiguous ones (<code>val</code>, <code>eco</code>) are flagged by the loader, not guessed. 3. <strong>Specificity 0-3</strong> — tap. 4. Notes — optional.</p>
+<p><strong>When done / partial:</strong> menu → Export answers → save to <code>~/Dropbox/_validation_exports/</code> (file <code>validation_c26-content-mode-350_&lt;date&gt;.json</code>). Then, at the Mac: <code>Rscript campaign2026/code/26l_load_content_mode_gold.R</code>. It writes your codes FIRST to <code>campaign2026/validation/c26_content_mode_noah_codes_2026-09-28.csv</code> (keyed by item_id = msg_id) and only then opens the blind predictions and prints agreement (also vs John’s columns if filled in the workbook or <code>JOHN_XLSX</code>).</p>
+<p><strong>Do not open</strong> the <code>predictions_BLIND_UNTIL_DONE</code> sheet of the xlsx before you finish. John codes his own copy in <code>~/Dropbox/Campaign2026_Shared/</code>; the iPad chunk and his copy are independent.</p>
+<p><strong>What it feeds / bars:</strong> the proposed (not adopted) decision rules are in <code>campaign2026/validation/DECISION_RULES_PROPOSED_2026-09-28.md</code>.</p>
 
 
 </section>

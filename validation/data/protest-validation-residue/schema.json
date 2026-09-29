@@ -1,0 +1,143 @@
+{
+  "task_id": "protest-validation-residue",
+  "name": "Protest data validation: referee residue (tasks 1-5)",
+  "version": "2026-09-29-v1",
+  "id_field": "item_id",
+  "instructions": "ARTICLE (Kasparov.ru news). Answer from the text alone; no model or database label is shown. Count as a protest a PUBLIC, COLLECTIVE action expressing a grievance/demand that ALREADY HAPPENED as a live, in-person, physical action in Russia: rally, march, picket (incl. a solo picket with a sign), strike, hunger strike with public demands, blockade, flashmob/banner action. NOT a protest: only a court hearing/sentence/fine/police search (aftermath), only an online petition/video/post/statement/op-ed, stickers/leaflets/graffiti with no live gathering, background or history, an announced but not-yet-held action, a memorial/religious event with no demands, a concert/celebration. A protest ABROAD is 'No' here. If Yes: give the date the protest itself happened (YYYY-MM-DD; resolve 'yesterday'/weekdays from the publication date) and the region. Full production definition: eventsData/protestData/code/_lib_haiku.py SYSTEM_PROMPT.",
+  "instructions_by_variant": {
+    "article_protest": "ARTICLE (Kasparov.ru news). Answer from the text alone; no model or database label is shown. Count as a protest a PUBLIC, COLLECTIVE action expressing a grievance/demand that ALREADY HAPPENED as a live, in-person, physical action in Russia: rally, march, picket (incl. a solo picket with a sign), strike, hunger strike with public demands, blockade, flashmob/banner action. NOT a protest: only a court hearing/sentence/fine/police search (aftermath), only an online petition/video/post/statement/op-ed, stickers/leaflets/graffiti with no live gathering, background or history, an announced but not-yet-held action, a memorial/religious event with no demands, a concert/celebration. A protest ABROAD is 'No' here. If Yes: give the date the protest itself happened (YYYY-MM-DD; resolve 'yesterday'/weekdays from the publication date) and the region. Full production definition: eventsData/protestData/code/_lib_haiku.py SYSTEM_PROMPT.",
+    "article_date": "ARTICLE (Kasparov.ru news) reporting a protest. Give the calendar date (YYYY-MM-DD) on which the protest ITSELF took place, reading the text. Resolve 'вчера', 'в среду', '8 декабря' etc. from the publication date shown. If it lasted several days, give the first day. If the text gives no date, type the publication date and say so in the notes.",
+    "article_region": "ARTICLE (Kasparov.ru news) reporting a protest. Type the Russian federal subject (region) and the city where the protest took place. Moscow city and Moscow oblast are different regions; so are St Petersburg and Leningrad oblast.",
+    "pair": "PAIR of records from protest databases (or two articles of one source). Same protest event = the same physical gathering/action (same occasion, same city/place, same organisers or participants). Sources often record a date a day or a few days off (publication date instead of event date, or an imputed day), so judge mainly by CONTENT. Two protests on the same theme in the same place on clearly different occasions/days are DIFFERENT events (a weekly picket is a different event each week). A record marked 'month-level only' has an imputed day. 'Unclear' if the records do not contain enough to tell (e.g. a coded record with no text)."
+  },
+  "display": [
+    {
+      "field": "question",
+      "label": "Question",
+      "format": "compact"
+    },
+    {
+      "field": "main_text",
+      "label": "Text (RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "context",
+      "label": "Context",
+      "format": "compact"
+    }
+  ],
+  "validation": [],
+  "validation_by_variant": {
+    "article_protest": [
+      {
+        "field": "coder_real_protest",
+        "label": "Real, already-happened, in-person protest in Russia?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes",
+            "key": "1",
+            "tone": "neutral"
+          },
+          {
+            "value": "no",
+            "label": "No",
+            "key": "2",
+            "tone": "neutral"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear from the text",
+            "key": "3",
+            "tone": "warn"
+          }
+        ]
+      },
+      {
+        "field": "coder_protest_date",
+        "label": "If yes: date of the protest (YYYY-MM-DD)",
+        "type": "text",
+        "placeholder": "2011-12-10"
+      },
+      {
+        "field": "coder_region",
+        "label": "If yes: region (and city)",
+        "type": "text",
+        "placeholder": "Свердловская область, Екатеринбург"
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "article_date": [
+      {
+        "field": "coder_protest_date",
+        "label": "Date the protest itself took place (YYYY-MM-DD)",
+        "type": "text",
+        "required": true,
+        "placeholder": "2011-12-10"
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional; say if you assumed the publication date)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "article_region": [
+      {
+        "field": "coder_region",
+        "label": "Region (federal subject) and city",
+        "type": "text",
+        "required": true,
+        "placeholder": "Свердловская область, Екатеринбург"
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "pair": [
+      {
+        "field": "coder_same_event",
+        "label": "Same protest event?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes",
+            "key": "1",
+            "tone": "neutral"
+          },
+          {
+            "value": "no",
+            "label": "No",
+            "key": "2",
+            "tone": "neutral"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear from the text",
+            "key": "3",
+            "tone": "warn"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+output     : /Users/noahbuckley/Dropbox/Projects/me/website/validation/data/protest-validation-residue/items.json
+script     : eventsData/protestData/code/validation/60_build_residue_chunk.R
+timestamp  : 2026-09-29 08:37:09 +0100
+R_version  : R version 4.6.0 (2026-04-24)
+n_items    : 40
+by task    : 1=12 2=7 3=2 4=2 5=17
+blind      : no production label, no referee answer, no stratum stored; residue = referee disagreement or 'unclear'

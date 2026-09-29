@@ -49,6 +49,14 @@
       "description": "TIER 1. Blind gold for the war pilot's text codes (war_frame, primary mode, military_bio); 24 per predicted bucket, channel/period hidden. Decides Haiku scale-up (~$30-55) vs free rusclf. The 150-image half stays in campaign2026/validation/war_pilot_image_gold_2026-09-27.xlsx (images embedded). Loader campaign2026/code/26n_load_war_text_gold.R.",
       "schema_url": "data/c26-war-text-120/schema.json",
       "items_url": "data/c26-war-text-120/items.json"
+    },
+    {
+      "id": "protest-validation-residue",
+      "name": "T2 · Protest data: referee residue (40)",
+      "project": "eventsData/protestData",
+      "description": "TIER 2. The 40 items on which the two silver referees (Opus 5, gpt-5) disagreed or said unclear across the protest-data validation package: 12 'real protest?' (Kasparov identification), 7 the same on articles the classifier never labelled, 2 protest dates, 2 regions, 17 'same protest event?' pairs (merged / near-miss / self-dedup). Blind: no model or database label shown. Resolves the residue in eventsData/protestData/validation/pkg_2026-09-28/SUMMARY.md. Loader eventsData/protestData/code/validation/61_load_residue_answers.R.",
+      "schema_url": "data/protest-validation-residue/schema.json",
+      "items_url": "data/protest-validation-residue/items.json"
     }
   ]
 }

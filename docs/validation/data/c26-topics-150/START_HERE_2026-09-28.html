@@ -9,7 +9,7 @@
 <meta name="author" content="Noah Buckley">
 <meta name="description" content="Noah Buckley - Assistant Professor of Political Science at Trinity College Dublin. Research on Russian politics, authoritarian regimes, public opinion, and corruption.">
 
-<title>start_here_2026-09-15 – Noah Buckley</title>
+<title>start_here_2026-09-28 – Noah Buckley</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,17 +107,14 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<blockquote class="blockquote">
-<p>SUPERSEDED 2026-09-28 by START_HERE_2026-09-28.md (chunk rebuilt from the v2 Haiku pass).</p>
-</blockquote>
-<section id="start-here-disaster-response-markers-validation" class="level1">
-<h1>START HERE — Disaster response-markers validation</h1>
-<p><strong>Where:</strong> open the validation PWA (same app as the D-31 stated-date chunk). Pick the task named <strong>“Disaster response-markers validation (~60)”</strong>.</p>
-<p><strong>What it is:</strong> 60 disaster events where a Haiku LLM pass read matched news/ social snippets and tagged government-response markers (CHS/emergency-regime declared, governor on-site, federal attention) — nobody has checked whether the underlying snippets actually describe a response to THIS event, or whether the marker is right. Stratified by deaths bracket x Haiku-yes/no on CHS x Haiku-yes/no on federal attention, oversampling high-severity and CHS=yes events.</p>
-<p><strong>Per event you will see:</strong> - FPP/summary description (RU), disaster type, deaths, event date. - The Haiku CHS / federal-attention calls. - Up to 3 supporting snippets, each tagged with which marker it was pulled for (governor-onsite / CHS / federal). These come from the <em>regex</em> first pass, which is what fed the Haiku LLM prompt, so checking the regex snippet is checking what the LLM actually saw. - ru.wikipedia and Google search links.</p>
-<p><strong>What to record per item:</strong> - <code>snippet_matches_event</code> — do the snippets actually describe a response to THIS event? Yes / Some / No. - <code>confirmed_markers</code> — free-text list of markers you can confirm as genuinely present (e.g.&nbsp;“governor_onsite, chs”), blank if none confirmed. - <code>notes</code> — anything worth flagging.</p>
-<p><strong>When done:</strong> Export from the app menu, save to <code>~/Dropbox/_validation_exports/</code> (same convention as every other chunk).</p>
-<p><strong>What this feeds:</strong> the coverage/agreement tables in <code>disaster/notes/response_master_build_2026-09-15.md</code> and <code>disaster/data/processed/response/event_response_master.csv</code> — this is the first human check of the Haiku response-marker layer (4,235-event Haiku Batches pass, commit 3e18e1cb). Build script: <code>disaster/code/response/08_build_response_validation_chunk.R</code>.</p>
+<section id="start-here-campaign-message-topics-gold-150-items-blind-2026-09-28" class="level1">
+<h1>START HERE — Campaign message TOPICS gold (150 items, blind, 2026-09-28)</h1>
+<p><strong>Where:</strong> validation PWA → task <strong>“Campaign message TOPICS gold (150, blind)”</strong> (<code>c26-topics-150</code>).</p>
+<p><strong>What it is:</strong> the 150-post human gold for <code>25_message_topics.py</code> (<code>message_topics.parquet</code> → <code>topicshare_*</code>), sitting uncoded since 2026-06-27. All posts are from June 2026 (1-21 June), TG/VK party-channel posts; party mix er 47, ldpr 43, kprf 32, np 23, yabloko 5. Text is the FULL classifier input (up to 3,000 characters, read from the same unified TG table <code>25_</code> used), not the workbook’s 400-character cut; a “Text length” line says how long it is. The source sheet was sorted by party; the chunk is shuffled once (seed 20260928). No model output is shown or stored.</p>
+<p><strong>Per item (about 20-30 s each, so roughly 1-1.25 hours):</strong> 1. <strong>Political/campaign message?</strong> Yes / No (keys 1, 2). If No the primary topic is set to <code>other</code> automatically and the other fields are hidden. 2. <strong>PRIMARY topic</strong> — one of 16 (definitions at the top, verbatim from the codebook). 3. <strong>All topics touched</strong> — optional text, ids separated by <code>|</code>; blank = primary only. Unique prefixes work; ambiguous ones (<code>eco</code>) are flagged by the loader. 4. Notes — optional.</p>
+<p><strong>No mode/specificity fields here, on purpose:</strong> the workbook’s topics tab has empty mode columns, but the docs say this tab was folded in only so <code>25_</code> gets scored, and there is no model mode prediction for these rows.</p>
+<p><strong>Export / load:</strong> menu → Export answers → <code>~/Dropbox/_validation_exports/</code>; then <code>Rscript campaign2026/code/26m_load_topics_gold.R</code>. Codes are written first to <code>campaign2026/validation/c26_topics_noah_codes_2026-09-28.csv</code> (keyed by item_id <code>c26top_###</code> with the workbook row_id), then scored against the blind <code>topics_150_predictions_BLIND</code> sheet.</p>
+<p><strong>Bars (proposed, not adopted):</strong> <code>campaign2026/validation/DECISION_RULES_PROPOSED_2026-09-28.md</code>.</p>
 
 
 </section>
