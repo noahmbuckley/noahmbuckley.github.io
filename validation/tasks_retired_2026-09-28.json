@@ -74,6 +74,16 @@
       "schema_url": "data/c26-content-mode-350/schema.json",
       "items_url": "data/c26-content-mode-350/items.json",
       "retired_note": "2026-09-28 night: rebuilt as c26-content-mode-rel40 + c26-content-mode-310 (codebook v4; programmes and party-less/multi-speaker debate turns removed). Noah's 9 round-1 answers are in ~/Dropbox/_validation_exports/validation_c26-content-mode-350_2026-09-28.json; 6 carried into rel40."
+    },
+    {
+      "id": "disaster-response-markers",
+      "name": "T1 · Disaster response markers — v2 (66)",
+      "project": "disaster",
+      "description": "TIER 1 (rebuilt 2026-09-28 from the v2 re-score; the 09-15 chunk validated superseded v1 calls). Per event: are the model's response markers (ЧС declared, federal attention, etc.) supported by the snippets it saw? Bar from PAP addendum 5 draft §2(iii): precision >= 0.8 on ЧС and federal, else exploratory. Loader disaster/code/response/08b_load_response_validation_results.R.",
+      "schema_url": "data/disaster-response-markers/schema.json",
+      "items_url": "data/disaster-response-markers/items.json",
+      "retired_at": "2026-10-04",
+      "retired_reason": "DIS1004-D11 (Noah 2026-10-04): Haiku v2 arms replaced by deterministic measures validated in disaster-response-session; Haiku arms exploratory"
     }
   ]
 }

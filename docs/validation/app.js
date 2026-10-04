@@ -331,7 +331,17 @@ function renderItem() {
     val.className = 'field-value ' + (f.format || '');
     let raw = item[f.field];
     if (raw == null || raw === '' || (typeof raw === 'number' && isNaN(raw))) raw = '—';
-    val.textContent = String(raw);
+    // 2026-10-04 (proposed): schema.hide_empty drops rows with no value (merged multi-question cards);
+    // format "link" renders a tappable link instead of plain text (opens in a new tab).
+    if (raw === '—' && sch.hide_empty) continue;
+    if (f.format === 'link' && raw !== '—' && /^https?:\/\//i.test(String(raw))) {   // only http(s) becomes a link
+      const a = document.createElement('a');
+      a.href = String(raw); a.target = '_blank'; a.rel = 'noopener noreferrer';
+      a.textContent = 'open';
+      val.appendChild(a);
+    } else {
+      val.textContent = String(raw);
+    }
     row.appendChild(lbl); row.appendChild(val);
     dc.appendChild(row);
   }

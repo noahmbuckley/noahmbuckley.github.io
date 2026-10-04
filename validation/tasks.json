@@ -4,19 +4,19 @@
   "tasks": [
     {
       "id": "disaster-D31-stated-date",
-      "name": "T1 · Disaster D-31 — stated-date validation (75)",
+      "name": "T1 · Disaster D-31 stated dates v3 (82; rounds 1-4 required)",
       "project": "disaster",
-      "description": "TIER 1 (rebuilt 2026-09-28). Is the LLM-extracted stated_event_date the day the disaster itself happened? 75 events: 35 high-confidence baseline + later-event/trial-date, out-of-window and medium-confidence strata. Gates whether the 1,756 llm_stated_date events can carry day-precision DiD. Decision rule + definition of correct (exact day vs within ±3 d) in START_HERE_2026-09-28.md -- CONFIRM THE TOLERANCE BEFORE CODING. Loader disaster/code/validation/99d_load_date_validation_results.R.",
+      "description": "v3 2026-10-04: blinded, rounds with stop rules; tolerance ±3 d, bar 0.70 (DIS1004-D10). Plan disaster/validation/IPAD_SESSION_PLAN_2026-10-04.md; loader disaster/code/validation/99d3_load_date_validation_v3_results.R",
       "schema_url": "data/disaster-D31-stated-date/schema.json",
       "items_url": "data/disaster-D31-stated-date/items.json"
     },
     {
-      "id": "disaster-response-markers",
-      "name": "T1 · Disaster response markers — v2 (66)",
+      "id": "disaster-response-session",
+      "name": "T1 · Disaster response + event reality (one session, 128)",
       "project": "disaster",
-      "description": "TIER 1 (rebuilt 2026-09-28 from the v2 re-score; the 09-15 chunk validated superseded v1 calls). Per event: are the model's response markers (ЧС declared, federal attention, etc.) supported by the snippets it saw? Bar from PAP addendum 5 draft §2(iii): precision >= 0.8 on ЧС and federal, else exploratory. Loader disaster/code/response/08b_load_response_validation_results.R.",
-      "schema_url": "data/disaster-response-markers/schema.json",
-      "items_url": "data/disaster-response-markers/items.json"
+      "schema_url": "data/disaster-response-session/schema.json",
+      "items_url": "data/disaster-response-session/items.json",
+      "description": "Rounds 1-2; round 3 only on EXTEND. Plan disaster/validation/IPAD_SESSION_PLAN_2026-10-04.md; loader disaster/code/validation/99m_load_response_session_results.R"
     },
     {
       "id": "c26-content-mode-rel40",

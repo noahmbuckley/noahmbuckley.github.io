@@ -1,0 +1,20 @@
+# Provenance for items.json / schema.json (STAGED, not published)
+output     : disaster/validation/response_session_stage_2026-10-04/items.json
+script     : disaster/code/validation/99m_stage_ipad_session_2026-10-04.py
+script_md5 : 59ef8326dcb44a9180d6b615c3452844
+timestamp  : 2026-10-04T11:09:25
+seeds      : base 20261004; TRACKA E1 +11, E2 +12; REALITY N +21, C +22, H_ni +23, H_un +24; DECREE SX +41; order +101
+reused     : KREMLIN F (10) from kremlin_federal_stage_2026-10-03 (seed 20261003); DECREE S (20) and R (first 10 by position) from decree_response_stage_2026-10-04 (seed 20261004)
+cards      : 128 (4 events in >1 block, merged)
+inputs     :
+  data/processed/response/kremlin_federal_attention_2026-10-03.csv | md5 73648944d78b14ba2c52cda5ea36d9ec
+  data/processed/response/kremlin_federal_attention_rep_hits_2026-10-03.csv | md5 0e28ddab65f76f48f3d245efd3af17a0
+  data/processed/response/decree_response_2026-10-04.csv | md5 06ae2796992a4f8b621234e782ecd531
+  data/processed/response/trackA_event_response_2026-10-03.csv | md5 a3a124e00ff7fd94d0e6b557d6b5725e
+  data/processed/verification/event_triangulation_2026-10-03.csv | md5 bbd5729109d5105a295f8cbfb85ecaec
+  tables/triangulation_candidate_nonevents_2026-10-03.csv | md5 03a58b597857c6655449387db359983e
+  validation/event_hygiene_handcheck_2026-10-04/labels_nonincident_flagged.csv | md5 6db0436b9594c006d8ea56c71540755b
+  validation/event_hygiene_handcheck_2026-10-04/sample_unflagged40.csv | md5 2d1de0adb94429407c9905ecd8f673c9
+  validation/kremlin_federal_stage_2026-10-03/items.json | md5 b9ee54b20e0dbb222025a4d506ccb03a
+  validation/decree_response_stage_2026-10-04/items.json | md5 7c46c0ad684dc8a90af5402b8943eb95
+blind      : *_stratum, *_pool_n, *_round, decree_detected_type, reality_cc_label are NOT in schema.display

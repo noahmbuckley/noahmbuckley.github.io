@@ -1,11 +1,12 @@
-# Provenance for items.json
-output     : /Users/noahbuckley/Dropbox/Projects/me/website/validation/data/disaster-D31-stated-date/items.json
-script     : code/validation/99d_build_date_validation_chunk.R
-git_sha    : d6de10f921f98571a2f5476786b30f429bf7f8dc
-git_dirty  : 2 modified/untracked files under the script's dir at run time (tree was DIRTY; git_sha may not match the code that ran)
-script_md5 : 7314347dfffa9a478bf10ddf40c65cc2
-timestamp  : 2026-09-28 20:28:23.828276
-R_version  : R version 4.6.0 (2026-04-24)
-platform   : aarch64-apple-darwin23
-packages_loaded:
-  jsonlite 2.0.0
+# Provenance for items.json / schema.json (STAGED, not published)
+output     : disaster/validation/D31_stated_date_stage_v3_2026-10-04/items.json
+script     : disaster/code/validation/99m_stage_ipad_session_2026-10-04.py
+script_md5 : 59ef8326dcb44a9180d6b615c3452844
+timestamp  : 2026-10-04T11:09:25
+reused     : 72 of the 79 cards of D31_stated_date_stage_2026-09-30 (seed of 09-28; W dropped), unchanged content
+seeds      : H batch order 20261106; K draw 20261035 (10 of 39 primary known-answer pairs with |gap| >= 4); A/B side 20261106
+inputs     :
+  validation/D31_stated_date_stage_2026-09-30/items.json | md5 ea530bbbebfe85d2fe2ce22e00cf24c0
+  data/processed/verification/known_answer_stated_date_pairs.csv | md5 92bc41c13fffe3ce6601d5dcc8375cf8
+  data/processed/verification/event_details_extracted.jsonl | md5 f96708c04ade5af587879cc027d153c7
+blind      : stratum, sample_reason, extract_confidence, quote_date_class, a_source/b_source NOT displayed

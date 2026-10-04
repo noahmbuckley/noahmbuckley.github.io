@@ -1,19 +1,19 @@
 {
   "task_id": "disaster-D31-stated-date",
-  "name": "Disaster D-31 — stated-date validation (75)",
-  "version": "2026-09-28",
+  "name": "Disaster D-31 -- stated dates v3 (82 cards: rounds 1-4 core, 5-6 optional)",
+  "version": "2026-10-04",
   "id_field": "item_id",
-  "instructions": "Check the LLM's stated_date against the real event date. Read the FPP text, the extracted date and its quoted evidence, then use the Wikipedia/Google links to find when the event actually HAPPENED (the accident/disaster itself -- NOT a trial, sentence, inspection, anniversary or the publication date). Answer YES only if the stated date is the exact event day (or, for multi-day events, the first day). If not exact, answer NO and enter the true date in true_date: the loader then also scores within-3-days agreement from true_date. 'Unsure' if you cannot verify -- don't guess. For a NO, pick the error type. 'Why sampled' tells you which error to look for; it says nothing about whether the date is right.",
+  "hide_empty": true,
+  "instructions": "Check the extracted date against the real event date. Read the FPP text, the extracted date and its quoted evidence, the evidence snippets; search only if they do not settle it. YES only if the stated date is the exact day the accident/disaster itself happened (first day for multi-day events) -- NOT a trial, sentence, inspection, anniversary or publication date. If not exact: NO, and ALWAYS type the true date (the loader scores +/-3 days and the treatment-window overlap from it). 'Unsure' if you cannot verify. The card label is the round: after each round, export and run the loader; it says whether to continue.",
+  "instructions_by_variant": {
+    "stated": "Check the extracted date against the real event date. Read the FPP text, the extracted date and its quoted evidence, the evidence snippets; search only if they do not settle it. YES only if the stated date is the exact day the accident/disaster itself happened (first day for multi-day events) -- NOT a trial, sentence, inspection, anniversary or publication date. If not exact: NO, and ALWAYS type the true date (the loader scores +/-3 days and the treatment-window overlap from it). 'Unsure' if you cannot verify. The card label is the round: after each round, export and run the loader; it says whether to continue.",
+    "adjudicate": "Two candidate dates (A, B) for the same incident, from two different sources; you are not told which is which. Pick the day the incident itself happened (start day for multi-day events). 'Neither' + the true date if both are wrong. Search as needed."
+  },
   "display": [
     {
-      "field": "stratum",
-      "label": "tier",
+      "field": "card_label",
+      "label": "round",
       "format": "tag"
-    },
-    {
-      "field": "extract_confidence",
-      "label": "LLM conf.",
-      "format": "compact"
     },
     {
       "field": "region",
@@ -37,7 +37,7 @@
     },
     {
       "field": "stated_date",
-      "label": "LLM stated date",
+      "label": "Extracted date",
       "format": "compact",
       "highlight": "llm"
     },
@@ -47,23 +47,28 @@
       "format": "compact"
     },
     {
+      "field": "date_a",
+      "label": "Date A",
+      "format": "compact"
+    },
+    {
+      "field": "date_b",
+      "label": "Date B",
+      "format": "compact"
+    },
+    {
       "field": "date_evidence_quote",
-      "label": "LLM date-evidence quote",
+      "label": "Date-evidence quote (from the extractor's sources)",
       "format": "longtext"
     },
     {
       "field": "extract_summary",
-      "label": "LLM summary of the evidence",
+      "label": "Summary of that evidence",
       "format": "longtext"
     },
     {
       "field": "evidence_snippets",
-      "label": "Independent evidence snippets",
-      "format": "longtext"
-    },
-    {
-      "field": "sample_reason",
-      "label": "Why sampled",
+      "label": "Evidence snippets",
       "format": "longtext"
     },
     {
@@ -158,5 +163,138 @@
       "type": "textarea",
       "placeholder": "Free text"
     }
-  ]
+  ],
+  "validation_by_variant": {
+    "stated": [
+      {
+        "field": "true_date",
+        "label": "True EVENT date (YYYY-MM-DD; partial ok)",
+        "type": "text",
+        "placeholder": "Fill whenever you find it, esp. for NO"
+      },
+      {
+        "field": "matches_event",
+        "label": "Stated date = exact event day?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes (exact day)",
+            "key": "1",
+            "tone": "good"
+          },
+          {
+            "value": "no",
+            "label": "No",
+            "key": "2",
+            "tone": "bad"
+          },
+          {
+            "value": "unsure",
+            "label": "Unsure / can't verify",
+            "key": "3",
+            "tone": "neutral"
+          }
+        ]
+      },
+      {
+        "field": "error_type",
+        "label": "If NO: what is the stated date?",
+        "type": "enum",
+        "show_if": {
+          "matches_event": [
+            "no"
+          ]
+        },
+        "options": [
+          {
+            "value": "later_event",
+            "label": "Trial / court / sentence / aftermath / anniversary",
+            "key": "4",
+            "tone": "warn"
+          },
+          {
+            "value": "earlier_or_other_date",
+            "label": "Earlier event or other unrelated date",
+            "key": "5",
+            "tone": "warn"
+          },
+          {
+            "value": "publication_date",
+            "label": "Publication / reporting date",
+            "key": "6",
+            "tone": "warn"
+          },
+          {
+            "value": "wrong_event",
+            "label": "Text is about a different incident",
+            "key": "7",
+            "tone": "warn"
+          },
+          {
+            "value": "small_offset",
+            "label": "Same event, off by a few days",
+            "key": "8",
+            "tone": "neutral"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "adjudicate": [
+      {
+        "field": "pick",
+        "label": "Which date is the day the incident ITSELF happened?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "a",
+            "label": "Date A",
+            "key": "1",
+            "tone": "good"
+          },
+          {
+            "value": "b",
+            "label": "Date B",
+            "key": "2",
+            "tone": "good"
+          },
+          {
+            "value": "neither",
+            "label": "Neither (enter the true date)",
+            "key": "3",
+            "tone": "bad"
+          },
+          {
+            "value": "unsure",
+            "label": "Unsure / can't verify",
+            "key": "4",
+            "tone": "neutral"
+          }
+        ]
+      },
+      {
+        "field": "true_date",
+        "label": "True EVENT date if neither (YYYY-MM-DD; partial ok)",
+        "type": "text",
+        "show_if": {
+          "pick": [
+            "neither"
+          ]
+        }
+      },
+      {
+        "field": "notes",
+        "label": "Notes (e.g. multi-day event; which source is the start)",
+        "type": "textarea"
+      }
+    ]
+  }
 }

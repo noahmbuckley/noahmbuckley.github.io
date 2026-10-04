@@ -1,0 +1,746 @@
+{
+  "task_id": "disaster-response-session",
+  "name": "Disaster -- response measures + event reality, one session (128 cards; round 3 = reserve)",
+  "version": "2026-10-04",
+  "id_field": "item_id",
+  "hide_empty": true,
+  "instructions": "One card = one event; read the EVENT once, then answer one question per document shown. Documents are labelled by source. Judge only what is asked; 'Unclear' is fine, don't guess. The card label tells you the ROUND: finish round 1 first, then export and run the loader (it says which blocks to stop or continue). Links: tappable once the app patch validation/app_patch_links_2026-10-04.diff is applied (DIS1004-D18); before that they show as plain text (copy them).",
+  "instructions_by_variant": {
+    "decree": "One card = one event; read the EVENT once, then answer one question per document shown. Documents are labelled by source. Judge only what is asked; 'Unclear' is fine, don't guess. The card label tells you the ROUND: finish round 1 first, then export and run the loader (it says which blocks to stop or continue). Links: tappable once the app patch validation/app_patch_links_2026-10-04.diff is applied (DIS1004-D18); before that they show as plain text (copy them).\n\nREGIONAL ACT: does this pravo.gov.ru act RESPOND to THIS event (ЧС / повышенная готовность regime for it, a mourning day for it, reserve-fund or budget money for its consequences, payments to its victims)? NO if it concerns a different incident (even same region, same type, same weeks), a standing procedure or generic budget matter, or covid/war/farming. Then pick the act's type whatever its relation to the event.",
+    "decree+reality": "One card = one event; read the EVENT once, then answer one question per document shown. Documents are labelled by source. Judge only what is asked; 'Unclear' is fine, don't guess. The card label tells you the ROUND: finish round 1 first, then export and run the loader (it says which blocks to stop or continue). Links: tappable once the app patch validation/app_patch_links_2026-10-04.diff is applied (DIS1004-D18); before that they show as plain text (copy them).\n\nREGIONAL ACT: does this pravo.gov.ru act RESPOND to THIS event (ЧС / повышенная готовность regime for it, a mourning day for it, reserve-fund or budget money for its consequences, payments to its victims)? NO if it concerns a different incident (even same region, same type, same weeks), a standing procedure or generic budget matter, or covid/war/farming. Then pick the act's type whatever its relation to the event.\n\nEVENT REALITY: judge the event record itself (no document). YES = one discrete harmful incident (accident, disaster, fire, poisoning, collapse, negligence...) that happened in this region around this date. Otherwise pick why not. Judge from the description; search (Google line) only if the region or the incident is unclear.",
+    "kremlin": "One card = one event; read the EVENT once, then answer one question per document shown. Documents are labelled by source. Judge only what is asked; 'Unclear' is fine, don't guess. The card label tells you the ROUND: finish round 1 first, then export and run the loader (it says which blocks to stop or continue). Links: tappable once the app patch validation/app_patch_links_2026-10-04.diff is applied (DIS1004-D18); before that they show as plain text (copy them).\n\nKREMLIN: is the kremlin.ru text about THIS event (the same incident or its direct consequences: the president's instructions, condolences, a meeting on it)? NO if another incident (even same region/type), a generic list of regions, a general policy remark, or shared vocabulary only.",
+    "kremlin+decree": "One card = one event; read the EVENT once, then answer one question per document shown. Documents are labelled by source. Judge only what is asked; 'Unclear' is fine, don't guess. The card label tells you the ROUND: finish round 1 first, then export and run the loader (it says which blocks to stop or continue). Links: tappable once the app patch validation/app_patch_links_2026-10-04.diff is applied (DIS1004-D18); before that they show as plain text (copy them).\n\nKREMLIN: is the kremlin.ru text about THIS event (the same incident or its direct consequences: the president's instructions, condolences, a meeting on it)? NO if another incident (even same region/type), a generic list of regions, a general policy remark, or shared vocabulary only.\n\nREGIONAL ACT: does this pravo.gov.ru act RESPOND to THIS event (ЧС / повышенная готовность regime for it, a mourning day for it, reserve-fund or budget money for its consequences, payments to its victims)? NO if it concerns a different incident (even same region, same type, same weeks), a standing procedure or generic budget matter, or covid/war/farming. Then pick the act's type whatever its relation to the event.",
+    "kremlin+reality": "One card = one event; read the EVENT once, then answer one question per document shown. Documents are labelled by source. Judge only what is asked; 'Unclear' is fine, don't guess. The card label tells you the ROUND: finish round 1 first, then export and run the loader (it says which blocks to stop or continue). Links: tappable once the app patch validation/app_patch_links_2026-10-04.diff is applied (DIS1004-D18); before that they show as plain text (copy them).\n\nKREMLIN: is the kremlin.ru text about THIS event (the same incident or its direct consequences: the president's instructions, condolences, a meeting on it)? NO if another incident (even same region/type), a generic list of regions, a general policy remark, or shared vocabulary only.\n\nEVENT REALITY: judge the event record itself (no document). YES = one discrete harmful incident (accident, disaster, fire, poisoning, collapse, negligence...) that happened in this region around this date. Otherwise pick why not. Judge from the description; search (Google line) only if the region or the incident is unclear.",
+    "kremlin+tracka": "One card = one event; read the EVENT once, then answer one question per document shown. Documents are labelled by source. Judge only what is asked; 'Unclear' is fine, don't guess. The card label tells you the ROUND: finish round 1 first, then export and run the loader (it says which blocks to stop or continue). Links: tappable once the app patch validation/app_patch_links_2026-10-04.diff is applied (DIS1004-D18); before that they show as plain text (copy them).\n\nKREMLIN: is the kremlin.ru text about THIS event (the same incident or its direct consequences: the president's instructions, condolences, a meeting on it)? NO if another incident (even same region/type), a generic list of regions, a general policy remark, or shared vocabulary only.\n\nREGIONAL-GOV: is this text from the regional government's own site about THIS event (same incident, place and time)? NO if a similar incident, general news, or a name/word coincidence. If yes, tick what response it reports; 'on site' means physically there, not 'ordered' or 'said'.",
+    "reality": "One card = one event; read the EVENT once, then answer one question per document shown. Documents are labelled by source. Judge only what is asked; 'Unclear' is fine, don't guess. The card label tells you the ROUND: finish round 1 first, then export and run the loader (it says which blocks to stop or continue). Links: tappable once the app patch validation/app_patch_links_2026-10-04.diff is applied (DIS1004-D18); before that they show as plain text (copy them).\n\nEVENT REALITY: judge the event record itself (no document). YES = one discrete harmful incident (accident, disaster, fire, poisoning, collapse, negligence...) that happened in this region around this date. Otherwise pick why not. Judge from the description; search (Google line) only if the region or the incident is unclear.",
+    "tracka": "One card = one event; read the EVENT once, then answer one question per document shown. Documents are labelled by source. Judge only what is asked; 'Unclear' is fine, don't guess. The card label tells you the ROUND: finish round 1 first, then export and run the loader (it says which blocks to stop or continue). Links: tappable once the app patch validation/app_patch_links_2026-10-04.diff is applied (DIS1004-D18); before that they show as plain text (copy them).\n\nREGIONAL-GOV: is this text from the regional government's own site about THIS event (same incident, place and time)? NO if a similar incident, general news, or a name/word coincidence. If yes, tick what response it reports; 'on site' means physically there, not 'ordered' or 'said'."
+  },
+  "display": [
+    {
+      "field": "card_label",
+      "label": "round · block",
+      "format": "tag"
+    },
+    {
+      "field": "region",
+      "label": "region",
+      "format": "compact"
+    },
+    {
+      "field": "event_date",
+      "label": "event date",
+      "format": "compact"
+    },
+    {
+      "field": "disaster_type",
+      "label": "type",
+      "format": "compact"
+    },
+    {
+      "field": "deaths_human",
+      "label": "deaths (human)",
+      "format": "compact"
+    },
+    {
+      "field": "event_text",
+      "label": "EVENT (its own record, RU)",
+      "format": "longtext"
+    },
+    {
+      "field": "doc1_head",
+      "label": "DOCUMENT 1 (source · date · title)",
+      "format": "longtext"
+    },
+    {
+      "field": "doc1_text",
+      "label": "DOCUMENT 1 text",
+      "format": "longtext"
+    },
+    {
+      "field": "doc1_url",
+      "label": "DOCUMENT 1 link",
+      "format": "link"
+    },
+    {
+      "field": "doc2_head",
+      "label": "DOCUMENT 2 (source · date · title)",
+      "format": "longtext"
+    },
+    {
+      "field": "doc2_text",
+      "label": "DOCUMENT 2 text",
+      "format": "longtext"
+    },
+    {
+      "field": "doc2_url",
+      "label": "DOCUMENT 2 link",
+      "format": "link"
+    },
+    {
+      "field": "google_url",
+      "label": "Google (event)",
+      "format": "link"
+    }
+  ],
+  "validation": [
+    {
+      "field": "notes",
+      "label": "Notes (optional)",
+      "type": "textarea"
+    }
+  ],
+  "validation_by_variant": {
+    "decree": [
+      {
+        "field": "q_decree",
+        "label": "REGIONAL ACT: does it respond to THIS event?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes",
+            "tone": "good",
+            "key": "1"
+          },
+          {
+            "value": "no",
+            "label": "No",
+            "tone": "bad",
+            "key": "2"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear",
+            "tone": "neutral",
+            "key": "3"
+          }
+        ]
+      },
+      {
+        "field": "decree_type",
+        "label": "Act's response type (whatever its relation to this event)",
+        "type": "enum",
+        "options": [
+          {
+            "value": "chs",
+            "label": "ЧС regime",
+            "tone": "neutral",
+            "key": "4"
+          },
+          {
+            "value": "pg",
+            "label": "Повышенная готовность",
+            "tone": "neutral",
+            "key": "5"
+          },
+          {
+            "value": "mourn",
+            "label": "Mourning day",
+            "tone": "neutral",
+            "key": "6"
+          },
+          {
+            "value": "reserve",
+            "label": "Reserve fund / budget",
+            "tone": "neutral",
+            "key": "7"
+          },
+          {
+            "value": "comp",
+            "label": "Payments to victims",
+            "tone": "neutral",
+            "key": "8"
+          },
+          {
+            "value": "other",
+            "label": "Other response",
+            "tone": "warn",
+            "key": "9"
+          },
+          {
+            "value": "none",
+            "label": "Not a response act",
+            "tone": "bad",
+            "key": "0"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "decree+reality": [
+      {
+        "field": "q_decree",
+        "label": "REGIONAL ACT: does it respond to THIS event?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes",
+            "tone": "good",
+            "key": "1"
+          },
+          {
+            "value": "no",
+            "label": "No",
+            "tone": "bad",
+            "key": "2"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear",
+            "tone": "neutral",
+            "key": "3"
+          }
+        ]
+      },
+      {
+        "field": "decree_type",
+        "label": "Act's response type (whatever its relation to this event)",
+        "type": "enum",
+        "options": [
+          {
+            "value": "chs",
+            "label": "ЧС regime",
+            "tone": "neutral",
+            "key": "4"
+          },
+          {
+            "value": "pg",
+            "label": "Повышенная готовность",
+            "tone": "neutral",
+            "key": "5"
+          },
+          {
+            "value": "mourn",
+            "label": "Mourning day",
+            "tone": "neutral",
+            "key": "6"
+          },
+          {
+            "value": "reserve",
+            "label": "Reserve fund / budget",
+            "tone": "neutral",
+            "key": "7"
+          },
+          {
+            "value": "comp",
+            "label": "Payments to victims",
+            "tone": "neutral",
+            "key": "8"
+          },
+          {
+            "value": "other",
+            "label": "Other response",
+            "tone": "warn",
+            "key": "9"
+          },
+          {
+            "value": "none",
+            "label": "Not a response act",
+            "tone": "bad",
+            "key": "0"
+          }
+        ]
+      },
+      {
+        "field": "q_reality",
+        "label": "EVENT REALITY: is this record a discrete harmful incident that happened in THIS region around this date?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, a discrete incident here",
+            "tone": "good"
+          },
+          {
+            "value": "no_nonincident",
+            "label": "No: not an incident (meeting, statement, rating, protest, policy, resonance, forecast, epidemic statistics)",
+            "tone": "bad"
+          },
+          {
+            "value": "no_aftermath",
+            "label": "No: a later step of an earlier incident (case, trial, sentence, dismissal, anniversary)",
+            "tone": "warn"
+          },
+          {
+            "value": "no_aggregate",
+            "label": "No: aggregate / several incidents / a trend",
+            "tone": "warn"
+          },
+          {
+            "value": "no_elsewhere",
+            "label": "No: the incident happened in another region",
+            "tone": "warn"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear",
+            "tone": "neutral"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "kremlin": [
+      {
+        "field": "q_kremlin",
+        "label": "KREMLIN text: is it about THIS event?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes",
+            "tone": "good",
+            "key": "1"
+          },
+          {
+            "value": "no",
+            "label": "No",
+            "tone": "bad",
+            "key": "2"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear",
+            "tone": "neutral",
+            "key": "3"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "kremlin+decree": [
+      {
+        "field": "q_kremlin",
+        "label": "KREMLIN text: is it about THIS event?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes",
+            "tone": "good",
+            "key": "1"
+          },
+          {
+            "value": "no",
+            "label": "No",
+            "tone": "bad",
+            "key": "2"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear",
+            "tone": "neutral",
+            "key": "3"
+          }
+        ]
+      },
+      {
+        "field": "q_decree",
+        "label": "REGIONAL ACT: does it respond to THIS event?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes",
+            "tone": "good",
+            "key": "4"
+          },
+          {
+            "value": "no",
+            "label": "No",
+            "tone": "bad",
+            "key": "5"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear",
+            "tone": "neutral",
+            "key": "6"
+          }
+        ]
+      },
+      {
+        "field": "decree_type",
+        "label": "Act's response type (whatever its relation to this event)",
+        "type": "enum",
+        "options": [
+          {
+            "value": "chs",
+            "label": "ЧС regime",
+            "tone": "neutral",
+            "key": "7"
+          },
+          {
+            "value": "pg",
+            "label": "Повышенная готовность",
+            "tone": "neutral",
+            "key": "8"
+          },
+          {
+            "value": "mourn",
+            "label": "Mourning day",
+            "tone": "neutral",
+            "key": "9"
+          },
+          {
+            "value": "reserve",
+            "label": "Reserve fund / budget",
+            "tone": "neutral",
+            "key": "0"
+          },
+          {
+            "value": "comp",
+            "label": "Payments to victims",
+            "tone": "neutral"
+          },
+          {
+            "value": "other",
+            "label": "Other response",
+            "tone": "warn"
+          },
+          {
+            "value": "none",
+            "label": "Not a response act",
+            "tone": "bad"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "kremlin+reality": [
+      {
+        "field": "q_kremlin",
+        "label": "KREMLIN text: is it about THIS event?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes",
+            "tone": "good",
+            "key": "1"
+          },
+          {
+            "value": "no",
+            "label": "No",
+            "tone": "bad",
+            "key": "2"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear",
+            "tone": "neutral",
+            "key": "3"
+          }
+        ]
+      },
+      {
+        "field": "q_reality",
+        "label": "EVENT REALITY: is this record a discrete harmful incident that happened in THIS region around this date?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, a discrete incident here",
+            "tone": "good",
+            "key": "4"
+          },
+          {
+            "value": "no_nonincident",
+            "label": "No: not an incident (meeting, statement, rating, protest, policy, resonance, forecast, epidemic statistics)",
+            "tone": "bad",
+            "key": "5"
+          },
+          {
+            "value": "no_aftermath",
+            "label": "No: a later step of an earlier incident (case, trial, sentence, dismissal, anniversary)",
+            "tone": "warn",
+            "key": "6"
+          },
+          {
+            "value": "no_aggregate",
+            "label": "No: aggregate / several incidents / a trend",
+            "tone": "warn",
+            "key": "7"
+          },
+          {
+            "value": "no_elsewhere",
+            "label": "No: the incident happened in another region",
+            "tone": "warn",
+            "key": "8"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear",
+            "tone": "neutral",
+            "key": "9"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "kremlin+tracka": [
+      {
+        "field": "q_kremlin",
+        "label": "KREMLIN text: is it about THIS event?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes",
+            "tone": "good",
+            "key": "1"
+          },
+          {
+            "value": "no",
+            "label": "No",
+            "tone": "bad",
+            "key": "2"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear",
+            "tone": "neutral",
+            "key": "3"
+          }
+        ]
+      },
+      {
+        "field": "q_tracka",
+        "label": "REGIONAL-GOV site text: is it about THIS event (same incident, place, time)?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes",
+            "tone": "good",
+            "key": "4"
+          },
+          {
+            "value": "no",
+            "label": "No",
+            "tone": "bad",
+            "key": "5"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear",
+            "tone": "neutral",
+            "key": "6"
+          }
+        ]
+      },
+      {
+        "field": "tracka_types",
+        "label": "If yes: what response does the text report? (tap all)",
+        "type": "multi",
+        "show_if": {
+          "q_tracka": [
+            "yes"
+          ]
+        },
+        "options": [
+          {
+            "value": "first_statement",
+            "label": "Statement / acknowledgement",
+            "tone": "neutral"
+          },
+          {
+            "value": "onsite_visit",
+            "label": "Governor/head ON SITE",
+            "tone": "neutral"
+          },
+          {
+            "value": "chs_regime",
+            "label": "ЧС regime",
+            "tone": "neutral"
+          },
+          {
+            "value": "compensation",
+            "label": "Payments",
+            "tone": "neutral"
+          },
+          {
+            "value": "investigation",
+            "label": "Investigation / inspection",
+            "tone": "neutral"
+          },
+          {
+            "value": "none",
+            "label": "None of these",
+            "tone": "neutral"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "reality": [
+      {
+        "field": "q_reality",
+        "label": "EVENT REALITY: is this record a discrete harmful incident that happened in THIS region around this date?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes, a discrete incident here",
+            "tone": "good",
+            "key": "1"
+          },
+          {
+            "value": "no_nonincident",
+            "label": "No: not an incident (meeting, statement, rating, protest, policy, resonance, forecast, epidemic statistics)",
+            "tone": "bad",
+            "key": "2"
+          },
+          {
+            "value": "no_aftermath",
+            "label": "No: a later step of an earlier incident (case, trial, sentence, dismissal, anniversary)",
+            "tone": "warn",
+            "key": "3"
+          },
+          {
+            "value": "no_aggregate",
+            "label": "No: aggregate / several incidents / a trend",
+            "tone": "warn",
+            "key": "4"
+          },
+          {
+            "value": "no_elsewhere",
+            "label": "No: the incident happened in another region",
+            "tone": "warn",
+            "key": "5"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear",
+            "tone": "neutral",
+            "key": "6"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ],
+    "tracka": [
+      {
+        "field": "q_tracka",
+        "label": "REGIONAL-GOV site text: is it about THIS event (same incident, place, time)?",
+        "type": "enum",
+        "required": true,
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes",
+            "tone": "good",
+            "key": "1"
+          },
+          {
+            "value": "no",
+            "label": "No",
+            "tone": "bad",
+            "key": "2"
+          },
+          {
+            "value": "unclear",
+            "label": "Unclear",
+            "tone": "neutral",
+            "key": "3"
+          }
+        ]
+      },
+      {
+        "field": "tracka_types",
+        "label": "If yes: what response does the text report? (tap all)",
+        "type": "multi",
+        "show_if": {
+          "q_tracka": [
+            "yes"
+          ]
+        },
+        "options": [
+          {
+            "value": "first_statement",
+            "label": "Statement / acknowledgement",
+            "tone": "neutral"
+          },
+          {
+            "value": "onsite_visit",
+            "label": "Governor/head ON SITE",
+            "tone": "neutral"
+          },
+          {
+            "value": "chs_regime",
+            "label": "ЧС regime",
+            "tone": "neutral"
+          },
+          {
+            "value": "compensation",
+            "label": "Payments",
+            "tone": "neutral"
+          },
+          {
+            "value": "investigation",
+            "label": "Investigation / inspection",
+            "tone": "neutral"
+          },
+          {
+            "value": "none",
+            "label": "None of these",
+            "tone": "neutral"
+          }
+        ]
+      },
+      {
+        "field": "notes",
+        "label": "Notes (optional)",
+        "type": "textarea",
+        "placeholder": "Free text"
+      }
+    ]
+  }
+}
