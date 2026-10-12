@@ -1,0 +1,76 @@
+{
+ "task_id": "disaster-adjacent-pairs-80",
+ "name": "Disaster adjacent pairs: same incident? (80, blind)",
+ "version": "v1 2026-10-12",
+ "id_field": "item_id",
+ "hide_empty": true,
+ "instructions": "Two event records from the SAME region and the SAME type, dated 0-3 days apart. Are they the same incident? SAME = one physical incident recorded twice (two reports, or an official act such as a ЧС declaration/mourning day plus a report of the incident it concerns). AFTERMATH = record B is a consequence or reaction to the incident in A (criticism, inspection, criminal case, evacuation update) rather than a new incident. DISTINCT = two different incidents (a new flood wave, a second fire elsewhere in the region, another building). Judge from the two texts; 'Unclear' is fine. Nothing shown is a model or database verdict.",
+ "display": [
+  {
+   "field": "region",
+   "label": "Region",
+   "format": "compact"
+  },
+  {
+   "field": "type",
+   "label": "Type",
+   "format": "compact"
+  },
+  {
+   "field": "gap",
+   "label": "Dates",
+   "format": "compact"
+  },
+  {
+   "field": "record_a",
+   "label": "RECORD A",
+   "format": "longtext"
+  },
+  {
+   "field": "record_b",
+   "label": "RECORD B",
+   "format": "longtext"
+  }
+ ],
+ "validation": [
+  {
+   "field": "relation",
+   "label": "A and B are...",
+   "required": true,
+   "type": "enum",
+   "options": [
+    {
+     "value": "same",
+     "label": "the SAME incident",
+     "key": "1",
+     "tone": "warn"
+    },
+    {
+     "value": "aftermath",
+     "label": "B is AFTERMATH / reaction to A",
+     "key": "2",
+     "tone": "warn"
+    },
+    {
+     "value": "distinct",
+     "label": "DISTINCT incidents",
+     "key": "3",
+     "tone": "good"
+    },
+    {
+     "value": "unclear",
+     "label": "Unclear",
+     "key": "4",
+     "tone": "neutral"
+    }
+   ]
+  },
+  {
+   "field": "notes",
+   "label": "Notes",
+   "required": false,
+   "type": "text",
+   "placeholder": "optional"
+  }
+ ]
+}

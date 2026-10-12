@@ -1,0 +1,4 @@
+built 2026-10-12T23:44:19 by build_2026-10-12_event_tasks.py
+n_items 80
+source /Users/noahbuckley/Dropbox/Projects/disaster/validation/adjacent_pairs_stage_2026-10-12/items.json md5 558d41d97a77a061189f0d25e51a66fc
+all 80 pairs; blind; key in the stage dir

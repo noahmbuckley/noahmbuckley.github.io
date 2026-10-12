@@ -1,0 +1,4 @@
+built 2026-10-12T23:44:19 by build_2026-10-12_event_tasks.py
+n_items 60
+source /Users/noahbuckley/Dropbox/Projects/arrestsPubOpinionPaper/validation/sledcom_defendant_blind_stage_2026-10-12/items.json md5 05d8efe239fa16029ba7ab2a78cca4bc
+blind rebuild of the 10-10 workbook (model columns removed); stratum in the sealed key

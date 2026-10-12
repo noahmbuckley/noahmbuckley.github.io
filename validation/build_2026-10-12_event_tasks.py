@@ -195,6 +195,36 @@ tasks.append({
   'schema_url': 'data/arrests-crime-type-subset35/schema.json',
   'items_url': 'data/arrests-crime-type-subset35/items.json'})
 
+# ---------- 8. Disaster adjacent pairs, same incident? (80) — built by disaster/code/validation/99p_* ----------
+src = os.path.join(ROOT, 'disaster/validation/adjacent_pairs_stage_2026-10-12')
+items = load_items(os.path.join(src, 'items.json'))
+schema = json.load(open(os.path.join(src, 'schema.json')))
+assert len(items) == 80
+write_task('disaster-adjacent-pairs-80', items, schema,
+    [f'source {src}/items.json md5 {md5(os.path.join(src,"items.json"))}', 'all 80 pairs; blind; key in the stage dir'])
+tasks.insert(4, {
+  'id': 'disaster-adjacent-pairs-80',
+  'name': '1b · Disaster adjacent pairs — same incident? (80, ~25 min)',
+  'project': 'disaster',
+  'description': 'PULL FORWARD IF TIME. 80 consecutive day-dated event pairs, same region + type, 0–3 days apart (62 same-day); the hygiene census catches 16 clusters. Measures double-counted exposure (aftermath / ЧС-decree rows as separate treated events). Pre-declared rule in disaster/validation/adjacent_pairs_stage_2026-10-12/README.md; loader TODO 99q_.',
+  'schema_url': 'data/disaster-adjacent-pairs-80/schema.json',
+  'items_url': 'data/disaster-adjacent-pairs-80/items.json'})
+
+# ---------- 9. Sledcom defendant adjudication, BLIND rebuild (60) ----------
+src = os.path.join(ROOT, 'arrestsPubOpinionPaper/validation/sledcom_defendant_blind_stage_2026-10-12')
+items = load_items(os.path.join(src, 'items.json'))
+schema = json.load(open(os.path.join(src, 'schema.json')))
+assert len(items) == 60
+write_task('arrests-sledcom-defendant-blind60', items, schema,
+    [f'source {src}/items.json md5 {md5(os.path.join(src,"items.json"))}', 'blind rebuild of the 10-10 workbook (model columns removed); stratum in the sealed key'])
+tasks.append({
+  'id': 'arrests-sledcom-defendant-blind60',
+  'name': '2 · Sledcom rows 2023–26 — is an official the defendant? (60, ~35 min)',
+  'project': 'arrestsPubOpinionPaper',
+  'description': 'NEXT SITTING. Blind rebuild of the 10-10 adjudication workbook (which showed the model\'s labels). Human anchor for the ~1,300 silver-driven Sledcom deletions (ARR1010-D3) and the open 162-row list (EDA1012-D3). Rule in arrestsPubOpinionPaper/validation/sledcom_defendant_blind_stage_2026-10-12/README.md; loader TODO.',
+  'schema_url': 'data/arrests-sledcom-defendant-blind60/schema.json',
+  'items_url': 'data/arrests-sledcom-defendant-blind60/items.json'})
+
 # ---------- campaign2026 tasks: carried over unchanged, below the event tasks ----------
 old = json.load(open(os.path.join(V, 'tasks.json')))
 c26 = [t for t in old['tasks'] if t['project'] == 'campaign2026']
