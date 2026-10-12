@@ -1,0 +1,101 @@
+{
+ "task_id": "arrests-crime-type-subset35",
+ "name": "Arrests crime-type audit — 35-card human subset (REF1012)",
+ "version": "v1 2026-10-12",
+ "id_field": "item_id",
+ "hide_empty": true,
+ "instructions": "[2026-10-12 SUBSET of the 125-event audit (validation/START_HERE.md); 90 cards were pre-coded by two referees.] Read the Russian event text and pick ONE crime-type label from the classifier's own vocabulary. Judge the OFFENCE named in the text, not the official's rank. 'corruption' only when the text says corruption without naming an offence. Use 'unknown' freely: a forced guess is worse than a missing label. No model label is shown.",
+ "display": [
+  {
+   "field": "date",
+   "label": "Month",
+   "format": "compact"
+  },
+  {
+   "field": "region",
+   "label": "Region",
+   "format": "compact"
+  },
+  {
+   "field": "official_desc",
+   "label": "Official",
+   "format": "compact"
+  },
+  {
+   "field": "event_text",
+   "label": "Event text (code from this)",
+   "format": "longtext"
+  }
+ ],
+ "validation": [
+  {
+   "field": "noah_code",
+   "label": "Crime type",
+   "required": true,
+   "type": "enum",
+   "options": [
+    {
+     "value": "bribery",
+     "label": "bribery — взятка / подкуп",
+     "key": "1",
+     "tone": "neutral"
+    },
+    {
+     "value": "abuse_of_office",
+     "label": "abuse_of_office — превышение / злоупотребление",
+     "key": "2",
+     "tone": "neutral"
+    },
+    {
+     "value": "embezzlement",
+     "label": "embezzlement — присвоение / растрата",
+     "key": "3",
+     "tone": "neutral"
+    },
+    {
+     "value": "fraud",
+     "label": "fraud — мошенничество",
+     "key": "4",
+     "tone": "neutral"
+    },
+    {
+     "value": "tax_evasion",
+     "label": "tax_evasion — уклонение от налогов",
+     "key": "5",
+     "tone": "neutral"
+    },
+    {
+     "value": "extortion",
+     "label": "extortion — вымогательство",
+     "key": "6",
+     "tone": "neutral"
+    },
+    {
+     "value": "corruption",
+     "label": "corruption — generic, no offence named",
+     "key": "7",
+     "tone": "warn"
+    },
+    {
+     "value": "not_criminal",
+     "label": "not_criminal — no criminal matter",
+     "key": "8",
+     "tone": "neutral"
+    },
+    {
+     "value": "unknown",
+     "label": "unknown — cannot tell from the text",
+     "key": "9",
+     "tone": "warn"
+    }
+   ]
+  },
+  {
+   "field": "notes",
+   "label": "Notes",
+   "required": false,
+   "type": "text",
+   "placeholder": "optional"
+  }
+ ]
+}

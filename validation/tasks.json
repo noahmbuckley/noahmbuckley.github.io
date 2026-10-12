@@ -1,26 +1,66 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-28",
+  "generated_at": "2026-10-12",
   "tasks": [
     {
-      "id": "disaster-D31-stated-date",
-      "name": "T1 · Disaster D-31 stated dates v3 (82; rounds 1-4 required)",
+      "id": "disaster-D31-stated-date-subset23",
+      "name": "1 · Disaster D-31 stated dates — human subset (23, ~28 min)",
       "project": "disaster",
-      "description": "v3 2026-10-04: blinded, rounds with stop rules; tolerance ±3 d, bar 0.70 (DIS1004-D10). Plan disaster/validation/IPAD_SESSION_PLAN_2026-10-04.md; loader disaster/code/validation/99d3_load_date_validation_v3_results.R",
-      "schema_url": "data/disaster-D31-stated-date/schema.json",
-      "items_url": "data/disaster-D31-stated-date/items.json"
+      "description": "DO FIRST. Referee-reduced subset (REF1012, 10-12) of the v3 stated-date gate: tolerance ±3 d, bar 0.70 (DIS1004-D10). Gates day precision for 1,756 events (talk 10-17). Blind; search only if the card does not settle it. Loader disaster/code/validation/99d3_load_date_validation_v3_results.R (subset+silver amendment pending, EVIV-D6).",
+      "schema_url": "data/disaster-D31-stated-date-subset23/schema.json",
+      "items_url": "data/disaster-D31-stated-date-subset23/items.json"
     },
     {
-      "id": "disaster-response-session",
-      "name": "T1 · Disaster response + event reality (one session, 128)",
+      "id": "protest-dedup-gold-A-H1H2D",
+      "name": "1 · Protest dedup gold A — same event? + article dates (54, ~30 min)",
+      "project": "eventsData/protestData",
+      "description": "DO SECOND. Decides the protests IV: PROTWL-D1 (content-gated rule vs fastLink as primary linkage) and PRV2-D4 (Kasparov vs namarsh date). Blind pair cards (30) + article-date cards (24), coded as full blocks so the pre-declared per-block rules fire. Loader eventsData/protestData/upd/T9_content_rule/03_load_gold_answers.R. Memo eventsData/protestData/notes/weaklink_dedup_completeness_2026-10-04.md.",
+      "schema_url": "data/protest-dedup-gold-A-H1H2D/schema.json",
+      "items_url": "data/protest-dedup-gold-A-H1H2D/items.json"
+    },
+    {
+      "id": "disaster-event-reality-31",
+      "name": "1 · Disaster event reality — candidate non-events (31, ~9 min)",
       "project": "disaster",
-      "schema_url": "data/disaster-response-session/schema.json",
-      "items_url": "data/disaster-response-session/items.json",
-      "description": "Rounds 1-2; round 3 only on EXTEND. Plan disaster/validation/IPAD_SESSION_PLAN_2026-10-04.md; loader disaster/code/validation/99m_load_response_session_results.R"
+      "description": "DO THIRD. The REALITY block only: 20 candidate non-events (N 12 + C 8) + 11 calibration cards, blind. Informs how Table 1's weakly-confirmed slice (A7) is read and DIS1004-D1 (clean the universe). The response blocks (Kremlin, decree, Track A) are frozen until the framing call. Loader disaster/code/validation/99m_load_response_session_results.R.",
+      "schema_url": "data/disaster-event-reality-31/schema.json",
+      "items_url": "data/disaster-event-reality-31/items.json"
+    },
+    {
+      "id": "protest-validation-residue-articles23",
+      "name": "1 · Protest residue — real protest? / date / region (23, ~12 min)",
+      "project": "eventsData/protestData",
+      "description": "DO FOURTH (if time). Human tier for the Kasparov precision / recall / date / region silver numbers (pkg_2026-09-28/SUMMARY.md). No gate; measurement only. Loader eventsData/protestData/code/validation/61_load_residue_answers.R.",
+      "schema_url": "data/protest-validation-residue-articles23/schema.json",
+      "items_url": "data/protest-validation-residue-articles23/items.json"
+    },
+    {
+      "id": "arrests-case-linkage-subset74",
+      "name": "2 · Arrests case linkage — same criminal case? (74, ~30 min)",
+      "project": "arrestsPubOpinionPaper",
+      "description": "NEXT SITTING. Referee-reduced subset of the 10-04 \"same case?\" cards. Decides ARRWL-D1/D2 (adopt the linker fixes) and feeds the first-case rule. Blind. Loader arrestsPubOpinionPaper/code/load_case_linkage_pairs_results_2026-10-04.R (subset amendment pending, EVIV-D6). Memo notes/weaklink_case_linkage_2026-10-04.md.",
+      "schema_url": "data/arrests-case-linkage-subset74/schema.json",
+      "items_url": "data/arrests-case-linkage-subset74/items.json"
+    },
+    {
+      "id": "protest-dedup-gold-B-rules",
+      "name": "2 · Protest dedup gold B — rule boundaries + silver check (63, ~32 min)",
+      "project": "eventsData/protestData",
+      "description": "NEXT SITTING. Blocks RS/B1–B5 of the 10-04 gold: sets the content-gated rule's thresholds (TAU_WITHIN), must-link ON/OFF (PRV2-D5) and the silver-trust check. Same loader as part A.",
+      "schema_url": "data/protest-dedup-gold-B-rules/schema.json",
+      "items_url": "data/protest-dedup-gold-B-rules/items.json"
+    },
+    {
+      "id": "arrests-crime-type-subset35",
+      "name": "2 · Arrests crime type — bribery vs other (35, ~20 min)",
+      "project": "arrestsPubOpinionPaper",
+      "description": "NEXT SITTING. Referee-reduced subset of the 125-event crime-type audit (did the 46-category classifier over-split bribery?). Also the gold rusclf arrest_extract needs. Scorer code/89_score_reclass_audit.R must be amended to accept the subset (EVIV-D6).",
+      "schema_url": "data/arrests-crime-type-subset35/schema.json",
+      "items_url": "data/arrests-crime-type-subset35/items.json"
     },
     {
       "id": "c26-content-mode-rel40",
-      "name": "T1 · Content MODE reliability (40, blind, Noah+John) — do FIRST",
+      "name": "C26 · C26 · Content MODE reliability (40, blind, Noah+John) — do FIRST",
       "project": "campaign2026",
       "description": "TIER 1, do FIRST. Same 40 messages coded independently by Noah and John under codebook v4 (the model's prompt uses the identical rule text). Noah–John kappa (9-class, unreadable excluded) >= 0.60 keeps 9 classes; < 0.60 switches to the pre-declared 4-class collapse. Your 6 surviving round-1 items are in here — re-code them under v4. Full classifier text, no model output. Rules: campaign2026/validation/DECISION_RULES_content_mode_v2_2026-09-28.md. Loader campaign2026/code/26l2_load_content_mode_v4_gold.R.",
       "schema_url": "data/c26-content-mode-rel40/schema.json",
@@ -28,7 +68,7 @@
     },
     {
       "id": "c26-content-mode-310",
-      "name": "T1 · Content MODE gold (310, blind) — after rel40",
+      "name": "C26 · C26 · Content MODE gold (310, blind) — after rel40",
       "project": "campaign2026",
       "description": "TIER 1, after rel40 (and only if kappa decides 9 vs 4 classes first). Rebuilt gold: programmes, party-less and multi-speaker debate turns removed, replacements drawn; codebook v4; full classifier text (~3 h, splittable). No model output shown. Loader campaign2026/code/26l2_load_content_mode_v4_gold.R.",
       "schema_url": "data/c26-content-mode-310/schema.json",
@@ -36,7 +76,7 @@
     },
     {
       "id": "c26-topics-150",
-      "name": "T1 · Campaign message TOPICS gold (150, blind)",
+      "name": "C26 · C26 · Campaign message TOPICS gold (150, blind)",
       "project": "campaign2026",
       "description": "TIER 1 (same sitting as content mode). Blind gold for 25_message_topics: relevant?, primary topic (16), all topics. 150 June-2026 posts, full text. The only check so far is prompt-to-prompt stability (62.7% primary-topic agreement). Loader campaign2026/code/26m_load_topics_gold.R.",
       "schema_url": "data/c26-topics-150/schema.json",
@@ -44,19 +84,11 @@
     },
     {
       "id": "c26-war-text-120",
-      "name": "T1 · War-salience pilot TEXT gold (120, blind)",
+      "name": "C26 · C26 · War-salience pilot TEXT gold (120, blind)",
       "project": "campaign2026",
       "description": "TIER 1. Blind gold for the war pilot's text codes (war_frame, primary mode, military_bio); 24 per predicted bucket, channel/period hidden. Decides Haiku scale-up (~$30-55) vs free rusclf. The 150-image half stays in campaign2026/validation/war_pilot_image_gold_2026-09-27.xlsx (images embedded). Loader campaign2026/code/26n_load_war_text_gold.R.",
       "schema_url": "data/c26-war-text-120/schema.json",
       "items_url": "data/c26-war-text-120/items.json"
-    },
-    {
-      "id": "protest-validation-residue",
-      "name": "T2 · Protest data: referee residue (40)",
-      "project": "eventsData/protestData",
-      "description": "TIER 2. The 40 items on which the two silver referees (Opus 5, gpt-5) disagreed or said unclear across the protest-data validation package: 12 'real protest?' (Kasparov identification), 7 the same on articles the classifier never labelled, 2 protest dates, 2 regions, 17 'same protest event?' pairs (merged / near-miss / self-dedup). Blind: no model or database label shown. Resolves the residue in eventsData/protestData/validation/pkg_2026-09-28/SUMMARY.md. Loader eventsData/protestData/code/validation/61_load_residue_answers.R.",
-      "schema_url": "data/protest-validation-residue/schema.json",
-      "items_url": "data/protest-validation-residue/items.json"
     }
   ]
 }

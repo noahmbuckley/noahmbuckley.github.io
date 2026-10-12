@@ -1,0 +1,5 @@
+built 2026-10-12T23:02:14 by build_2026-10-12_event_tasks.py
+n_items 35
+source /Users/noahbuckley/Dropbox/Projects/arrestsPubOpinionPaper/validation/reclass_audit_sample_2026-07-21.csv md5 e4b3eb8310d445253d12de4f5e2bed0f
+filter: reclass_audit_referee_2026-10-12/human_subset_2026-10-12.csv (row_id)
+labels from validation/START_HERE.md §2

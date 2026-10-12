@@ -1,0 +1,80 @@
+{
+ "task_id": "protest-dedup-gold-B-rules",
+ "name": "Protest dedup gold — part B (rule boundaries + silver check), 63 cards",
+ "version": "2026-10-04-v2",
+ "id_field": "item_id",
+ "instructions": "[Part B of the 10-04 gold: 63 pair cards, full blocks.] PAIR cards (first 93): do the two records describe the SAME protest event? ARTICLE cards (last 24): on what date did the protest itself take place? The question is printed above each card. Nothing shown is a model or database verdict.",
+ "instructions_by_variant": {
+  "pair": "[Part B of the 10-04 gold: 63 pair cards, full blocks.] PAIR of records from protest databases (or two articles of one source). Same protest event = the same physical gathering/action (same occasion, same city/place, same organisers or participants). Sources often record a date a day or a few days off (publication date instead of event date, or an imputed day), so judge mainly by CONTENT. Two protests on the same theme in the same place on clearly different occasions/days are DIFFERENT events (a weekly picket is a different event each week; a continuing multi-day action is ONE event). A record marked 'month-level only' has an imputed day. An announcement and a report of the SAME action are the same event; a report and its court/police aftermath are not. 'Unclear' if the records do not contain enough to tell (e.g. a coded record with no text).",
+  "article_date": "[Part B of the 10-04 gold: 63 pair cards, full blocks.] ARTICLE (Kasparov.ru news) reporting a protest. Give the calendar date (YYYY-MM-DD) on which the protest ITSELF took place, reading the text. Resolve 'вчера', 'в среду', '8 декабря' etc. from the publication date shown. If it lasted several days, give the first day. If the text gives no date, type the publication date and say so in the notes."
+ },
+ "display": [
+  {
+   "field": "question",
+   "label": "Question",
+   "format": "compact"
+  },
+  {
+   "field": "main_text",
+   "label": "Text (RU)",
+   "format": "longtext"
+  },
+  {
+   "field": "context",
+   "label": "Context",
+   "format": "compact"
+  }
+ ],
+ "validation": [],
+ "validation_by_variant": {
+  "pair": [
+   {
+    "field": "coder_same_event",
+    "label": "Same protest event?",
+    "type": "enum",
+    "required": true,
+    "options": [
+     {
+      "value": "yes",
+      "label": "Yes",
+      "key": "1",
+      "tone": "neutral"
+     },
+     {
+      "value": "no",
+      "label": "No",
+      "key": "2",
+      "tone": "neutral"
+     },
+     {
+      "value": "unclear",
+      "label": "Unclear from the text",
+      "key": "3",
+      "tone": "warn"
+     }
+    ]
+   },
+   {
+    "field": "notes",
+    "label": "Notes (optional)",
+    "type": "textarea",
+    "placeholder": "Free text"
+   }
+  ],
+  "article_date": [
+   {
+    "field": "coder_protest_date",
+    "label": "Date the protest itself took place (YYYY-MM-DD)",
+    "type": "text",
+    "required": true,
+    "placeholder": "2011-12-10"
+   },
+   {
+    "field": "notes",
+    "label": "Notes (optional; say if you assumed the publication date)",
+    "type": "textarea",
+    "placeholder": "Free text"
+   }
+  ]
+ }
+}

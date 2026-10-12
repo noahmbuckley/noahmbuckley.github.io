@@ -1,0 +1,5 @@
+built 2026-10-12T23:02:14 by build_2026-10-12_event_tasks.py
+n_items 63
+source items /Users/noahbuckley/Dropbox/Projects/eventsData/protestData/validation/dedup_gold_stage_2026-10-04/items.json md5 bc71e5279221206652be9ca752cc81e2
+filter: items_key.csv column block only (no answer columns read)
+blocks RS (12) + B1 (10) + B2 (15) + B3 (10) + B4 (6) + B5 (10)

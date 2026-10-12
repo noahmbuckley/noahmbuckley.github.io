@@ -1,0 +1,4 @@
+built 2026-10-12T23:02:14 by build_2026-10-12_event_tasks.py
+n_items 23
+source items /Users/noahbuckley/Dropbox/Projects/me/website/validation/data/protest-validation-residue/items.json md5 167b34e7637dc6489cb13df3600cf857
+filter: variant in article_protest / article_date / article_region (the 17 pair cards dropped: 11 have no text on one side)

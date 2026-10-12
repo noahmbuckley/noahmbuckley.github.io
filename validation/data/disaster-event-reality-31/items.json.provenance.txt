@@ -1,0 +1,4 @@
+built 2026-10-12T23:02:14 by build_2026-10-12_event_tasks.py
+n_items 31
+source items /Users/noahbuckley/Dropbox/Projects/me/website/validation/data/disaster-response-session/items.json md5 8ac3b8247ff5e9394b187bf113685273
+filter: variant contains "reality" (29 reality + kremlin+reality + decree+reality)

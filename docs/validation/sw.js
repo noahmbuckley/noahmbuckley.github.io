@@ -5,9 +5,14 @@
      - activate: precache all task data listed in tasks.json (best effort)
      - fetch:    cache-first for our scope; network falls back to cache
    ============================================================= */
-const VERSION = 'v14-2026-10-04';
+const VERSION = 'v16-2026-10-12';
 const SHELL_CACHE = 'shell-' + VERSION;
 const DATA_CACHE  = 'data-'  + VERSION;
+// Task images (data/<task>/img/*): separate, UNVERSIONED cache so a VERSION bump does not
+// throw away ~40 MB of downloaded images. Cache-first; images are treated as immutable by
+// filename, so a re-rendered image needs a new filename.
+const IMG_CACHE   = 'images-v1';
+const IMG_RE = /\/data\/[^/]+\/img\/[^/]+$/;
 
 const SHELL_ASSETS = [
   './',
@@ -33,7 +38,7 @@ self.addEventListener('activate', (event) => {
     // Drop old caches
     const keys = await caches.keys();
     await Promise.all(keys.map(k => {
-      if (k !== SHELL_CACHE && k !== DATA_CACHE) return caches.delete(k);
+      if (k !== SHELL_CACHE && k !== DATA_CACHE && k !== IMG_CACHE) return caches.delete(k);
     }));
     // Best-effort precache of all task data
     try {
@@ -80,6 +85,20 @@ self.addEventListener('fetch', (event) => {
       } catch (e) { /* offline — fall through to cache */ }
       return (await caches.match(req, { ignoreSearch: true }))
              || new Response('Offline and not cached.', { status: 503 });
+    }
+
+    // Task images: cache-first, populated on first view (and by the app's "Download task images").
+    if (IMG_RE.test(url.pathname)) {
+      const ic = await caches.open(IMG_CACHE);
+      const hit = await ic.match(req, { ignoreSearch: true });
+      if (hit) return hit;
+      try {
+        const resp = await fetch(req);
+        if (resp && resp.ok) { try { await ic.put(req, resp.clone()); } catch (e) {} }
+        return resp;
+      } catch (e) {
+        return new Response('Offline and image not cached.', { status: 503 });
+      }
     }
 
     // 1) try caches
