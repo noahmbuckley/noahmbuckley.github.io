@@ -250,7 +250,7 @@ print('tasks.json:', [t['id'] for t in tasks])
 
 # ---------- sw.js VERSION bump ----------
 sw = open(os.path.join(V, 'sw.js')).read()
-sw2 = re.sub(r"const VERSION = 'v\d+-\d{4}-\d{2}-\d{2}';", f"const VERSION = 'v16-{TODAY}';", sw)
+sw2 = re.sub(r"const VERSION = 'v\d+-\d{4}-\d{2}-\d{2}';", f"const VERSION = 'v17-{TODAY}';", sw)
 assert sw2 != sw or f'v16-{TODAY}' in sw
 open(os.path.join(V, 'sw.js'), 'w').write(sw2)
 print('sw.js VERSION ->', re.search(r"const VERSION = '([^']+)'", sw2).group(1))
