@@ -1,4 +1,36 @@
 {
   "retired_on": "2026-10-12",
-  "tasks": []
+  "tasks": [
+    {
+      "id": "disaster-D31-stated-date",
+      "name": "T1 · Disaster D-31 stated dates v3 (82; rounds 1-4 required)",
+      "project": "disaster",
+      "description": "v3 2026-10-04: blinded, rounds with stop rules; tolerance ±3 d, bar 0.70 (DIS1004-D10). Plan disaster/validation/IPAD_SESSION_PLAN_2026-10-04.md; loader disaster/code/validation/99d3_load_date_validation_v3_results.R",
+      "schema_url": "data/disaster-D31-stated-date/schema.json",
+      "items_url": "data/disaster-D31-stated-date/items.json",
+      "retired": "2026-10-12",
+      "retired_reason": "replaced by disaster-D31-stated-date-subset23 (REF1012 referee pass); the 82-card data dir stays on disk"
+    },
+    {
+      "id": "disaster-response-session",
+      "name": "T1 · Disaster response + event reality (one session, 128)",
+      "project": "disaster",
+      "schema_url": "data/disaster-response-session/schema.json",
+      "items_url": "data/disaster-response-session/items.json",
+      "description": "Rounds 1-2; round 3 only on EXTEND. Plan disaster/validation/IPAD_SESSION_PLAN_2026-10-04.md; loader disaster/code/validation/99m_load_response_session_results.R",
+      "retired": "2026-10-12",
+      "retired_reason": "response blocks frozen until the disaster framing call (EVIV review 2026-10-12); the REALITY block lives on as disaster-event-reality-31"
+    },
+    {
+      "id": "protest-validation-residue",
+      "name": "T2 · Protest data: referee residue (40)",
+      "project": "eventsData/protestData",
+      "description": "TIER 2. The 40 items on which the two silver referees (Opus 5, gpt-5) disagreed or said unclear across the protest-data validation package: 12 'real protest?' (Kasparov identification), 7 the same on articles the classifier never labelled, 2 protest dates, 2 regions, 17 'same protest event?' pairs (merged / near-miss / self-dedup). Blind: no model or database label shown. Resolves the residue in eventsData/protestData/validation/pkg_2026-09-28/SUMMARY.md. Loader eventsData/protestData/code/validation/61_load_residue_answers.R.",
+      "schema_url": "data/protest-validation-residue/schema.json",
+      "items_url": "data/protest-validation-residue/items.json",
+      "retired": "2026-10-12",
+      "retired_reason": "replaced by protest-validation-residue-articles23; the 17 pair cards were dropped (11 unanswerable without text)"
+    }
+  ],
+  "note": "Filled 2026-10-14 (CC): the 10-12 build wrote this file empty. Entries copied from tasks.json at commit 5c22697^. Replaced by the subset/split tasks listed in _notes/event_iv_review_2026-10-12.md §6b."
 }

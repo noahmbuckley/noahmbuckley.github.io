@@ -1,4 +1,4 @@
-# START HERE — Content MODE gold, main set (310 items, blind, 2026-09-28)
+# START HERE — Content MODE gold, main set (310 items, blind, redrawn 2026-09-30)
 
 **Where:** validation PWA → task **"T1 - Content MODE gold (310, blind)"** (`c26-content-mode-310`).
 **Code this AFTER the 40-item reliability round** (`c26-content-mode-rel40`) is done and its Noah-John kappa is known
@@ -14,3 +14,8 @@ Median text is about 800 characters; budget roughly 3 hours in total, split over
 `Rscript campaign2026/code/26l2_load_content_mode_v4_gold.R`. Blind predictions are opened only after the codes are written.
 **Do not open** `content_mode_v4_predictions_BLIND_2026-09-28.csv` until coding is finished. The sample is stratified on source × party
 (and the 40 on predicted mode), not proportional, so pooled accuracy from it is in-sample; see the decision-rules file.
+
+**Redrawn 2026-09-30 (decision AUDIT0929-D3 = c):** the 6 items Noah coded on 09-28 under the OLD v3 definitions now sit in THIS task
+(positions 14, 15, 19, 39, 131, 291); 6 other items moved to the reliability task. Code the 6 afresh under codebook v4. The loader flags
+them and leaves them out of model-vs-human scoring by default (`INCLUDE_ROUND1=1` puts them back). Files: `content_mode_v4_NOAH_twin_2026-09-30.xlsx`,
+`content_mode_v4_predictions_BLIND_2026-09-30.csv` (do not open).

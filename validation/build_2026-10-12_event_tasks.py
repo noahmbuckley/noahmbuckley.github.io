@@ -230,7 +230,7 @@ old = json.load(open(os.path.join(V, 'tasks.json')))
 c26 = [t for t in old['tasks'] if t['project'] == 'campaign2026']
 for t in c26:
     t = dict(t)
-    t['name'] = 'C26 · ' + re.sub(r'^T1 · ', '', t['name'])
+    t['name'] = 'C26 · ' + re.sub(r'^(T1 · |C26 · )+', '', t['name'])   # 2026-10-14: idempotent (re-runs had stacked 'C26 · ' four times)
     tasks.append(t)
 
 # ---------- retired entries ----------
@@ -242,7 +242,8 @@ for t in retired:
       'disaster-D31-stated-date': 'replaced by disaster-D31-stated-date-subset23 (REF1012 referee pass); the 82-card data dir stays on disk',
       'disaster-response-session': 'response blocks frozen until the disaster framing call (EVIV review 2026-10-12); the REALITY block lives on as disaster-event-reality-31',
       'protest-validation-residue': 'replaced by protest-validation-residue-articles23; the 17 pair cards were dropped (11 unanswerable without text)'}[t['id']]
-json.dump({'retired_on': TODAY, 'tasks': retired}, open(os.path.join(V, f'tasks_retired_{TODAY}.json'), 'w'), ensure_ascii=False, indent=2)
+if retired:   # 2026-10-14: a re-run reads the already-rebuilt tasks.json, finds nothing to retire, and used to blank this file
+    json.dump({'retired_on': TODAY, 'tasks': retired}, open(os.path.join(V, f'tasks_retired_{TODAY}.json'), 'w'), ensure_ascii=False, indent=2)
 
 new = {'schema_version': 1, 'generated_at': TODAY, 'tasks': tasks}
 json.dump(new, open(os.path.join(V, 'tasks.json'), 'w'), ensure_ascii=False, indent=2)

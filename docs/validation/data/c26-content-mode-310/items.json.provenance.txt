@@ -1,6 +1,7 @@
-output     : /Users/noahbuckley/Dropbox/Projects/me/website/validation/data/c26-content-mode-310/items.json
+output     : /Users/noahbuckley/Dropbox/Projects/campaign2026/data/processed/c26_v4_ipad_staging_2026-09-30/c26-content-mode-310/items.json
 script     : campaign2026/code/26p_build_ipad_chunks_v4.R
-timestamp  : 2026-09-28 23:18:56 +0100
+items_csv  : /Users/noahbuckley/Dropbox/Projects/campaign2026/data/processed/c26_v4_sample_items_2026-09-30.csv
+timestamp  : 2026-09-30 15:50:43 +0100
 R_version  : R version 4.6.0 (2026-04-24)
 n_items    : 310
 blind      : no pred_*/model_*/john_*/v2_*/v4_* fields; predictions file never read
