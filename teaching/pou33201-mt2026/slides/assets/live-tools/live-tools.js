@@ -480,6 +480,29 @@
         return;
       }
 
+      // Option/Alt + → / ← = skip ONE slide (Noah, 2026-10-12: skipping a
+      // spare mid-lecture). Lands on slide N+2 (or N-2) at its start, with
+      // its fragments unrevealed, exactly as if you'd arrived normally.
+      // Reveal ignores arrows with Alt held, so nothing else is bound here.
+      if (e.altKey && !e.metaKey && !e.ctrlKey && !e.shiftKey &&
+          (e.key === "ArrowRight" || e.key === "ArrowLeft")) {
+        const R = window.Reveal;
+        if (R && R.getSlides) {
+          const slides = R.getSlides();
+          const i = slides.indexOf(R.getCurrentSlide());
+          const j = i + (e.key === "ArrowRight" ? 2 : -2);
+          const target = slides[Math.max(0, Math.min(slides.length - 1, j))];
+          if (i >= 0 && target) {
+            const ix = R.getIndices(target);
+            R.slide(ix.h, ix.v);
+            flash(e.key === "ArrowRight" ? "Skipped one slide ⏭" : "Back over one slide ⏮");
+          }
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
       // Esc cancels pending placement, otherwise lets reveal handle
       if (e.key === "Escape") {
         if (pendingPlacement) {
