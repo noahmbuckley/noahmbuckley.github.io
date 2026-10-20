@@ -1,0 +1,4 @@
+built 2026-10-21T00:08:28 by hand-copy (DECEV-D5 a) from the stage
+n_items 40
+source /Users/noahbuckley/Dropbox/Projects/disaster/validation/decree_events_gold_stage_2026-10-21/items.json md5 bed2cd6ce8a04116c0a15d476d4c0497
+blind; model labels only in the stage items_key.csv

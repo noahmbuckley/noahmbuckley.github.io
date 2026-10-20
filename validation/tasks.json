@@ -43,6 +43,14 @@
       "items_url": "data/disaster-adjacent-pairs-80/items.json"
     },
     {
+      "id": "disaster-decree-events-gold-40",
+      "name": "1b · Disaster decree events — hazard typing (40, ~25 min)",
+      "project": "disaster",
+      "description": "Gate for the 2015-2026 regional ChS-introduction event list (DECEV-D2 c, DECEV-D5 a). 40 acts stratified 10 war-or-unknown / 10 post-2022 non-crop / 10 post-2022 crop-loss / 10 pre-2023; code hazard, war-related (use the war option), whether the act introduces a regime, and the incident start date only if the text states it. Blind: model labels are only in the stage key. Decision rule in disaster/validation/decree_events_gold_stage_2026-10-21/README.md; loader disaster/code/validation/99r_load_decree_gold_results.R.",
+      "schema_url": "data/disaster-decree-events-gold-40/schema.json",
+      "items_url": "data/disaster-decree-events-gold-40/items.json"
+    },
+    {
       "id": "arrests-case-linkage-subset74",
       "name": "2 · Arrests case linkage — same criminal case? (74, ~30 min)",
       "project": "arrestsPubOpinionPaper",

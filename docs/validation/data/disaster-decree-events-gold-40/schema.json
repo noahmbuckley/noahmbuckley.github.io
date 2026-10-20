@@ -1,0 +1,98 @@
+{
+  "task_id": "disaster-decree-events-gold-40",
+  "name": "Disaster decree events: hazard typing (40, blind)",
+  "version": "v1 2026-10-21",
+  "id_field": "item_id",
+  "hide_empty": true,
+  "instructions": "A regional act introducing a state of emergency (режим ЧС). Judge from the text only. Hazard = what caused the emergency. War-related = consequence of the war / military action (shelling, drones, missiles, refugee inflow from Ukraine or the border areas, counter-terrorist operation, terrorist attack). If the text gives no hazard, choose Unknown. Event date = the day the incident began IF the text states it; otherwise leave blank. Nothing shown is a model verdict.",
+  "display": [
+    {
+      "field": "region",
+      "label": "Region",
+      "format": "compact"
+    },
+    {
+      "field": "decree_date",
+      "label": "Decree date",
+      "format": "compact"
+    },
+    {
+      "field": "title",
+      "label": "Title",
+      "format": "longtext"
+    },
+    {
+      "field": "text",
+      "label": "Text the classifier saw",
+      "format": "longtext"
+    }
+  ],
+  "validation": [
+    {
+      "field": "hazard_type",
+      "label": "Hazard",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "flood",
+          "label": "Flood / high water"
+        },
+        {
+          "value": "wildfire",
+          "label": "Wildfire (forest, steppe, peat)"
+        },
+        {
+          "value": "other_natural",
+          "label": "Other natural (drought, storm, frost, earthquake...)"
+        },
+        {
+          "value": "industrial",
+          "label": "Industrial / explosion / contamination"
+        },
+        {
+          "value": "infrastructure_utility",
+          "label": "Infrastructure / utility failure"
+        },
+        {
+          "value": "transport",
+          "label": "Transport accident"
+        },
+        {
+          "value": "epidemic",
+          "label": "Epidemic / poisoning / animal disease"
+        },
+        {
+          "value": "war_related",
+          "label": "War-related"
+        },
+        {
+          "value": "unknown",
+          "label": "Unknown (no hazard in text)"
+        }
+      ]
+    },
+    {
+      "field": "is_introduction",
+      "label": "Introduces a ЧС regime?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No (lifts / extends / amends / alert only)"
+        }
+      ]
+    },
+    {
+      "field": "event_date",
+      "label": "Incident start date stated in text (YYYY-MM-DD, blank if none)",
+      "required": false,
+      "type": "text"
+    }
+  ]
+}
