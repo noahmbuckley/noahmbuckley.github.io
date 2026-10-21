@@ -121,6 +121,14 @@
       "description": "DRIFT-D4 (a). 50 cards: 25 accepted regional-executive assertions (EGRUL / portal) + 25 live federal spells. Blind: no stratum or move-rule flag shown. Rule (proposed): a card is wrong if any answer is no; >10% wrong in a fold -> fold re-review. Scorer elitesData/validation/spotcheck_score_2026-10-20.R.",
       "schema_url": "data/fold-spot-1020/schema.json",
       "items_url": "data/fold-spot-1020/items.json"
+    },
+    {
+      "id": "wpp0-gate-1020",
+      "name": "1b · Mayor hole fill + currency feed — WPP0 gate (43)",
+      "project": "elitesData",
+      "description": "WPP0-GATE-1020. 43 cards: 11 accepted hole-fill spells (EGRUL + ru.wiki agree), 10 single-source proposals (incl. registry-only mayors, WPP0-D2), 22 mayor-currency feed rows (7 triage-flagged). Rule (proposed): a card is wrong if any answer is no; read the count with a Wilson interval. Key: elitesData/validation/wpp0_gate_rows_2026-10-21.csv. Reminder h20261026-3260b010.",
+      "schema_url": "data/wpp0-gate-1020/schema.json",
+      "items_url": "data/wpp0-gate-1020/items.json"
     }
   ]
 }

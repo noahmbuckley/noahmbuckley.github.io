@@ -1,0 +1,150 @@
+{
+  "task_id": "wpp0-gate-1020",
+  "name": "Mayor hole fill + currency feed (WPP0-GATE-1020): 43 cards",
+  "version": "v1 2026-10-21",
+  "id_field": "item_id",
+  "hide_empty": true,
+  "instructions": "WP-P0 gate. Each card is a mayor spell that fills a hole in the seat calendar. «заполнено» cards were ACCEPTED because a registry source (EGRUL) and ru.wiki / Wikidata name the same person for overlapping years; «один источник» cards are PROPOSED (only one source) and «спор» cards have two different candidates. Check each against the evidence link, then answer: dates right? (start AND end, year-level is fine) / person right? (this person was the head of the city then) / post right? (head of the city: the elected mayor or the head of the administration; NOT a deputy or a council chair). EGRUL start dates are registrations (\"in office by\"); the card shows the earlier of EGRUL and wiki. «лента» cards are the 22 rows of the 10-21 mayor-currency feed (a new head per the ru.wiki infobox, start unknown): for them 'dates right?' means 'is he the head NOW?'; «лента: проверить статью» cards are rows flagged by the triage (wrong wiki article, or the registry contradicts the feed). Use 'unsure' when the link does not settle it. No model verdict beyond what is shown.",
+  "display": [
+    {
+      "field": "name",
+      "label": "Person (nominative)",
+      "format": "longtext"
+    },
+    {
+      "field": "post",
+      "label": "Post",
+      "format": "longtext"
+    },
+    {
+      "field": "region_body",
+      "label": "Region / body",
+      "format": "compact"
+    },
+    {
+      "field": "start",
+      "label": "Start",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "end",
+      "label": "End",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "fold_level",
+      "label": "Level in master",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "evidence_url",
+      "label": "Evidence",
+      "format": "link"
+    },
+    {
+      "field": "end_url",
+      "label": "End act",
+      "format": "link"
+    },
+    {
+      "field": "evidence_note",
+      "label": "Evidence note",
+      "format": "compact"
+    },
+    {
+      "field": "context",
+      "label": "Context",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "dates_ok",
+      "label": "Dates right?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не уверен",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "person_ok",
+      "label": "Person right?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "4",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "5",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не уверен",
+          "key": "6",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "post_ok",
+      "label": "Post right?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "7",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "8",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не уверен",
+          "key": "9",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "required": false,
+      "type": "textarea",
+      "placeholder": "what is wrong / what the source says"
+    }
+  ]
+}
