@@ -1,0 +1,150 @@
+{
+  "task_id": "fold-spot-1020",
+  "name": "Fold spot check (FOLD-SPOT-1020): 50 cards, regional + federal",
+  "version": "v1 2026-10-20",
+  "id_field": "item_id",
+  "hide_empty": true,
+  "instructions": "DRIFT-D4. Check each row against its evidence link, then answer three questions: dates right? (start AND end) / person right? (this is the person who held the post) / post right? (post and level). EGRUL start dates are the registration of the head (\"in office by\"), not an appointment date: judge them as that. Use 'unsure' when the link does not settle it. No model verdict beyond what is shown.",
+  "display": [
+    {
+      "field": "name",
+      "label": "Person (nominative)",
+      "format": "longtext"
+    },
+    {
+      "field": "post",
+      "label": "Post",
+      "format": "longtext"
+    },
+    {
+      "field": "region_body",
+      "label": "Region / body",
+      "format": "compact"
+    },
+    {
+      "field": "start",
+      "label": "Start",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "end",
+      "label": "End",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "fold_level",
+      "label": "Level in master",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "evidence_url",
+      "label": "Evidence",
+      "format": "link"
+    },
+    {
+      "field": "end_url",
+      "label": "End act",
+      "format": "link"
+    },
+    {
+      "field": "evidence_note",
+      "label": "Evidence note",
+      "format": "compact"
+    },
+    {
+      "field": "context",
+      "label": "Context",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "dates_ok",
+      "label": "Dates right?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не уверен",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "person_ok",
+      "label": "Person right?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "4",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "5",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не уверен",
+          "key": "6",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "post_ok",
+      "label": "Post right?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "7",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "8",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не уверен",
+          "key": "9",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "required": false,
+      "type": "textarea",
+      "placeholder": "what is wrong / what the source says"
+    }
+  ]
+}

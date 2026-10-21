@@ -113,6 +113,14 @@
       "description": "TIER 1. Blind gold for the war pilot's text codes (war_frame, primary mode, military_bio); 24 per predicted bucket, channel/period hidden. Decides Haiku scale-up (~$30-55) vs free rusclf. The 150-image half stays in campaign2026/validation/war_pilot_image_gold_2026-09-27.xlsx (images embedded). Loader campaign2026/code/26n_load_war_text_gold.R.",
       "schema_url": "data/c26-war-text-120/schema.json",
       "items_url": "data/c26-war-text-120/items.json"
+    },
+    {
+      "id": "fold-spot-1020",
+      "name": "1b · Elites fold spot-check — assertions + federal spells (50)",
+      "project": "elitesData",
+      "description": "DRIFT-D4 (a). 50 cards: 25 accepted regional-executive assertions (EGRUL / portal) + 25 live federal spells. Blind: no stratum or move-rule flag shown. Rule (proposed): a card is wrong if any answer is no; >10% wrong in a fold -> fold re-review. Scorer elitesData/validation/spotcheck_score_2026-10-20.R.",
+      "schema_url": "data/fold-spot-1020/schema.json",
+      "items_url": "data/fold-spot-1020/items.json"
     }
   ]
 }
