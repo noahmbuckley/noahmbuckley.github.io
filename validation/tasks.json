@@ -68,6 +68,15 @@
       "desk": true
     },
     {
+      "id": "gold-elvis-1022-subset96",
+      "name": "1 · ELVIS mention gold — human subset (96, ~35 min)",
+      "project": "eliteVisibility",
+      "description": "GOLD-D5 (a; bar set by Noah 2026-10-22 before coding). 96 of 245 cards: the 59 two LLM referees disagreed on or found unclear + 37 agreed cards as an audit; the other 149 are audited silver. Three answers per card: same person? / in post at the date? / about the official's region? Bar: same_person Wilson lower bound ≥ 0.90 overall and ≥ 0.85 per family; in_post ≥ 0.85; about_region descriptive. Blocks every eliteVisibility number (hard rule 5). Scorer eliteVisibility/code/53_gold_score.R.",
+      "schema_url": "data/gold-elvis-1022-subset96/schema.json",
+      "items_url": "data/gold-elvis-1022-subset96/items.json",
+      "tier": "core"
+    },
+    {
       "id": "protest-dedup-gold-residue36",
       "name": "2 · Protest dedup — human residue: article dates + 2 pair blocks (36, ~35 min)",
       "project": "eventsData/protestData",
