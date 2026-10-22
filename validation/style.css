@@ -248,3 +248,5 @@ kbd {
 }
 .chip-lookup { border-style: dashed; opacity: 0.85; }
 .chip:active { opacity: 0.6; }
+
+.tier-header { font-size: 0.95rem; color: var(--fg-muted); margin: 18px 0 2px; font-weight: 600; text-transform: none; }

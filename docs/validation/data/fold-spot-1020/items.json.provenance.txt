@@ -1,0 +1,3 @@
+
+2026-10-22 (GOLD-D6): added `inn` (parsed from the rusprofile search URL) on 19 regional cards + schema lookups (checko / list-org by INN, Google/Yandex/ru.wiki by name). The 25 federal cards are being referee-coded with web search; Noah codes the 25 regional cards first.
+2026-10-22 (GOLD-D6): card order = 25 regional first, then 25 federal (within-group order unchanged).

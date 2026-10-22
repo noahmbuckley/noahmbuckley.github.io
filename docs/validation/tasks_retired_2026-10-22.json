@@ -1,0 +1,78 @@
+{
+  "retired_at": "2026-10-22",
+  "reason": "GOLD review 2026-10-22 (_notes/gold_review_2026-10-22.md)",
+  "tasks": [
+    {
+      "id": "disaster-D31-stated-date-subset23",
+      "name": "1 · Disaster D-31 stated dates — human subset (23, ~28 min)",
+      "project": "disaster",
+      "description": "DO FIRST. Referee-reduced subset (REF1012, 10-12) of the v3 stated-date gate: tolerance ±3 d, bar 0.70 (DIS1004-D10). Gates day precision for 1,756 events (talk 10-17). Blind; search only if the card does not settle it. Loader disaster/code/validation/99d3_load_date_validation_v3_results.R.",
+      "schema_url": "data/disaster-D31-stated-date-subset23/schema.json",
+      "items_url": "data/disaster-D31-stated-date-subset23/items.json",
+      "retired_reason": "replaced by disaster-D31-stated-date-41 (GOLD-D2 a)"
+    },
+    {
+      "id": "protest-dedup-gold-A-H1H2D",
+      "name": "1 · Protest dedup gold A — same event? + article dates (54, ~30 min)",
+      "project": "eventsData/protestData",
+      "description": "DO SECOND. Decides the protests IV: PROTWL-D1 (content-gated rule vs fastLink as primary linkage) and PRV2-D4 (Kasparov vs namarsh date). Blind pair cards (30) + article-date cards (24), coded as full blocks so the pre-declared per-block rules fire. Loader eventsData/protestData/upd/T9_content_rule/03_load_gold_answers.R. Memo eventsData/protestData/notes/weaklink_dedup_completeness_2026-10-04.md.",
+      "schema_url": "data/protest-dedup-gold-A-H1H2D/schema.json",
+      "items_url": "data/protest-dedup-gold-A-H1H2D/items.json",
+      "retired_reason": "replaced by protest-dedup-gold-residue36 (GOLD-D3 a); rest silver"
+    },
+    {
+      "id": "protest-dedup-gold-B-rules",
+      "name": "2 · Protest dedup gold B — rule boundaries + silver check (63, ~32 min)",
+      "project": "eventsData/protestData",
+      "description": "NEXT SITTING. Blocks RS/B1–B5 of the 10-04 gold: sets the content-gated rule's thresholds (TAU_WITHIN), must-link ON/OFF (PRV2-D5) and the silver-trust check. Same loader as part A.",
+      "schema_url": "data/protest-dedup-gold-B-rules/schema.json",
+      "items_url": "data/protest-dedup-gold-B-rules/items.json",
+      "retired_reason": "replaced by protest-dedup-gold-residue36 (GOLD-D3 a); rest silver"
+    },
+    {
+      "id": "arrests-case-linkage-subset74",
+      "name": "2 · Arrests case linkage — same criminal case? (74, ~30 min)",
+      "project": "arrestsPubOpinionPaper",
+      "description": "NEXT SITTING. Referee-reduced subset of the 10-04 \"same case?\" cards. Decides ARRWL-D1/D2 (adopt the linker fixes) and feeds the first-case rule. Blind. Loader arrestsPubOpinionPaper/code/load_case_linkage_pairs_results_2026-10-04.R. Memo notes/weaklink_case_linkage_2026-10-04.md.",
+      "schema_url": "data/arrests-case-linkage-subset74/schema.json",
+      "items_url": "data/arrests-case-linkage-subset74/items.json",
+      "retired_reason": "replaced by arrests-case-linkage-S1-24 (GOLD-D4 a); S2-S6 silver"
+    },
+    {
+      "id": "arrests-sledcom-defendant-blind60",
+      "name": "2 · Sledcom rows 2023–26 — is an official the defendant? (60, ~35 min)",
+      "project": "arrestsPubOpinionPaper",
+      "description": "NEXT SITTING. Blind rebuild of the 10-10 adjudication workbook (which showed the model's labels). Human anchor for the ~1,300 silver-driven Sledcom deletions (ARR1010-D3) and the open 162-row list (EDA1012-D3). Rule in arrestsPubOpinionPaper/validation/sledcom_defendant_blind_stage_2026-10-12/README.md; loader arrestsPubOpinionPaper/code/load_sledcom_defendant_blind_2026-10-12.R.",
+      "schema_url": "data/arrests-sledcom-defendant-blind60/schema.json",
+      "items_url": "data/arrests-sledcom-defendant-blind60/items.json",
+      "retired_reason": "replaced by arrests-sledcom-defendant-B20 (GOLD-D4 a); A silver + third referee"
+    },
+    {
+      "id": "disaster-adjacent-pairs-80",
+      "name": "1b · Disaster adjacent pairs — same incident? (80, ~25 min)",
+      "project": "disaster",
+      "description": "PULL FORWARD IF TIME. 80 consecutive day-dated event pairs, same region + type, 0–3 days apart (62 same-day); the hygiene census catches 16 clusters. Measures double-counted exposure (aftermath / ЧС-decree rows as separate treated events). Pre-declared rule in disaster/validation/adjacent_pairs_stage_2026-10-12/README.md; loader disaster/code/validation/99q_load_adjacent_pairs_results.R (--test passes).",
+      "schema_url": "data/disaster-adjacent-pairs-80/schema.json",
+      "items_url": "data/disaster-adjacent-pairs-80/items.json",
+      "retired_reason": "CUT (GOLD-D1 a): hygiene slices already bound the effect; run merge-all-80 bound first"
+    },
+    {
+      "id": "c26-topics-150",
+      "name": "C26 · Campaign message TOPICS gold (150, blind)",
+      "project": "campaign2026",
+      "description": "TIER 1 (same sitting as content mode). Blind gold for 25_message_topics: relevant?, primary topic (16), all topics. 150 June-2026 posts, full text. The only check so far is prompt-to-prompt stability (62.7% primary-topic agreement). Loader campaign2026/code/26m_load_topics_gold.R.",
+      "schema_url": "data/c26-topics-150/schema.json",
+      "items_url": "data/c26-topics-150/items.json",
+      "retired_reason": "CUT (GOLD-D7 a): no consumer (nightly stopped; paper 1 does not read topics)"
+    },
+    {
+      "id": "c26-war-text-120",
+      "name": "C26 · War-salience pilot TEXT gold (120, blind)",
+      "project": "campaign2026",
+      "description": "TIER 1. Blind gold for the war pilot's text codes (war_frame, primary mode, military_bio); 24 per predicted bucket, channel/period hidden. Decides Haiku scale-up (~$30-55) vs free rusclf. The 150-image half stays in campaign2026/validation/war_pilot_image_gold_2026-09-27.xlsx (images embedded). Loader campaign2026/code/26n_load_war_text_gold.R.",
+      "schema_url": "data/c26-war-text-120/schema.json",
+      "items_url": "data/c26-war-text-120/items.json",
+      "retired_reason": "CUT (GOLD-D7 a): validates v3 pilot labels; paper 1 runs v4"
+    }
+  ]
+}

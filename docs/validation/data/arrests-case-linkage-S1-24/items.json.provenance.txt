@@ -1,0 +1,1 @@
+2026-10-22 GOLD-D4 = a: stratum S1 cards of arrests-case-linkage-subset74 (KEY_BLIND stratum == S1), card text identical, labels neutral, shuffled seed 20261022. Replaces the 74-card task (data dir kept).

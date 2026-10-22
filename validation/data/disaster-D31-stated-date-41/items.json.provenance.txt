@@ -1,0 +1,1 @@
+2026-10-22 built by the GOLD review (mini session), GOLD-D2 = a: the 23-card REF1012 human subset + the 18 H cards both referees agreed on but that were not audited = all 35 H stated cards + 6 K adjudication cards. Items byte-identical to the v3 stage; card_label neutral; shuffled with seed 20261022. Replaces disaster-D31-stated-date-subset23.

@@ -58,6 +58,11 @@
       "field": "context",
       "label": "Context",
       "format": "compact"
+    },
+    {
+      "field": "inn",
+      "label": "ИНН администрации",
+      "format": "compact"
     }
   ],
   "validation": [
@@ -145,6 +150,29 @@
       "required": false,
       "type": "textarea",
       "placeholder": "what is wrong / what the source says"
+    }
+  ],
+  "desk": true,
+  "lookups": [
+    {
+      "label": "Google",
+      "url": "https://www.google.com/search?q={name}"
+    },
+    {
+      "label": "Yandex",
+      "url": "https://yandex.ru/search/?text={name}"
+    },
+    {
+      "label": "ru.wiki",
+      "url": "https://ru.wikipedia.org/w/index.php?search={name}"
+    },
+    {
+      "label": "rusprofile (ИНН)",
+      "url": "https://www.rusprofile.ru/search?query={inn}&type=ul"
+    },
+    {
+      "label": "checko (ИНН)",
+      "url": "https://checko.ru/search?query={inn}"
     }
   ]
 }

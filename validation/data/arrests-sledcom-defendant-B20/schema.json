@@ -1,0 +1,93 @@
+{
+  "task_id": "arrests-sledcom-defendant-B20",
+  "name": "Sledcom 2023–26 — is the official the defendant? (stratum B, 20 cards)",
+  "version": "v2-blind 2026-10-12",
+  "id_field": "item_id",
+  "hide_empty": true,
+  "instructions": "[2026-10-22 (GOLD-D4): the 20 stratum-B cards only (defendant_is_official rows, bar 0.85). Stratum A is scored from the ARR1010 silver plus a third referee.] Read the Sledcom press-release text (title + first 2,500 characters, exactly what the classifier saw). Is a GOVERNMENT OFFICIAL (elected official, civil servant, police/MVD, prosecutor, judge, military officer, head of a state institution; NOT a private businessman) a DEFENDANT / SUSPECT / ACCUSED in this case? If NO, say what role the official has (victim / mentioned only / none). Judge from the text alone; the link is there only if the text is cut mid-sentence. 'Unclear' is fine.",
+  "display": [
+    {
+      "field": "date",
+      "label": "Release date",
+      "format": "compact"
+    },
+    {
+      "field": "region",
+      "label": "Region",
+      "format": "compact"
+    },
+    {
+      "field": "text",
+      "label": "Press release (as classified)",
+      "format": "longtext"
+    },
+    {
+      "field": "url",
+      "label": "sledcom.ru",
+      "format": "link"
+    }
+  ],
+  "validation": [
+    {
+      "field": "verdict_official_defendant",
+      "label": "Official is a defendant / suspect / accused?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "No",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unclear",
+          "label": "Unclear",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "official_role_if_not_defendant",
+      "label": "If NO: the official is...",
+      "required": false,
+      "type": "enum",
+      "show_if": {
+        "verdict_official_defendant": [
+          "no"
+        ]
+      },
+      "options": [
+        {
+          "value": "victim",
+          "label": "the victim",
+          "key": "4"
+        },
+        {
+          "value": "mentioned",
+          "label": "only mentioned (orders a check, comments)",
+          "key": "5"
+        },
+        {
+          "value": "none",
+          "label": "no official at all",
+          "key": "6"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "required": false,
+      "type": "text",
+      "placeholder": "optional"
+    }
+  ]
+}

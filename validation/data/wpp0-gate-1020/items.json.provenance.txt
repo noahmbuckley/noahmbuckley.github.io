@@ -1,0 +1,3 @@
+
+2026-10-22 (GOLD-D6): added city-administration `inn` from seats/data/processed/city_admin_inn.csv on 43 cards; replaced the bare egrul.nalog.ru root link by a rusprofile INN search on 7 cards; removed the triage's resolve/confirm/confidence and 'weak point' text from evidence_note on 22 feed cards (priming). Dates, names, posts unchanged.
+2026-10-22 (GOLD-D6): card order = 11 accepted (заполнено) first, then 10 single-source, then 22 feed rows (kept, then flagged); within-group order unchanged.

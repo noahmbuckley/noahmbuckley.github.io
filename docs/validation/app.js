@@ -217,9 +217,18 @@ async function renderPicker() {
     list.innerHTML = '<p class="muted">No tasks loaded. Connect to the internet and tap Refresh below.</p>';
     return;
   }
+  let lastTier = null;
+  const TIER_LABEL = { core: 'Core — gates a paper or a live register', optional: 'Optional — code only if the named trigger fires' };
   for (const t of state.tasks) {
     const stats = await taskStats(t.id);
     if (myGen !== _pickerGen) return;  // a newer renderPicker has started; abandon this run
+    if (t.tier && t.tier !== lastTier) {   // 2026-10-22: tier headers from tasks.json `tier`
+      const h = document.createElement('h2');
+      h.className = 'tier-header';
+      h.textContent = TIER_LABEL[t.tier] || t.tier;
+      list.appendChild(h);
+      lastTier = t.tier;
+    }
     const card = document.createElement('div');
     card.className = 'task-card';
     card.innerHTML = `
