@@ -1,5 +1,7 @@
-built 2026-10-12T23:02:14 by build_2026-10-12_event_tasks.py
+built 2026-10-12T23:45:11 by build_2026-10-12_event_tasks.py
 n_items 54
 source items /Users/noahbuckley/Dropbox/Projects/eventsData/protestData/validation/dedup_gold_stage_2026-10-04/items.json md5 bc71e5279221206652be9ca752cc81e2
 filter: items_key.csv column block only (no answer columns read)
 blocks H1_cg_only (15) + H2_v2_only (15) + D_date (24); full blocks so the per-block SPRT/majority rules (DESIGN_NOTES) run intact
+
+2026-10-22 (gold cross-project review, mini session): schema instructions: removed the stale "first 93 / last 24" counts from the pre-split task.

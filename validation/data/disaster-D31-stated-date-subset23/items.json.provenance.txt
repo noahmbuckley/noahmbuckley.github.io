@@ -1,4 +1,6 @@
-built 2026-10-12T23:02:14 by build_2026-10-12_event_tasks.py
+built 2026-10-12T23:45:11 by build_2026-10-12_event_tasks.py
 n_items 23
 source items /Users/noahbuckley/Dropbox/Projects/disaster/validation/D31_stated_date_stage_v3_2026-10-04/items.json md5 8b66e8d541d152b3ab64d872b37725f7
 filter: human_subset_2026-10-12.csv (REF1012 referee pass; disagreements + unclear + seeded 20% of agreements)
+
+2026-10-22 (gold cross-project review, mini session): card_label neutralised (was ROUND n/batch, a stratum leak); stale round/loader sentence removed from instructions. Items and fields unchanged.

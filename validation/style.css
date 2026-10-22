@@ -220,6 +220,17 @@ kbd {
   to   { opacity: 1; transform: translate(-50%, 0); }
 }
 
+/* ===== Images (format: "image") ===== */
+.field-row.image-row { grid-template-columns: 1fr; gap: 4px; }
+.item-image { display: block; width: 100%; height: auto; border-radius: 6px; cursor: zoom-in; background: #888; }
+.zoom-overlay {
+  position: fixed; inset: 0; z-index: 100; background: #000;
+  overflow: auto; -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y pinch-zoom; cursor: zoom-out;
+}
+.zoom-overlay.hidden { display: none; }
+.zoom-overlay img { display: block; width: 100%; min-width: 900px; height: auto; }  /* phones: wider than screen, pan + pinch */
+
 /* ===== Mobile / small screens ===== */
 @media (max-width: 600px) {
   main { padding: 12px; }
@@ -228,3 +239,12 @@ kbd {
   .option-btn { min-width: 70px; padding: 14px 8px; }
   #task-name { font-size: 0.95rem; }
 }
+
+/* Desk mode (2026-10-22): evidence + lookup chips */
+.lookup-row .field-value { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font: inherit; font-size: 0.85rem; padding: 4px 10px; border-radius: 999px;
+  border: 1px solid var(--accent); background: transparent; color: var(--accent); cursor: pointer;
+}
+.chip-lookup { border-style: dashed; opacity: 0.85; }
+.chip:active { opacity: 0.6; }

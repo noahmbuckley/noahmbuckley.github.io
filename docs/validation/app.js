@@ -228,7 +228,7 @@ async function renderPicker() {
       <div class="task-card-progress"><div class="task-card-progress-fill"></div></div>
       <div class="task-card-meta progress-text"></div>
     `;
-    card.querySelector('.task-card-title').textContent = t.name;
+    card.querySelector('.task-card-title').textContent = (t.desk ? '🖥 ' : '') + t.name;   // desk flag: needs a computer (web lookups)
     card.querySelector('.task-card-meta').textContent = t.description || '';
     const pct = stats.total ? (stats.answered / stats.total) * 100 : 0;
     card.querySelector('.task-card-progress-fill').style.width = pct.toFixed(1) + '%';
@@ -334,7 +334,20 @@ function renderItem() {
     // 2026-10-04 (proposed): schema.hide_empty drops rows with no value (merged multi-question cards);
     // format "link" renders a tappable link instead of plain text (opens in a new tab).
     if (raw === '—' && sch.hide_empty) continue;
-    if (f.format === 'link' && raw !== '—' && /^https?:\/\//i.test(String(raw))) {   // only http(s) becomes a link
+    if (f.format === 'image' && raw !== '—') {
+      // 2026-10-06: image URL resolved relative to the task's items_url directory.
+      row.classList.add('image-row');
+      const url = resolveTaskAsset(String(raw));
+      const img = document.createElement('img');
+      img.className = 'item-image';
+      img.alt = String(item[state.currentTask.schema.id_field]);
+      img.loading = 'eager';
+      img.decoding = 'async';
+      img.src = url;
+      img.addEventListener('click', () => openZoom(url, img.alt));
+      img.addEventListener('error', () => { val.textContent = 'Image not available (offline and not cached?): ' + url; });
+      val.appendChild(img);
+    } else if (f.format === 'link' && raw !== '—' && /^https?:\/\//i.test(String(raw))) {   // only http(s) becomes a link
       const a = document.createElement('a');
       a.href = String(raw); a.target = '_blank'; a.rel = 'noopener noreferrer';
       a.textContent = 'open';
@@ -346,8 +359,229 @@ function renderItem() {
     dc.appendChild(row);
   }
 
+  // ===== Desk mode (2026-10-22): evidence links + prefilled lookups as one chip row =====
+  // Links = every `format: "link"` display field with an http(s) value, in schema order.
+  // Lookups = schema.lookups [{label, url}] with {field} placeholders (URL-encoded), or the
+  // defaults (Google / Yandex / ru.wiki on `name`) when schema.desk or the task's `desk` flag is set.
+  state.currentLinks = sch.display
+    .filter(f => f.format === 'link')
+    .map(f => ({ label: f.label || f.field, url: item[f.field] }))
+    .filter(l => l.url && /^https?:\/\//i.test(String(l.url)));
+  state.currentLookups = buildLookups(sch, item);
+  if (state.currentLinks.length || state.currentLookups.length) {
+    const row = document.createElement('div');
+    row.className = 'field-row lookup-row';
+    const lbl = document.createElement('div');
+    lbl.className = 'field-label'; lbl.textContent = 'Lookup';
+    const val = document.createElement('div');
+    val.className = 'field-value';
+    state.currentLinks.forEach((l, ix) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip chip-evidence';
+      b.textContent = (ix === 0 ? 'O · ' : ix === 1 ? '⇧O · ' : '') + l.label;
+      b.title = l.url;
+      b.addEventListener('click', () => openSide(l.url));
+      val.appendChild(b);
+    });
+    state.currentLookups.forEach((l, ix) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip chip-lookup';
+      b.textContent = (ix === 0 ? 'S · ' : '') + l.label;
+      b.title = l.url;
+      b.addEventListener('click', () => openSide(l.url));
+      val.appendChild(b);
+    });
+    row.appendChild(lbl); row.appendChild(val);
+    dc.appendChild(row);
+  }
+  if (deskMode() && state.currentLinks.length && !state._deskSuppressOnce) {
+    openSide(state.currentLinks[0].url, { quiet: true });
+  }
+  state._deskSuppressOnce = false;
+
   // ===== Validation form =====
   renderForm();
+  prefetchNextImages(3);
+  renderKeyHint();
+}
+
+/* ============================================================ */
+/* Desk mode: one named side window for evidence + lookups      */
+/* ============================================================ */
+const SIDE_WIN = 'validation_evidence';
+const DESK_KEY = 'validation.deskMode';
+const DEFAULT_LOOKUPS = [
+  { label: 'Google',  url: 'https://www.google.com/search?q={name}' },
+  { label: 'Yandex',  url: 'https://yandex.ru/search/?text={name}' },
+  { label: 'ru.wiki', url: 'https://ru.wikipedia.org/w/index.php?search={name}' },
+];
+function deskMode() {
+  try { return localStorage.getItem(DESK_KEY) === '1'; } catch (e) { return false; }
+}
+function setDeskMode(on) {
+  try { localStorage.setItem(DESK_KEY, on ? '1' : '0'); } catch (e) {}
+  renderDeskButton();
+}
+function renderDeskButton() {
+  const b = $('btn-desk-mode');
+  if (!b) return;
+  b.textContent = deskMode()
+    ? 'Desk mode: ON (auto-opens each card\'s evidence in the side window) — tap to turn off'
+    : 'Desk mode: off (tap to auto-open each card\'s evidence in a side window)';
+}
+function buildLookups(sch, item) {
+  const meta = state.tasks.find(t => t.id === state.currentTaskId) || {};
+  let defs = Array.isArray(sch.lookups) ? sch.lookups : ((sch.desk || meta.desk) ? DEFAULT_LOOKUPS : []);
+  const out = [];
+  for (const d of defs) {
+    if (!d || !d.url) continue;
+    let missing = false;
+    const url = String(d.url).replace(/\{([a-zA-Z0-9_]+)\}/g, (m, k) => {
+      const v = item[k];
+      if (v == null || v === '') { missing = true; return ''; }
+      return encodeURIComponent(String(v));
+    });
+    if (!missing) out.push({ label: d.label || 'lookup', url });
+  }
+  return out;
+}
+// Open in ONE named window so the evidence always lands in the same place (a second window
+// beside the app on a Mac; a second tab on the iPad). Created as a popup the first time so it
+// is a separate window, then re-targeted by name on every later call.
+function openSide(url, { quiet = false } = {}) {
+  let w = null;
+  try {
+    w = window.open(url, SIDE_WIN, 'popup=1,width=1000,height=1100,left=880,top=0,noopener=0');
+  } catch (e) { w = null; }
+  if (!w && !quiet) toast('Pop-up blocked — allow pop-ups for this site to use the side window.');
+}
+function openEvidence(ix) {
+  const l = state.currentLinks && state.currentLinks[ix];
+  if (l) openSide(l.url); else toast('No evidence link on this card.');
+}
+function openLookup(ix) {
+  const l = state.currentLookups && state.currentLookups[ix];
+  if (l) openSide(l.url); else toast('No lookup on this card.');
+}
+
+// Help line built from the schema's option keys, so letter-keyed tasks show their own shortcuts.
+function renderKeyHint() {
+  const sch = state.currentTask.schema;
+  const parts = [];
+  for (let fx = 0; fx < sch.validation.length; fx++) {
+    const v = sch.validation[fx];
+    if (v.type !== 'enum') continue;
+    const ks = v.options.filter(o => o.key).map(o => '<kbd>' + escapeHTML(o.key) + '</kbd>');
+    if (ks.length) parts.push(escapeHTML(v.label.split(' / ')[0]) + ' ' + ks.join(''));
+  }
+  const tail = '<kbd>&larr;</kbd>/<kbd>&rarr;</kbd> nav &middot; <kbd>Enter</kbd> save&amp;next &middot; <kbd>N</kbd> notes';
+  const desk = ((state.currentLinks || []).length ? ' &middot; <kbd>O</kbd> evidence' : '') +
+               ((state.currentLookups || []).length ? ' &middot; <kbd>S</kbd> search' : '');
+  $('kbd-hint').innerHTML = 'Keys: ' + (parts.length ? parts.join(' &middot; ') + ' &middot; ' : '') + tail + desk +
+    (imageFields(sch).length ? ' &middot; tap image to zoom' : '');
+}
+
+/* ============================================================ */
+/* Images: URL resolution, prefetch, zoom, offline download     */
+/* ============================================================ */
+const IMG_CACHE = 'images-v1';   // must match sw.js; NOT version-bumped so images survive app updates
+
+function resolveTaskAsset(rel) {
+  const meta = state.taskById[state.currentTaskId];
+  const base = new URL(meta.items_url, document.baseURI);   // .../data/<task>/items.json
+  return new URL(rel, base).href;
+}
+function imageFields(sch) {
+  return (sch.display || []).filter(f => f.format === 'image').map(f => f.field);
+}
+function imageUrlsForItem(item) {
+  const out = [];
+  const flds = imageFields(state.currentTask.schema);
+  for (let fx = 0; fx < flds.length; fx++) {
+    if (item[flds[fx]]) out.push(resolveTaskAsset(String(item[flds[fx]])));
+  }
+  return out;
+}
+const _prefetched = {};   // url => Image (keeps a reference so the browser finishes the load)
+function prefetchNextImages(n) {
+  const items = state.currentTask.items;
+  for (let dx = 1; dx <= n; dx++) {
+    const it = items[state.currentIndex + dx];
+    if (!it) break;
+    const urls = imageUrlsForItem(it);
+    for (let ux = 0; ux < urls.length; ux++) {
+      if (_prefetched[urls[ux]]) continue;
+      const im = new Image();
+      im.decoding = 'async';
+      im.src = urls[ux];
+      _prefetched[urls[ux]] = im;
+    }
+  }
+  // keep the reference table small
+  const keys = Object.keys(_prefetched);
+  if (keys.length > 12) {
+    for (let kx = 0; kx < keys.length - 12; kx++) delete _prefetched[keys[kx]];
+  }
+}
+
+function openZoom(url, alt) {
+  const z = $('zoom-overlay');
+  const img = $('zoom-img');
+  img.src = url; img.alt = alt || '';
+  z.scrollTop = 0; z.scrollLeft = 0;
+  show('zoom-overlay');
+}
+function closeZoom() {
+  hide('zoom-overlay');
+  $('zoom-img').removeAttribute('src');
+}
+function zoomOpen() { return !$('zoom-overlay').classList.contains('hidden'); }
+
+let _imgDownloadRunning = false;
+async function downloadTaskImages() {
+  if (!state.currentTask) { setMenuMsg('Open a task first.'); return; }
+  if (_imgDownloadRunning) { setMenuMsg('Download already running.'); return; }
+  if (!('caches' in window)) { setMenuMsg('Cache API not available in this browser.'); return; }
+  const urls = [];
+  const items = state.currentTask.items;
+  for (let ix = 0; ix < items.length; ix++) {
+    const u = imageUrlsForItem(items[ix]);
+    for (let ux = 0; ux < u.length; ux++) urls.push(u[ux]);
+  }
+  if (!urls.length) { setMenuMsg('This task has no image fields.'); return; }
+  _imgDownloadRunning = true;
+  const cache = await caches.open(IMG_CACHE);
+  let done = 0, fetched = 0, failed = 0;
+  let next = 0;
+  const total = urls.length;
+  // 4 parallel workers, each pulling the next unclaimed index
+  async function worker() {
+    for (;;) {
+      const ix = next++;
+      if (ix >= total) return;
+      try {
+        const have = await cache.match(urls[ix]);
+        if (!have) {
+          const r = await fetch(urls[ix]);
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          await cache.put(urls[ix], r.clone());
+          fetched++;
+        }
+      } catch (e) { failed++; }
+      done++;
+      if (done % 5 === 0 || done === total) {
+        setMenuMsg(`Downloading images: ${done}/${total}  (${fetched} new, ${failed} failed)`);
+      }
+    }
+  }
+  setMenuMsg(`Downloading images: 0/${total}`);
+  const workers = [];
+  for (let wx = 0; wx < 4; wx++) workers.push(worker());
+  await Promise.all(workers);
+  _imgDownloadRunning = false;
+  setMenuMsg(`Images done: ${done}/${total} cached (${fetched} newly downloaded, ${failed} failed)` +
+             (failed ? ' — tap again to retry the failed ones.' : '. Available offline.'));
+  toast(failed ? `Images: ${failed} failed` : 'Images cached for offline');
 }
 
 function renderForm() {
@@ -811,12 +1045,20 @@ function bindGlobalUI() {
   $('btn-go-picker').addEventListener('click',  () => { closeMenu(); $('btn-home').click(); });
   $('btn-sync-now').addEventListener('click',   syncAllNow);
   $('btn-persist').addEventListener('click',    requestPersistent);
+  $('btn-dl-images').addEventListener('click',  downloadTaskImages);
+  $('zoom-overlay').addEventListener('click',   closeZoom);
   $('btn-storage-info').addEventListener('click', showStorageInfo);
   $('btn-reset-task').addEventListener('click', resetCurrentTask);
   $('btn-reset-all').addEventListener('click',  resetAll);
+  $('btn-desk-mode').addEventListener('click', () => { setDeskMode(!deskMode()); });
+  renderDeskButton();
 
   // Keyboard shortcuts (item view only)
   document.addEventListener('keydown', e => {
+    if (zoomOpen()) {                       // zoom view swallows keys; Escape/Enter/Space closes
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); closeZoom(); }
+      return;
+    }
     if (!state.currentTask) return;
     if ($('view-item').classList.contains('hidden')) return;
     const tag = (e.target.tagName || '').toLowerCase();
@@ -825,38 +1067,47 @@ function bindGlobalUI() {
       if (e.key === 'Escape') e.target.blur();
       return;
     }
+    if (e.ctrlKey || e.metaKey || e.altKey) return;   // leave browser shortcuts alone
     if (e.key === 'ArrowRight')      { e.preventDefault(); gotoIndex(state.currentIndex + 1); }
     else if (e.key === 'ArrowLeft')  { e.preventDefault(); gotoIndex(state.currentIndex - 1); }
     else if (e.key === 'Enter')      { e.preventDefault(); saveAndNext(); }
-    else if (e.key.toLowerCase() === 'n') {
-      const ta = document.querySelector('textarea[data-notes-field]');
-      if (ta) { e.preventDefault(); ta.focus(); }
-    }
-    else if (['1','2','3','4','5','6','7','8','9'].includes(e.key)) {
-      // verdict (or first enum) shortcut — find enum group with matching key.
-      // Must resolve the SAME per-item field set as renderForm() (variant-aware),
-      // or shortcuts silently no-op for any field that only exists in a
-      // validation_by_variant set (e.g. the binary yes/no/unclear question).
-      const sch = state.currentTask.schema;
-      const item = currentItem();
-      let fields = sch.validation;
-      if (sch.validation_by_variant && item && item.variant && sch.validation_by_variant[item.variant]) {
-        fields = sch.validation_by_variant[item.variant];
-      }
-      for (const v of fields) {
-        if (v.type !== 'enum') continue;
-        const opt = v.options.find(o => o.key === e.key);
-        if (opt) {
-          // only if this group is currently visible
+    else {
+      // Option shortcuts: any single-character `key` declared on an enum option (digits or letters,
+      // case-insensitive). Resolve the SAME per-item field set as renderForm() (variant-aware).
+      // Fields are scanned in schema order and only visible groups count, so a key reused in two
+      // fields acts on the first visible one. Options without a `key` are tap/click only.
+      const pressed = (e.key || '').toLowerCase();
+      let handled = false;
+      if (pressed.length === 1) {
+        const sch = state.currentTask.schema;
+        const item = currentItem();
+        let fields = sch.validation;
+        if (sch.validation_by_variant && item && item.variant && sch.validation_by_variant[item.variant]) {
+          fields = sch.validation_by_variant[item.variant];
+        }
+        for (let fx = 0; fx < fields.length && !handled; fx++) {
+          const v = fields[fx];
+          if (v.type !== 'enum') continue;
+          const opt = v.options.find(o => o.key && String(o.key).toLowerCase() === pressed);
+          if (!opt) continue;
           const grp = document.querySelector(`.form-group[data-field="${v.field}"]`);
           if (grp && !grp.classList.contains('hidden')) {
             e.preventDefault();
             setAnswerField(v.field, opt.value);
             renderForm();
-            break;
+            handled = true;
           }
         }
       }
+      // N focuses notes only when no option claimed the key
+      if (!handled && pressed === 'n') {
+        const ta = document.querySelector('textarea[data-notes-field]');
+        if (ta) { e.preventDefault(); ta.focus(); }
+      }
+      // Desk mode keys (only when no option claimed them): O = first evidence link, shift+O = second,
+      // S = first lookup. All land in the named side window.
+      else if (!handled && pressed === 'o') { e.preventDefault(); openEvidence(e.shiftKey ? 1 : 0); }
+      else if (!handled && pressed === 's') { e.preventDefault(); openLookup(0); }
     }
   });
 }

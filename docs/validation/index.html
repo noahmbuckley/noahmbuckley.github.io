@@ -69,8 +69,13 @@
       <hr>
       <h3>Sync &amp; storage</h3>
       <button id="btn-sync-now"      class="ghost block">Sync now (re-pull from server)</button>
+      <button id="btn-dl-images"     class="ghost block">Download task images for offline</button>
       <button id="btn-persist"       class="ghost block">Request persistent storage</button>
       <button id="btn-storage-info"  class="ghost block">Storage info</button>
+      <hr>
+      <h3>Desk mode (Mac)</h3>
+      <button id="btn-desk-mode"     class="ghost block">Desk mode</button>
+      <p class="muted small">Keys <kbd>O</kbd> / <kbd>S</kbd> open the card's evidence / a prefilled search in one side window; with desk mode on, each card opens its evidence as you advance.</p>
       <hr>
       <h3>Danger zone</h3>
       <button id="btn-reset-task"    class="warn  block">Reset this task's answers</button>
@@ -79,6 +84,11 @@
       <p id="menu-msg" class="muted small"></p>
     </div>
   </section>
+
+  <!-- ============== Image zoom ============== -->
+  <div id="zoom-overlay" class="zoom-overlay hidden" aria-label="Zoomed image (tap or Esc to close)">
+    <img id="zoom-img" alt="">
+  </div>
 
   <!-- ============== Toast ============== -->
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>

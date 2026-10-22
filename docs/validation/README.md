@@ -59,7 +59,10 @@ app carries only Tier-1 tasks: `disaster-D31-stated-date`, `disaster-response-ma
 **`display`** — one entry per field shown read-only on the card:
 - `field` (required) — column name in items.json
 - `label` — human label
-- `format` — `"compact"` (monospace), `"longtext"` (large wrapped block), `"tone"` (chip)
+- `format` — `"compact"` (monospace), `"longtext"` (large wrapped block), `"tone"` (chip), `"link"` (tappable http(s) link),
+  `"image"` (the item value is an image path **relative to the directory of the task's `items_url`**, e.g. `img/T2_004.jpg`
+  -> `data/<task>/img/T2_004.jpg`; shown full card width, alt text = item id, tap/click opens a full-screen zoom view
+  (pinch-zoom natively; tap, Esc, Enter or Space closes). The next 3 cards' images are prefetched.)
 - `highlight` — `"llm"` highlights this field as classifier output (yellow background)
 
 **`validation`** — one entry per field the user fills in:
@@ -67,9 +70,22 @@ app carries only Tier-1 tasks: `disaster-D31-stated-date`, `disaster-response-ma
 - `type`: `"enum"` | `"text"` | `"integer"` | `"number"` | `"textarea"`
 - `options` (for enum): `[{value, label, key, tone}]` where `key` is the keyboard shortcut and `tone` ∈ `good|bad|warn|neutral`
 - `placeholder`
+- `key` on enum options: any single character (digit or letter, case-insensitive) is a keyboard shortcut. Fields are scanned
+  in schema order and only visible fields count, so avoid reusing a key across fields. `N` is reserved for notes (used only if
+  no option claims it). Options without a `key` are tap/click only. The help line under the card is built from the schema.
 - `show_if`: `{verdict: ["NO", "BORDERLINE"]}` → only visible when verdict is one of those values
 
 ## Usage — Mac (browser tab)
+
+**Desk mode (2026-10-22) — for tasks that need web lookups (elites spot checks, mayor gate, anything
+with an evidence link).** Every card gets a `Lookup` chip row: its `format: "link"` fields plus prefilled
+searches (Google / Yandex / ru.wiki on the card's `name`; set `"desk": true` on the tasks.json entry or the
+schema, or give the schema its own `lookups: [{label, url}]` with `{field}` placeholders). Keys `O` (first
+evidence link), `⇧O` (second), `S` (first search) all load into ONE named side window, so after the first
+pop-up (allow it for noahbuckley.me) the app sits on the left and the evidence refreshes on the right.
+Menu → **Desk mode** auto-opens each card's first evidence link as you advance. Tasks flagged `desk`
+show 🖥 in the picker: do those on the Mac, not the iPad.
+
 
 1. Open `https://noahbuckley.me/validation/` (or for local testing, see below).
 2. Tap a task. Items load. Fill in verdicts and notes.
@@ -131,7 +147,11 @@ Application → Storage → IndexedDB → `validation` (verify answers persistin
   `regionid_tomergein.xlsx` truncates the English `region` column to
   ~12 chars ("Komi Republi", "Volgograd ob"). regionid is shown next to it
   so disambiguation is fine, but a fuller English-name lookup would be nicer.
-- **Image support is implemented in schema** but not yet exercised by any task. For the Yandex streetview validation, an item field of type image URL plus SW caching of those URLs will be needed.
+- **Image tasks (added 2026-10-06, drafted, not yet published/exercised by a live task).** `format: "image"` is
+  implemented in `app.js`. Offline: `sw.js` serves `data/<task>/img/*` cache-first from a separate **unversioned** cache
+  `images-v1` (so a `VERSION` bump does not drop ~40 MB of images), filled on first view or by menu -> **Download task
+  images for offline** (progress shown; re-tap retries failures). Wiping images: clear site data (or delete `images-v1`
+  in DevTools -> Application -> Cache Storage). If an image is re-rendered, give it a new filename (cache-first never revalidates).
 - **No multi-device sync.** Answers live in IndexedDB on one device. If you want to validate from both Mac and iPad, export from one and resume from the other (we can add a server-backed sync layer later if this becomes painful).
 - **Export filename** uses today's date, so re-exporting the same day overwrites the previous export. Pick the most recent and import. (R script picks newest by mtime by default.)
 
