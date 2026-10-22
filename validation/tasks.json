@@ -49,9 +49,9 @@
     },
     {
       "id": "fold-spot-1020",
-      "name": "1 · Elites fold spot-check — REGIONAL 25 first (cards 1–25), Mac",
+      "name": "1 · Elites fold spot-check — 25 regional + 12 federal residue (37), Mac",
       "project": "elitesData",
-      "description": "DRIFT-D4 (a) / GOLD-D6. Cards 1–25 are the regional-executive assertions (EGRUL/portal): code these on the Mac with desk mode (O = evidence, S = search; INN lookups on the card). Cards 26–50 (federal, kremlin.ru) are being coded by two web-search referees; you only code their residue later. Rule (proposed): wrong = any \"no\"; >10% wrong in a fold → fold re-review. Scorer elitesData/validation/spotcheck_score_2026-10-20.R.",
+      "description": "DRIFT-D4 (a) / GOLD-D6. Cards 1–25 regional-executive assertions (EGRUL/portal), cards 26–37 the federal cards two web-search referees disagreed on or found unclear (plus a 4-card audit). Desk mode: O = evidence, S = search, INN lookups on the card. Rule (proposed): wrong = any \"no\"; >10% wrong in a fold → fold re-review; federal fold scored human + audited silver. Scorer elitesData/validation/spotcheck_score_2026-10-20.R.",
       "schema_url": "data/fold-spot-1020/schema.json",
       "items_url": "data/fold-spot-1020/items.json",
       "tier": "core",

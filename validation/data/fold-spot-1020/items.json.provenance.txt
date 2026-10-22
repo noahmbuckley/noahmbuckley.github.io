@@ -1,3 +1,4 @@
 
 2026-10-22 (GOLD-D6): added `inn` (parsed from the rusprofile search URL) on 19 regional cards + schema lookups (checko / list-org by INN, Google/Yandex/ru.wiki by name). The 25 federal cards are being referee-coded with web search; Noah codes the 25 regional cards first.
 2026-10-22 (GOLD-D6): card order = 25 regional first, then 25 federal (within-group order unchanged).
+2026-10-22 (GOLD-D6 c): the 25 federal cards were coded by two web-search referees (FOLDSPOT-WEB-1022, $3.74; agree 17 / disagree 2 / unclear 6); the live task now = 25 regional + the 12-card federal residue (8 contested + 4 seeded audit). The 13 agreed federal cards are scored as audited silver. Full 50-card items kept in elitesData/validation/FOLD-SPOT-1020_stage/.

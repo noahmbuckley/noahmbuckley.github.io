@@ -5,7 +5,7 @@
      - activate: precache all task data listed in tasks.json (best effort)
      - fetch:    cache-first for our scope; network falls back to cache
    ============================================================= */
-const VERSION = 'v23-2026-10-22';
+const VERSION = 'v24-2026-10-22';
 const SHELL_CACHE = 'shell-' + VERSION;
 const DATA_CACHE  = 'data-'  + VERSION;
 // Task images (data/<task>/img/*): separate, UNVERSIONED cache so a VERSION bump does not

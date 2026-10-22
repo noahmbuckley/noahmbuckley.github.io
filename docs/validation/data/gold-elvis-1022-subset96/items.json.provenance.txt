@@ -1,0 +1,1 @@
+2026-10-22 GOLD-D5 = a: human subset of GOLD-ELVIS-1022_stage (human_subset_2026-10-22.csv: 7 disagree + 52 unclear + 37 seeded-20% agree; REF1022-ELVIS, $0.377). Card text identical to the stage; labels neutral; shuffled seed 20261022. NOT in tasks.json until Noah sets the pass bar.
