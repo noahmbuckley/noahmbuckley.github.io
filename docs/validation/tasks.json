@@ -87,6 +87,16 @@
       "desk": true
     },
     {
+      "id": "prec-seat-1027",
+      "name": "1 · Elites seat-year precision — 90 cards (5 levels x 3 eras), Mac",
+      "project": "elitesData",
+      "description": "ELST1027-D2 (a). One question per card: does the evidence on the card (text + link) show this person in this post in the year asked? yes / no / can't tell. 90 covered seat-years, 6 per level x era cell (governor, vice-governor, minister, body head, mayor x 2012-16, 2017-20, 2021-26). No searching needed: the evidence is on the card; 36 governor/mayor cards show the registry record itself (no source link exists) and a ru.wiki name link. Bar (pre-registered): precision yes/(yes+no) >= 0.95 overall and >= 0.90 per level on the point estimate; can't tell reported separately. Scorer elitesData/validation/prec_seat_score_2026-10-27.R. ~45-60 min.",
+      "schema_url": "data/prec-seat-1027/schema.json",
+      "items_url": "data/prec-seat-1027/items.json",
+      "tier": "core",
+      "desk": true
+    },
+    {
       "id": "protest-dedup-gold-residue36",
       "name": "2 · Protest dedup — human residue: article dates + 2 pair blocks (36, ~35 min)",
       "project": "eventsData/protestData",

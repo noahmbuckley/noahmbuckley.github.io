@@ -1,0 +1,118 @@
+{
+  "task_id": "prec-seat-1027",
+  "name": "Seat-year precision (PREC-SEAT-1027): 90 cards",
+  "version": "v1 2026-10-27",
+  "id_field": "item_id",
+  "hide_empty": true,
+  "desk": true,
+  "instructions": "ELST1027-D2 (a). One question per card: does the evidence shown on the card (text + link) show this person in this post in the YEAR asked? yes = the evidence shows it (the year falls within what the evidence says; for declarations or an EGRUL start date, 'in office by' counts as showing the years it states); no = the evidence shows a different person, a different post, or the year is outside what it says; can't tell = the evidence shown does not settle it (also use this when a registry record has no source link and you cannot judge it from the text alone). Judge the evidence as shown; open the link only if the text does not settle it. Do not search for other sources. Rule is pre-registered in elitesData/validation/PREC-SEAT-1027_stage/README.md; answer every card the same way.",
+  "display": [
+    {
+      "field": "question",
+      "label": "Question",
+      "format": "longtext"
+    },
+    {
+      "field": "year",
+      "label": "Year asked",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "name",
+      "label": "Person",
+      "format": "longtext"
+    },
+    {
+      "field": "post",
+      "label": "Post",
+      "format": "longtext"
+    },
+    {
+      "field": "region_body",
+      "label": "Region / city",
+      "format": "compact"
+    },
+    {
+      "field": "spell_span",
+      "label": "Years in the master",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "master_level",
+      "label": "Level in master",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "source_label",
+      "label": "Evidence from",
+      "format": "compact"
+    },
+    {
+      "field": "evidence_text",
+      "label": "Evidence",
+      "format": "longtext"
+    },
+    {
+      "field": "evidence_url",
+      "label": "Evidence link",
+      "format": "link"
+    },
+    {
+      "field": "end_url",
+      "label": "Office page",
+      "format": "link"
+    }
+  ],
+  "validation": [
+    {
+      "field": "holds",
+      "label": "Does the evidence show it?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не могу сказать",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "required": false,
+      "type": "textarea",
+      "placeholder": "what is wrong / what the source says"
+    }
+  ],
+  "lookups": [
+    {
+      "label": "Google",
+      "url": "https://www.google.com/search?q={name}"
+    },
+    {
+      "label": "Yandex",
+      "url": "https://yandex.ru/search/?text={name}"
+    },
+    {
+      "label": "ru.wiki",
+      "url": "https://ru.wikipedia.org/w/index.php?search={name}"
+    }
+  ]
+}

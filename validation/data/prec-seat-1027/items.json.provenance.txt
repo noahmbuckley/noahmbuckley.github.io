@@ -1,0 +1,1 @@
+2026-10-27 (ELST1027-D2 a): published from elitesData/validation/PREC-SEAT-1027_stage (90 cards, set.seed 20261027; draw prec_seat_draw_2026-10-27.R; bar pre-registered in the stage README before the draw).
