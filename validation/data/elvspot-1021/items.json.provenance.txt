@@ -1,0 +1,1 @@
+2026-10-27 (ELST1027-D2 a): published from elitesData/validation/ELVSPOT-1021_stage (28 cards drawn 2026-10-21, set.seed 20261022; schema + desk flag; items unchanged from the stage).

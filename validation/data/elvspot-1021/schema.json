@@ -1,0 +1,151 @@
+{
+  "task_id": "elvspot-1021",
+  "name": "Declarator government-office fold spot check (ELVSPOT-1021): 28 cards",
+  "version": "v2 2026-10-27 (published; desk flag added)",
+  "id_field": "item_id",
+  "hide_empty": true,
+  "instructions": "ELVSUM-D3. Open the declarator.org person page (Evidence) and check the row, then answer three questions: dates right? (the years are DECLARATION years: the first and last year the person is listed in this post; the end is a floor, not the departure date; judge whether those years are what the declarations show) / person right? (this is the person who held the post; if the card says the row was linked to someone already in the database, check that link too) / post right? (is it really this post and level: deputy governor / minister / head of an executive body of the region, NOT a deputy minister, a division inside an apparatus, or a municipal post). Use 'unsure' when the page does not settle it.",
+  "display": [
+    {
+      "field": "name",
+      "label": "Person (nominative)",
+      "format": "longtext"
+    },
+    {
+      "field": "post",
+      "label": "Post",
+      "format": "longtext"
+    },
+    {
+      "field": "region_body",
+      "label": "Region",
+      "format": "compact"
+    },
+    {
+      "field": "start",
+      "label": "First declaration year",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "end",
+      "label": "Last declaration year",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "fold_level",
+      "label": "Level in master",
+      "format": "compact",
+      "highlight": "llm"
+    },
+    {
+      "field": "evidence_url",
+      "label": "Person page",
+      "format": "link"
+    },
+    {
+      "field": "end_url",
+      "label": "Office page",
+      "format": "link"
+    },
+    {
+      "field": "evidence_note",
+      "label": "Evidence note",
+      "format": "longtext"
+    },
+    {
+      "field": "context",
+      "label": "Context",
+      "format": "longtext"
+    }
+  ],
+  "validation": [
+    {
+      "field": "dates_ok",
+      "label": "Dates right?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не уверен",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "person_ok",
+      "label": "Person right?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "4",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "5",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не уверен",
+          "key": "6",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "post_ok",
+      "label": "Post right?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "7",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "8",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не уверен",
+          "key": "9",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "required": false,
+      "type": "textarea",
+      "placeholder": "what is wrong / what the source says"
+    }
+  ],
+  "desk": true
+}

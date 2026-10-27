@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22",
+  "generated_at": "2026-10-27",
   "tasks": [
     {
       "id": "c26-content-mode-rel40",
@@ -75,6 +75,16 @@
       "schema_url": "data/gold-elvis-1022-subset96/schema.json",
       "items_url": "data/gold-elvis-1022-subset96/items.json",
       "tier": "core"
+    },
+    {
+      "id": "elvspot-1021",
+      "name": "1 · Elites declarator fold spot-check — 28 cards, Mac",
+      "project": "elitesData",
+      "description": "ELVSUM-D3 (a) / DECL-D3. 28 accepted declarator government-office rows (10 vice-governor-tier, 9 minister, 9 body_head; start 2012-2020). Three answers per card: dates / person / post (yes / no / unsure); evidence = declarator.org person and office pages (O opens it in desk mode). Rule (proposed): wrong = any \"no\"; >10% wrong -> re-review of the fold; n = 28, read the Wilson interval. Scorer: adapt elitesData/validation/spotcheck_score_2026-10-20.R.",
+      "schema_url": "data/elvspot-1021/schema.json",
+      "items_url": "data/elvspot-1021/items.json",
+      "tier": "core",
+      "desk": true
     },
     {
       "id": "protest-dedup-gold-residue36",
