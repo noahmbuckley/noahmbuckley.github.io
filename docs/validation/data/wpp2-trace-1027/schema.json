@@ -1,0 +1,209 @@
+{
+  "task_id": "wpp2-trace-1027",
+  "name": "Prosecution trace (WPP2-TRACE-1027, T2-19): 40 cards",
+  "version": "v2 2026-10-27",
+  "id_field": "item_id",
+  "hide_empty": true,
+  "desk": true,
+  "instructions": "WPP2V2-D1 = (a). Each card is ONE person-prosecution built by the layer: its header, its events in date order (date | stage | source | key method / link method / link confidence | text; at most 8 events are shown, long cases carry n_events in the header). Answer from the events as shown. Q1: do ALL the events concern the same person (no namesake mixed in)? Q2: do all the events belong to ONE criminal case (not two cases merged, and not one case that obviously continues in another event not shown)? Q3: are the stages and dates sensible given the texts? Q4: is the status shown in the header right given the latest event? Q5 (ONLY on cards whose identity line says person_uid; leave it blank on 'provisional name key' cards): is the named person_uid / candidate the right person, judged from the post and region in the texts and the name? 'не могу сказать' when the card cannot settle it. Do not search the web unless the text itself cannot settle Q1. Bar pre-registered in eventsData/validation/WPP2-TRACE-1027_stage_v2/README.md (point estimate decides; scorer eventsData/validation/wpp2_trace_score_2026-10-27.R). Code all 40, about 1 hour.",
+  "display": [
+    {
+      "field": "header",
+      "label": "Prosecution",
+      "format": "longtext"
+    },
+    {
+      "field": "identity",
+      "label": "Identity key",
+      "format": "longtext"
+    },
+    {
+      "field": "n_events",
+      "label": "Events",
+      "format": "compact"
+    },
+    {
+      "field": "span",
+      "label": "First – last event",
+      "format": "compact"
+    },
+    {
+      "field": "n_regions",
+      "label": "Regions",
+      "format": "compact"
+    },
+    {
+      "field": "sources",
+      "label": "Sources",
+      "format": "compact"
+    },
+    {
+      "field": "court_cases",
+      "label": "Court case ids",
+      "format": "compact"
+    },
+    {
+      "field": "co_defendants",
+      "label": "Linked co-defendant prosecutions",
+      "format": "compact"
+    },
+    {
+      "field": "events",
+      "label": "Events (date | stage | source | id | key / link method / confidence | text)",
+      "format": "longtext"
+    }
+  ],
+  "validation": [
+    {
+      "field": "q1",
+      "label": "Q1 Same person in all events?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не могу сказать",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "q2",
+      "label": "Q2 One case, not merged or split?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не могу сказать",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "q3",
+      "label": "Q3 Stages and dates right?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не могу сказать",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "q4",
+      "label": "Q4 Status in the header right?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не могу сказать",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "q5",
+      "label": "Q5 person_uid right? (person_uid cards only; blank otherwise)",
+      "required": false,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не могу сказать",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "required": false,
+      "type": "textarea",
+      "placeholder": "what is wrong / which event"
+    }
+  ],
+  "lookups": [
+    {
+      "label": "Google",
+      "url": "https://www.google.com/search?q={name}"
+    },
+    {
+      "label": "Yandex",
+      "url": "https://yandex.ru/search/?text={name}"
+    },
+    {
+      "label": "ru.wiki",
+      "url": "https://ru.wikipedia.org/w/index.php?search={name}"
+    }
+  ]
+}

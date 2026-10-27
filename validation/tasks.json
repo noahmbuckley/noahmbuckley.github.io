@@ -97,6 +97,26 @@
       "desk": true
     },
     {
+      "id": "wpp2-trace-1027",
+      "name": "1 · Prosecution trace (T2-19) — 40 cards, Mac",
+      "project": "eventsData",
+      "description": "WPP2V2-D1 (a). One card = one person-prosecution built by the prosecution layer (events in date order with key method and link confidence). Five questions: same person in all events (Q1), one case not merged or split (Q2), stages and dates right (Q3), status right (Q4), person_uid right (Q5, person_uid cards only). 20 person_uid-keyed and 20 provisional-name cards, 8 per level group. Bar (pre-registered, point estimate decides, Wilson interval always shown): Q1 >= 0.90 overall and >= 0.95 on the 20 person_uid cards; Q2 >= 0.85; Q5 >= 0.95. A miss marks the person_uid prosecution keys unverified. Scorer eventsData/validation/wpp2_trace_score_2026-10-27.R. About 1 hour.",
+      "schema_url": "data/wpp2-trace-1027/schema.json",
+      "items_url": "data/wpp2-trace-1027/items.json",
+      "tier": "core",
+      "desk": true
+    },
+    {
+      "id": "recall-struct-1027",
+      "name": "1 · Archived government pages: does the page show the person in the post? (30 cards, Mac)",
+      "project": "elitesData",
+      "description": "ELST1027-D2 (a), recall probe. Each card is one person-post observation extracted by Haiku 5.5 from an archived government structure or leadership page: open the archive link and answer yes / no / unsure whether THIS page shows the person holding THIS post on the date shown. Your answers give (1) extraction precision (share yes of 30, Wilson interval) and (2) the master's recall among the yes cards (sealed automated key, 10 of 30 in the master). Descriptive: no pass/fail threshold is pre-registered (stage README). About 45 minutes.",
+      "schema_url": "data/recall-struct-1027/schema.json",
+      "items_url": "data/recall-struct-1027/items.json",
+      "tier": "core",
+      "desk": true
+    },
+    {
       "id": "protest-dedup-gold-residue36",
       "name": "2 · Protest dedup — human residue: article dates + 2 pair blocks (36, ~35 min)",
       "project": "eventsData/protestData",

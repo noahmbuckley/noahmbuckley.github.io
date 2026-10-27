@@ -1,0 +1,1 @@
+2026-10-27 (WPP2V2-D1 a): published from eventsData/validation/WPP2-TRACE-1027_stage_v2 (40 prosecutions from prosecutions_v2, seed 20261027; bar pre-registered in the stage README before any card was coded; schema/items built by eventsData/validation/wpp2_trace_make_task_2026-10-27.R).

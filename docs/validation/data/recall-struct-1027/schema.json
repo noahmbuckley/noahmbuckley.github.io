@@ -1,0 +1,85 @@
+{
+  "task_id": "recall-struct-1027",
+  "name": "Archived government pages: do they show the person in the post? (RECALL-STRUCT-1027): 30 cards",
+  "version": "v1 2026-10-27",
+  "id_field": "item_id",
+  "hide_empty": true,
+  "instructions": "ELST1027-D2 (a). Open the archive link, find the person on the page, and answer: does THIS page show the person holding THIS post on the date shown (a current holder as of the page date, not a former holder or a mention in news)? 'unsure' when the page cannot settle it (not loading, ambiguous layout). Your answer validates the extraction; the key (sealed) then gives how often the master already had the person in that seat-year. No model verdict is shown.",
+  "display": [
+    {
+      "field": "question",
+      "label": "Question",
+      "format": "longtext"
+    },
+    {
+      "field": "name",
+      "label": "Person",
+      "format": "compact"
+    },
+    {
+      "field": "post",
+      "label": "Post",
+      "format": "longtext"
+    },
+    {
+      "field": "region_body",
+      "label": "Region / body",
+      "format": "compact"
+    },
+    {
+      "field": "page_date",
+      "label": "Page date",
+      "format": "compact"
+    },
+    {
+      "field": "quote",
+      "label": "Quote from the page",
+      "format": "longtext"
+    },
+    {
+      "field": "evidence_url",
+      "label": "Page",
+      "format": "link"
+    },
+    {
+      "field": "evidence_note",
+      "label": "Note",
+      "format": "compact"
+    }
+  ],
+  "validation": [
+    {
+      "field": "page_ok",
+      "label": "Page shows the person in the post on this date?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "да",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "нет",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "unsure",
+          "label": "не уверен",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Notes",
+      "required": false,
+      "type": "textarea",
+      "placeholder": "what the page shows"
+    }
+  ]
+}

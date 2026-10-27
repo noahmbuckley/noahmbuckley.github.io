@@ -1,0 +1,1 @@
+2026-10-27 (ELST1027-D2 a): published from elitesData/validation/RECALL-STRUCT-1027_stage (30 cards, random.seed 20261027; drawn by structure_pages/code/06_stage_recall_deck.py; the sealed key stays in elitesData/validation/recall_struct_1027_key.csv, not published).
