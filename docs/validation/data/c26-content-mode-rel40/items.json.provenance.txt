@@ -5,3 +5,5 @@ timestamp  : 2026-09-30 15:50:43 +0100
 R_version  : R version 4.6.0 (2026-04-24)
 n_items    : 40
 blind      : no pred_*/model_*/john_*/v2_*/v4_* fields; predictions file never read
+
+2026-10-28 IPAD1028-D4 a / D1 a: transcript text revised by campaign2026/code/26p3_trim_moderator_rel40_2026-10-28.py (audit validation/rel40_transcript_trim_audit_2026-10-28.csv); John's workbook FOR_JOHN_content_mode_rel40_v4_2026-10-28.xlsx carries the same text; schema start box + primary_multi.

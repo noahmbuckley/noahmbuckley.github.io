@@ -1,144 +1,153 @@
 {
-  "task_id": "gold-elvis-1022-subset96",
-  "name": "ELVIS gold set — human subset (96 of 245)",
-  "version": "v1 2026-10-22",
-  "id_field": "item_id",
-  "hide_empty": true,
-  "instructions": "[2026-10-22 (GOLD-D5 a): 96 cards = every card the two LLM referees disagreed on or found unclear (59) + a seeded 20% audit of the 186 they agreed on (37). The other 149 cards are scored as audited silver beside the human result. Bar set 2026-10-22 (GOLD-D5): code away.] ELVSUM-D4 / hard rule 5. Карточка: фрагмент текста (выделено ⟦…⟧ то, что нашёл матчер) и чиновник-кандидат из мастера. Три вопроса. (1) Тот же человек? — выделенное имя относится именно к этому чиновнику, а не к тёзке/однофамильцу. (2) В должности на дату публикации? — на дату публикации этот человек занимал указанный пост (или близкий; окно в мастере — годовой точности); если по тексту видно, что он уже/ещё не в должности — «нет». (3) Речь о регионе чиновника? — упоминание относится к его региональной роли/региону, а не к другому уровню или другому региону. «Не уверен», если фрагмента недостаточно. Модельного вердикта на карточке нет.",
-  "display": [
+ "task_id": "gold-elvis-1022-subset96",
+ "name": "ELVIS gold set — human subset (96 of 245)",
+ "version": "v1 2026-10-22",
+ "id_field": "item_id",
+ "hide_empty": true,
+ "instructions": "ELVSUM-D4 / hard rule 5. Карточка: фрагмент текста (выделено ⟦…⟧ то, что нашёл матчер) и чиновник-кандидат из мастера. Три вопроса. (1) Тот же человек? — выделенное имя относится именно к этому чиновнику, а не к тёзке/однофамильцу. (2) В должности на дату публикации? — на дату публикации этот человек занимал указанный пост (или близкий; окно в мастере — годовой точности); если по тексту видно, что он уже/ещё не в должности — «нет». (3) Речь о регионе чиновника? — упоминание относится к его региональной роли/региону, а не к другому уровню или другому региону. «Не уверен», если фрагмента недостаточно. Модельного вердикта на карточке нет.",
+ "display": [
+  {
+   "field": "name",
+   "label": "Кандидат (имя)",
+   "format": "longtext"
+  },
+  {
+   "field": "post",
+   "label": "Должность в мастере",
+   "format": "longtext"
+  },
+  {
+   "field": "region_body",
+   "label": "Регион / тип должности",
+   "format": "compact"
+  },
+  {
+   "field": "start",
+   "label": "Окно: с года",
+   "format": "compact",
+   "highlight": "llm"
+  },
+  {
+   "field": "end",
+   "label": "Окно: по год",
+   "format": "compact",
+   "highlight": "llm"
+  },
+  {
+   "field": "span",
+   "label": "Фрагмент (±300 зн.)",
+   "format": "longtext"
+  },
+  {
+   "field": "source_line",
+   "label": "Источник",
+   "format": "compact"
+  },
+  {
+   "field": "url",
+   "label": "Ссылка",
+   "format": "link"
+  },
+  {
+   "field": "context",
+   "label": "Контекст",
+   "format": "compact"
+  }
+ ],
+ "validation": [
+  {
+   "field": "same_person",
+   "label": "Тот же человек?",
+   "required": true,
+   "type": "enum",
+   "options": [
     {
-      "field": "name",
-      "label": "Кандидат (имя)",
-      "format": "longtext"
+     "value": "yes",
+     "label": "да",
+     "key": "1",
+     "tone": "good"
     },
     {
-      "field": "post",
-      "label": "Должность в мастере",
-      "format": "longtext"
+     "value": "no",
+     "label": "нет",
+     "key": "2",
+     "tone": "bad"
     },
     {
-      "field": "region_body",
-      "label": "Регион / уровень",
-      "format": "compact"
-    },
-    {
-      "field": "start",
-      "label": "Окно: с года",
-      "format": "compact",
-      "highlight": "llm"
-    },
-    {
-      "field": "end",
-      "label": "Окно: по год",
-      "format": "compact",
-      "highlight": "llm"
-    },
-    {
-      "field": "span",
-      "label": "Фрагмент (±300 зн.)",
-      "format": "longtext"
-    },
-    {
-      "field": "source_line",
-      "label": "Источник",
-      "format": "compact"
-    },
-    {
-      "field": "url",
-      "label": "Ссылка",
-      "format": "link"
-    },
-    {
-      "field": "context",
-      "label": "Контекст",
-      "format": "compact"
+     "value": "unsure",
+     "label": "не уверен",
+     "key": "3",
+     "tone": "warn"
     }
+   ]
+  },
+  {
+   "field": "in_post",
+   "label": "В должности на дату?",
+   "required": true,
+   "type": "enum",
+   "options": [
+    {
+     "value": "yes",
+     "label": "да",
+     "key": "4",
+     "tone": "good"
+    },
+    {
+     "value": "no",
+     "label": "нет",
+     "key": "5",
+     "tone": "bad"
+    },
+    {
+     "value": "unsure",
+     "label": "не уверен",
+     "key": "6",
+     "tone": "warn"
+    }
+   ]
+  },
+  {
+   "field": "about_region",
+   "label": "Речь о регионе чиновника?",
+   "required": true,
+   "type": "enum",
+   "options": [
+    {
+     "value": "yes",
+     "label": "да",
+     "key": "7",
+     "tone": "good"
+    },
+    {
+     "value": "no",
+     "label": "нет",
+     "key": "8",
+     "tone": "bad"
+    },
+    {
+     "value": "unsure",
+     "label": "не уверен",
+     "key": "9",
+     "tone": "warn"
+    }
+   ]
+  },
+  {
+   "field": "notes",
+   "label": "Notes",
+   "required": false,
+   "type": "textarea",
+   "placeholder": "что не так / что говорит текст"
+  }
+ ],
+ "admin_note": "[2026-10-22 (GOLD-D5 a): 96 cards = every card the two LLM referees disagreed on or found unclear (59) + a seeded 20% audit of the 186 they agreed on (37). The other 149 cards are scored as audited silver beside the human result. Bar set 2026-10-22 (GOLD-D5): code away.]",
+ "start": "WHAT YOU SEE: a snippet from a news or social-media text. A name-matching program found a name in it (marked ⟦…⟧) and linked it to the official at the top, from our officials database: post, region, years in post.\n1. SAME PERSON? Is the marked name this official, not someone else with the same name?\n2. IN POST ON THAT DATE? On the publication date, did this person hold the post shown (or one close to it)? The database years are only accurate to the year. If the text shows they had already left or not yet started: no.\n3. ABOUT THEIR REGION? Is the mention about their role in their region, not another level or region?\n'Unsure' when the snippet isn't enough; the link opens the full text.",
+ "reset_answers": {
+  "before": "2026-10-28T02:10:00Z",
+  "items": [
+   "GE217"
   ],
-  "validation": [
-    {
-      "field": "same_person",
-      "label": "Тот же человек?",
-      "required": true,
-      "type": "enum",
-      "options": [
-        {
-          "value": "yes",
-          "label": "да",
-          "key": "1",
-          "tone": "good"
-        },
-        {
-          "value": "no",
-          "label": "нет",
-          "key": "2",
-          "tone": "bad"
-        },
-        {
-          "value": "unsure",
-          "label": "не уверен",
-          "key": "3",
-          "tone": "warn"
-        }
-      ]
-    },
-    {
-      "field": "in_post",
-      "label": "В должности на дату?",
-      "required": true,
-      "type": "enum",
-      "options": [
-        {
-          "value": "yes",
-          "label": "да",
-          "key": "4",
-          "tone": "good"
-        },
-        {
-          "value": "no",
-          "label": "нет",
-          "key": "5",
-          "tone": "bad"
-        },
-        {
-          "value": "unsure",
-          "label": "не уверен",
-          "key": "6",
-          "tone": "warn"
-        }
-      ]
-    },
-    {
-      "field": "about_region",
-      "label": "Речь о регионе чиновника?",
-      "required": true,
-      "type": "enum",
-      "options": [
-        {
-          "value": "yes",
-          "label": "да",
-          "key": "7",
-          "tone": "good"
-        },
-        {
-          "value": "no",
-          "label": "нет",
-          "key": "8",
-          "tone": "bad"
-        },
-        {
-          "value": "unsure",
-          "label": "не уверен",
-          "key": "9",
-          "tone": "warn"
-        }
-      ]
-    },
-    {
-      "field": "notes",
-      "label": "Notes",
-      "required": false,
-      "type": "textarea",
-      "placeholder": "что не так / что говорит текст"
-    }
-  ]
+  "why": "notes-only answer on the old card; shown fresh once"
+ }
 }

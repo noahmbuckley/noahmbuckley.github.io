@@ -1,192 +1,223 @@
 {
-  "task_id": "arrests-case-linkage-S1-24",
-  "name": "Arrests case linkage — new case or follow-up? (S1, 24 cards)",
-  "version": "2026-10-04",
-  "id_field": "item_id",
-  "hide_empty": true,
-  "instructions": "[2026-10-22 (GOLD-D4): the 24 S1 cards only — the stratum that decides RULE-A and the first-case rule. The other strata are scored from the two-referee silver.] [2026-10-12 SUBSET: code all 74; the round sentence below no longer applies — the other 86 cards were pre-coded by two referees (audited silver).] Card = mention A (top) and up to three EARLIER mentions B1-B3 from the same region. Q1: from A's text alone, is A reporting a NEW criminal case (first public contact: detention, case opened, caught in the act) or a FOLLOW-UP to a case that was already public (charges, court arrest extension, trial, verdict, 'ранее задержанный', 'фигурант дела')? 'Can't tell' is fine. Q2: is A about the SAME criminal case (same defendant, same proceedings) as B1, B2 or B3? Pick the FIRST B that is the same case; 'None' if all are different people/cases; 'Unsure' if the texts do not settle it. If there is no B, answer Q1 and leave Q2 blank. Do not search the web — judge from the texts shown. The card label is the round: after round 1, export and run the loader; it says whether round 2 is needed.",
-  "display": [
+ "task_id": "arrests-case-linkage-S1-24",
+ "name": "Arrests case linkage — new case or follow-up? (S1, 24 cards)",
+ "version": "2026-10-04",
+ "id_field": "item_id",
+ "hide_empty": true,
+ "instructions": "Card = mention A (top) and up to three EARLIER mentions B1-B3 from the same region. Q1: from A's text alone, is A reporting a NEW criminal case (first public contact: detention, case opened, caught in the act) or a FOLLOW-UP to a case that was already public (charges, court arrest extension, trial, verdict, 'ранее задержанный', 'фигурант дела')? 'Can't tell' is fine. Q2: is A about the SAME criminal case (same defendant, same proceedings) as B1, B2 or B3? Pick the FIRST B that is the same case; 'None' if all are different people/cases; 'Unsure' if the texts do not settle it. If there is no B, answer Q1 and leave Q2 blank. Do not search the web — judge from the texts shown. The card label is the round: after round 1, export and run the loader; it says whether round 2 is needed.",
+ "display": [
+  {
+   "field": "card_label",
+   "label": "round",
+   "format": "tag"
+  },
+  {
+   "field": "region",
+   "label": "region",
+   "format": "compact"
+  },
+  {
+   "field": "a_date",
+   "label": "A — date (month only for digest / regional media)",
+   "format": "compact"
+  },
+  {
+   "field": "a_source",
+   "label": "A — source",
+   "format": "compact"
+  },
+  {
+   "field": "a_name",
+   "label": "A — name as extracted",
+   "format": "compact"
+  },
+  {
+   "field": "a_position",
+   "label": "A — position as extracted",
+   "format": "compact"
+  },
+  {
+   "field": "a_text",
+   "label": "A — text",
+   "format": "longtext"
+  },
+  {
+   "field": "a_url",
+   "label": "A — open the original",
+   "format": "link"
+  },
+  {
+   "field": "b1_date",
+   "label": "B1 — date",
+   "format": "compact"
+  },
+  {
+   "field": "b1_source",
+   "label": "B1 — source",
+   "format": "compact"
+  },
+  {
+   "field": "b1_name",
+   "label": "B1 — name as extracted",
+   "format": "compact"
+  },
+  {
+   "field": "b1_position",
+   "label": "B1 — position as extracted",
+   "format": "compact"
+  },
+  {
+   "field": "b1_text",
+   "label": "B1 — text",
+   "format": "longtext"
+  },
+  {
+   "field": "b1_url",
+   "label": "B1 — open the original",
+   "format": "link"
+  },
+  {
+   "field": "b2_date",
+   "label": "B2 — date",
+   "format": "compact"
+  },
+  {
+   "field": "b2_source",
+   "label": "B2 — source",
+   "format": "compact"
+  },
+  {
+   "field": "b2_name",
+   "label": "B2 — name as extracted",
+   "format": "compact"
+  },
+  {
+   "field": "b2_position",
+   "label": "B2 — position as extracted",
+   "format": "compact"
+  },
+  {
+   "field": "b2_text",
+   "label": "B2 — text",
+   "format": "longtext"
+  },
+  {
+   "field": "b2_url",
+   "label": "B2 — open the original",
+   "format": "link"
+  },
+  {
+   "field": "b3_date",
+   "label": "B3 — date",
+   "format": "compact"
+  },
+  {
+   "field": "b3_source",
+   "label": "B3 — source",
+   "format": "compact"
+  },
+  {
+   "field": "b3_name",
+   "label": "B3 — name as extracted",
+   "format": "compact"
+  },
+  {
+   "field": "b3_position",
+   "label": "B3 — position as extracted",
+   "format": "compact"
+  },
+  {
+   "field": "b3_text",
+   "label": "B3 — text",
+   "format": "longtext"
+  },
+  {
+   "field": "b3_url",
+   "label": "B3 — open the original",
+   "format": "link"
+  }
+ ],
+ "validation": [
+  {
+   "field": "a_is",
+   "label": "Q1: A's text reports…",
+   "type": "enum",
+   "required": true,
+   "options": [
     {
-      "field": "card_label",
-      "label": "round",
-      "format": "tag"
+     "value": "new_case",
+     "label": "A NEW case (first public contact)",
+     "key": "1",
+     "tone": "good"
     },
     {
-      "field": "region",
-      "label": "region",
-      "format": "compact"
+     "value": "follow_up",
+     "label": "A FOLLOW-UP to an already-public case",
+     "key": "2",
+     "tone": "warn"
     },
     {
-      "field": "a_date",
-      "label": "A — date (month only for digest / regional media)",
-      "format": "compact"
-    },
-    {
-      "field": "a_source",
-      "label": "A — source",
-      "format": "compact"
-    },
-    {
-      "field": "a_name",
-      "label": "A — name as extracted",
-      "format": "compact"
-    },
-    {
-      "field": "a_position",
-      "label": "A — position as extracted",
-      "format": "compact"
-    },
-    {
-      "field": "a_text",
-      "label": "A — text",
-      "format": "longtext"
-    },
-    {
-      "field": "b1_date",
-      "label": "B1 — date",
-      "format": "compact"
-    },
-    {
-      "field": "b1_source",
-      "label": "B1 — source",
-      "format": "compact"
-    },
-    {
-      "field": "b1_name",
-      "label": "B1 — name as extracted",
-      "format": "compact"
-    },
-    {
-      "field": "b1_position",
-      "label": "B1 — position as extracted",
-      "format": "compact"
-    },
-    {
-      "field": "b1_text",
-      "label": "B1 — text",
-      "format": "longtext"
-    },
-    {
-      "field": "b2_date",
-      "label": "B2 — date",
-      "format": "compact"
-    },
-    {
-      "field": "b2_source",
-      "label": "B2 — source",
-      "format": "compact"
-    },
-    {
-      "field": "b2_name",
-      "label": "B2 — name as extracted",
-      "format": "compact"
-    },
-    {
-      "field": "b2_position",
-      "label": "B2 — position as extracted",
-      "format": "compact"
-    },
-    {
-      "field": "b2_text",
-      "label": "B2 — text",
-      "format": "longtext"
-    },
-    {
-      "field": "b3_date",
-      "label": "B3 — date",
-      "format": "compact"
-    },
-    {
-      "field": "b3_source",
-      "label": "B3 — source",
-      "format": "compact"
-    },
-    {
-      "field": "b3_name",
-      "label": "B3 — name as extracted",
-      "format": "compact"
-    },
-    {
-      "field": "b3_position",
-      "label": "B3 — position as extracted",
-      "format": "compact"
-    },
-    {
-      "field": "b3_text",
-      "label": "B3 — text",
-      "format": "longtext"
+     "value": "cant_tell",
+     "label": "Can't tell from the text",
+     "key": "3",
+     "tone": "neutral"
     }
+   ]
+  },
+  {
+   "field": "same_case",
+   "label": "Q2: A is the same criminal case as…",
+   "type": "enum",
+   "required": false,
+   "options": [
+    {
+     "value": "b1",
+     "label": "B1",
+     "key": "4",
+     "tone": "good"
+    },
+    {
+     "value": "b2",
+     "label": "B2",
+     "key": "5",
+     "tone": "good"
+    },
+    {
+     "value": "b3",
+     "label": "B3",
+     "key": "6",
+     "tone": "good"
+    },
+    {
+     "value": "none",
+     "label": "None of them",
+     "key": "7",
+     "tone": "bad"
+    },
+    {
+     "value": "unsure",
+     "label": "Unsure",
+     "key": "8",
+     "tone": "neutral"
+    }
+   ]
+  },
+  {
+   "field": "notes",
+   "label": "Notes",
+   "type": "textarea",
+   "placeholder": "e.g. same person but a second case; B2 is a different official"
+  }
+ ],
+ "admin_note": "[2026-10-22 (GOLD-D4): the 24 S1 cards only — the stratum that decides RULE-A and the first-case rule. The other strata are scored from the two-referee silver.] [2026-10-12 SUBSET: code all 74; the round sentence below no longer applies — the other 86 cards were pre-coded by two referees (audited silver).]",
+ "start": "WHAT YOU SEE: A is a news mention of an official being detained, charged or tried. Most of these cards show no B — that is expected, not an error. Where B1–B3 appear, they are earlier mentions from the same region.\nQ1 (every card): from A, is this the FIRST public news of the case (detention, case opened, caught in the act) or a FOLLOW-UP to a case already public (charges filed, court ordered or extended arrest, trial, verdict, «ранее задержанный», «фигурант дела»)? 'Can't tell' is a real answer — use it whenever A doesn't say.\nQ2 (only if a B is shown): is A the same criminal case as B1, B2 or B3? Pick the first that is.\n'Open the original' shows the full post or article (regional-media cards show only a headline otherwise). The model that made this call saw only the first 250 characters or the headline. Judge from A and its original; no other searching.",
+ "reset_answers": {
+  "before": "2026-10-28T02:10:00Z",
+  "items": [
+   "clp_69168",
+   "clp_66125",
+   "clp_33030"
   ],
-  "validation": [
-    {
-      "field": "a_is",
-      "label": "Q1: A's text reports…",
-      "type": "enum",
-      "required": true,
-      "options": [
-        {
-          "value": "new_case",
-          "label": "A NEW case (first public contact)",
-          "key": "1",
-          "tone": "good"
-        },
-        {
-          "value": "follow_up",
-          "label": "A FOLLOW-UP to an already-public case",
-          "key": "2",
-          "tone": "warn"
-        },
-        {
-          "value": "cant_tell",
-          "label": "Can't tell from the text",
-          "key": "3",
-          "tone": "neutral"
-        }
-      ]
-    },
-    {
-      "field": "same_case",
-      "label": "Q2: A is the same criminal case as…",
-      "type": "enum",
-      "required": false,
-      "options": [
-        {
-          "value": "b1",
-          "label": "B1",
-          "key": "4",
-          "tone": "good"
-        },
-        {
-          "value": "b2",
-          "label": "B2",
-          "key": "5",
-          "tone": "good"
-        },
-        {
-          "value": "b3",
-          "label": "B3",
-          "key": "6",
-          "tone": "good"
-        },
-        {
-          "value": "none",
-          "label": "None of them",
-          "key": "7",
-          "tone": "bad"
-        },
-        {
-          "value": "unsure",
-          "label": "Unsure",
-          "key": "8",
-          "tone": "neutral"
-        }
-      ]
-    },
-    {
-      "field": "notes",
-      "label": "Notes",
-      "type": "textarea",
-      "placeholder": "e.g. same person but a second case; B2 is a different official"
-    }
-  ]
+  "why": "answered on the old 250-char card; shown fresh once"
+ }
 }

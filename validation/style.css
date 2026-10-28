@@ -133,6 +133,11 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 16px 0; }
   margin-bottom: 12px; font-size: 0.92rem; color: var(--fg-muted);
 }
 .instructions.collapsed { max-height: 2.6em; overflow: hidden; cursor: pointer; }
+.instructions .start-box { white-space: pre-line; color: var(--fg); font-size: 0.95rem; }
+.instructions details { margin-top: 8px; }
+.instructions summary { cursor: pointer; font-weight: 600; }
+.instructions .full-rules { white-space: pre-line; margin-top: 6px; max-height: 50vh; overflow-y: auto; }
+.form-warning { color: #b45309; font-size: 0.9rem; margin-top: 4px; }
 
 /* ===== Validation form ===== */
 .form-group { margin-bottom: 14px; }

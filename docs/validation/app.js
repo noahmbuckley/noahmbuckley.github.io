@@ -272,7 +272,17 @@ async function openTask(taskId, { fromSync = false } = {}) {
     const answers = await idbGetAll(STORE_ANSWERS,
       IDBKeyRange.bound([taskId, ''], [taskId, '￿'])
     );
-    for (const a of answers) state.answersCache[a.item_id] = a.answer;
+    // 2026-10-28 (IPAD1028-D2): schema.reset_answers = {before: ISO, items: [...]} blanks the
+    // listed items' answers saved before `before` (a card fixed after coding is shown fresh once).
+    // Answers saved after `before` are never touched, so it fires at most once per item.
+    const rs = t.schema.reset_answers;
+    for (const a of answers) {
+      if (rs && Array.isArray(rs.items) && rs.items.includes(a.item_id) && a.ts && a.ts < rs.before) {
+        await idbDelete(STORE_ANSWERS, [taskId, a.item_id]);
+        continue;
+      }
+      state.answersCache[a.item_id] = a.answer;
+    }
     // Restore progress
     const prog = await idbGet(STORE_PROGRESS, taskId);
     state.currentIndex = prog ? Math.min(prog.currentIndex, t.items.length - 1) : 0;
@@ -294,14 +304,40 @@ function renderInstructions() {
   const sch = state.currentTask.schema;
   const el = $('task-instructions');
   let text = sch.instructions || '';
-  if (sch.instructions_by_variant && state.currentTask.items && state.currentTask.items.length) {
+  let start = sch.start || '';
+  if (state.currentTask.items && state.currentTask.items.length) {
     const item = currentItem();
-    if (item && item.variant && sch.instructions_by_variant[item.variant] != null) {
+    if (item && item.variant && sch.instructions_by_variant && sch.instructions_by_variant[item.variant] != null) {
       text = sch.instructions_by_variant[item.variant];
     }
+    if (item && item.variant && sch.start_by_variant && sch.start_by_variant[item.variant] != null) {
+      start = sch.start_by_variant[item.variant];
+    }
   }
-  el.textContent = text;
-  el.style.display = text ? 'block' : 'none';
+  // 2026-10-28 (IPAD1028-D1): schema.start = a short plain-words box always shown; the full
+  // `instructions` then sit folded under "Full rules". Tasks without `start` render as before.
+  el.innerHTML = '';
+  if (start) {
+    const s = document.createElement('div');
+    s.className = 'start-box';
+    s.textContent = start;
+    el.appendChild(s);
+    if (text) {
+      const det = document.createElement('details');
+      det.open = !!state.fullRulesOpen;
+      det.addEventListener('toggle', () => { state.fullRulesOpen = det.open; });
+      const sum = document.createElement('summary');
+      sum.textContent = 'Full rules';
+      const body = document.createElement('div');
+      body.className = 'full-rules';
+      body.textContent = text;
+      det.appendChild(sum); det.appendChild(body);
+      el.appendChild(det);
+    }
+  } else {
+    el.textContent = text;
+  }
+  el.style.display = (start || text) ? 'block' : 'none';
 }
 
 function currentItem() {
@@ -640,7 +676,7 @@ function renderForm() {
         if (cur[v.field] === opt.value) b.classList.add('selected');
         b.innerHTML = `${escapeHTML(opt.label)} <span class="key-hint">${opt.key ? '['+opt.key+']' : ''}</span>`;
         b.addEventListener('click', () => {
-          setAnswerField(v.field, opt.value);
+          setEnumAnswer(sch, fields, v.field, opt.value);
           renderForm();   // re-render to update show_if + selection
         });
         wrap.appendChild(b);
@@ -698,6 +734,41 @@ function renderForm() {
     }
     f.appendChild(grp);
   }
+
+  // 2026-10-28 (IPAD1028-D1): non-blocking warning when primary and the multi field disagree.
+  const pm = sch.primary_multi;
+  if (pm) {
+    const prim = cur[pm.primary];
+    const have = String(cur[pm.multi] ?? '').split('|').map(s => s.trim()).filter(Boolean);
+    const msgs = [];
+    if (prim && !(pm.skip || []).includes(prim) && !have.includes(prim)) msgs.push('Primary mode is not among the ticked modes.');
+    if (pm.max && have.length > pm.max) msgs.push('More than ' + pm.max + ' modes ticked (codebook cap).');
+    if (msgs.length) {
+      const w = document.createElement('div');
+      w.className = 'form-warning';
+      w.textContent = msgs.join(' ');
+      f.appendChild(w);
+    }
+  }
+}
+
+// 2026-10-28 (IPAD1028-D1): every enum answer (tap or key) goes through here. schema.primary_multi =
+// {primary, multi, skip, max}: a new primary is ticked in the multi field and the previous primary is
+// unticked (so a corrected primary does not turn into a two-mode answer); a `skip` primary (unreadable)
+// clears the multi field. Tasks without primary_multi: plain setAnswerField, as before.
+function setEnumAnswer(sch, fields, field, value) {
+  const pm = sch.primary_multi;
+  const prev = state.answersCache[currentItemId()]?.[field];
+  setAnswerField(field, value);
+  if (!pm || field !== pm.primary) return;
+  const mf = fields.find(x => x.field === pm.multi);
+  if (!mf) return;
+  if ((pm.skip || []).includes(value)) { setAnswerField(pm.multi, null); return; }
+  let now = String(state.answersCache[currentItemId()]?.[pm.multi] ?? '')
+    .split('|').map(s => s.trim()).filter(Boolean);
+  if (prev && prev !== value) now = now.filter(x => x !== prev);
+  if (!now.includes(value)) now = now.concat([value]);
+  setAnswerField(pm.multi, mf.options.map(o => o.value).filter(x => now.includes(x)).join('|'));
 }
 
 function setAnswerField(field, value) {
@@ -1102,7 +1173,7 @@ function bindGlobalUI() {
           const grp = document.querySelector(`.form-group[data-field="${v.field}"]`);
           if (grp && !grp.classList.contains('hidden')) {
             e.preventDefault();
-            setAnswerField(v.field, opt.value);
+            setEnumAnswer(sch, fields, v.field, opt.value);
             renderForm();
             handled = true;
           }
