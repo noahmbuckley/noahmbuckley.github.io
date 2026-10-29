@@ -1,0 +1,1 @@
+2026-10-29 (ELDISC1029-D6 a): published from eventsData/validation/LOCR-MATCH-57_stage (57 cards = every name + region match; built by eventsData/code/100e_locr_match_cards.R; the sealed key stays in eventsData/validation/locr_match_rows_2026-10-29.csv, not published). Personal data: public register + officials database, no INNs, Noah's private app.

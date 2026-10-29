@@ -1,0 +1,132 @@
+{
+  "task_id": "struct-decree-20",
+  "name": "Regional structure decrees: is the list of bodies right? (20 cards, Mac)",
+  "version": "v1 2026-10-29",
+  "id_field": "item_id",
+  "hide_empty": true,
+  "start": "WHAT THIS IS. Each card is a regional decree that lists the region's executive bodies (ministries, departments, committees, services). A program read the decree and pulled out a list of bodies. You check that list against the decree.\n\nWHERE TO START. Card 1. Read the numbered 'Extracted list'. Then scroll the 'Decree text' under it (or tap the 'Official act page' link) and look for any body in the decree that is missing from the list, and any item on the list that is not a body.\n\nTWO QUESTIONS.\n1. Is the list complete? yes = every executive body the decree names is on the list. missing some = tick it and type which ones. can't judge = the text is too garbled to read, or the decree does not actually list bodies.\n2. Is anything on the list NOT an executive body? no / 1 item / 2 or more (type which).\n\nWHAT COUNTS AS A BODY. Ministries, departments, committees, services, inspectorates, agencies and administrations of the region, and the regional Government or the Governor's administration when the decree lists it. NOT bodies: an official's title (minister, deputy), a unit inside a body, a federal or municipal body, a heading, a date, a reference to another law. A small spelling difference or OCR typo in a name is fine.\n\nDONE looks like: all 20 cards answered (about 45 minutes; it is a desk task, use the Mac). Answer 'can't judge' rather than guess. Your own reading is the check: do not look for the 'right' answer anywhere else.\n\nIF STUCK. If the text is garbled, open the official page link. If the link does not load, answer 'can't judge' and say so in the note. If a card seems to be a different kind of decree (an amendment, for example), answer 'can't judge' and say so in the note.",
+  "display": [
+    {
+      "field": "question",
+      "label": "Question",
+      "format": "longtext"
+    },
+    {
+      "field": "region",
+      "label": "Region",
+      "format": "compact"
+    },
+    {
+      "field": "decree",
+      "label": "Decree date, number",
+      "format": "compact"
+    },
+    {
+      "field": "title",
+      "label": "Decree title",
+      "format": "longtext"
+    },
+    {
+      "field": "official_url",
+      "label": "Official act page",
+      "format": "link"
+    },
+    {
+      "field": "extracted_list",
+      "label": "Extracted list (the program's bodies)",
+      "format": "longtext",
+      "highlight": "llm"
+    },
+    {
+      "field": "decree_text",
+      "label": "Decree text (full)",
+      "format": "longtext"
+    }
+  ],
+  "validation": [
+    {
+      "field": "complete",
+      "label": "Is the list complete?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "yes, complete",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "missing",
+          "label": "missing some",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "cannot_judge",
+          "label": "can't judge",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "missing_which",
+      "label": "Which bodies are missing?",
+      "required": false,
+      "type": "textarea",
+      "show_if": {
+        "complete": [
+          "missing"
+        ]
+      },
+      "placeholder": "type the missing names (a few words each)"
+    },
+    {
+      "field": "non_body",
+      "label": "Anything on the list that is NOT an executive body?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "none",
+          "label": "no",
+          "key": "4",
+          "tone": "good"
+        },
+        {
+          "value": "one",
+          "label": "1 item",
+          "key": "5",
+          "tone": "warn"
+        },
+        {
+          "value": "two_plus",
+          "label": "2 or more",
+          "key": "6",
+          "tone": "bad"
+        }
+      ]
+    },
+    {
+      "field": "non_body_which",
+      "label": "Which items are not bodies?",
+      "required": false,
+      "type": "textarea",
+      "show_if": {
+        "non_body": [
+          "one",
+          "two_plus"
+        ]
+      },
+      "placeholder": "type their list numbers or names"
+    },
+    {
+      "field": "notes",
+      "label": "Note",
+      "required": false,
+      "type": "textarea",
+      "placeholder": "anything else"
+    }
+  ]
+}

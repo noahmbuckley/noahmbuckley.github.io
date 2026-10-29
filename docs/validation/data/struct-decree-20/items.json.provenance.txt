@@ -1,0 +1,1 @@
+2026-10-29 (ELDISC1029-D4 a): published from elitesData/validation/STRUCT-DECREE-20_stage (20 cards, random.seed 20261029 in R set.seed; drawn by elitesData/validation/struct_decree_draw_2026-10-29.R; the sealed key stays in elitesData/validation/struct_decree_rows_2026-10-29.csv, not published).

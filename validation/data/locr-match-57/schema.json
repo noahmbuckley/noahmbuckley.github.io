@@ -1,0 +1,126 @@
+{
+  "task_id": "locr-match-57",
+  "name": "Dismissal register vs officials database: same person? (57 cards, Mac)",
+  "version": "v1 2026-10-29",
+  "id_field": "item_id",
+  "hide_empty": true,
+  "start": "WHAT THIS IS. The government publishes a register of officials dismissed because the employer lost confidence in them (corruption rules). Each card is one register entry (top block) next to one person in our officials database (lower block). The two have the same full name and the same region, but a name is not proof of identity. You judge whether they are the same person.\n\nWHERE TO START. Card 1. Read the register block (who was dismissed, from what post, when). Then read the database block: the person's posts (spells) with years and regions. The line marked [same region as the register entry] is the one that made the match. Post texts in the database are sometimes cut off at the source (the last word may end early); read them as far as they go.\n\nTWO QUESTIONS.\n1. Same person? yes = the register's post, body and dates are consistent with this person's career in the database. no = clearly someone else with the same name (different field, age, level or place). can't tell = the database does not say enough.\n2. (Only if yes.) Does the register's post fit one of the database spells? yes = a spell has the same kind of post in the same body or place, and the dismissal date falls inside it or within a year after it ends (database years are whole years). no = the person fits but the register post is not in any spell (for example a lower post, or a different body). can't tell = unclear.\n\nUse the search chips (Google, Yandex, ru.wiki) if you need to look the person up; they are optional and a card can be answered without them.\n\nDONE looks like: all 57 cards answered (about 40 minutes). Answer 'can't tell' rather than guess.\n\nIF STUCK. Two entries can share a name by chance, so 'no' is a normal answer. If the database block is empty or garbled, answer 'can't tell' and say so in the note. Your own reading is the check.",
+  "display": [
+    {
+      "field": "question",
+      "label": "Question",
+      "format": "longtext"
+    },
+    {
+      "field": "name",
+      "label": "REGISTER: name",
+      "format": "longtext"
+    },
+    {
+      "field": "reg_org",
+      "label": "REGISTER: organisation",
+      "format": "longtext"
+    },
+    {
+      "field": "reg_position",
+      "label": "REGISTER: position",
+      "format": "longtext"
+    },
+    {
+      "field": "reg_date",
+      "label": "REGISTER: dismissed on",
+      "format": "compact"
+    },
+    {
+      "field": "reg_basis",
+      "label": "REGISTER: legal basis",
+      "format": "longtext"
+    },
+    {
+      "field": "reg_region",
+      "label": "Region taken from the organisation name",
+      "format": "compact"
+    },
+    {
+      "field": "db_name",
+      "label": "DATABASE: name",
+      "format": "longtext"
+    },
+    {
+      "field": "db_dob",
+      "label": "DATABASE: birth date",
+      "format": "compact"
+    },
+    {
+      "field": "db_spells",
+      "label": "DATABASE: spells (years | level | region, then post)",
+      "format": "longtext"
+    }
+  ],
+  "validation": [
+    {
+      "field": "same_person",
+      "label": "Same person?",
+      "required": true,
+      "type": "enum",
+      "options": [
+        {
+          "value": "yes",
+          "label": "yes",
+          "key": "1",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "no",
+          "key": "2",
+          "tone": "bad"
+        },
+        {
+          "value": "cannot_tell",
+          "label": "can't tell",
+          "key": "3",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "post_fits",
+      "label": "Does the register post fit a database spell?",
+      "required": false,
+      "type": "enum",
+      "show_if": {
+        "same_person": [
+          "yes"
+        ]
+      },
+      "options": [
+        {
+          "value": "yes",
+          "label": "yes, fits",
+          "key": "4",
+          "tone": "good"
+        },
+        {
+          "value": "no",
+          "label": "no, does not fit",
+          "key": "5",
+          "tone": "bad"
+        },
+        {
+          "value": "cannot_tell",
+          "label": "can't tell",
+          "key": "6",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "field": "notes",
+      "label": "Note",
+      "required": false,
+      "type": "textarea",
+      "placeholder": "which spell fits, or why not"
+    }
+  ]
+}

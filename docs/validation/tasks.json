@@ -117,6 +117,26 @@
       "desk": true
     },
     {
+      "id": "struct-decree-20",
+      "name": "2 · Regional structure decrees: is the list of bodies right? (20 cards, Mac)",
+      "project": "elitesData",
+      "description": "Each card is a regional decree that lists the region's executive bodies, next to the list a program extracted from it. Read the decree text (or open the official page) and say whether the list is complete and whether anything on it is not a body. A start page on the first card explains it in plain words. Bar (pre-registered in the stage README, point estimate decides): at least 18 of 20 cards complete with at most 1 non-body item. About 45 minutes; a desk task.",
+      "schema_url": "data/struct-decree-20/schema.json",
+      "items_url": "data/struct-decree-20/items.json",
+      "tier": "optional",
+      "desk": true
+    },
+    {
+      "id": "locr-match-57",
+      "name": "2 · Dismissal register vs officials database: same person? (57 cards, Mac)",
+      "project": "eventsData",
+      "description": "Each card pairs one entry of the register of officials dismissed for loss of confidence with one person in our officials database (same full name and region). Say whether they are the same person and, if yes, whether the register's post fits one of the person's database posts. A start page on the first card explains it in plain words. Bar (pre-registered in the stage README, point estimate decides): at least 90% of the same-person answers have a post that fits. About 40 minutes. Personal data, private app only.",
+      "schema_url": "data/locr-match-57/schema.json",
+      "items_url": "data/locr-match-57/items.json",
+      "tier": "optional",
+      "desk": true
+    },
+    {
       "id": "protest-dedup-gold-residue36",
       "name": "2 · Protest dedup — human residue: article dates + 2 pair blocks (36, ~35 min)",
       "project": "eventsData/protestData",
