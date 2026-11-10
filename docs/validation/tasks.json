@@ -1,184 +1,41 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-27",
+  "generated_at": "2026-11-10",
   "tasks": [
     {
-      "id": "c26-content-mode-rel40",
-      "name": "1 · C26 content MODE reliability (40, Noah+John) — do FIRST",
-      "project": "campaign2026",
-      "description": "TIER 1, do FIRST. Same 40 messages coded independently by Noah and John under codebook v4 (the model's prompt uses the identical rule text). Noah–John kappa (9-class, unreadable excluded) >= 0.60 keeps 9 classes; < 0.60 switches to the pre-declared 4-class collapse. Redrawn 2026-09-30: your 6 round-1 items moved to the 310 task; none of these 40 has been coded before. Full classifier text, no model output. Rules: campaign2026/validation/DECISION_RULES_content_mode_v2_2026-09-28.md. Loader campaign2026/code/26l2_load_content_mode_v4_gold.R.",
-      "schema_url": "data/c26-content-mode-rel40/schema.json",
-      "items_url": "data/c26-content-mode-rel40/items.json",
-      "tier": "core"
-    },
-    {
       "id": "disaster-D31-stated-date-41",
-      "name": "1 · Disaster D-31 stated dates (41, ~60–70 min)",
+      "name": "1 · Disaster dates: is the date the model found right? (27 cards left, ~50 min)",
       "project": "disaster",
-      "description": "GOLD-D2 (a): all 35 stated-date H cards + 6 adjudication cards = the ORIGINAL n=35 random-sample rule (±3 d, bar 0.70, PASS ≥30/35; DIS1004-D10). Gates the day-precision tier of 1,777 events named in the paper. Blind; search only if the card does not settle it. Loader disaster/code/validation/99d3_load_date_validation_v3_results.R.",
+      "description": "One disaster per card, the date a model read out of news coverage, and the news item it came from. Is the date right (within 3 days)? If no, type the true date. The 6 two-date cards are optional. The disaster paper dates 1,777 events this way. Details: _notes/gold_bank.md, LIVE #1.",
       "schema_url": "data/disaster-D31-stated-date-41/schema.json",
       "items_url": "data/disaster-D31-stated-date-41/items.json",
       "tier": "core"
     },
     {
       "id": "arrests-case-linkage-S1-24",
-      "name": "1 · Arrests case linkage — new case or follow-up? (S1, 24, ~10 min)",
+      "name": "2 · Arrests: new case or follow-up? (21 cards left, ~25 min)",
       "project": "arrestsPubOpinionPaper",
-      "description": "GOLD-D4 (a): the S1 cards only — decide RULE-A and the first-case rule (is_new_case decides 55% of core_sample). S2–S6 are scored from the two-referee silver. Blind. Loader arrestsPubOpinionPaper/code/load_case_linkage_pairs_results_2026-10-04.R.",
+      "description": "One news mention of an official detained, charged or tried. Is this the first report of the case, or a follow-up to an earlier one? \"Can't tell\" is a real answer. This decides which reports count as new arrests in the arrests paper. Details: _notes/gold_bank.md, LIVE #2.",
       "schema_url": "data/arrests-case-linkage-S1-24/schema.json",
       "items_url": "data/arrests-case-linkage-S1-24/items.json",
       "tier": "core"
     },
     {
       "id": "arrests-crime-type-subset35",
-      "name": "1 · Arrests crime type — bribery vs other (35, ~8 min)",
+      "name": "3 · Optional — arrests: what kind of crime? (35 cards, ~8 min)",
       "project": "arrestsPubOpinionPaper",
-      "description": "Referee-reduced subset of the 125-event crime-type audit (did the 46-category classifier over-split bribery?). Also the gold rusclf arrest_extract needs. Scorer code/89_score_reclass_audit.R (subset-aware since EVIV-D6).",
+      "description": "Short cards: crime type, was the person in office, is it corruption. Details: _notes/gold_bank.md, LIVE #4.",
       "schema_url": "data/arrests-crime-type-subset35/schema.json",
       "items_url": "data/arrests-crime-type-subset35/items.json",
-      "tier": "core"
-    },
-    {
-      "id": "arrests-sledcom-defendant-B20",
-      "name": "1 · Sledcom 2023–26 — is the official the defendant? (B, 20, ~13 min)",
-      "project": "arrestsPubOpinionPaper",
-      "description": "GOLD-D4 (a): stratum B only (defendant_is_official rows; bar 0.85, at most 3 no/unclear). Stratum A is scored from the ARR1010 silver + a third referee. Blind. Loader arrestsPubOpinionPaper/code/load_sledcom_defendant_blind_2026-10-12.R.",
-      "schema_url": "data/arrests-sledcom-defendant-B20/schema.json",
-      "items_url": "data/arrests-sledcom-defendant-B20/items.json",
-      "tier": "core"
-    },
-    {
-      "id": "fold-spot-1020",
-      "name": "1 · Elites fold spot-check — 25 regional + 12 federal residue (37), Mac",
-      "project": "elitesData",
-      "description": "DRIFT-D4 (a) / GOLD-D6. Cards 1–25 regional-executive assertions (EGRUL/portal), cards 26–37 the federal cards two web-search referees disagreed on or found unclear (plus a 4-card audit). Desk mode: O = evidence, S = search, INN lookups on the card. Rule (proposed): wrong = any \"no\"; >10% wrong in a fold → fold re-review; federal fold scored human + audited silver. Scorer elitesData/validation/spotcheck_score_2026-10-20.R.",
-      "schema_url": "data/fold-spot-1020/schema.json",
-      "items_url": "data/fold-spot-1020/items.json",
-      "tier": "core",
-      "desk": true
-    },
-    {
-      "id": "wpp0-gate-1020",
-      "name": "1 · Mayor hole fill — ACCEPTED 11 first (cards 1–11), Mac",
-      "project": "elitesData",
-      "description": "WPP0-GATE-1020 / GOLD-D6. Cards 1–11 are the accepted hole-fill spells that are LIVE in the master: code these first (a wrong one → retract and rebuild). Cards 12–21 single-source proposals and 22–43 currency-feed rows are optional. Desk mode: evidence link + rusprofile/checko by the administration INN. Key: elitesData/validation/wpp0_gate_rows_2026-10-21.csv.",
-      "schema_url": "data/wpp0-gate-1020/schema.json",
-      "items_url": "data/wpp0-gate-1020/items.json",
-      "tier": "core",
-      "desk": true
-    },
-    {
-      "id": "gold-elvis-1022-subset96",
-      "name": "1 · ELVIS mention gold — human subset (96, ~35 min)",
-      "project": "eliteVisibility",
-      "description": "GOLD-D5 (a; bar set by Noah 2026-10-22 before coding). 96 of 245 cards: the 59 two LLM referees disagreed on or found unclear + 37 agreed cards as an audit; the other 149 are audited silver. Three answers per card: same person? / in post at the date? / about the official's region? Bar: same_person Wilson lower bound ≥ 0.90 overall and ≥ 0.85 per family; in_post ≥ 0.85; about_region descriptive. Blocks every eliteVisibility number (hard rule 5). Scorer eliteVisibility/code/53_gold_score.R.",
-      "schema_url": "data/gold-elvis-1022-subset96/schema.json",
-      "items_url": "data/gold-elvis-1022-subset96/items.json",
-      "tier": "core"
-    },
-    {
-      "id": "elvspot-1021",
-      "name": "1 · Elites declarator fold spot-check — 28 cards, Mac",
-      "project": "elitesData",
-      "description": "ELVSUM-D3 (a) / DECL-D3. 28 accepted declarator government-office rows (10 vice-governor-tier, 9 minister, 9 body_head; start 2012-2020). Three answers per card: dates / person / post (yes / no / unsure); evidence = declarator.org person and office pages (O opens it in desk mode). Rule (proposed): wrong = any \"no\"; >10% wrong -> re-review of the fold; n = 28, read the Wilson interval. Scorer: adapt elitesData/validation/spotcheck_score_2026-10-20.R.",
-      "schema_url": "data/elvspot-1021/schema.json",
-      "items_url": "data/elvspot-1021/items.json",
-      "tier": "core",
-      "desk": true
-    },
-    {
-      "id": "prec-seat-1027",
-      "name": "1 · Elites seat-year precision — 90 cards (5 levels x 3 eras), Mac",
-      "project": "elitesData",
-      "description": "ELST1027-D2 (a). One question per card: does the evidence on the card (text + link) show this person in this post in the year asked? yes / no / can't tell. 90 covered seat-years, 6 per level x era cell (governor, vice-governor, minister, body head, mayor x 2012-16, 2017-20, 2021-26). No searching needed: the evidence is on the card; 36 governor/mayor cards show the registry record itself (no source link exists) and a ru.wiki name link. Bar (pre-registered): precision yes/(yes+no) >= 0.95 overall and >= 0.90 per level on the point estimate; can't tell reported separately. Scorer elitesData/validation/prec_seat_score_2026-10-27.R. ~45-60 min.",
-      "schema_url": "data/prec-seat-1027/schema.json",
-      "items_url": "data/prec-seat-1027/items.json",
-      "tier": "core",
-      "desk": true
-    },
-    {
-      "id": "wpp2-trace-1027",
-      "name": "1 · Prosecution trace (T2-19) — 40 cards, Mac",
-      "project": "eventsData",
-      "description": "WPP2V2-D1 (a). One card = one person-prosecution built by the prosecution layer (events in date order with key method and link confidence). Five questions: same person in all events (Q1), one case not merged or split (Q2), stages and dates right (Q3), status right (Q4), person_uid right (Q5, person_uid cards only). 20 person_uid-keyed and 20 provisional-name cards, 8 per level group. Bar (pre-registered, point estimate decides, Wilson interval always shown): Q1 >= 0.90 overall and >= 0.95 on the 20 person_uid cards; Q2 >= 0.85; Q5 >= 0.95. A miss marks the person_uid prosecution keys unverified. Scorer eventsData/validation/wpp2_trace_score_2026-10-27.R. About 1 hour.",
-      "schema_url": "data/wpp2-trace-1027/schema.json",
-      "items_url": "data/wpp2-trace-1027/items.json",
-      "tier": "core",
-      "desk": true
-    },
-    {
-      "id": "recall-struct-1027",
-      "name": "1 · Archived government pages: does the page show the person in the post? (30 cards, Mac)",
-      "project": "elitesData",
-      "description": "ELST1027-D2 (a), recall probe. Each card is one person-post observation extracted by Haiku 5.5 from an archived government structure or leadership page: open the archive link and answer yes / no / unsure whether THIS page shows the person holding THIS post on the date shown. Your answers give (1) extraction precision (share yes of 30, Wilson interval) and (2) the master's recall among the yes cards (sealed automated key, 10 of 30 in the master). Descriptive: no pass/fail threshold is pre-registered (stage README). About 45 minutes.",
-      "schema_url": "data/recall-struct-1027/schema.json",
-      "items_url": "data/recall-struct-1027/items.json",
-      "tier": "core",
-      "desk": true
-    },
-    {
-      "id": "struct-decree-20",
-      "name": "2 · Regional structure decrees: is the list of bodies right? (20 cards, Mac)",
-      "project": "elitesData",
-      "description": "Each card is a regional decree that lists the region's executive bodies, next to the list a program extracted from it. Read the decree text (or open the official page) and say whether the list is complete and whether anything on it is not a body. A start page on the first card explains it in plain words. Bar (pre-registered in the stage README, point estimate decides): at least 18 of 20 cards complete with at most 1 non-body item. About 45 minutes; a desk task.",
-      "schema_url": "data/struct-decree-20/schema.json",
-      "items_url": "data/struct-decree-20/items.json",
-      "tier": "optional",
-      "desk": true
-    },
-    {
-      "id": "locr-match-57",
-      "name": "2 · Dismissal register vs officials database: same person? (57 cards, Mac)",
-      "project": "eventsData",
-      "description": "Each card pairs one entry of the register of officials dismissed for loss of confidence with one person in our officials database (same full name and region). Say whether they are the same person and, if yes, whether the register's post fits one of the person's database posts. A start page on the first card explains it in plain words. Bar (pre-registered in the stage README, point estimate decides): at least 90% of the same-person answers have a post that fits. About 40 minutes. Personal data, private app only.",
-      "schema_url": "data/locr-match-57/schema.json",
-      "items_url": "data/locr-match-57/items.json",
-      "tier": "optional",
-      "desk": true
-    },
-    {
-      "id": "protest-dedup-gold-residue36",
-      "name": "2 · Protest dedup — human residue: article dates + 2 pair blocks (36, ~35 min)",
-      "project": "eventsData/protestData",
-      "description": "GOLD-D3 (a). OPTIONAL: code if a referee challenges the Kasparov date rule or the silver-trust check is quoted. 16 article-date cards (Δ ≥ 2 d) + 20 pair cards; the other 81 cards of the 10-04 set are scored from the two-referee silver. Blind, interleaved. Loader eventsData/protestData/upd/T9_content_rule/03_load_gold_answers.R.",
-      "schema_url": "data/protest-dedup-gold-residue36/schema.json",
-      "items_url": "data/protest-dedup-gold-residue36/items.json",
-      "tier": "optional"
-    },
-    {
-      "id": "disaster-decree-events-gold-40",
-      "name": "2 · Disaster decree events — hazard typing (40, ~35 min)",
-      "project": "disaster",
-      "description": "OPTIONAL (trigger: the 2023–26 decree list enters a paper). Gate for the 2015-2026 regional ChS-introduction event list (DECEV-D2 c, DECEV-D5 a). 40 acts stratified 10 war-or-unknown / 10 post-2022 non-crop / 10 post-2022 crop-loss / 10 pre-2023; code hazard, war-related (use the war option), whether the act introduces a regime, and the incident start date only if the text states it. Blind: model labels are only in the stage key. Decision rule in disaster/validation/decree_events_gold_stage_2026-10-21/README.md; loader disaster/code/validation/99r_load_decree_gold_results.R.",
-      "schema_url": "data/disaster-decree-events-gold-40/schema.json",
-      "items_url": "data/disaster-decree-events-gold-40/items.json",
       "tier": "optional"
     },
     {
       "id": "disaster-event-reality-31",
-      "name": "2 · Disaster event reality — candidate non-events (31, ~12 min)",
+      "name": "4 · Optional — disasters: did this event really happen? (31 cards, ~12 min)",
       "project": "disaster",
-      "description": "OPTIONAL (trigger: DIS1004-D1 reopened). The REALITY block only: 20 candidate non-events (N 12 + C 8) + 11 calibration cards, blind. Informs how Table 1's weakly-confirmed slice (A7) is read and DIS1004-D1 (clean the universe). The response blocks (Kremlin, decree, Track A) are frozen until the framing call. Loader disaster/code/validation/99m_load_response_session_results.R.",
+      "description": "Short cards on weakly confirmed disaster events. Details: _notes/gold_bank.md, LIVE #5.",
       "schema_url": "data/disaster-event-reality-31/schema.json",
       "items_url": "data/disaster-event-reality-31/items.json",
-      "tier": "optional"
-    },
-    {
-      "id": "protest-validation-residue-articles23",
-      "name": "2 · Protest residue — real protest? / date / region (23, ~13 min)",
-      "project": "eventsData/protestData",
-      "description": "OPTIONAL (bounds 83–91% already stand). Human tier for the Kasparov precision / recall / date / region silver numbers (pkg_2026-09-28/SUMMARY.md). No gate; measurement only. Loader eventsData/protestData/code/validation/61_load_residue_answers.R.",
-      "schema_url": "data/protest-validation-residue-articles23/schema.json",
-      "items_url": "data/protest-validation-residue-articles23/items.json",
-      "tier": "optional"
-    },
-    {
-      "id": "c26-content-mode-310",
-      "name": "3 · C26 content MODE gold (310) — WAIT for the rel40 κ; a 140-card subset will replace this",
-      "project": "campaign2026",
-      "description": "TIER 1, after rel40 (and only if kappa decides 9 vs 4 classes first). Rebuilt gold: programmes, party-less and multi-speaker debate turns removed, replacements drawn; codebook v4; full classifier text (~3 h, splittable). No model output shown. Loader campaign2026/code/26l2_load_content_mode_v4_gold.R. Holds your 6 round-1 items (re-code under v4).",
-      "schema_url": "data/c26-content-mode-310/schema.json",
-      "items_url": "data/c26-content-mode-310/items.json",
       "tier": "optional"
     }
   ]
