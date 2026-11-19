@@ -13,6 +13,7 @@ project:
     # empties docs/ and rebuilds it from these folders (see internal/README.md).
     - internal/**   # unlisted pages, index at /internal/ (was resources/ until 2026-09-15)
     - teaching/**      # public: research guide, course sites
+    - talks/**         # public: talk decks (HTML + PDF), built in me/talks/
     - validation/**
 
 website:
